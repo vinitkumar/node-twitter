@@ -58,5 +58,4 @@ users number of tweets
 
 ##logout
 logout the user
-
-
+Use imgur for images.
