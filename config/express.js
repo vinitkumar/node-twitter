@@ -34,14 +34,14 @@ module.exports = function (app, config, passport) {
     app.use(express.bodyParser());
     app.use(express.methodOverride());
 
-    //express/mongo session storage
-    app.use(express.sesssion({
-      secret: tweet,
-      store: new mongoStore({
-        url: config.db,
-        collection: 'sessions'
-      });
+        app.use(express.session({
+          secret: 'noobjs',
+          store: new mongoStore({
+            url: config.db,
+            collection : 'sessions'
+          })
     }));
+
     app.use(flash());
 
     app.use(passport.initialize());

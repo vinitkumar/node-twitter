@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
     TwitterStrategy = require('passport-twitter').Strategy,
     FacebookStrategy = require('passport-facebook').Strategy,
     GithubStrategy = require('passport-github').Strategy,
-    GoogleStrategy = require('passport-google-auth').Strategy,
+    GoogleStrategy = require('passport-google-oauth').Strategy,
     User = mongoose.model('User');
 
 
@@ -61,3 +61,5 @@ module.exports = function (passport, config) {
     });
   }
   ));
+
+};

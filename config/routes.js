@@ -2,9 +2,9 @@ var async = require('async');
 
 module.exports = function (app, passport, auth) {
   var users = require('../app/controllers/users');
-  app.get('/login', user.login);
+  app.get('/login', users.login);
   app.get('signup', users.signup);
-  app.get('/logout', user.logout);
+  app.get('/logout', users.logout);
   app.post('/users', users.create);
  app.post('/users/session', passport.authenticate('local', {failureRedirect: '/login', failureFlash: 'Invalid email or password.'}), users.session);
   app.get('/users/:userId', users.show);
@@ -23,7 +23,7 @@ module.exports = function (app, passport, auth) {
   app.param('userId', users.user);
 
 
-  var tweets = require('../app/control/tweets');
+  var tweets = require('../app/controllers/tweets');
   app.get('/tweets', tweets.index);
   app.get('/tweets/new', auth.requiresLogin, tweets.new);
   app.post('/tweets', auth.requiresLogin, tweets.create);
