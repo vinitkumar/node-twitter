@@ -14,7 +14,10 @@ var UserSchema = new Schema({
   email: String,
   username: String,
   hashed_password: String,
-  salt_string: String
+  salt_string: String,
+  followers: Number,
+  following: Number,
+  tweets: Number
 });
 
 

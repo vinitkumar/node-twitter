@@ -9,24 +9,6 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 
-/**
- * Getters
- */
-
-
-var getTags = function (tags) {
-  return tags.join(',');
-};
-
-
-/**
- * Setters
- */
-
-var setTags = function (tags) {
-  return tags.split(',');
-};
-
 
 /**
  * Tweets Schema
@@ -34,6 +16,19 @@ var setTags = function (tags) {
 
 
 var TweetSchema = new Schema({
-  body:{},
+  body: {type: String, default: '', trim: true},
+  user: {type: Schema.ObjectId, ref: 'User'},
+  createdAt: {type: Date, default: Date.now},
+  retweets: Number,
+  favorite: Number
+});
 
-})
+
+TweetSchema.path('body').validate(function (title) {
+  return body.length > 0 && body.length < 140;
+}, 'Keep tweet between 0 and 140 characters');
+
+
+
+mongoose.model('Tweet', TweetSchema);
+
