@@ -13,5 +13,8 @@ module.exports = function (app, passport, auth) {
   app.get('/auth/github', passport.authenticate('github', { failureRedirect: '/login' }), users.signin)
   app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), users.authCallback)
   app.get('/', users.index)
+  //tweets controller
+  var tweets = require('../app/controllers/tweets')
+  app.get('/home', tweets.show)
 }
 
