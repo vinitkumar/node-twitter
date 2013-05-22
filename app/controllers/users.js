@@ -11,6 +11,11 @@ exports.signin = function (req, res) {};
  * Auth callback
  */
 
+exports.index = function (req, res) {
+  res.render('index')
+}
+
+
 exports.authCallback = function (req, res, next) {
   res.redirect('/');
 };
