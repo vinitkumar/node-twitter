@@ -1,0 +1,30 @@
+.container-fluid
+      .row-fluid
+        .span12
+          .navbar.navbar-inverse
+            .navbar-inner
+              .container-fluid
+                a.btn.btn-navbar(data-target='.navbar-responsive-collapse', data-toggle='collapse')
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+                a.brand(href='/') Node Twitter
+                .nav-collapse.collapse.navbar-responsive-collapse
+                  ul.nav.pull-right
+                    li.active
+                      a(href='/login') Login
+                    li
+                      a(href='/register') Register
+                    li.divider-vertical
+                    li.dropdown
+                      a.dropdown-toggle(data-toggle='dropdown', href='#')
+                        | Profile
+                        strong.caret
+                      ul.dropdown-menu
+                        li
+                          a(href='#') My profile
+                        li
+                          a(href='#') Direct Messages
+                        li.divider
+                        li
+                          a(href='#') Logout

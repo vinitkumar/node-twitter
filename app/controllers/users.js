@@ -3,7 +3,7 @@
  */
 
 var Mongoose = require('mongoose')
-  , User = mongoose.model('User');
+  , User = Mongoose.model('User');
 
 exports.signin = function (req, res) {};
 
