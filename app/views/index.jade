@@ -1,0 +1,102 @@
+html
+  body /Users/vinit/Desktop/layoutit 2/src/index.html
+!!! 5
+html(lang='en')
+head
+    meta(charset='utf-8')
+    title Bootstrap, from LayoutIt!
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    //
+      link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /
+    //
+      link rel="stylesheet/less" href="less/responsive.less" type="text/css" /
+    //
+      script src="js/less-1.3.3.min.js"></script
+    //
+      append ‘#!watch’ to the browser URL, then refresh the page.
+    link(href='css/bootstrap.min.css', rel='stylesheet')
+    link(href='css/bootstrap-responsive.min.css', rel='stylesheet')
+    link(href='css/style.css', rel='stylesheet')
+    //
+       HTML5 shim, for IE6-8 support of HTML5 elements
+    //if lt IE 9
+      script(src='js/html5shiv.js')
+    //
+       Fav and touch icons
+    link(rel='apple-touch-icon-precomposed', sizes='144x144', href='img/apple-touch-icon-144-precomposed.png')
+    link(rel='apple-touch-icon-precomposed', sizes='114x114', href='img/apple-touch-icon-114-precomposed.png')
+    link(rel='apple-touch-icon-precomposed', sizes='72x72', href='img/apple-touch-icon-72-precomposed.png')
+    link(rel='apple-touch-icon-precomposed', href='img/apple-touch-icon-57-precomposed.png')
+    link(rel='shortcut icon', href='img/favicon.png')
+    script(type='text/javascript', src='js/jquery.min.js')
+    script(type='text/javascript', src='js/bootstrap.min.js')
+    script(type='text/javascript', src='js/scripts.js')
+  body
+    .container-fluid
+      .row-fluid
+        .span12
+          .navbar.navbar-inverse
+            .navbar-inner
+              .container-fluid
+                a.btn.btn-navbar(data-target='.navbar-responsive-collapse', data-toggle='collapse')
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+                a.brand(href='/') Node Twitter
+                .nav-collapse.collapse.navbar-responsive-collapse
+                  ul.nav.pull-right
+                    li.active
+                      a(href='/login.html') Login
+                    li
+                      a(href='/register.html') Register
+                    li.divider-vertical
+                    li.dropdown
+                      a.dropdown-toggle(data-toggle='dropdown', href='#')
+                        | Profile
+                        strong.caret
+                      ul.dropdown-menu
+                        li
+                          a(href='#') My profile
+                        li
+                          a(href='#') Direct Messages
+                        li.divider
+                        li
+                          a(href='#') Logout
+          .hero-unit
+            h1
+              | Node Twitter
+            p
+              | Hello this is twitter implemented using nodejs. In order to use it register and get going.
+            p
+              a.btn.btn-primary.btn-large(href='#') Learn more »
+          #carousel-823815.carousel.slide
+            ol.carousel-indicators
+              li.active(data-slide-to='0', data-target='#carousel-823815')
+              li(data-slide-to='1', data-target='#carousel-823815')
+              li(data-slide-to='2', data-target='#carousel-823815')
+            .carousel-inner
+              .item.active
+                img(alt='', src='http://lorempixel.com/1600/500/sports/1')
+                .carousel-caption
+                  h4
+                    | First Thumbnail label
+                  p
+                    | Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+              .item
+                img(alt='', src='http://lorempixel.com/1600/500/sports/2')
+                .carousel-caption
+                  h4
+                    | Second Thumbnail label
+                  p
+                    | Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+              .item
+                img(alt='', src='http://lorempixel.com/1600/500/sports/3')
+                .carousel-caption
+                  h4
+                    | Third Thumbnail label
+                  p
+                    | Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+            a.left.carousel-control(data-slide='prev', href='#carousel-823815') ‹
+            a.right.carousel-control(data-slide='next', href='#carousel-823815') ›
