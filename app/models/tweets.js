@@ -29,6 +29,13 @@ TweetSchema.path('body').validate(function (title) {
 }, 'Keep tweet between 0 and 140 characters');
 
 
+TweetSchema.methods = {
+  add: function () {
+
+  }
+}
+
+
 
 mongoose.model('Tweet', TweetSchema);
 

@@ -29,5 +29,22 @@ MessageSchema.path('to').validate(function (to) {
 },'Message to cannot be blank');
 
 
-mongoose.model('Message', MessageSchema);
+MessageSchema.methods = {
 
+  add: function () {
+
+  }
+
+  remove: function () {}
+
+  show: function () {
+
+  }
+  edit: function () {
+
+  }
+
+}
+
+
+mongoose.model('Message', MessageSchema);
