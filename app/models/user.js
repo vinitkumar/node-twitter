@@ -6,7 +6,7 @@ var mongoose = require('mongoose')
   , Schema = mongoose.Schema
   , crypto = require('crypto')
   , _ = require('underscore')
-  , authTypes = ['twitter', 'facebook']
+  , authTypes = ['github', 'facebook']
 
 
 
