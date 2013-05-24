@@ -3,3 +3,21 @@ extends ../layouts/default
 block main
   h1 Tweets
 
+
+block content
+  each article in articles
+    .article
+      a.title(href='/tweets'+tweet._id, title=tweet.title) #{tweet.title}
+      p=tweet.body
+      .author
+        span= formateDate(tweet.createdAt,"%b %d %Y at %I:%M %p")
+        span &nbsp; | Author :&nbsp;
+        a(href="/users/"+tweet.user._id)=tweet.user.name
+        | &nbsp;|&nbsp;
+
+
+  if (page > 1)
+    .pagination
+      ul
+        != createPaginations(pages, page)
+

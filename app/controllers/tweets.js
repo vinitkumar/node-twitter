@@ -31,7 +31,7 @@ exports.tweet = function (req, res, next, id) {
  * @param res [description]
  * @return {[type]}     [description]
  */
-exports.new = function (req, res) {
+exports.new = function(req, res) {
   res.render('tweets/new', {
     title: 'New Tweet',
     tweet: new Tweet({})

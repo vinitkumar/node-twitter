@@ -22,7 +22,7 @@ var TweetSchema = new Schema({
   createdAt: {type: Date, default: Date.now},
   retweets: Number,
   favorite: Number
-});
+})
 
 
 TweetSchema.path('body').validate(function (title) {
