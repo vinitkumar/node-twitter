@@ -24,10 +24,10 @@ exports.user = {
 };
 
 
-exports.article = {
+exports.tweet = {
   hasAuthorization: function (req, res, next) {
-    if (req.article.user.id != req.user.id) {
-      return res.redirect('/articles'+req.article.id);
+    if (req.tweet.user.id != req.user.id) {
+      return res.redirect('/tweets'+req.tweet.id);
     }
     next();
   }
