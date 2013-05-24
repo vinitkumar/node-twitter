@@ -2,7 +2,7 @@ var path = require('path'),
     rootPath = path.normalize(__dirname + '/..');
 module.exports = {
   development: {
-    db: 'mongodb://localhost/noobjs_dev1',
+    db: 'mongodb://localhost/noobjs_devd1',
     root: rootPath,
     app: {
       name: 'Node Twitter'
@@ -19,7 +19,7 @@ module.exports = {
     }
   },
   test: {
-    db: 'mongodb://localhost/noobjs_test1',
+    db: 'mongodb://localhost/noobjs_test21',
     root: rootPath,
     app: {
       name: 'Nodejs Express Mongoose Demo'
@@ -36,7 +36,7 @@ module.exports = {
     }
   },
   production: {
-    db: 'mongodb://localhost/noobjs_prod',
+    db: 'mongodb://localhost/noobjs_prodd',
     root: rootPath,
     app: {
       name: 'Nodejs Express Mongoose Demo'

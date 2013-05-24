@@ -23,8 +23,8 @@ module.exports = function (app, passport, auth) {
   app.get('/tweets/new', auth.requiresLogin, tweets.new)
   app.post('/tweets', auth.requiresLogin, tweets.create)
   app.get('/tweets/:id', tweets.show)
-  app.get('/tweets/:id/edit', auth.requiresLogin, auth.tweet.hasAuthorization, tweet.edit)
-  app.put('/tweets/:id', auth.requiresLogin, auth.tweet.hasAuthorization, tweet.update)
+  app.get('/tweets/:id/edit', auth.requiresLogin, auth.tweet.hasAuthorization, tweets.edit)
+  app.put('/tweets/:id', auth.requiresLogin, auth.tweet.hasAuthorization, tweets.update)
   app.param('id', tweets.tweet)
   //home route
   app.get('/', tweets.index )

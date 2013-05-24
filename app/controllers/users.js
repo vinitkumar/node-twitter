@@ -47,12 +47,10 @@ exports.signup = function (req, res) {
  * Logout
  */
 
-
-exports.logout = function (req,res) {
-  res.logout();
-  res.redirect('/login');
-};
-
+exports.logout = function (req, res) {
+  req.logout()
+  res.redirect('/login')
+}
 
 /**
  * Session
