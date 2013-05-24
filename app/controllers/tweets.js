@@ -4,24 +4,8 @@
 
 var mongoose = require('mongoose'),
     async = require('async'),
-    tweet = mongoose.model('Tweet'),
+    Tweet = mongoose.model('Tweet'),
     _ = require('underscore');
-
-
-
-
-
-exports.index = function (req, res) {
-
-};
-
- // app.get('/tweets', tweets.index);
- //  app.get('/tweets/new', auth.requiresLogin, tweets.new);
- //  app.post('/tweets', auth.requiresLogin, tweets.create);
- //  app.get('/tweets/:id', tweets.show);
- //  app.get('/tweets/:id/edit', auth.requiresLogin, auth.tweet.hasAuthorization, tweets.update);
- //  app.put('/tweets/:id', auth.requiresLogin, auth.tweet.hasAuthorization,
- //    tweets.destroy);
 
 
 /**
@@ -31,28 +15,28 @@ exports.index = function (req, res) {
  * @return {[type]}     [description]
  */
 exports.tweet = function (req, res, next, id) {
-  var User = mongoose.model('User');
+  var User = mongoose.model('User')
 
   Tweet.load(id, function (err, tweet) {
-    if (err) return next(err);
-    if (!tweet) return next(new Error('Failed to load tweet'+id));
-    req.tweet = tweet;
-    next();
-  });
-};
+    if (err) return next(err)
+    if (!tweet) return next(new Error('Failed to load tweet'+id))
+    req.tweet = tweet
+    next()
+  })
+}
 
 /**
  * New Tweet
- * @param  {[type]} req [description]
- * @param  {[type]} res [description]
+ * @param req [description]
+ * @param res [description]
  * @return {[type]}     [description]
  */
 exports.new = function (req, res) {
   res.render('tweets/new', {
     title: 'New Tweet',
     tweet: new Tweet({})
-  });
-};
+  })
+}
 
 
 
@@ -63,8 +47,8 @@ exports.new = function (req, res) {
  * @return {[type]}     [description]
  */
 exports.create = function (req, res) {
-  var tweet = new Tweet(req.body);
-  tweet.user = req.user;
+  var tweet = new Tweet(req.body)
+  tweet.user = req.user
 
   tweet.uploadAndSave(req.files.image, function (err) {
     if (err) {
@@ -72,19 +56,19 @@ exports.create = function (req, res) {
         title: 'New Tweet',
         tweet: tweet,
         error: err.errors
-      });
+      })
     }
     else {
       res.redirect('/tweets/'+tweet._id);
     }
-  });
-};
+  })
+}
 
 
 /**
  * Edit a tweet
- * @param  {[type]} req [description]
- * @param  {[type]} res [description]
+ * @param  req [description]
+ * @param  res [description]
  * @return {[type]}     [description]
  */
 exports.edit = function (req, res) {
@@ -105,10 +89,15 @@ exports.show = function (req, res) {
   res.render('/tweets/show', {
     title: req.tweet.title,
     tweet: req.tweet
-  });
-};
+  })
+}
 
-
+/**
+ * View an article
+ * @param  {[type]} req [description]
+ * @param  {[type]} res [description]
+ * @return {[type]}     [description]
+ */
 exports.update = function (req, res) {
   var tweet = req.tweet;
   tweet = _.extend(tweet, req.body);
@@ -124,10 +113,15 @@ exports.update = function (req, res) {
     else {
       res.redirect('/tweets/'+ tweet._id);
     }
-  });
-};
+  })
+}
 
-
+/**
+ * Delete an Article
+ * @param  {[type]} req [description]
+ * @param  {[type]} res [description]
+ * @return {[type]}     [description]
+ */
 exports.destroy = function (req, res) {
   var tweet = req.tweet;
   tweet.remove(function (err) {
@@ -142,12 +136,12 @@ exports.destroy = function (req, res) {
 
 
 exports.index = function (req, res) {
-  var page = req.param('page') > 0 ? req.param('page'):0;
-  var perPage  = 15;
+  var page = req.param('page') > 0 ? req.param('page'):0
+  var perPage  = 15
   var options = {
     perPage: perPage,
     page: page
-  };
+  }
   Tweet.list(options, function (err, articles) {
     if (err) return res.render('500');
     Tweet.count().exec(function (err, count) {
@@ -156,7 +150,7 @@ exports.index = function (req, res) {
         articles: articles,
         page: page,
         pages: count/perPage
-      });
-    });
-  });
-};
+      })
+    })
+  })
+}
