@@ -11,6 +11,11 @@ exports.signin = function (req, res) {};
  * Auth callback
  */
 
+exports.index = function (req, res) {
+  res.render('index')
+}
+
+
 exports.authCallback = function (req, res, next) {
   res.redirect('/');
 };
@@ -42,12 +47,10 @@ exports.signup = function (req, res) {
  * Logout
  */
 
-
-exports.logout = function (req,res) {
-  res.logout();
-  res.redirect('/login');
-};
-
+exports.logout = function (req, res) {
+  req.logout()
+  res.redirect('/login')
+}
 
 /**
  * Session
