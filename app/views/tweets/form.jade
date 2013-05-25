@@ -1,0 +1,37 @@
+extends ../layouts/default
+
+
+block content
+  -var actions = '/tweets'
+  if (!tweet.isNew)
+    - action += '/'+tweet.id
+
+  if (typeof errors !== 'undefined')
+    .fade.in.alert.alert-block.alert-error
+      a.close(data-dismiss="alert", href="javascript:void(0)") x
+      ul
+        each errors in errors
+          li = error.type
+
+
+  .row
+    .span7
+      form.form-horizontal(method="post", action=action, enctype="multipart/form-data")
+        if (!article.isNew)
+          input(type="hidden", name="_method", value="PUT")
+
+        .control-group
+          label.control-label(for='title') Title
+          .controls
+            input#title.input-xlarge(type='text', name="title", value=article.title, placeholder="Enter the title")
+        .control-group
+          label.control-label(for='tweet') Tweet
+          .controls
+            textarea#tweet.input-xlarge(type='text', rows="3", name="tweetbody",
+              placeholder='Enter your tweet here')=tweet.body
+
+        .form-actions
+          button.btn.btn-primary(type='submit') Publish Tweet
+          &nbsp;
+          a.btn(href='/articles', title="cancel") Cancel
+
