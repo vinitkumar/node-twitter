@@ -7,6 +7,7 @@ block main
 block content
   each tweet in tweets
     .tweet
+    .span2
      a(href="/users/"+tweet.user._id)=tweet.user.name
      p=tweet.body
      p.date= formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")
