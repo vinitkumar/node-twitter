@@ -49,8 +49,7 @@ exports.new = function(req, res) {
 exports.create = function (req, res) {
   var tweet = new Tweet(req.body)
   tweet.user = req.user
-
-  tweet.Save(err, tweet) {
+  var stuff = function (err) {
     if (err) {
       res.render('tweets/new',{
         title: 'New Tweet',
@@ -59,9 +58,10 @@ exports.create = function (req, res) {
       })
     }
     else {
-      res.redirect('/tweets/'+tweet._id);
+      res.redirect('/tweets/'+tweet._id)
     }
-  })
+  }
+  tweet.save(stuff)
 }
 
 
@@ -101,8 +101,7 @@ exports.show = function (req, res) {
 exports.update = function (req, res) {
   var tweet = req.tweet;
   tweet = _.extend(tweet, req.body);
-
-  tweet.Save(err, tweet) {
+  var stuff = function (err) {
     if (err) {
       res.render('/tweets/edit', {
         title: 'Edit Tweet',
@@ -113,7 +112,8 @@ exports.update = function (req, res) {
     else {
       res.redirect('/tweets/'+ tweet._id);
     }
-  })
+  }
+  tweet.save(stuff)
 }
 
 /**
@@ -123,11 +123,11 @@ exports.update = function (req, res) {
  * @return {[type]}     [description]
  */
 exports.destroy = function (req, res) {
-  var tweet = req.tweet;
+  var tweet = req.tweet
   tweet.remove(function (err) {
     res.redirect('/tweets');
-  });
-};
+  })
+}
 
 
 /**
@@ -142,12 +142,12 @@ exports.index = function (req, res) {
     perPage: perPage,
     page: page
   }
-  Tweet.list(options, function (err, articles) {
+  Tweet.list(options, function (err, tweets) {
     if (err) return res.render('500');
     Tweet.count().exec(function (err, count) {
       res.render('tweets/index', {
         title: 'List of tweets',
-        articles: articles,
+        tweets: tweets,
         page: page,
         pages: count/perPage
       })

@@ -5,7 +5,7 @@
 
 var mongoose = require('mongoose')
   , env = process.env.NODE_ENV || 'development'
-  , config = require('../config/config')[env]
+  , config = require('../../config/config')[env]
   , Schema = mongoose.Schema
 
 
@@ -14,38 +14,55 @@ var mongoose = require('mongoose')
  */
 
 
+/**
+ * Getters
+ */
+
+var getTags = function (tags) {
+  return tags.join(',')
+}
+
+/**
+ * Setters
+ */
+
+var setTags = function (tags) {
+  return tags.split(',')
+}
+
 var TweetSchema = new Schema({
-  title: {type: String, default: '', trim: true},
-  body: {type: String, default: '', trim: true},
-  user: {type: Schema.ObjectId, ref:'User'},
-  favorites: Number,
-  retweets: Number,
-  createAt: {type: Date, default: Date.now}
+  body: {type : String, default : '', trim : true},
+  user: {type : Schema.ObjectId, ref : 'User'},
+  comments: [{
+    body: { type : String, default : '' },
+    user: { type : Schema.ObjectId, ref : 'User' },
+    createdAt: { type : Date, default : Date.now }
+  }],
+  tags: {type: [], get: getTags, set: setTags},
+  createdAt  : {type : Date, default : Date.now}
 })
-
-
 
 
 /**
  * Validations
  */
 
-
-
-TweetSchema.path('title').validate(function (title) {
-  return title.length > 0
-}, 'Tweet title cannot be blank')
-
-
 TweetSchema.path('body').validate(function (title) {
   return body.length > 0
 }, 'Tweet body cannot be blank')
 
-
 TweetSchema.methods = {
-  Save: function(err,cb) {
-    if (err) console.log('some error')
+  save: function (err,cb) {
+    if (err) console.log('no tweets')
     self.save(cb)
+  },
+
+  addComment: function (user, comment, cb) {
+    this.comments.push({
+      body: comment.body,
+      user: user._id
+    })
+    this.save(cb)
   }
 }
 
