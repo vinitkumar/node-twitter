@@ -5,8 +5,8 @@ block main
 
 
 block content
-  each article in articles
-    .article
+  each tweet in tweets
+    .tweet
       a.title(href='/tweets'+tweet._id, title=tweet.title) #{tweet.title}
       p=tweet.body
       .author
