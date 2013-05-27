@@ -7,9 +7,9 @@ block main
 block content
   each tweet in tweets
     .tweet
-     p=tweet.body
-     p=tweet.createdAt
      a(href="/users/"+tweet.user._id)=tweet.user.name
+     p=tweet.body
+     p.date= formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")
      a.btn(href="/tweets/"+tweet._id+"/edit", title="Edit") Edit
 
 
