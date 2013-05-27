@@ -47,14 +47,24 @@ var TweetSchema = new Schema({
  * Validations
  */
 
-TweetSchema.path('body').validate(function (title) {
+TweetSchema.path('body').validate(function (body) {
   return body.length > 0
 }, 'Tweet body cannot be blank')
 
 TweetSchema.methods = {
-  save: function (err,cb) {
-    if (err) console.log('no tweets')
-    self.save(cb)
+  uploadAndSave: function (images, cb) {
+    if (!images || !images.length) return this.save(cb)
+
+    var imager = new Imager(imagerConfig, 'S3')
+    var self = this
+
+    imager.upload(images, function (err, cdnUri, files) {
+      if (err) return cb(err)
+      if (files.length) {
+        self.image = { cdnUri : cdnUri, files : files }
+      }
+      self.save(cb)
+    }, 'article')
   },
 
   addComment: function (user, comment, cb) {
@@ -77,6 +87,7 @@ TweetSchema.statics = {
   load: function (id, cb) {
     this.findOne({ _id: id })
       .populate('user', 'name email')
+      .populate('comments.user')
       .exec(cb)
   },
 

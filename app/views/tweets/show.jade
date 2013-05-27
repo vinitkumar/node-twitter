@@ -1,0 +1,16 @@
+extends ../layouts/default
+
+block main
+  h1 This is the tweet
+
+block content
+  .row
+    .span9
+      p=tweet.body
+      p
+    br
+    form.center.form-inline.confirm(action="/tweets/"+tweet.id, method="post")
+      a.btn(href='/tweets/'+tweet._id+'/edit', title="edit") Edit
+      &nbsp;&nbsp;
+      input(type="hidden", name="_method", value="DELETE")
+      button.btn.btn-danger(type="submit") delete

@@ -11,14 +11,11 @@ exports.signin = function (req, res) {};
  * Auth callback
  */
 
-exports.index = function (req, res) {
-  res.render('index')
+exports.authCallback = function (req, res, next) {
+  res.render('/')
 }
 
 
-exports.authCallback = function (req, res, next) {
-  res.redirect('/');
-};
 
 /**
  * Show Login form
@@ -71,7 +68,7 @@ exports.create = function (req, res) {
   user.provider = 'local';
   user.save(function (err) {
     if (err) {
-      return res.render('/users/signup', { errors: err.errors, user: user });
+      return res.render('users/signup', { errors: err.errors, user: user });
     }
     req.logIn(user, function (err) {
       if (err) return next(err);
@@ -82,12 +79,14 @@ exports.create = function (req, res) {
 
 
 exports.show = function (req, res) {
-  var user = req.profile;
-  res.render('users/show', {
-    title: user.name,
-    user: user
-  });
-};
+  var user = req.profile
+  console.log({title:user.name, user: user})
+  res.send(user)
+  //  res.render('users/show', {
+  //   title: user.name,
+  //   user: user
+  // })
+}
 
 
 /**

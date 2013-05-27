@@ -2,7 +2,7 @@ extends ../layouts/default
 
 
 block content
-  -var actions = '/tweets'
+  - var action = '/tweets'
   if (!tweet.isNew)
     - action += '/'+tweet.id
 
@@ -17,21 +17,17 @@ block content
   .row
     .span7
       form.form-horizontal(method="post", action=action, enctype="multipart/form-data")
-        if (!article.isNew)
+        if (!tweet.isNew)
           input(type="hidden", name="_method", value="PUT")
 
         .control-group
-          label.control-label(for='title') Title
+          label.control-label(for='tweet') Tweet Body
           .controls
-            input#title.input-xlarge(type='text', name="title", value=article.title, placeholder="Enter the title")
-        .control-group
-          label.control-label(for='tweet') Tweet
-          .controls
-            textarea#tweet.input-xlarge(type='text', rows="3", name="tweetbody",
-              placeholder='Enter your tweet here')=tweet.body
+            textarea#tweet.input-xlarge(type='text', rows="3", name="body",
+              placeholder='Enter your tweet here',maxlength='140')=tweet.body
 
         .form-actions
           button.btn.btn-primary(type='submit') Publish Tweet
           &nbsp;
-          a.btn(href='/articles', title="cancel") Cancel
+          a.btn(href='/tweets', title="cancel") Cancel
 

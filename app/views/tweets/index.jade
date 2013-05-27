@@ -7,16 +7,14 @@ block main
 block content
   each tweet in tweets
     .tweet
-      a.title(href='/tweets'+tweet._id, title=tweet.title) #{tweet.title}
-      p=tweet.body
-      .author
-        span= formateDate(tweet.createdAt,"%b %d %Y at %I:%M %p")
-        span &nbsp; | Author :&nbsp;
-        a(href="/users/"+tweet.user._id)=tweet.user.name
-        | &nbsp;|&nbsp;
+     p=tweet.body
+     p=tweet.createdAt
+     a(href="/users/"+tweet.user._id)=tweet.user.name
+     a.btn(href="/tweets/"+tweet._id+"/edit", title="Edit") Edit
 
 
-  if (page > 1)
+
+  if (pages > 1)
     .pagination
       ul
         != createPaginations(pages, page)
