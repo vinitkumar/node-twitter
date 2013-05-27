@@ -50,7 +50,7 @@ exports.create = function (req, res) {
   var tweet = new Tweet(req.body)
   tweet.user = req.user
 
-  tweet.uploadAndSave(req.files.image, function (err) {
+  tweet.Save(err, tweet) {
     if (err) {
       res.render('tweets/new',{
         title: 'New Tweet',
@@ -102,7 +102,7 @@ exports.update = function (req, res) {
   var tweet = req.tweet;
   tweet = _.extend(tweet, req.body);
 
-  tweet.uploadAndSave(req.files.image, function (err) {
+  tweet.Save(err, tweet) {
     if (err) {
       res.render('/tweets/edit', {
         title: 'Edit Tweet',
