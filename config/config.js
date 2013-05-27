@@ -2,7 +2,8 @@ var path = require('path'),
     rootPath = path.normalize(__dirname + '/..');
 module.exports = {
   development: {
-    db: 'mongodb://localhost/noobjs_devd1ad',
+    db: 'mongodb://vinitcool76:volvo76@ds027318.mongolab.com:27318/ntwitter
+',
     root: rootPath,
     app: {
       name: 'Node Twitter'
