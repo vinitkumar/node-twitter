@@ -9,6 +9,7 @@
                   span.icon-bar
                   span.icon-bar
                 a.brand(href='/') Node Twitter
+                a.brand(href='/tweets/new') New Tweet
                 .nav-collapse.collapse.navbar-responsive-collapse
                   ul.nav.pull-right
                     li.active
@@ -21,10 +22,11 @@
                         | Profile
                         strong.caret
                       ul.dropdown-menu
-                        li
-                          a(href='#') My profile
-                        li
-                          a(href='#') Direct Messages
-                        li.divider
-                        li
-                          a(href='/logout') Logout
+                        if (req.isAuthenticated())
+                          li
+                            a(href="/users/"+req.user.id, title="Profile") Profile
+                          li
+                            a(href="/logout", title="logout") Logout
+                        else
+                          li
+                            a(href="/login", title="Login") Login
