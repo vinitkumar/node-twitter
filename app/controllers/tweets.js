@@ -48,8 +48,10 @@ exports.new = function(req, res) {
  */
 exports.create = function (req, res) {
   var tweet = new Tweet(req.body)
+  console.log(req.body)
+  console.log(tweet)
   tweet.user = req.user
-  var stuff = function (err) {
+  tweet.uploadAndSave(req.files.image, function(err) {
     if (err) {
       res.render('tweets/new',{
         title: 'New Tweet',
@@ -60,8 +62,7 @@ exports.create = function (req, res) {
     else {
       res.redirect('/tweets/'+tweet._id)
     }
-  }
-  tweet.save(stuff)
+  })
 }
 
 
@@ -86,7 +87,7 @@ exports.edit = function (req, res) {
  * @return {[type]}     [description]
  */
 exports.show = function (req, res) {
-  res.render('/tweets/show', {
+  res.render('tweets/show', {
     title: req.tweet.title,
     tweet: req.tweet
   })
@@ -101,9 +102,9 @@ exports.show = function (req, res) {
 exports.update = function (req, res) {
   var tweet = req.tweet;
   tweet = _.extend(tweet, req.body);
-  var stuff = function (err) {
+  tweet.uploadAndSave(req.files.image, function (err){
     if (err) {
-      res.render('/tweets/edit', {
+      res.render('tweets/edit', {
         title: 'Edit Tweet',
         tweet: tweet,
         error: err.errors
@@ -112,8 +113,7 @@ exports.update = function (req, res) {
     else {
       res.redirect('/tweets/'+ tweet._id);
     }
-  }
-  tweet.save(stuff)
+  })
 }
 
 /**

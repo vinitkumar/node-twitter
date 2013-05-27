@@ -25,6 +25,7 @@ module.exports = function (app, passport, auth) {
   app.get('/tweets/:id', tweets.show)
   app.get('/tweets/:id/edit', auth.requiresLogin, auth.tweet.hasAuthorization, tweets.edit)
   app.put('/tweets/:id', auth.requiresLogin, auth.tweet.hasAuthorization, tweets.update)
+  app.del('/tweets/:id', auth.requiresLogin, auth.tweet.hasAuthorization, tweets.destroy)
   app.param('id', tweets.tweet)
   //home route
   app.get('/', tweets.index )
