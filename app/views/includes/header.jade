@@ -12,10 +12,11 @@
                 a.brand(href='/tweets/new') New Tweet
                 .nav-collapse.collapse.navbar-responsive-collapse
                   ul.nav.pull-right
-                    li.active
-                      a(href='/login') Login
-                    li
-                      a(href='/signup') Signup
+                    if (!req.isAuthenticated())
+                      li.active
+                        a(href='/login') Login
+                      li
+                        a(href='/signup') Signup
                     li.divider-vertical
                     li.dropdown
                       a.dropdown-toggle(data-toggle='dropdown', href='#')

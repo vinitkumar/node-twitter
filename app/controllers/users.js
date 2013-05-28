@@ -12,7 +12,7 @@ exports.signin = function (req, res) {};
  */
 
 exports.authCallback = function (req, res, next) {
-  res.render('/')
+  res.redirect('/')
 }
 
 
@@ -37,8 +37,8 @@ exports.signup = function (req, res) {
   res.render('users/signup', {
     title: 'Sign up',
     user: new User()
-  });
-};
+  })
+}
 
 /**
  * Logout
@@ -81,11 +81,10 @@ exports.create = function (req, res) {
 exports.show = function (req, res) {
   var user = req.profile
   console.log({title:user.name, user: user})
-  res.send(user)
-  //  res.render('users/show', {
-  //   title: user.name,
-  //   user: user
-  // })
+  res.render('users/show', {
+    title: user.name,
+    user: user
+  })
 }
 
 
