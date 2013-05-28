@@ -9,11 +9,4 @@ block content
   - if (user.provider == 'github')
       img(src=user.github.avatar_url)
 
-  each tweet in tweets
-    .tweet
-     a(href="/users/"+tweet.user._id)=tweet.user.name
-     if (tweet.user._id == req.user.id)
-     p=tweet.body
-     p.date= formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")
-
 
