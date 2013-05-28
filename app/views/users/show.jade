@@ -1,5 +1,11 @@
 extends ../layouts/default
 
 block content
- h1 = user.name
+  h1 Welcome #{user.name}
+  p #{user.provider}
+  - if (user.provider == 'facebook')
+     img(src='http://graph.facebook.com/'+user.facebook.id+'/picture')
+
+  - if (user.provider == 'github')
+      img(src=user.github.avatar_url)
 
