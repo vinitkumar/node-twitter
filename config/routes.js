@@ -28,7 +28,7 @@ module.exports = function (app, passport, auth) {
   app.del('/tweets/:id', auth.requiresLogin, auth.tweet.hasAuthorization, tweets.destroy)
   app.param('id', tweets.tweet)
   //home route
-  app.get('/', tweets.index )
+  app.get('/', auth.requiresLogin, tweets.index )
 
   //comment routes
 }

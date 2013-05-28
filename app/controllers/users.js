@@ -12,7 +12,7 @@ exports.signin = function (req, res) {};
  */
 
 exports.authCallback = function (req, res, next) {
-  res.render('index')
+  res.redirect('/')
 }
 
 
