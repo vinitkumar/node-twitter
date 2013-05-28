@@ -31,4 +31,6 @@ module.exports = function (app, passport, auth) {
   app.get('/', auth.requiresLogin, tweets.index )
 
   //comment routes
+  var comments = require('../app/controllers/comments')
+  app.post('/tweets/:id/comments', auth.requiresLogin, comments.create)
 }
