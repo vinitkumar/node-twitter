@@ -17,8 +17,9 @@ List of tweets
 - Sort by date 
 - Sort by title
 - Role based access to the route
-
-    users: [{
-      user: { type: Schema.ObjectId, ref: 'User' },
-      roles: { type: Array, default: ['user'] }
-    }],
+,
+users: [{
+  user: { type: Schema.ObjectId, ref: 'User' },
+  roles: { type: Array, default: ['user'] }
+}],
+,
