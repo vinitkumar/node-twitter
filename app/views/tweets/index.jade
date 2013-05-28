@@ -7,11 +7,17 @@ block main
 block content
   each tweet in tweets
     .tweet
-    .span2
      a(href="/users/"+tweet.user._id)=tweet.user.name
      p=tweet.body
      p.date= formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")
-     a.btn(href="/tweets/"+tweet._id+"/edit", title="Edit") Edit
+     if (tweet.user._id == req.user.id)
+      a.btn(href="/tweets/"+tweet._id+"/edit", title="Edit") Edit
+     p
+      br
+      h2 Comments
+      each comment in tweet.comments
+        include ../comments/comment
+      include ../comments/form
 
 
 
