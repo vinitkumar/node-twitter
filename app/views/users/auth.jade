@@ -7,12 +7,14 @@ block main
 
 block content
   .row
-    .offset1.span5
+    .span4
+    .span4
+      h2 Login/Signup
       a(href="/auth/facebook")
         img(src="/img/facebook.png")
       a(href="/auth/github")
         img(src="/img/github.png")
-    .span6
+    .span4
       if (typeof errors !== 'undefined')
         .fade.in.alert.alert-block.alert-error
           a.close(data-dismiss="alert", href="javascript:void(0)") x

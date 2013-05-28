@@ -12,7 +12,7 @@ exports.signin = function (req, res) {};
  */
 
 exports.authCallback = function (req, res, next) {
-  res.render('index')
+  res.redirect('/')
 }
 
 
@@ -37,8 +37,8 @@ exports.signup = function (req, res) {
   res.render('users/signup', {
     title: 'Sign up',
     user: new User()
-  });
-};
+  })
+}
 
 /**
  * Logout
