@@ -1,21 +1,20 @@
 $(document).ready(function () {
-
-  // confirmations
-  $('.confirm').submit(function (e) {
-    e.preventDefault();
-    var self = this;
-    var msg = 'Are you sure?';
-    bootbox.confirm(msg, 'cancel', 'Yes! I am sure', function (action) {
-      if (action) {
-        $(self).unbind('submit');
-        $(self).trigger('submit');
+  $('.favorite').on('click', function(e) {
+    var tweet = $(e.currentTarget).data('tweetid');
+    var tweetID = tweet.split('"')[1];
+    console.log(tweet);
+    var url = "/tweets/"+tweetID+"/favorites'";
+    console.log(url);
+    $.ajax({
+      type: 'POST',
+      url: url,
+      success: function (data) {
+        console.log('send a favorite');
+      },
+      error: function (data) {
+        console.log('not sent');
       }
     });
   });
-
-  $('#tags').tagsInput({
-    'height':'60px',
-    'width':'280px'
-  });
-
 });
+
