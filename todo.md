@@ -7,18 +7,19 @@
 - Then write views.
 
 
-
+## Must do
 https://github.com/LearnBoost/mongoose/wiki/3.6-Release-Notes
-[23/05/2013 19:10:48] madhu: * List of tweets 
-* display user information of the user who tweeted
-* Filtering options for the listing
-  * filter by tags
-  * filter by user
-* Sort by date 
-* Sort by title
-[23/05/2013 19:12:12] madhu: * role based access to the route
-
+List of tweets 
+- display user information of the user who tweeted
+- Filtering options for the listing
+  - filter by tags
+  - filter by user
+- Sort by date 
+- Sort by title
+- Role based access to the route
+,
 users: [{
-  user: { type: Schema.ObjectId, ref: 'User' },
-  roles: { type: Array, default: ['user'] }
+  user: { type: Schema.ObjectId, ref: 'User' },
+  roles: { type: Array, default: ['user'] }
 }],
+,
