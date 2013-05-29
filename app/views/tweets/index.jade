@@ -12,6 +12,7 @@ block content
      p.date= formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")
      if (tweet.user._id == req.user.id)
       a.btn(href="/tweets/"+tweet._id+"/edit", title="Edit") Edit
+      a.btn(href="#", class="favorite", data-tweetId=tweet._id, title="favorite") Favorite
      p
       br
       h2 Comments
