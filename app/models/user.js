@@ -19,8 +19,10 @@ var UserSchema = new Schema({
   salt: String,
   facebook: {},
   github: {},
-  followers: Number,
-  following: Number,
+  follow: [{
+    follower: { type : Schema.ObjectId, ref : 'User' },
+    following: { type : Schema.ObjectId, ref : 'User' },
+  }],
   tweets: Number
 });
 

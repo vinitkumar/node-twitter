@@ -39,9 +39,23 @@ var TweetSchema = new Schema({
     createdAt: { type : Date, default : Date.now }
   }],
   tags: {type: [], get: getTags, set: setTags},
+  favorites: [{ type: Schema.ObjectId, ref: 'User' }],
+  favoriters: [{ type: Schema.ObjectId, ref: 'User' }],  // same as favorites
+  favoritesCount: Number,
   createdAt  : {type : Date, default : Date.now}
 })
 
+
+
+/**
+ * Pre Save hook
+ */
+
+TweetSchema.pre('save', function (next) {
+  if (this.favorites) this.favoritesCount = this.favorites.length
+  if (this.favorites) this.favoriters = this.favorites
+  next()
+})
 
 /**
  * Validations
@@ -50,6 +64,15 @@ var TweetSchema = new Schema({
 TweetSchema.path('body').validate(function (body) {
   return body.length > 0
 }, 'Tweet body cannot be blank')
+
+
+TweetSchema.virtual('_favorites').set(function (user) {
+  if (this.favorites.indexOf(user._id) === -1) {
+    this.favorites.push(user._id)
+  } else {
+    this.favorites.splice(this.favorites.indexOf(user._id), 1)
+  }
+})
 
 TweetSchema.methods = {
   uploadAndSave: function (images, cb) {
