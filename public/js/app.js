@@ -3,7 +3,7 @@ $(document).ready(function () {
     var tweet = $(e.currentTarget).data('tweetid');
     var tweetID = tweet.split('"')[1];
     console.log(tweet);
-    var url = "/tweets/"+tweetID+"/favorites'";
+    var url = "tweets/"+tweetID+"/favorites";
     console.log(url);
     $.ajax({
       type: 'POST',
