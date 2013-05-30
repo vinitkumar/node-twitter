@@ -49,7 +49,7 @@ module.exports = function (app, passport, auth) {
     * Follows routes
     */
 
-   var follows = requires('../app/controllers/follows')
+   var follows = require('../app/controllers/follows')
    app.post('/users/:userId/follow', auth.requiresLogin, follows.follow)
    app.del('/users/:userId/unfollow', auth.requiresLogin, follows.unfollow)
 }

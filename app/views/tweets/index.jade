@@ -11,6 +11,7 @@ block content
      p=tweet.body
      p.date= formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")
      a.btn(href="#", class="favorite", data-tweetId=tweet._id, title="favorite") Favorite
+     a.btn(href="#", class="follow", data-userId=tweet.user._id, title="favorite") Follow
      if (tweet.user._id == req.user.id)
       a.btn(href="/tweets/"+tweet._id+"/edit", title="Edit") Edit
 
@@ -23,8 +24,4 @@ block content
 
 
 
-  if (pages > 1)
-    .pagination
-      ul
-        != createPaginations(pages, page)
 
