@@ -19,10 +19,8 @@ var UserSchema = new Schema({
   salt: String,
   facebook: {},
   github: {},
-  follows: [{ type: Schema.ObjectId, ref: 'User'}],
   followers: [{ type: Schema.ObjectId, ref: 'User'}],
   following: [{ type: Schema.ObjectId, ref: 'User'}],
-  followersCount: Number,
   tweets: Number
 });
 
@@ -77,13 +75,6 @@ UserSchema.pre('save', function (next) {
     next();
 });
 
-UserSchema.virtual('_follows').set(function (user) {
-  if (this.follows.indexOf(user._id) == -1) {
-    this.follows.push(user._id)
-  } else {
-    this.follows.splice(this.follows.indexOf(user._id), 1)
-  }
-})
 
 UserSchema.methods = {
   /**
