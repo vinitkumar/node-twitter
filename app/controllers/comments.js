@@ -16,6 +16,6 @@ exports.create = function (req, res) {
 
   tweet.addComment(user, req.body, function (err) {
     if (err) return res.render('500')
-      res.redirect('/tweets/'+tweet.id)
+    res.redirect('/')
   })
 }

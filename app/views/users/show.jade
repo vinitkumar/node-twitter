@@ -2,7 +2,13 @@ extends ../layouts/default
 
 block content
   h1 Welcome #{user.name}
+  if (user._id != req.user.id)
+    a.btn(href="#", class="follow", data-user=user._id, data-logged=req.user.id,title="follow") Follow
   p #{user.provider}
+  p followers: (Number of followers)link to the list of following
+  p following: (Number of following)link to the list of followers
+  p  User profile #{user._id}
+  p Logged in user #{req.user.id}
   - if (user.provider == 'facebook')
      img(src='http://graph.facebook.com/'+user.facebook.id+'/picture')
 

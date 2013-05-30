@@ -40,9 +40,6 @@ module.exports = function (app, passport, auth) {
    var favorites = require('../app/controllers/favorites')
 
    app.post('/tweets/:id/favorites', auth.requiresLogin, favorites.create)
-   console.log('bug')
-   console.log(favorites.create)
-   console.log(favorites.destroy)
    app.del('/tweets/:id/favorites', auth.requiresLogin, favorites.destroy)
 
 }

@@ -9,7 +9,6 @@
 exports.create = function (req, res) {
   var tweet = req.tweet
   tweet._favorites = req.user
-  console.log('called');
   tweet.save(function (err) {
     if (err) return res.send(400)
     res.send(201, {})

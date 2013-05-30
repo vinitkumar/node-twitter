@@ -65,10 +65,6 @@ UserSchema.path('hashed_password').validate(function (hashed_password) {
  */
 
 UserSchema.pre('save', function (next) {
-  if (!this.isNew) return next();
-  if (this.follows) this.followersCount = this.follows.length
-  if (this.follows) this.followers = this.follows
-  next()
   if (!validatePresenceOf(this.password)&& authTypes.indexOf(this.provider) === -1)
     next(new Error('Invalid password'));
   else
@@ -93,10 +89,18 @@ UserSchema.methods = {
   },
 
   encryptPassword: function (password) {
-    if (!password) return '';
+    if (!password) return ''
     return crypto.createHmac('sha1', this.salt).update(password).digest('hex');
   }
 
 };
+
+/**
+ * follow(userA, userB) {
+ * this.following.push(userB) // Add userB to following list
+ * userB.follower.push(userA) // Add userA to followers list.
+ * }
+ */
+
 
 mongoose.model('User', UserSchema);
