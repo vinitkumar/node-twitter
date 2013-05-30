@@ -19,10 +19,10 @@ var UserSchema = new Schema({
   salt: String,
   facebook: {},
   github: {},
-  follow: [{
-    follower: { type : Schema.ObjectId, ref : 'User' },
-    following: { type : Schema.ObjectId, ref : 'User' },
-  }],
+  follows: [{ type: Schema.ObjectId, ref: 'User'}],
+  followers: [{ type: Schema.ObjectId, ref: 'User'}],
+  following: [{ type: Schema.ObjectId, ref: 'User'}],
+  followersCount: Number,
   tweets: Number
 });
 
@@ -68,12 +68,22 @@ UserSchema.path('hashed_password').validate(function (hashed_password) {
 
 UserSchema.pre('save', function (next) {
   if (!this.isNew) return next();
-
+  if (this.follows) this.followersCount = this.follows.length
+  if (this.follows) this.followers = this.follows
+  next()
   if (!validatePresenceOf(this.password)&& authTypes.indexOf(this.provider) === -1)
     next(new Error('Invalid password'));
   else
     next();
 });
+
+UserSchema.virtual('_follows').set(function (user) {
+  if (this.follows.indexOf(user._id) == -1) {
+    this.follows.push(user._id)
+  } else {
+    this.follows.splice(this.follows.indexOf(user._id), 1)
+  }
+})
 
 UserSchema.methods = {
   /**

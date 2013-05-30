@@ -44,4 +44,12 @@ module.exports = function (app, passport, auth) {
    console.log(favorites.create)
    console.log(favorites.destroy)
    app.del('/tweets/:id/favorites', auth.requiresLogin, favorites.destroy)
+
+   /**
+    * Follows routes
+    */
+
+   var follows = requires('../app/controllers/follows')
+   app.post('/users/:userId/follow', auth.requiresLogin, follows.follow)
+   app.del('/users/:userId/unfollow', auth.requiresLogin, follows.unfollow)
 }
