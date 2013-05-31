@@ -102,6 +102,14 @@ UserSchema.methods = {
     return crypto.createHmac('sha1', this.salt).update(password).digest('hex');
   }
 
-};
+}
+
+UserSchema.statics = {
+  addfollow: function (id, cb) {
+    this.findOne({_id: id})
+      .populate('followers')
+      .exec(cb)
+  }
+}
 
 mongoose.model('User', UserSchema);

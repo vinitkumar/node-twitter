@@ -1,14 +1,16 @@
 /**
  * follow
  */
+var mongoose = require('mongoose')
+  , User = mongoose.model('User')
+  , async = require('async');
 
-exports.follow = function (req, res) {
-  console.log(req.user)
-  console.log(req.url)
+exports.follow = function (req, res, next) {
   var user = req.user
-  user.follow(req.url.split('/')[2])
-  user.save(function (err) {
+    , id = req.url.split('/')[2];
+    user.follow(id)
+    user.save(function (err) {
     if (err) res.send(400)
     res.send(201, {})
-  })
+    })
 }
