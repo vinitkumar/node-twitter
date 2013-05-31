@@ -42,4 +42,10 @@ module.exports = function (app, passport, auth) {
    app.post('/tweets/:id/favorites', auth.requiresLogin, favorites.create)
    app.del('/tweets/:id/favorites', auth.requiresLogin, favorites.destroy)
 
+   /**
+    * Follow
+    */
+   var follows = require('../app/controllers/follows')
+
+   app.post('/users/:userId/follow', auth.requiresLogin, follows.follow)
 }

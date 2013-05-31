@@ -3,7 +3,7 @@ extends ../layouts/default
 block content
   h1 Welcome #{user.name}
   if (user._id != req.user.id)
-    a.btn(href="#", class="follow", data-user=user._id, data-logged=req.user.id,title="follow") Follow
+    a.btn(href="#", class="follow", data-userid=user._id, data-logged=req.user.id,title="follow") Follow
   p #{user.provider}
   p followers: (Number of followers)link to the list of following
   p following: (Number of following)link to the list of followers

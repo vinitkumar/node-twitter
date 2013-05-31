@@ -79,6 +79,15 @@ UserSchema.methods = {
    * @return {Boolean} [description]
    * @api public
    */
+  follow: function (id) {
+    if (this.following.indexOf(id) === -1) {
+      this.following.push(id)
+    }
+    else {
+      this.following.splice(this.following.indexOf(id), 1)
+    }
+    console.log(this.following)
+  },
 
   authenticate: function (plainText) {
     return this.encryptPassword(plainText) === this.hashed_password;
@@ -94,13 +103,5 @@ UserSchema.methods = {
   }
 
 };
-
-/**
- * follow(userA, userB) {
- * this.following.push(userB) // Add userB to following list
- * userB.follower.push(userA) // Add userA to followers list.
- * }
- */
-
 
 mongoose.model('User', UserSchema);

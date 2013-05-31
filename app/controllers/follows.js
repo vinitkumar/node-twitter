@@ -1,27 +1,14 @@
 /**
- * Follows
+ * follow
  */
-
 
 exports.follow = function (req, res) {
+  console.log(req.user)
+  console.log(req.url)
   var user = req.user
-  user._follows = req.user
+  user.follow(req.url.split('/')[2])
   user.save(function (err) {
-    if (err) return res.send(400)
+    if (err) res.send(400)
     res.send(201, {})
-  })
-}
-
-
-/**
- * Unfollow a user
- */
-
-exports.unfollow = function (req, res) {
-  var user = req.user
-  user._follows = req.user
-  user.save(function (err) {
-    if (err) return res.send(400)
-    res.send(200)
   })
 }
