@@ -1,7 +1,7 @@
 
 if (comment && comment.user)
   .comment
-    a(href="/users"+comment.user._id) #{comment.user.name}
+    a(href="/users/"+ comment.user) #{comment.user}
     | :&nbsp;
     != comment.body
     br

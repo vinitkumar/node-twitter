@@ -16,5 +16,21 @@ $(document).ready(function () {
       }
     });
   });
+  $('.follow').on('click', function(e) {
+    var user = $(e.currentTarget).data('userid');
+    var userID = user.split('"')[1];
+    var url = "http://localhost:3000/users/"+userID+"/follow";
+    console.log(url);
+    $.ajax({
+      type: 'POST',
+      url: url,
+      success: function (data) {
+        console.log('Followed the user');
+      },
+      error: function (data) {
+        console.log('not sent');
+      }
+    });
+  });
 });
 
