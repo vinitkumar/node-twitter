@@ -1,26 +1,37 @@
 extends ../layouts/default
 
 block main
-  h1 Tweets
-
+  .page-header
+    h1 Tweets
 
 block content
   each tweet in tweets
-    .tweet
-     a(href="/users/"+tweet.user._id)=tweet.user.name
-     p=tweet.body
-     p.date= formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")
-     a.btn(href="#", class="favorite", data-tweetId=tweet._id, title="favorite") Favorite
-     if (tweet.user._id == req.user.id)
-      a.btn(href="/tweets/"+tweet._id+"/edit", title="Edit") Edit
+    .well
+      .tweet
+        .row
+          .span6.pull-left
+            h5
+              a(href="/users/"+tweet.user._id)=tweet.user.name
+          .span5.date
+            .pull-right
+              = formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")
+       p=tweet.body
+       div(style='padding-bottom: 7px; margin-bottom: 10px;')
+         a.favorite.label.label-info(href="#", class="favorite", data-tweetId=tweet._id, title="favorite", style='margin-right: 8px;')
+          i.icon-star-empty.icon-white
+          | Favorite
+         if (tweet.user._id == req.user.id)
+           a.label.label-info(href="/tweets/"+tweet._id+"/edit", title="Edit")
+            i.icon-edit.icon-white
+            | Edit
 
-     p
-      br
-      h2 Comments
-      each comment in tweet.comments
-        include ../comments/comment
-      include ../comments/form
-
-
-
+       #comments-accordion.accordion
+        .accordion-group
+          .accordion-heading(style='background-color: lightgray; color: gray; font-size: 16px;')
+          a.accordion-toggle.collapsed(data-toggle='collapse', data-parent='#comments-accordion', href='.collapseOne') Comments
+          .collapseOne.accordion-body.collapse(style='height: 0px;')
+            .accordion-inner
+              include ../comments/form
+              each comment in tweet.comments
+                include ../comments/comment
 
