@@ -1,33 +1,30 @@
-.container-fluid
-      .row-fluid
-        .span12
-          .navbar.navbar-inverse
-            .navbar-inner
-              .container-fluid
-                a.btn.btn-navbar(data-target='.navbar-responsive-collapse', data-toggle='collapse')
-                  span.icon-bar
-                  span.icon-bar
-                  span.icon-bar
-                a.brand(href='/') Node Twitter
-                a.brand(href='/tweets/new') New Tweet
-                .nav-collapse.collapse.navbar-responsive-collapse
-                  ul.nav.pull-right
-                    if (!req.isAuthenticated())
-                      li.active
-                        a(href='/login') Login
-                      li
-                        a(href='/signup') Signup
-                    li.divider-vertical
-                    li.dropdown
-                      a.dropdown-toggle(data-toggle='dropdown', href='#')
-                        | Profile
-                        strong.caret
-                      ul.dropdown-menu
-                        if (req.isAuthenticated())
-                          li
-                            a(href="/users/"+req.user.id, title="Profile") Profile
-                          li
-                            a(href="/logout", title="logout") Logout
-                        else
-                          li
-                            a(href="/login", title="Login") Login
+.navbar.navbar-inverse.navbar-fixed-top
+  .navbar-inner
+    .container-fluid
+      a.btn.btn-navbar(data-target='.navbar-responsive-collapse', data-toggle='collapse')
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.brand(href='/') Nwitter
+      a.brand(href='/tweets/new') New
+      .nav-collapse.collapse.navbar-responsive-collapse
+        ul.nav.pull-right
+          if (!req.isAuthenticated())
+            li.active
+              a(href='/login') Login
+            li
+              a(href='/signup') Signup
+          li.divider-vertical
+          li.dropdown
+            a.dropdown-toggle(data-toggle='dropdown', href='#')
+              | Profile
+              strong.caret
+            ul.dropdown-menu
+              if (req.isAuthenticated())
+                li
+                  a(href="/users/"+req.user.id, title="Profile") Profile
+                li
+                  a(href="/logout", title="logout") Logout
+              else
+                li
+                  a(href="/login", title="Login") Login
