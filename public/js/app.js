@@ -21,6 +21,9 @@ $(document).ready(function () {
     var userID = user.split('"')[1];
     var url = "http://localhost:3000/users/"+userID+"/follow";
     console.log(url);
+    $(this).text(function(i, text){
+      return text === "follow" ? "unfollow": "follow";
+    })
     $.ajax({
       type: 'POST',
       url: url,
