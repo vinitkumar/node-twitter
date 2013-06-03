@@ -133,6 +133,9 @@ exports.destroy = function (req, res) {
 /**
  * List of Tweets
  */
+exports.dashboard =  function (req, res) {
+
+}
 
 
 exports.index = function (req, res) {
