@@ -1,5 +1,7 @@
 ## Description
 
+[![Build Status](https://travis-ci.org/vinitcool76/node-twitter.png?branch=master)](https://travis-ci.org/vinitcool76/node-twitter)
+
 ## Description about the Node Twitter. 
 - This project is an attempt to build a twitter clone using Node based stack. It is mostly for learning purposes.
 
