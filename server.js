@@ -1,8 +1,4 @@
 /**
- * node twitter
- */
-
-/**
  * Module dependencies
  */
 
