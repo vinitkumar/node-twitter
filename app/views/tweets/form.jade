@@ -21,11 +21,13 @@ block content
           input(type="hidden", name="_method", value="PUT")
 
         .control-group
-          label.control-label(for='tweet') Tweet Body
+          label.control-label(for='tweet') Tweet
+          br
+          br
           .controls
-            textarea#tweet.input-xlarge(type='text', rows="3", name="body",
+            textarea.form-control.input-xlarge(type='text', rows="3", name="body",
               placeholder='Enter your tweet here',maxlength='140')=tweet.body
-
+        br
         .form-actions
           button.btn.btn-primary(type='submit') Publish Tweet
           &nbsp;
