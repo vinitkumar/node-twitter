@@ -2,34 +2,37 @@ extends ../layouts/default
 
 
 block content
-  - var action = '/tweets'
-  if (!tweet.isNew)
-    - action += '/'+tweet.id
-
-  if (typeof errors !== 'undefined')
-    .fade.in.alert.alert-block.alert-error
-      a.close(data-dismiss="alert", href="javascript:void(0)") x
-      ul
-        each errors in errors
-          li = error.type
-
-
   .row
-    .span7
-      form.form-horizontal(method="post", action=action, enctype="multipart/form-data")
-        if (!tweet.isNew)
-          input(type="hidden", name="_method", value="PUT")
+    .span4
+      - var action = '/tweets'
+      if (!tweet.isNew)
+        - action += '/'+tweet.id
 
-        .control-group
-          label.control-label(for='tweet') Tweet
-          br
-          br
-          .controls
-            textarea.form-control.input-xlarge(type='text', rows="3", name="body",
-              placeholder='Enter your tweet here',maxlength='140')=tweet.body
-        br
-        .form-actions
-          button.btn.btn-primary(type='submit') Publish Tweet
-          &nbsp;
-          a.btn(href='/tweets', title="cancel") Cancel
+      if (typeof errors !== 'undefined')
+        .fade.in.alert.alert-block.alert-error
+          a.close(data-dismiss="alert", href="javascript:void(0)") x
+          ul
+            each errors in errors
+              li = error.type
 
+
+      .row
+        .span5
+          form.form-horizontal(method="post", action=action, enctype="multipart/form-data")
+            if (!tweet.isNew)
+              input(type="hidden", name="_method", value="PUT")
+
+            .control-group
+              label.control-label(for='tweet') Tweet
+              br
+              br
+              .controls
+                textarea.form-control.input-xlarge(type='text', rows="3", name="body",
+                  placeholder='Enter your tweet here',maxlength='140')=tweet.body
+            br
+            .form-actions
+              button.btn.btn-primary(type='submit') Publish Tweet
+              &nbsp;
+              a.btn(href='/tweets', title="cancel") Cancel
+
+    .span8
