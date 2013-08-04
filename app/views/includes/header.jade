@@ -12,11 +12,14 @@ body.bs-docs-home
           ul.nav.navbar-nav
             if (req.isAuthenticated())
               li
-                a(href='/tweets/new') New Tweet
+                a(href='/tweets/new')
+                  i.icon-twitter.icon-light.icon-2x
               li
-                a(href="/users/"+req.user.id, title="Profile") Profile
+                a(href="/users/"+req.user.id, title="Profile")
+                  i.icon-male.icon-light.icon-2x
               li
-                a(href="/logout", title="logout") Logout
+                a(href="/logout", title="logout")
+                  i.icon-off.icon-light.icon-2x
             else
               li
                 a(href="/login", title="Login") Login
