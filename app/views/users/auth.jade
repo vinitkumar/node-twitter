@@ -8,12 +8,11 @@ block main
 block content
   .row
     .span4
-    .span4
-      h2 Login Here
-      a(href="/auth/facebook")
-        img(src="/img/facebook.png")
-      a(href="/auth/github")
-        img(src="/img/github.png")
+    .span4.login
+            a(href="/auth/facebook")
+                i(class="icon-facebook icon-4x")
+            a(href="/auth/github")
+                i(class="icon-github icon-4x")
     .span4
       if (typeof errors !== 'undefined')
         .fade.in.alert.alert-block.alert-error
