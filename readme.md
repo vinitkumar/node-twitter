@@ -13,12 +13,22 @@
 ### How to install
 
 In order to install
+
+- Make sure you have mongodb installed and running.
+
+
 ```bash    
 $ mongod
 $ npm install
 ```
-Also, make sure you have mongodb installed and running.
+## How to run
 
+In order to run the project, do:
+
+```bash
+$ mongod
+$ npm start
+```
 ### Important
 
 Application uses facebook and github for authentication so it is advisable to create 
