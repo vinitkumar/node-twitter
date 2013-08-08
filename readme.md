@@ -10,10 +10,7 @@
 
 ## Installation instruction
 
-In order to install:
-What is needed to install
-    
--You must have node, npm and mongodb installed for the application to work.
+You must have node, npm and mongodb installed for the application to work.
 - In order to install Node and NPM : http://nodejs.org
 - In order to install mongoDB: http://mongodb.org
 
