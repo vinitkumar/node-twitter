@@ -10,15 +10,14 @@
 
 ## Installation instruction
 
-### How to install
-
-In order to install
-
-- Make sure you have mongodb installed and running.
-
+In order to install:
+What is needed to install
+    
+-You must have node, npm and mongodb installed for the application to work.
+- In order to install Node and NPM : http://nodejs.org
+- In order to install mongoDB: http://mongodb.org
 
 ```bash    
-$ mongod
 $ npm install
 ```
 ## How to run
@@ -34,16 +33,6 @@ $ npm start
 Application uses facebook and github for authentication so it is advisable to create 
 your own facebook and github app with `http://localhost:3000` as the applcation url for
 testing on local machine.
-
-### What is needed to install
-    
--You must have node, npm and mongodb installed for the application to work.
-- In order to install Node and NPM : http://nodejs.org
-- In order to install mongoDB: http://mongodb.org
-
-### How to install on multi-platforms
-
-Follow the instructions in the links given above.
 
 ## Where to get help
 - In case you have a query, bugs or suggestion, create an issue. 
