@@ -8,14 +8,14 @@ module.exports = {
       name: 'Node Twitter'
     },
     facebook: {
-      clientID: "476135909128021",
-      clientSecret: "0f6a6403b1c9cb678164400032369a16",
-      callbackURL: "http://localhost:3000/auth/facebook/callback"
+      clientID: "680920985255957",
+      clientSecret: "2d5c19f6b02432195afa3ab01b36d405",
+      callbackURL: "http://ntwitter.nodejitsu.com/auth/facebook/callback"
     },
     github: {
-      clientID: 'c2e0f478634366e1289d',
-      clientSecret: '0bfde82383deeb99b28d0f6a9eac001a0deb798a',
-      callbackURL: 'http://localhost:3000/auth/github/callback'
+      clientID: '6396a71f53863e556b11',
+      clientSecret: '6396a71f53863e556b11',
+      callbackURL: 'http://ntwitter.nodejitsu.com/auth/github/callback'
     }
   },
   test: {
@@ -25,14 +25,14 @@ module.exports = {
       name: 'Nodejs Express Mongoose Demo'
     },
     facebook: {
-      clientID: "476135909128021",
-      clientSecret: "0f6a6403b1c9cb678164400032369a16",
-      callbackURL: "http://localhost:3000/auth/facebook/callback"
+      clientID: "680920985255957",
+      clientSecret: "2d5c19f6b02432195afa3ab01b36d405",
+      callbackURL: "http://ntwitter.nodejitsu.com/auth/facebook/callback"
     },
     github: {
-      clientID: 'c2e0f478634366e1289d',
-      clientSecret: '0bfde82383deeb99b28d0f6a9eac001a0deb798a',
-      callbackURL: 'http://localhost:3000/auth/github/callback'
+      clientID: '6396a71f53863e556b11',
+      clientSecret: '6396a71f53863e556b11',
+      callbackURL: 'http://ntwitter.nodejitsu.com/auth/github/callback'
     }
   },
   production: {
@@ -42,14 +42,14 @@ module.exports = {
       name: 'Nodejs Express Mongoose Demo'
     },
     facebook: {
-      clientID: "476135909128021",
-      clientSecret: "0f6a6403b1c9cb678164400032369a16",
-      callbackURL: "http://localhost:3000/auth/facebook/callback"
+      clientID: "680920985255957",
+      clientSecret: "2d5c19f6b02432195afa3ab01b36d405",
+      callbackURL: "http://ntwitter.nodejitsu.com/auth/facebook/callback"
     },
     github: {
-      clientID: 'c2e0f478634366e1289d',
-      clientSecret: '0bfde82383deeb99b28d0f6a9eac001a0deb798a',
-      callbackURL: 'http://localhost:3000/auth/github/callback'
+      clientID: '6396a71f53863e556b11',
+      clientSecret: '6396a71f53863e556b11',
+      callbackURL: 'http://ntwitter.nodejitsu.com/auth/github/callback'
     }
   }
 };
