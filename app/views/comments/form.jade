@@ -1,5 +1,6 @@
-form.form-vertical(method="post", action="/tweets/#{tweet._id}/comments")
+form(method="post", action="/tweets/#{tweet._id}/comments")
   .control-group
     .controls
-      textarea#comment.input-xxlarge(type='text', rows="6", name="body", placeholder='Add your comment')
+      textarea(type='text',class='form-control', name="body", placeholder='Enter the comment')
+    br
   button.btn.btn-primary(type='submit') Add comment

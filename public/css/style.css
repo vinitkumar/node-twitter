@@ -1,5 +1,6 @@
 body {
   margin-top: 60px;
+  background: url('/img/witewall_3.png');
 }
 
 .icon-4x {
@@ -18,4 +19,8 @@ i {
 
 a:hover {
   text-decoration: none;
+}
+
+p {
+  color: #000;
 }
