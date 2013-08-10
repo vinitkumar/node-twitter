@@ -1,5 +1,6 @@
 body {
   margin-top: 60px;
+  background: url('/img/witewall_3.png');
 }
 
 .date {
@@ -46,3 +47,5 @@ a.tag {
 .error {
   color: #FF2602;
 }
+
+
