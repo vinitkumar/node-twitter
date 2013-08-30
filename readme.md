@@ -1,18 +1,18 @@
-## Node Twitter
+# Node Twitter
 
 [![Build Status](https://travis-ci.org/vinitcool76/node-twitter.png?branch=master)](https://travis-ci.org/vinitcool76/node-twitter)
 
 ## About 
-- This project is an attempt to build a twitter clone in node.
+This project is an attempt to build a twitter clone in node.
 
 ## Inspiration
-- Inspired by @madhums work on nodejs and his nodejs-express-mongoose-demo
+Inspired by @madhums work on nodejs and his nodejs-express-mongoose-demo
 
 ## Installation instruction
 
 You must have node, npm and mongodb installed for the application to work.
-- In order to install Node and NPM : http://nodejs.org
-- In order to install mongoDB: http://mongodb.org
+In order to install Node and NPM : http://nodejs.org
+In order to install mongoDB: http://mongodb.org
 
 ```bash    
 $ npm install
@@ -27,30 +27,20 @@ $ npm start
 ```
 ### Important
 
-Application uses facebook and github for authentication so it is advisable to create 
-your own facebook and github app with `http://localhost:3000` as the applcation url for
-testing on local machine.
+This application uses facebook and github for authentication so you should create your own facebook and github apps with `http://localhost:3000` as the application url for testing on local machine. These credentials from the facebook and github app are to be stored in `config.js`.  
 
 ## Where to get help
 - In case you have a query, bugs or suggestion, create an issue. 
-- It would be the fastest method. Also, you can tweet at @vinitcool76.
+- It would be the fastest method. Also, you can tweet at @vinitkme .
 
 ## Contribution guidelines
+ 
+Just fork and start hacking. I use github flow and Pull Requests is the preferred way to contribute here. Follow the style used in the project. 
 
-- Just fork and start hacking. I use github flow and Pull Requests is the preferred way to contribute here.
-
-- Styleguide
-Follow the style in the project. I don't use semicolons on server side code. So code accordingly.
-
-- Links to open issues: [Open Issues](https://github.com/vinitcool76/node-twitter/issues?milestone=1&state=open)
-
+- Links to open issues: [Open Issues](https://github.com/vinitkumar/node-twitter/issues?milestone=1&state=open)
 
 ## Contributor list
 List of contributors for the project
-- Vinit Kumar(@vinitcool76) - [Author]
-
-## Credits, inspiration, Alternatives
-- @madhums, @changer
-
+- Vinit Kumar(@vinitkumar) - [Author]
 
 
