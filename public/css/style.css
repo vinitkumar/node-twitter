@@ -21,6 +21,8 @@ a:hover {
   text-decoration: none;
 }
 
-p {
-  color: #000;
+.login-screen {
+  background: url('/img/hero.jpg');
 }
+
+

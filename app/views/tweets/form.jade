@@ -11,23 +11,21 @@ block content
           button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
           h4.modal-title Create New Tweet
         .modal-body
-        .row
-          .span4
-            - var action = '/tweets'
-            if (!tweet.isNew)
-              - action += '/'+tweet.id
+          .row
+              - var action = '/tweets'
+              if (!tweet.isNew)
+                - action += '/'+tweet.id
 
-            if (typeof errors !== 'undefined')
-              .fade.in.alert.alert-block.alert-error
-                a.close(data-dismiss="alert", href="javascript:void(0)") x
-                ul
-                  each errors in errors
-                    li = error.type
+              if (typeof errors !== 'undefined')
+                .fade.in.alert.alert-block.alert-error
+                  a.close(data-dismiss="alert", href="javascript:void(0)") x
+                  ul
+                    each errors in errors
+                      li = error.type
 
 
-            .row
-              .span5
-                form.form-horizontal(method="post", action=action, enctype="multipart/form-data")
+              .row
+                form(method="post", action=action, enctype="multipart/form-data")
                   if (!tweet.isNew)
                     input(type="hidden", name="_method", value="PUT")
 
@@ -37,7 +35,7 @@ block content
                     br
                     br
                     .controls
-                      textarea.form-control.input-xlarge(type='text', rows="3", name="body",
+                      textarea(type='text', rows="3", name="body",
                         placeholder='Enter your tweet here',maxlength='140')=tweet.body
                   br
                   .form-actions
