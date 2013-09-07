@@ -117,7 +117,7 @@ exports.update = function (req, res) {
 }
 
 /**
- * Delete an Article
+ * Delete a tweet
  * @param  {[type]} req [description]
  * @param  {[type]} res [description]
  * @return {[type]}     [description]

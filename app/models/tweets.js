@@ -43,10 +43,10 @@ var TweetSchema = new Schema({
  */
 
 TweetSchema.pre('save', function (next) {
-  if (this.favorites) this.favoritesCount = this.favorites.length
-  if (this.favorites) this.favoriters = this.favorites
-  next()
-})
+  if (this.favorites) this.favoritesCount = this.favorites.length;
+  if (this.favorites) this.favoriters = this.favorites;
+  next();
+});
 
 /**
  * Validations
@@ -54,18 +54,18 @@ TweetSchema.pre('save', function (next) {
 
 TweetSchema.path('body').validate(function (body) {
   return body.length > 0
-}, 'Tweet body cannot be blank')
+}, 'Tweet body cannot be blank');
 
 
 TweetSchema.virtual('_favorites').set(function (user) {
   if (this.favorites.indexOf(user._id) === -1) {
-    this.favorites.push(user._id)
-    console.log(user._id)
-    console.log(this.favorites)
+    this.favorites.push(user._id;)
+    console.log(user._id);
+    console.log(this.favorites);
   } else {
-    this.favorites.splice(this.favorites.indexOf(user._id), 1)
+    this.favorites.splice(this.favorites.indexOf(user._id), 1);
   }
-})
+});
 
 TweetSchema.methods = {
   uploadAndSave: function (images, cb) {
@@ -124,5 +124,11 @@ TweetSchema.statics = {
       .exec(cb)
   }
 }
+
+/**
+ * Tweets by a particular user
+ *  Tweets by a user: db.tweets.find({"user" : ObjectId("51a84e6390b6b64c18000002")});
+ *  Number of tweets by the user: db.tweets.find({"user" : ObjectId("51a84e6390b6b64c18000002")}).length()
+ */
 
 mongoose.model('Tweet', TweetSchema)
