@@ -24,24 +24,24 @@ block content
                       li = error.type
 
 
-              .row
-                form(method="post", action=action, enctype="multipart/form-data")
-                  if (!tweet.isNew)
-                    input(type="hidden", name="_method", value="PUT")
+          
+              form(method="post", action=action, enctype="multipart/form-data")
+                if (!tweet.isNew)
+                  input(type="hidden", name="_method", value="PUT")
 
-                  .control-group
-                    label.control-label(for='tweet')
-                      i.icon-twitter.icon-2x
-                    br
-                    br
-                    .controls
-                      textarea(type='text', rows="3", name="body",
-                        placeholder='Enter your tweet here',maxlength='140')=tweet.body
+                .control-group
+                  label.control-label(for='tweet')
+                    i.icon-twitter.icon-2x
                   br
-                  .form-actions
-                    button.btn.btn-primary(type='submit') Publish Tweet
-                    &nbsp;
-                    a.btn(href='/tweets', title="cancel") Cancel
+                  br
+                  .controls
+                    textarea(type='text', class="form-control", name="body",
+                      placeholder='Enter your tweet here',maxlength='140')=tweet.body
+                br
+                .form-actions
+                  button.btn.btn-primary(type='submit') Publish Tweet
+                  &nbsp;
+                  a.btn(href='/tweets', title="cancel") Cancel
 
         .modal-footer
           p Hope you enjoy it!

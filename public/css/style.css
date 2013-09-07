@@ -25,4 +25,6 @@ a:hover {
   background: url('/img/hero.jpg');
 }
 
-
+h1, .icon-twitter {
+	color: lightskyblue;
+}
