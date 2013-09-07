@@ -127,6 +127,7 @@ TweetSchema.statics = {
 
 /**
  * Tweets by a particular user
+ * > tweeets_by_user = db.tweets.find({"user" : ObjectId("51a84e6390b6b64c18000002")}).toArray();
  *  Tweets by a user: db.tweets.find({"user" : ObjectId("51a84e6390b6b64c18000002")});
  *  Number of tweets by the user: db.tweets.find({"user" : ObjectId("51a84e6390b6b64c18000002")}).length()
  */

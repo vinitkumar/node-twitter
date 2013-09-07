@@ -49,6 +49,8 @@ block content
                  a.btn(href='/tweets/'+tweet._id+'/edit', title="edit") Edit
                  input(type="hidden", name="_method", value="DELETE")
                  button.btn.btn-danger(type="submit") delete
+               if (tweet.user._id != req.user.id)
+                 a.btn(href="#", class="favorite", data-tweetId=tweet._id, title="favorite") Favorite
           .comment
             each comment in tweet.comments
               include ../comments/comment
