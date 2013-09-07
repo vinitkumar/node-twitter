@@ -42,3 +42,11 @@ h1, .icon-twitter {
   padding: 5px;
   background-color: #f5f5f5;
 }
+
+.tweet {
+  background-color: lavenderblush;
+}
+
+.comment {
+  font-size: 12px;
+}
