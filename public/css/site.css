@@ -1,0 +1,28 @@
+body {
+  margin-top: 60px;
+  background: url('/img/witewall_3.png');
+}
+
+.icon-4x {
+  font-size: 11em;
+}
+
+i {
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.login {
+  padding-top: 36px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.login-screen {
+  background: url('/img/hero.jpg');
+}
+
+
