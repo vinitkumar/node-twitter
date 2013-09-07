@@ -13,18 +13,9 @@ var mongoose = require('mongoose')
  * Tweet Schema
  */
 
-
-/**
- * Getters
- */
-
 var getTags = function (tags) {
   return tags.join(',')
 }
-
-/**
- * Setters
- */
 
 var setTags = function (tags) {
   return tags.split(',')

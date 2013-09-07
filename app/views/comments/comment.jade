@@ -4,5 +4,4 @@ if (comment && comment.user)
     a(href="/users/"+ comment.user) #{comment.user}
     | :&nbsp;
     != comment.body
-    br
     .date= formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")

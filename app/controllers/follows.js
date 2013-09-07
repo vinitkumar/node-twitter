@@ -14,3 +14,6 @@ exports.follow = function (req, res, next) {
     res.send(201, {})
     })
 }
+exports.unfollow = function(req, res, next) {
+	//unfollow a user here.
+}

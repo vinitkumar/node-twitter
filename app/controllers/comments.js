@@ -19,3 +19,7 @@ exports.create = function (req, res) {
     res.redirect('/')
   })
 }
+
+exports.destroy = function (req, res) {
+	//delete a comment here.
+}
