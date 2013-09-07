@@ -59,7 +59,7 @@ TweetSchema.path('body').validate(function (body) {
 
 TweetSchema.virtual('_favorites').set(function (user) {
   if (this.favorites.indexOf(user._id) === -1) {
-    this.favorites.push(user._id;)
+    this.favorites.push(user._id);
     console.log(user._id);
     console.log(this.favorites);
   } else {

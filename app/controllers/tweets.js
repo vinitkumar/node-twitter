@@ -47,22 +47,22 @@ exports.new = function(req, res) {
  * @return {[type]}     [description]
  */
 exports.create = function (req, res) {
-  var tweet = new Tweet(req.body)
-  console.log(req.body)
-  console.log(tweet)
-  tweet.user = req.user
+  var tweet = new Tweet(req.body);
+  console.log(req.body);
+  console.log(tweet);
+  tweet.user = req.user;
   tweet.uploadAndSave(req.files.image, function(err) {
     if (err) {
       res.render('tweets/new',{
         title: 'New Tweet',
         tweet: tweet,
         error: err.errors
-      })
+      });
     }
     else {
       res.redirect('/');
     }
-  })
+  });
 }
 
 
@@ -72,6 +72,7 @@ exports.create = function (req, res) {
  * @param  res [description]
  * @return {[type]}     [description]
  */
+
 exports.edit = function (req, res) {
   res.render('tweets/edit', {
     title: 'Edit'+ req.tweet.title,
