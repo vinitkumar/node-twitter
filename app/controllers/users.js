@@ -84,7 +84,7 @@ exports.show = function (req, res) {
     res.render('users/show', {
     title: user.name,
     user: user
-  })
+  });
 }
 
 
@@ -101,6 +101,5 @@ exports.user = function (req, res, next, id) {
       req.profile = user;
       next();
     });
-};
-
+}
 

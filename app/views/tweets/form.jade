@@ -10,6 +10,7 @@ block content
         .modal-header
           button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
           h4.modal-title Create New Tweet
+          i.icon-twitter.icon-2x
         .modal-body
           .row
               - var action = '/tweets'
@@ -31,8 +32,6 @@ block content
 
                 .control-group
                   label.control-label(for='tweet')
-                    i.icon-twitter.icon-2x
-                  br
                   br
                   .controls
                     textarea(type='text', class="form-control", name="body",

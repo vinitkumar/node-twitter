@@ -28,3 +28,11 @@ a:hover {
 h1, .icon-twitter {
 	color: lightskyblue;
 }
+
+.modal-title {
+	display: inline-block;
+}
+
+.profile-image {
+	padding-right: 18px;
+}

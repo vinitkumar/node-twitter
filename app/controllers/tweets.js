@@ -60,7 +60,7 @@ exports.create = function (req, res) {
       })
     }
     else {
-      res.redirect('/tweets/'+tweet._id)
+      res.redirect('/');
     }
   })
 }
@@ -111,7 +111,7 @@ exports.update = function (req, res) {
       });
     }
     else {
-      res.redirect('/tweets/'+ tweet._id);
+      res.redirect('/');
     }
   })
 }
@@ -125,7 +125,7 @@ exports.update = function (req, res) {
 exports.destroy = function (req, res) {
   var tweet = req.tweet
   tweet.remove(function (err) {
-    res.redirect('/tweets');
+    res.redirect('/');
   })
 }
 
