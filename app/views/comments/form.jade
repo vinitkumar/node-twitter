@@ -3,4 +3,5 @@ form(method="post", action="/tweets/#{tweet._id}/comments")
     .controls
       textarea(type='text',class='form-control', name="body", placeholder='Enter the comment')
     br
-  button.btn.btn-primary(type='submit') Add comment
+  button.btn.btn-primary.pull-right(type='submit') Add comment
+  hr

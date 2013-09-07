@@ -36,3 +36,9 @@ h1, .icon-twitter {
 .profile-image {
 	padding-right: 18px;
 }
+
+.logged-user {
+  border-radius: 2px;
+  padding: 5px;
+  background-color: #f5f5f5;
+}

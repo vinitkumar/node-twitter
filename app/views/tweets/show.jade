@@ -6,8 +6,8 @@ block main
 block content
   .row
     .span9
-      p=tweet.body
-      p
+      .well
+        p=tweet.body
     br
     form.center.form-inline.confirm(action="/tweets/"+tweet.id, method="post")
       a.btn(href='/tweets/'+tweet._id+'/edit', title="edit") Edit

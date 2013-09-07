@@ -4,7 +4,34 @@ extends ../layouts/default
 block content
   .row
     .col-lg-4 
-      h1 Enter what's happening here!
+      .logged-user
+        p #{req.user.name}
+        - if (req.user.provider == 'facebook')
+          img(class='profile-image', src='http://graph.facebook.com/'+req.user.facebook.id+'/picture')
+        - if (req.user.provider == 'github')
+          img(class='profile-image', src=req.user.github.avatar_url)
+        a.btn.btn-primary.btn-lg(data-toggle='modal', href='#myModal') Create New Tweet
+        #myModal.modal.fade
+          .modal-dialog
+            .modal-content
+              .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                h4.modal-title Create New Tweet
+                i.icon-twitter.icon-2x
+              .modal-body
+                .row
+                  form(method='post', action='/tweets', enctype='multipart/form-data')
+                    .control-group
+                      label.control-label(for='tweet')
+                      br
+                      .controls
+                        textarea.form-control(type='text', name='body', placeholder='Enter your tweet here', maxlength='140')
+                    br
+                    .form-actions
+                      button.btn.btn-primary(type='submit') Publish Tweet
+                      a.btn(href='/tweets', title='cancel') Cancel
+              .modal-footer
+                p Hope you enjoy it!
     .col-lg-8
       each tweet in tweets
         .well
@@ -17,7 +44,7 @@ block content
                 .pull-right
                   = formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")
             p=tweet.body
-              include ../comments/form
               each comment in tweet.comments
                 include ../comments/comment
-
+              hr
+              include ../comments/form
