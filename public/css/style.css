@@ -39,14 +39,25 @@ h1, .icon-twitter {
 
 .logged-user {
   border-radius: 2px;
-  padding: 5px;
+  padding: 20px;
   background-color: #f5f5f5;
 }
 
 .tweet {
+  padding: 5px;
   background-color: lavenderblush;
 }
 
 .comment {
   font-size: 12px;
+}
+
+.btn:hover {
+  color: black;
+}
+
+.twitter-container {
+  padding-top: 10px;
+  background-color: lightgray;
+  border-radius: 6px;
 }

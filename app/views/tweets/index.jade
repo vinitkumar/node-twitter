@@ -2,7 +2,7 @@ extends ../layouts/default
 
 
 block content
-  .row
+  .row.twitter-container
     .col-lg-4 
       .logged-user
         p #{req.user.name}
@@ -46,9 +46,9 @@ block content
             p=tweet.body
             form.center.form-inline.confirm(action="/tweets/"+tweet.id, method="post")
               if (tweet.user._id == req.user.id)
-                 a.btn(href='/tweets/'+tweet._id+'/edit', title="edit") Edit
+                 a.btn.btn-success(href='/tweets/'+tweet._id+'/edit', title="edit") Edit
                  input(type="hidden", name="_method", value="DELETE")
-                 button.btn.btn-danger(type="submit") delete
+                 button.btn(type="submit") delete
                if (tweet.user._id != req.user.id)
                  a.btn(href="#", class="favorite", data-tweetId=tweet._id, title="favorite") Favorite
           .comment
