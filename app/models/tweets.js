@@ -122,14 +122,31 @@ TweetSchema.statics = {
       .limit(options.perPage)
       .skip(options.perPage * options.page)
       .exec(cb)
+  },
+
+  /**
+   * All the tweets of the user
+   * @param  {[type]}   id UID of the user
+   * @param  {Function} cb callback function
+   * @return {[type]}      [description]
+   */
+  userTweets: function(id, cb) {
+    this.find({"user": ObjectId(id)})
+        .toArray()
+        .exec(cb)
+  },
+
+  /**
+   * Count the tweets by a particular user
+   * @param  {[type]}   id UID of User
+   * @param  {Function} cb callback
+   * @return {[type]}      [description]
+   */
+  countTweets: function (id, cb) {
+    this.find({"user": ObjectId(id)})
+        .length()
+        .exec(cb)
   }
 }
-
-/**
- * Tweets by a particular user
- * > tweeets_by_user = db.tweets.find({"user" : ObjectId("51a84e6390b6b64c18000002")}).toArray();
- *  Tweets by a user: db.tweets.find({"user" : ObjectId("51a84e6390b6b64c18000002")});
- *  Number of tweets by the user: db.tweets.find({"user" : ObjectId("51a84e6390b6b64c18000002")}).length()
- */
 
 mongoose.model('Tweet', TweetSchema)
