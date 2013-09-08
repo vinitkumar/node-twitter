@@ -34,7 +34,7 @@ h1, .icon-twitter {
 }
 
 .profile-image {
-	padding-right: 18px;
+	padding-right: 26px;
 }
 
 .logged-user {
@@ -57,7 +57,12 @@ h1, .icon-twitter {
 }
 
 .twitter-container {
-  padding-top: 10px;
+  padding: 10px;
   background-color: lightgray;
   border-radius: 6px;
 }
+
+.edit {
+  margin-right: 10px;
+}
+
