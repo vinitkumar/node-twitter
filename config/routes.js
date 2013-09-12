@@ -33,6 +33,7 @@ module.exports = function (app, passport, auth) {
   //comment routes
   var comments = require('../app/controllers/comments')
   app.post('/tweets/:id/comments', auth.requiresLogin, comments.create)
+  app.del('/tweets/:id/comments', auth.requiresLogin, comments.destroy)
 
   /**
    * Favorite routes

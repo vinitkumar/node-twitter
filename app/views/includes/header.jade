@@ -12,9 +12,6 @@ body.bs-docs-home
           ul.nav.navbar-nav
             if (req.isAuthenticated())
               li
-                a(href='/tweets/new')
-                  i.icon-twitter.icon-light.icon-2x
-              li
                 a(href="/users/"+req.user.id, title="Profile")
                   i.icon-male.icon-light.icon-2x
               li
