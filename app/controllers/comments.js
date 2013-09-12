@@ -19,3 +19,12 @@ exports.create = function (req, res) {
     res.redirect('/')
   })
 }
+
+exports.destroy = function (req, res) {
+	//delete a comment here.
+  var comment = req.comment;
+  comment.remove(function (err) {
+    if (err) res.send(400);
+    res.send(200);
+  });
+}

@@ -1,19 +1,16 @@
 extends ../layouts/default
 
 block content
-  .row
-    .span4
-    .span4
-      .well
-        h2 Welcome
-        h4 #{user.name}
-        - if (user.provider == 'facebook')
-           img(src='http://graph.facebook.com/'+user.facebook.id+'/picture')
+  .well
+    h2 Profile of #{user.name}
+    - if (user.provider == 'facebook')
+       img(class="profile-image", src='http://graph.facebook.com/'+user.facebook.id+'/picture')
+       p #{user.facebook.quotes}
+    - if (user.provider == 'github')
+        img(src=user.github.avatar_url)
+        h3 #{user.github.blog}
+    if (user._id != req.user.id)
+      a.btn(href="#", class="btn-success follow", data-userid=user._id, data-logged=req.user.id,title="follow") follow
+    hr
+    p This User logged in from #{user.provider}
 
-        - if (user.provider == 'github')
-            img(src=user.github.avatar_url)
-        if (user._id != req.user.id)
-          a.btn(href="#", class="follow", data-userid=user._id, data-logged=req.user.id,title="follow") follow
-        p logged in from #{user.provider}
-
-    .span4

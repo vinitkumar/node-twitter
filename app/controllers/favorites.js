@@ -18,7 +18,7 @@ exports.create = function (req, res) {
 
 
 /**
- * Delete a like
+ * Delete a favorite
  */
 
 exports.destroy = function (req, res) {

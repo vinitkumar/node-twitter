@@ -4,19 +4,25 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-contrib');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-targethtml');
-  grunt.loadNpmTasks('node-spritesheet');
-  grunt.loadNpmTasks('grunt-closure-tools');
-  grunt.loadNpmTasks('grunt-smushit');
-  grunt.loadNpmTasks('grunt-rev-package');
-  grunt.loadNpmTasks('grunt-bump');
+  grunt.loadNpmTasks('grunt-contrib-concat');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-
-    clean: {
-      temp: ['public/dist/temp', 'public/dist/debug/app.js.report.txt'. 'public/dist/release/app.js.report.txt']
+    concat: {
+      dist: {
+        src: ['public/js/jquery.min.js', 'public/bootstrap.min.js', 'public/js/scripts.js', 'public/js/app.js'],
+        dest: 'public/js/<%= pkg.name %>.add.js'
+      }
+    },
+    uglify: {
+      options: {
+        banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+      },
+      dist: {
+        files: {
+          'public/js/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+        }
+      }
     }
   });
 

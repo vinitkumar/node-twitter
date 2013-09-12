@@ -47,22 +47,22 @@ exports.new = function(req, res) {
  * @return {[type]}     [description]
  */
 exports.create = function (req, res) {
-  var tweet = new Tweet(req.body)
-  console.log(req.body)
-  console.log(tweet)
-  tweet.user = req.user
+  var tweet = new Tweet(req.body);
+  console.log(req.body);
+  console.log(tweet);
+  tweet.user = req.user;
   tweet.uploadAndSave(req.files.image, function(err) {
     if (err) {
       res.render('tweets/new',{
         title: 'New Tweet',
         tweet: tweet,
         error: err.errors
-      })
+      });
     }
     else {
-      res.redirect('/tweets/'+tweet._id)
+      res.redirect('/');
     }
-  })
+  });
 }
 
 
@@ -72,6 +72,7 @@ exports.create = function (req, res) {
  * @param  res [description]
  * @return {[type]}     [description]
  */
+
 exports.edit = function (req, res) {
   res.render('tweets/edit', {
     title: 'Edit'+ req.tweet.title,
@@ -111,13 +112,13 @@ exports.update = function (req, res) {
       });
     }
     else {
-      res.redirect('/tweets/'+ tweet._id);
+      res.redirect('/');
     }
   })
 }
 
 /**
- * Delete an Article
+ * Delete a tweet
  * @param  {[type]} req [description]
  * @param  {[type]} res [description]
  * @return {[type]}     [description]
@@ -125,7 +126,7 @@ exports.update = function (req, res) {
 exports.destroy = function (req, res) {
   var tweet = req.tweet
   tweet.remove(function (err) {
-    res.redirect('/tweets');
+    res.redirect('/');
   })
 }
 

@@ -13,18 +13,9 @@ var mongoose = require('mongoose')
  * Tweet Schema
  */
 
-
-/**
- * Getters
- */
-
 var getTags = function (tags) {
   return tags.join(',')
 }
-
-/**
- * Setters
- */
 
 var setTags = function (tags) {
   return tags.split(',')
@@ -52,10 +43,10 @@ var TweetSchema = new Schema({
  */
 
 TweetSchema.pre('save', function (next) {
-  if (this.favorites) this.favoritesCount = this.favorites.length
-  if (this.favorites) this.favoriters = this.favorites
-  next()
-})
+  if (this.favorites) this.favoritesCount = this.favorites.length;
+  if (this.favorites) this.favoriters = this.favorites;
+  next();
+});
 
 /**
  * Validations
@@ -63,18 +54,18 @@ TweetSchema.pre('save', function (next) {
 
 TweetSchema.path('body').validate(function (body) {
   return body.length > 0
-}, 'Tweet body cannot be blank')
+}, 'Tweet body cannot be blank');
 
 
 TweetSchema.virtual('_favorites').set(function (user) {
   if (this.favorites.indexOf(user._id) === -1) {
-    this.favorites.push(user._id)
-    console.log(user._id)
-    console.log(this.favorites)
+    this.favorites.push(user._id);
+    console.log(user._id);
+    console.log(this.favorites);
   } else {
-    this.favorites.splice(this.favorites.indexOf(user._id), 1)
+    this.favorites.splice(this.favorites.indexOf(user._id), 1);
   }
-})
+});
 
 TweetSchema.methods = {
   uploadAndSave: function (images, cb) {
@@ -131,6 +122,30 @@ TweetSchema.statics = {
       .limit(options.perPage)
       .skip(options.perPage * options.page)
       .exec(cb)
+  },
+
+  /**
+   * All the tweets of the user
+   * @param  {[type]}   id UID of the user
+   * @param  {Function} cb callback function
+   * @return {[type]}      [description]
+   */
+  userTweets: function(id, cb) {
+    this.find({"user": ObjectId(id)})
+        .toArray()
+        .exec(cb)
+  },
+
+  /**
+   * Count the tweets by a particular user
+   * @param  {[type]}   id UID of User
+   * @param  {Function} cb callback
+   * @return {[type]}      [description]
+   */
+  countTweets: function (id, cb) {
+    this.find({"user": ObjectId(id)})
+        .length()
+        .exec(cb)
   }
 }
 

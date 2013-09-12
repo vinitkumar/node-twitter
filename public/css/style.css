@@ -25,4 +25,44 @@ a:hover {
   background: url('/img/hero.jpg');
 }
 
+h1, .icon-twitter {
+	color: lightskyblue;
+}
+
+.modal-title {
+	display: inline-block;
+}
+
+.profile-image {
+	padding-right: 26px;
+}
+
+.logged-user {
+  border-radius: 2px;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.tweet {
+  padding: 5px;
+  background-color: lavenderblush;
+}
+
+.comment {
+  font-size: 12px;
+}
+
+.btn:hover {
+  color: black;
+}
+
+.twitter-container {
+  padding: 10px;
+  background-color: lightgray;
+  border-radius: 6px;
+}
+
+.edit {
+  margin-right: 10px;
+}
 
