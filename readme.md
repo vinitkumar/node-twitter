@@ -26,7 +26,7 @@ Once you have entered the application app id and secret. Just do
 ```bash
 $ npm start
 ```
-This will run the app on [http://localhost:4000](http://localhost:4000)
+This will run the app on [http://localhost:4000](http://localhost:3000)
 
 ## Contributions:
 
