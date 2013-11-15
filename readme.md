@@ -1,46 +1,40 @@
 # Node Twitter
 
-[![Build Status](https://travis-ci.org/vinitcool76/node-twitter.png?branch=master)](https://travis-ci.org/vinitcool76/node-twitter)
-
-## About 
 This project is an attempt to build a twitter clone in node.
 
-## Inspiration
-Inspired by @madhums work on nodejs and his nodejs-express-mongoose-demo
+### Installation instruction
 
-## Installation instruction
+- Install node  and npm here (http://nodejs.org)
+- Install mongodb (http://docs.mongodb.org/manual/installation/)
 
-You must have node, npm and mongodb installed for the application to work.
-In order to install Node and NPM : http://nodejs.org
-In order to install mongoDB: http://mongodb.org
-
-```bash    
-$ npm install
-```
-## How to run
-
-In order to run the project, do:
+When you have these installed, clone the project:
 
 ```bash
-$ mongod
+$ git clone git@github.com:vinitkumar/node-twitter.git
+$ cd node-twitter
+$ npm install
+```
+By above step you will get all required libraries and node modules. 
+Once done, go to these links:
+
+- [Facebook Developer](http://developer.facebook.com)
+- [Github Developer](https://github.com/settings/applications)
+
+and create your own apps on these platform, since the applications uses these two for login.
+Once you have entered the application app id and secret. Just do 
+
+```bash
 $ npm start
 ```
-### Important
+This will run the app on [http://localhost:4000](http://localhost:4000)
 
-This application uses facebook and github for authentication so you should create your own facebook and github apps with `http://localhost:3000` as the application url for testing on local machine. These credentials from the facebook and github app are to be stored in `config.js`.  
+## Contributions:
 
-## Where to get help
-- In case you have a query, bugs or suggestion, create an issue. 
-- It would be the fastest method. Also, you can tweet at @vinitkme .
+If you want to contribute, here are some advices:
+- Use proper git flow.
+- Follow the style guide.
+- Create issue about what you want to add or report a bug.
 
-## Contribution guidelines
- 
-Just fork and start hacking. I use github flow and Pull Requests is the preferred way to contribute here. Follow the style used in the project. 
+## Author
 
-- Links to open issues: [Open Issues](https://github.com/vinitkumar/node-twitter/issues?milestone=1&state=open)
-
-## Contributor list
-List of contributors for the project
-- Vinit Kumar(@vinitkumar) - [Author]
-
-
+Vinit Kumar, @vinitkumar (Github) , @vinitkme (Twitter)
