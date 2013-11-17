@@ -35,7 +35,8 @@
     "grunt-contrib-concat": "latest",
     "grunt-contrib-cssmin": "latest",
     "grunt-contrib-uglify": "~0.2.4",
-    "grunt-contrib-jshint": "~0.6.4"
+    "grunt-contrib-jshint": "~0.6.4",
+    "lodash": "~2.3.0"
   },
   "devDependencies": {
     "supertest": "latest",
