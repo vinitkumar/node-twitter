@@ -7,14 +7,13 @@
  */
 
 exports.create = function (req, res) {
-  var tweet = req.tweet
-  console.log(req.user)
-  tweet._favorites = req.user
+  var tweet = req.tweet;
+  tweet._favorites = req.user;
   tweet.save(function (err) {
-    if (err) return res.send(400)
-    res.send(201, {})
-  })
-}
+    if (err) return res.send(400);
+    res.send(201, {});
+  });
+};
 
 
 /**
@@ -22,11 +21,11 @@ exports.create = function (req, res) {
  */
 
 exports.destroy = function (req, res) {
-  var tweet = req.tweet
+  var tweet = req.tweet;
 
-  tweet._favorites = req.user
+  tweet._favorites = req.user;
   tweet.save(function (err) {
-    if (err) return res.send(400)
-    res.send(200)
-  })
-}
+    if (err) return res.send(400);
+    res.send(200);
+  });
+};
