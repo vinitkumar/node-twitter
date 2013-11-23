@@ -15,15 +15,15 @@ var mongoose = require('mongoose'),
  * @return {[type]}     [description]
  */
 exports.tweet = function (req, res, next, id) {
-  var User = mongoose.model('User')
+  var User = mongoose.model('User');
 
   Tweet.load(id, function (err, tweet) {
-    if (err) return next(err)
-    if (!tweet) return next(new Error('Failed to load tweet'+id))
-    req.tweet = tweet
-    next()
-  })
-}
+    if (err) return next(err);
+    if (!tweet) return next(new Error('Failed to load tweet'+id));
+    req.tweet = tweet;
+    next();
+  });
+};
 
 /**
  * New Tweet
@@ -35,8 +35,8 @@ exports.new = function(req, res) {
   res.render('tweets/new', {
     title: 'New Tweet',
     tweet: new Tweet({})
-  })
-}
+  });
+};
 
 
 
@@ -48,8 +48,6 @@ exports.new = function(req, res) {
  */
 exports.create = function (req, res) {
   var tweet = new Tweet(req.body);
-  console.log(req.body);
-  console.log(tweet);
   tweet.user = req.user;
   tweet.uploadAndSave(req.files.image, function(err) {
     if (err) {
@@ -63,7 +61,7 @@ exports.create = function (req, res) {
       res.redirect('/');
     }
   });
-}
+};
 
 
 /**
@@ -91,8 +89,8 @@ exports.show = function (req, res) {
   res.render('tweets/show', {
     title: req.tweet.title,
     tweet: req.tweet
-  })
-}
+  });
+};
 
 /**
  * View an article
@@ -114,8 +112,8 @@ exports.update = function (req, res) {
     else {
       res.redirect('/');
     }
-  })
-}
+  });
+};
 
 /**
  * Delete a tweet
@@ -124,11 +122,11 @@ exports.update = function (req, res) {
  * @return {[type]}     [description]
  */
 exports.destroy = function (req, res) {
-  var tweet = req.tweet
+  var tweet = req.tweet;
   tweet.remove(function (err) {
     res.redirect('/');
-  })
-}
+  });
+};
 
 
 /**
@@ -136,16 +134,16 @@ exports.destroy = function (req, res) {
  */
 exports.dashboard =  function (req, res) {
 
-}
+};
 
 
 exports.index = function (req, res) {
-  var page = req.param('page') > 0 ? req.param('page'):0
-  var perPage  = 15
+  var page = req.param('page') > 0 ? req.param('page'):0;
+  var perPage  = 15;
   var options = {
     perPage: perPage,
     page: page
-  }
+  };
   Tweet.list(options, function (err, tweets) {
     if (err) return res.render('500');
     Tweet.count().exec(function (err, count) {
@@ -154,7 +152,7 @@ exports.index = function (req, res) {
         tweets: tweets,
         page: page,
         pages: count/perPage
-      })
-    })
-  })
-}
+      });
+    });
+  });
+};

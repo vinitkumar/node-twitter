@@ -3,10 +3,10 @@
  * Module dependencies
  */
 
-var mongoose = require('mongoose')
-  , env = process.env.NODE_ENV || 'development'
-  , config = require('../../config/config')[env]
-  , Schema = mongoose.Schema
+var mongoose = require('mongoose'),
+    env = process.env.NODE_ENV || 'development',
+    config = require('../../config/config')[env],
+    Schema = mongoose.Schema;
 
 
 /**
@@ -14,12 +14,12 @@ var mongoose = require('mongoose')
  */
 
 var getTags = function (tags) {
-  return tags.join(',')
-}
+  return tags.join(',');
+};
 
 var setTags = function (tags) {
-  return tags.split(',')
-}
+  return tags.split(',');
+};
 
 var TweetSchema = new Schema({
   body: {type : String, default : '', trim : true},
@@ -34,7 +34,7 @@ var TweetSchema = new Schema({
   favoriters: [{ type: Schema.ObjectId, ref: 'User' }],  // same as favorites
   favoritesCount: Number,
   createdAt  : {type : Date, default : Date.now}
-})
+});
 
 
 
@@ -53,7 +53,7 @@ TweetSchema.pre('save', function (next) {
  */
 
 TweetSchema.path('body').validate(function (body) {
-  return body.length > 0
+  return body.length > 0;
 }, 'Tweet body cannot be blank');
 
 
@@ -69,28 +69,28 @@ TweetSchema.virtual('_favorites').set(function (user) {
 
 TweetSchema.methods = {
   uploadAndSave: function (images, cb) {
-    if (!images || !images.length) return this.save(cb)
+    if (!images || !images.length) return this.save(cb);
 
-    var imager = new Imager(imagerConfig, 'S3')
-    var self = this
+    var imager = new Imager(imagerConfig, 'S3');
+    var self = this;
 
     imager.upload(images, function (err, cdnUri, files) {
-      if (err) return cb(err)
+      if (err) return cb(err);
       if (files.length) {
-        self.image = { cdnUri : cdnUri, files : files }
+        self.image = { cdnUri : cdnUri, files : files };
       }
-      self.save(cb)
-    }, 'article')
+      self.save(cb);
+    }, 'article');
   },
 
   addComment: function (user, comment, cb) {
     this.comments.push({
       body: comment.body,
       user: user._id
-    })
-    this.save(cb)
+    });
+    this.save(cb);
   }
-}
+};
 
 TweetSchema.statics = {
   /**
@@ -104,7 +104,7 @@ TweetSchema.statics = {
     this.findOne({ _id: id })
       .populate('user', 'name email')
       .populate('comments.user')
-      .exec(cb)
+      .exec(cb);
   },
 
   /**
@@ -114,14 +114,14 @@ TweetSchema.statics = {
    * @return {[type]}           [description]
    */
   list: function (options, cb) {
-    var criteria = options.criteria || {}
+    var criteria = options.criteria || {};
 
     this.find(criteria)
       .populate('user', 'name')
       .sort({'createdAt': -1})
       .limit(options.perPage)
       .skip(options.perPage * options.page)
-      .exec(cb)
+      .exec(cb);
   },
 
   /**
@@ -133,7 +133,7 @@ TweetSchema.statics = {
   userTweets: function(id, cb) {
     this.find({"user": ObjectId(id)})
         .toArray()
-        .exec(cb)
+        .exec(cb);
   },
 
   /**
@@ -145,8 +145,8 @@ TweetSchema.statics = {
   countTweets: function (id, cb) {
     this.find({"user": ObjectId(id)})
         .length()
-        .exec(cb)
+        .exec(cb);
   }
-}
+};
 
-mongoose.model('Tweet', TweetSchema)
+mongoose.model('Tweet', TweetSchema);

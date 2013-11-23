@@ -2,11 +2,11 @@
  * Module dependencies
  */
 
-var mongoose = require('mongoose')
-  , Schema = mongoose.Schema
-  , crypto = require('crypto')
-  , _ = require('underscore')
-  , authTypes = ['github', 'facebook']
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
+    crypto = require('crypto'),
+    _ = require('underscore'),
+    authTypes = ['github', 'facebook'];
 
 
 
@@ -81,12 +81,12 @@ UserSchema.methods = {
    */
   follow: function (id) {
     if (this.following.indexOf(id) === -1) {
-      this.following.push(id)
+      this.following.push(id);
     }
     else {
-      this.following.splice(this.following.indexOf(id), 1)
+      this.following.splice(this.following.indexOf(id), 1);
     }
-    console.log(this.following)
+    console.log(this.following);
   },
 
   authenticate: function (plainText) {
@@ -98,18 +98,18 @@ UserSchema.methods = {
   },
 
   encryptPassword: function (password) {
-    if (!password) return ''
+    if (!password) return '';
     return crypto.createHmac('sha1', this.salt).update(password).digest('hex');
   }
 
-}
+};
 
 UserSchema.statics = {
   addfollow: function (id, cb) {
     this.findOne({_id: id})
       .populate('followers')
-      .exec(cb)
+      .exec(cb);
   }
-}
+};
 
 mongoose.model('User', UserSchema);

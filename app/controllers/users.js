@@ -2,15 +2,15 @@
  * Module dependencies
  */
 
-var Mongoose = require('mongoose')
-  , User = Mongoose.model('User');
+var Mongoose = require('mongoose'),
+    User = Mongoose.model('User');
 
 
 exports.signin = function (req, res) {};
 
 exports.authCallback = function (req, res, next) {
-  res.redirect('/')
-}
+  res.redirect('/');
+};
 
 exports.login = function (req, res) {
   res.render('users/login', {
@@ -24,12 +24,12 @@ exports.signup = function (req, res) {
     title: 'Sign up',
     user: new User()
   });
-}
+};
 
 exports.logout = function (req, res) {
   req.logout();
   res.redirect('/login');
-}
+};
 
 exports.session = function (req, res) {
   res.redirect('/');
@@ -51,12 +51,12 @@ exports.create = function (req, res) {
 
 
 exports.show = function (req, res) {
-  var user = req.profile
+  var user = req.profile;
     res.render('users/show', {
     title: user.name,
     user: user
   });
-}
+};
 
 
 exports.user = function (req, res, next, id) {
@@ -68,4 +68,4 @@ exports.user = function (req, res, next, id) {
       req.profile = user;
       next();
     });
-}
+};
