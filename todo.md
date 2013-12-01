@@ -1,3 +1,7 @@
+# Freezing the development of Node Twitter for a Month. Version is pretty stable. Could be used as it is for now. Will resume the development in Next year.
+
+
+
 ## TODO List
 
 - Write fat models having all the functions with the fuctionality.
