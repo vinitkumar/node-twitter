@@ -38,3 +38,5 @@ If you want to contribute, here are some advices:
 ## Author
 
 Vinit Kumar, @vinitkumar (Github) , @vinitkme (Twitter)
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/vinitkumar/node-twitter/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
