@@ -2,6 +2,7 @@
 
 This project is an attempt to build a twitter clone in node.
 
+![ntwitter](/public/twitter/ntwitter.gif)
 ### Installation instruction
 
 - Install node  and npm here (http://nodejs.org)
