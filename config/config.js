@@ -13,8 +13,8 @@ module.exports = {
       callbackURL: "http://ntwitter.nodejitsu.com/auth/facebook/callback"
     },
     github: {
-      clientID: '6396a71f53863e556b11',
-      clientSecret: '6396a71f53863e556b11',
+      clientID: 'c2e0f478634366e1289d',
+      clientSecret: '0bfde82383deeb99b28d0f6a9eac001a0deb798a',
       callbackURL: 'http://ntwitter.nodejitsu.com/auth/github/callback'
     }
   },
@@ -30,8 +30,8 @@ module.exports = {
       callbackURL: "http://ntwitter.nodejitsu.com/auth/facebook/callback"
     },
     github: {
-      clientID: '6396a71f53863e556b11',
-      clientSecret: '6396a71f53863e556b11',
+      clientID: 'c2e0f478634366e1289d',
+      clientSecret: '0bfde82383deeb99b28d0f6a9eac001a0deb798a',
       callbackURL: 'http://ntwitter.nodejitsu.com/auth/github/callback'
     }
   },
@@ -47,8 +47,8 @@ module.exports = {
       callbackURL: "http://ntwitter.nodejitsu.com/auth/facebook/callback"
     },
     github: {
-      clientID: '6396a71f53863e556b11',
-      clientSecret: '6396a71f53863e556b11',
+      clientID: 'c2e0f478634366e1289d',
+      clientSecret: '0bfde82383deeb99b28d0f6a9eac001a0deb798a',
       callbackURL: 'http://ntwitter.nodejitsu.com/auth/github/callback'
     }
   }
