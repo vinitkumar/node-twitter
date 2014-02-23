@@ -2,18 +2,18 @@ extends ../layouts/default
 
 
 block main
-  h1 Login Using Github or Facebook
+  h1 Login to Node Twitter
 
 
 block content
   .row
-    .span4
-    .span4.login
+    .span2
+    .span8.login
             a(href="/auth/facebook")
                 i(class="icon-facebook icon-4x")
             a(href="/auth/github")
                 i(class="icon-github icon-4x")
-    .span4
+    .span2
       if (typeof errors !== 'undefined')
         .fade.in.alert.alert-block.alert-error
           a.close(data-dismiss="alert", href="javascript:void(0)") x
