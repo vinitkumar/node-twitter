@@ -1,42 +1,42 @@
 {
-    "name": "nwitter",
-    "description": "A twitter demo app in nodejs",
-    "version": "0.0.1-16",
-    "repository": "https://github.com/vinitcool76/node-twitter",
-    "private": false,
-    "author": "Vinit Kumar <vinit.kumar@changer.nl> (http://vinitkumar.me)",
-    "engines": {
-        "node": "0.8.x",
-        "npm": "1.2.x"
-    },
-    "scripts": {
-        "start": "node server.js"
-    },
-    "dependencies": {
-        "express": "latest",
-        "jade": "latest",
-        "mongoose": "latest",
-        "connect-mongo": "latest",
-        "connect-flash": "latest",
-        "passport": "latest",
-        "passport-local": "latest",
-        "passport-facebook": "latest",
-        "passport-twitter": "latest",
-        "passport-github": "latest",
-        "passport-google-oauth": "latest",
-        "imager": "latest",
-        "notifier": "latest",
-        "underscore": "latest",
-        "gzippo": "latest",
-        "async": "latest",
-        "view-helpers": "latest",
-        "forever": "latest"
-    },
-    "devDependencies": {
-        "supertest": "latest",
-        "should": "latest",
-        "mocha": "latest",
-        "nodemon": "latest"
-    },
-    "subdomain": "ntwitter"
+  "name": "nwitter",
+  "description": "A twitter demo app in nodejs",
+  "version": "0.0.1-16",
+  "repository": "https://github.com/vinitcool76/node-twitter",
+  "private": false,
+  "author": "Vinit Kumar <vinit.kumar@changer.nl> (http://vinitkumar.me)",
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.2.x"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "latest",
+    "jade": "latest",
+    "mongoose": "latest",
+    "connect-mongo": "latest",
+    "connect-flash": "latest",
+    "passport": "latest",
+    "passport-local": "latest",
+    "passport-facebook": "latest",
+    "passport-twitter": "~1.0.2",
+    "passport-github": "latest",
+    "passport-google-oauth": "latest",
+    "imager": "latest",
+    "notifier": "latest",
+    "underscore": "latest",
+    "gzippo": "latest",
+    "async": "latest",
+    "view-helpers": "latest",
+    "forever": "latest"
+  },
+  "devDependencies": {
+    "supertest": "latest",
+    "should": "latest",
+    "mocha": "latest",
+    "nodemon": "latest"
+  },
+  "subdomain": "ntwitter"
 }
