@@ -1,7 +1,7 @@
 {
   "name": "nwitter",
   "description": "A twitter demo app in nodejs",
-  "version": "0.0.1-16",
+  "version": "0.0.1-18",
   "repository": "https://github.com/vinitcool76/node-twitter",
   "private": false,
   "author": "Vinit Kumar <vinit.kumar@changer.nl> (http://vinitkumar.me)",

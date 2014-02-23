@@ -17,11 +17,11 @@ module.exports = {
       clientSecret: '0bfde82383deeb99b28d0f6a9eac001a0deb798a',
       callbackURL: 'http://ntwitter.nodejitsu.com/auth/github/callback'
     },
-    twitter: {
-      clientID: 'J3RJBEzrLd9lVloHf6uGQ',
-      clientSecret: 'DwAEaZX84iFg2LYdWHLHQF9l4idAqQWPL2LTCPnEjM',
-      callbackURL: "http://ntwitter.nodejitsu.com//auth/twitter/callback"
-    },
+    // twitter: {
+    //   clientID: 'J3RJBEzrLd9lVloHf6uGQ',
+    //   clientSecret: 'DwAEaZX84iFg2LYdWHLHQF9l4idAqQWPL2LTCPnEjM',
+    //   callbackURL: "http://ntwitter.nodejitsu.com//auth/twitter/callback"
+    // },
   },
   test: {
     db: 'mongodb://root:volvo76@ds039078.mongolab.com:39078/ntwitter',
@@ -39,11 +39,11 @@ module.exports = {
       clientSecret: '0bfde82383deeb99b28d0f6a9eac001a0deb798a',
       callbackURL: 'http://ntwitter.nodejitsu.com/auth/github/callback'
     },
-    twitter: {
-      clientID: 'J3RJBEzrLd9lVloHf6uGQ',
-      clientSecret: 'DwAEaZX84iFg2LYdWHLHQF9l4idAqQWPL2LTCPnEjM',
-      callbackURL: "http://ntwitter.nodejitsu.com//auth/twitter/callback"
-    },
+    // twitter: {
+    //   clientID: 'J3RJBEzrLd9lVloHf6uGQ',
+    //   clientSecret: 'DwAEaZX84iFg2LYdWHLHQF9l4idAqQWPL2LTCPnEjM',
+    //   callbackURL: "http://ntwitter.nodejitsu.com//auth/twitter/callback"
+    // },
   },
   production: {
     db: 'mongodb://root:volvo76@ds039078.mongolab.com:39078/ntwitter',
@@ -61,10 +61,10 @@ module.exports = {
       clientSecret: '0bfde82383deeb99b28d0f6a9eac001a0deb798a',
       callbackURL: 'http://ntwitter.nodejitsu.com/auth/github/callback'
     },
-    twitter: {
-      clientID: 'J3RJBEzrLd9lVloHf6uGQ',
-      clientSecret: 'DwAEaZX84iFg2LYdWHLHQF9l4idAqQWPL2LTCPnEjM',
-      callbackURL: "http://ntwitter.nodejitsu.com//auth/twitter/callback"
-    },
+    // twitter: {
+    //   clientID: 'J3RJBEzrLd9lVloHf6uGQ',
+    //   clientSecret: 'DwAEaZX84iFg2LYdWHLHQF9l4idAqQWPL2LTCPnEjM',
+    //   callbackURL: "http://ntwitter.nodejitsu.com//auth/twitter/callback"
+    // },
   }
 };
