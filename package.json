@@ -30,7 +30,8 @@
     "gzippo": "latest",
     "async": "latest",
     "view-helpers": "latest",
-    "forever": "latest"
+    "forever": "latest",
+    "swig": "~1.3.2"
   },
   "devDependencies": {
     "supertest": "latest",

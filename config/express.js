@@ -25,8 +25,14 @@ module.exports = function (app, config, passport) {
     app.use(express.logger('dev'));
   }
 
+ // assign the template engine to .html files
+  app.engine('html', consolidate[config.templateEngine]);
+
+  // set .html as the default extension
+  app.set('view engine', 'html');
+
   app.set('views', config.root+'/app/views');
-  app.set('view engine', 'jade');
+  app.set('view engine', 'swig');
   app.configure(function () {
     app.use(helpers(config.app.name));
     app.use(express.cookieParser());
