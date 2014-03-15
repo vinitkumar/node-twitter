@@ -1,6 +1,4 @@
-/**
- * follow
- */
+// ## Follow 
 var mongoose = require('mongoose'),
     User = mongoose.model('User'),
     async = require('async');

@@ -1,19 +1,10 @@
-/**
- * Module dependencies
- */
-
+// ## Tweet Controller
 var mongoose = require('mongoose'),
     async = require('async'),
     Tweet = mongoose.model('Tweet'),
     _ = require('underscore');
 
 
-/**
- * Find tweet by id
- * @param  {[type]} req [description]
- * @param  {[type]} res [description]
- * @return {[type]}     [description]
- */
 exports.tweet = function (req, res, next, id) {
   var User = mongoose.model('User');
 
@@ -25,12 +16,7 @@ exports.tweet = function (req, res, next, id) {
   });
 };
 
-/**
- * New Tweet
- * @param req [description]
- * @param res [description]
- * @return {[type]}     [description]
- */
+// ### New Tweet
 exports.new = function(req, res) {
   res.render('tweets/new', {
     title: 'New Tweet',
@@ -38,14 +24,7 @@ exports.new = function(req, res) {
   });
 };
 
-
-
-/**
- * Create a tweet
- * @param  {[type]} req [description]
- * @param  {[type]} res [description]
- * @return {[type]}     [description]
- */
+// ### Create a Tweet
 exports.create = function (req, res) {
   var tweet = new Tweet(req.body);
   tweet.user = req.user;
@@ -63,14 +42,7 @@ exports.create = function (req, res) {
   });
 };
 
-
-/**
- * Edit a tweet
- * @param  req [description]
- * @param  res [description]
- * @return {[type]}     [description]
- */
-
+// ### Edit Tweet
 exports.edit = function (req, res) {
   res.render('tweets/edit', {
     title: 'Edit'+ req.tweet.title,
@@ -78,13 +50,7 @@ exports.edit = function (req, res) {
   });
 };
 
-
-/**
- * Show tweet
- * @param  {[type]} req [description]
- * @param  {[type]} res [description]
- * @return {[type]}     [description]
- */
+// ### Show Tweet
 exports.show = function (req, res) {
   res.render('tweets/show', {
     title: req.tweet.title,
@@ -92,12 +58,7 @@ exports.show = function (req, res) {
   });
 };
 
-/**
- * View an article
- * @param  {[type]} req [description]
- * @param  {[type]} res [description]
- * @return {[type]}     [description]
- */
+// ### Update a tweet
 exports.update = function (req, res) {
   var tweet = req.tweet;
   tweet = _.extend(tweet, req.body);
@@ -115,25 +76,12 @@ exports.update = function (req, res) {
   });
 };
 
-/**
- * Delete a tweet
- * @param  {[type]} req [description]
- * @param  {[type]} res [description]
- * @return {[type]}     [description]
- */
+// ### Delete a tweet
 exports.destroy = function (req, res) {
   var tweet = req.tweet;
   tweet.remove(function (err) {
     res.redirect('/');
   });
-};
-
-
-/**
- * List of Tweets
- */
-exports.dashboard =  function (req, res) {
-
 };
 
 

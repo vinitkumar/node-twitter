@@ -1,13 +1,6 @@
-/**
- * Module dependencies
- */
-
 var mongoose = require('mongoose');
 
-/**
- * Create comment
- */
-
+// ### Create Comment
 exports.create = function (req, res) {
   var tweet = req.tweet;
   var user = req.user;
@@ -20,6 +13,7 @@ exports.create = function (req, res) {
   });
 };
 
+// ### Delete Comment
 exports.destroy = function (req, res) {
 	//delete a comment here.
   var comment = req.comment;

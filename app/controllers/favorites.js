@@ -1,11 +1,4 @@
-/**
- * Favorites
- */
-
-/**
- * Create a favorite
- */
-
+// ### Create Favorite
 exports.create = function (req, res) {
   var tweet = req.tweet;
   tweet._favorites = req.user;
@@ -16,10 +9,7 @@ exports.create = function (req, res) {
 };
 
 
-/**
- * Delete a favorite
- */
-
+// ### Delete Favorite
 exports.destroy = function (req, res) {
   var tweet = req.tweet;
 
