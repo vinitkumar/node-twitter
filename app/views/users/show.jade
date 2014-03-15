@@ -8,7 +8,7 @@ block content
         i.icon-twitter.icon-3x
         p #{user.name}
         p #{user.twitter.description}
-        p twitter handle: a(href="https://twitter.com/#{user.username}")@#{user.username}
+        twitter handle: a(href="https://twitter.com/#{user.username}") @#{user.username}
         p Friends on twitter: #{user.twitter.friends_count}
         p Followers on Twitter #{user.twitter.followers.count}
     - if (user.provider == 'facebook')
