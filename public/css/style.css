@@ -1,6 +1,6 @@
 body {
   margin-top: 60px;
-  background: url('/img/witewall_3.png');
+  background: url('/img/gray_jean_@2X.jpg');
 }
 
 .icon-4x {
@@ -22,7 +22,7 @@ a:hover {
 }
 
 .login-screen {
-  background: url('/img/hero.jpg');
+  background: url('/img/gray_jean_@2X.jpg');
 }
 
 h1, .icon-twitter {
@@ -58,11 +58,13 @@ h1, .icon-twitter {
 
 .twitter-container {
   padding: 10px;
-  background-color: lightgray;
-  border-radius: 6px;
+  background: url('/img/use_your_illusion.png');
 }
 
 .edit {
   margin-right: 10px;
 }
 
+.flat {
+  border-radius: 0;
+}

@@ -12,7 +12,7 @@ block content
           h4.modal-title Edit Tweet
           i.icon-twitter.icon-2x
         .modal-body
-          .row
+          .tweet-body
               - var action = '/tweets'
               if (!tweet.isNew)
                 - action += '/'+tweet.id
