@@ -1,18 +1,9 @@
-
-/**
- * Module dependencies
- */
-
 var mongoose = require('mongoose'),
     env = process.env.NODE_ENV || 'development',
     config = require('../../config/config')[env],
     Schema = mongoose.Schema;
 
-
-/**
- * Tweet Schema
- */
-
+//  Getters and Setters
 var getTags = function (tags) {
   return tags.join(',');
 };
@@ -21,6 +12,8 @@ var setTags = function (tags) {
   return tags.split(',');
 };
 
+
+// Tweet Schema
 var TweetSchema = new Schema({
   body: {type : String, default : '', trim : true},
   user: {type : Schema.ObjectId, ref : 'User'},
@@ -37,21 +30,15 @@ var TweetSchema = new Schema({
 });
 
 
-
-/**
- * Pre Save hook
- */
-
+// Pre save hook
 TweetSchema.pre('save', function (next) {
   if (this.favorites) this.favoritesCount = this.favorites.length;
   if (this.favorites) this.favoriters = this.favorites;
   next();
 });
 
-/**
- * Validations
- */
 
+// Validations in the schema
 TweetSchema.path('body').validate(function (body) {
   return body.length > 0;
 }, 'Tweet body cannot be blank');
@@ -66,6 +53,7 @@ TweetSchema.virtual('_favorites').set(function (user) {
     this.favorites.splice(this.favorites.indexOf(user._id), 1);
   }
 });
+
 
 TweetSchema.methods = {
   uploadAndSave: function (images, cb) {
@@ -92,14 +80,10 @@ TweetSchema.methods = {
   }
 };
 
-TweetSchema.statics = {
-  /**
-   * Find tweet by id
-   * @param  {Object}   id [description]
-   * @param  {Function} cb [description]
-   * @api private
-   */
 
+// ## Static Methods in the TweetSchema
+TweetSchema.statics = {
+  // Load tweets
   load: function (id, cb) {
     this.findOne({ _id: id })
       .populate('user', 'name email')
@@ -107,12 +91,7 @@ TweetSchema.statics = {
       .exec(cb);
   },
 
-  /**
-   * List tweets
-   * @param  {[type]}   options [description]
-   * @param  {Function} cb      [description]
-   * @return {[type]}           [description]
-   */
+  // List tweets
   list: function (options, cb) {
     var criteria = options.criteria || {};
 
@@ -123,25 +102,14 @@ TweetSchema.statics = {
       .skip(options.perPage * options.page)
       .exec(cb);
   },
-
-  /**
-   * All the tweets of the user
-   * @param  {[type]}   id UID of the user
-   * @param  {Function} cb callback function
-   * @return {[type]}      [description]
-   */
+  // Tweets of User
   userTweets: function(id, cb) {
     this.find({"user": ObjectId(id)})
         .toArray()
         .exec(cb);
   },
 
-  /**
-   * Count the tweets by a particular user
-   * @param  {[type]}   id UID of User
-   * @param  {Function} cb callback
-   * @return {[type]}      [description]
-   */
+  // Count the number of tweets
   countTweets: function (id, cb) {
     this.find({"user": ObjectId(id)})
         .length()

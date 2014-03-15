@@ -1,7 +1,3 @@
-/**
- * Module dependencies
- */
-
 var Mongoose = require('mongoose'),
     User = Mongoose.model('User');
 
