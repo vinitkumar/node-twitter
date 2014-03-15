@@ -10,6 +10,8 @@ block content
           img(class='profile-image', src='http://graph.facebook.com/'+req.user.facebook.id+'/picture')
         - if (req.user.provider == 'github')
           img(class='profile-image', src=req.user.github.avatar_url)
+        - if (req.user.provider == 'twitter')
+          img(class='profile-image', src="#{user.twitter.profile_image_url}")
         a.btn.btn-primary.flat.btn-lg(data-toggle='modal', href='#myModal') New Tweet
         #myModal.modal.fade
           .modal-dialog
