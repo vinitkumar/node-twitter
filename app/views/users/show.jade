@@ -8,9 +8,9 @@ block content
         i.icon-twitter.icon-3x
         p #{user.name}
         p #{user.twitter.description}
-        twitter handle: a(href="https://twitter.com/#{user.username}") @#{user.username}
+        p twitter handle: a(href="https://twitter.com/#{user.username}")@#{user.username}
         p Friends on twitter: #{user.twitter.friends_count}
-        p Followers on Twitter #{user.twitter.followers.count}
+        p Followers on Twitter #{user.twitter.followers_count}
     - if (user.provider == 'facebook')
        img(class="profile-image", src='http://graph.facebook.com/'+user.facebook.id+'/picture')
        i.icon-facebook.icon-3x
