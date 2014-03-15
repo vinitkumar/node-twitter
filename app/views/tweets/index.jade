@@ -12,9 +12,10 @@ block content
           img(class='profile-image', src=req.user.github.avatar_url)
         - if (req.user.provider == 'twitter')
           img(class='profile-image', src="#{req.user.twitter.profile_image_url}")
-        iframe(src='http://ghbtns.com/github-btn.html?user=vinitkumar&type=follow&count=true', allowtransparency='true', frameborder='0', scrolling='0', width='165', height='20') 
 
         a.btn.btn-primary.flat.btn-lg(data-toggle='modal', href='#myModal') New Tweet
+
+        iframe(src='http://ghbtns.com/github-btn.html?user=vinitkumar&type=follow&count=true', allowtransparency='true', frameborder='0', scrolling='0', width='165', height='20') 
         #myModal.modal.fade
           .modal-dialog
             .modal-content
