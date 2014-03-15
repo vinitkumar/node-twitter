@@ -20,7 +20,7 @@ module.exports = {
     twitter: {
        clientID: 'J3RJBEzrLd9lVloHf6uGQ',
        clientSecret: 'DwAEaZX84iFg2LYdWHLHQF9l4idAqQWPL2LTCPnEjM',
-       callbackURL: "http://ntwitter.nodejitsu.com//auth/twitter/callback"
+       callbackURL: "http://ntwitter.nodejitsu.com/auth/twitter/callback"
      },
   },
   test: {
@@ -42,7 +42,7 @@ module.exports = {
      twitter: {
        clientID: 'J3RJBEzrLd9lVloHf6uGQ',
        clientSecret: 'DwAEaZX84iFg2LYdWHLHQF9l4idAqQWPL2LTCPnEjM',
-       callbackURL: "http://ntwitter.nodejitsu.com//auth/twitter/callback"
+       callbackURL: "http://ntwitter.nodejitsu.com/auth/twitter/callback"
      },
   },
   production: {
@@ -64,7 +64,7 @@ module.exports = {
     twitter: {
        clientID: 'J3RJBEzrLd9lVloHf6uGQ',
        clientSecret: 'DwAEaZX84iFg2LYdWHLHQF9l4idAqQWPL2LTCPnEjM',
-       callbackURL: "http://ntwitter.nodejitsu.com//auth/twitter/callback"
+       callbackURL: "http://ntwitter.nodejitsu.com/auth/twitter/callback"
      },
   }
 };
