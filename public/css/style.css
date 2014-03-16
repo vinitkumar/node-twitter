@@ -68,3 +68,7 @@ h1, .icon-twitter {
 .flat {
   border-radius: 0;
 }
+
+.logged-user > img { 
+  padding-bottom: 10px;
+}
