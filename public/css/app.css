@@ -3,6 +3,10 @@ body {
   background: url('/img/witewall_3.png');
 }
 
+.red-border {
+  border: dashed 2px #B95527;
+}
+
 .date {
   font-size: 11px;
   color: #aaa;

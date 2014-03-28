@@ -3,13 +3,14 @@ extends ../layouts/default
 block content
   .row
     .span2
-    .span8.login
-            a(href="/auth/facebook")
-                i(class="icon-facebook icon-4x")
-            a(href="/auth/github")
-                i(class="icon-github icon-4x")
-            a(href="/auth/twitter")
-                i(class="icon-twitter icon-4x")
+    .span8
+        .row.red-border
+            .col-md-4
+                a(href="/auth/facebook") Login via Facebook 
+            .col-md-4 
+                a(href="/auth/github") Login via Github
+            .col-md-4
+                a(href="/auth/twitter") Login via Twitter
     .span2
       if (typeof errors !== 'undefined')
         .fade.in.alert.alert-block.alert-error

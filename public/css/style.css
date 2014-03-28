@@ -3,6 +3,11 @@ body {
   background: url('/img/gray_jean_@2X.jpg');
 }
 
+.red-border {
+  border: dashed 2px #B95527;
+}
+
+
 .icon-4x {
   font-size: 11em;
 }
