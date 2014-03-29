@@ -19,7 +19,7 @@ block content
         li #{user.name}
         li Facebook link: #{user.facebook.link}
     - if (user.provider == 'github')
-        img(src=user.github.avatar_url)
+        img(class="profile-image", src=user.github.avatar_url)
         i.icon-github.icon-3x
         div.user-info
           a(href="#{user.github.html_url}", target='_blank') @#{user.github.login}
