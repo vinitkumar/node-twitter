@@ -1,7 +1,14 @@
 body {
   margin-top: 60px;
+  ont-family: verdana;
+  font-size: 13px;
   background: url('/img/gray_jean_@2X.jpg');
 }
+
+.red-border {
+  border: dashed 2px #95527;
+}
+
 
 .icon-4x {
   font-size: 11em;
@@ -13,12 +20,36 @@ i {
   padding-right: 20px;
 }
 
+.navbar-inverse .navbar-brand {
+  font-size: 24px;
+  font-weight: 400;
+  color: #fff;
+}
+
+
+
+.navbar {
+  height: 50px;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #fff;
+}
+
 .login {
   padding-top: 36px;
 }
 
 a:hover {
   text-decoration: none;
+}
+
+.login-container {
+  text-align: center;
+  margin-left: 35%;
+  padding: 20px;
+  border: 1px dashed #000;
+  max-width: 300px;
 }
 
 .login-screen {
@@ -35,6 +66,7 @@ h1, .icon-twitter {
 
 .profile-image {
 	padding-right: 26px;
+  height: 100px;
 }
 
 .logged-user {
@@ -45,7 +77,6 @@ h1, .icon-twitter {
 
 .tweet {
   padding: 5px;
-  background-color: lavenderblush;
 }
 
 .comment {
@@ -56,10 +87,6 @@ h1, .icon-twitter {
   color: black;
 }
 
-.twitter-container {
-  padding: 10px;
-  background: url('/img/use_your_illusion.png');
-}
 
 .edit {
   margin-right: 10px;
@@ -69,6 +96,19 @@ h1, .icon-twitter {
   border-radius: 0;
 }
 
+.logged-user {
+ border: 1px dashed red;
+  margin-bottom: 20px;
+}
+
+.github-btn {
+  margin-left: 20px;
+}
+
 .logged-user > img { 
   padding-bottom: 10px;
+}
+
+.new-tweet {
+  margin-right: 20px;
 }

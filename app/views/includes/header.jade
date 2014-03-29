@@ -1,20 +1,18 @@
-body.bs-docs-home
-    //
-       Docs master nav
-    .navbar.navbar-inverse.navbar-fixed-top.bs-docs-nav
+body
+    //Docs master nav
+  .container
+    nav.navbar.navbar-inverse.navbar-fixed-top
       .container
         a.navbar-brand(href='/') Node Twitter
         button.navbar-toggle(type='button', data-toggle='collapse', data-target='.bs-navbar-collapse')
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        .nav-collapse.collapse.bs-navbar-collapse.pull-right
+        nav.nav-collapse.collapse.bs-navbar-collapse.pull-right
           ul.nav.navbar-nav
             if (req.isAuthenticated())
               li
-                a(href="/users/"+req.user.id, title="Profile")
-                  i.icon-male.icon-light.icon-2x
+                a(href="/users/"+req.user.id, title="Profile") Profile
               li
-                a(href="/logout", title="logout")
-                  i.icon-off.icon-light.icon-2x
+                a(href="/logout", title="logout") Logout
 

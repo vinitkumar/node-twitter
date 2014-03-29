@@ -6,23 +6,26 @@ block content
     - if (user.provider == 'twitter')
         img(class="profile-image", src="#{user.twitter.profile_image_url}")
         i.icon-twitter.icon-3x
-        p #{user.name}
-        p #{user.twitter.description}
-        a(href="https://twitter.com/#{user.username}", target="_blank")@#{user.username}
-        p Friends on twitter: #{user.twitter.friends_count}
-        p Followers on Twitter #{user.twitter.followers_count}
+        ul
+         li #{user.name}
+         li #{user.twitter.description}
+         li a(href="https://twitter.com/#{user.username}", target="_blank")@#{user.username}
+         li Friends on twitter: #{user.twitter.friends_count}
+         li Followers on Twitter #{user.twitter.followers_count}
     - if (user.provider == 'facebook')
        img(class="profile-image", src='http://graph.facebook.com/'+user.facebook.id+'/picture')
        i.icon-facebook.icon-3x
-       p #{user.name}
-       p Facebook link: #{user.facebook.link}
+       ul 
+        li #{user.name}
+        li Facebook link: #{user.facebook.link}
     - if (user.provider == 'github')
         img(src=user.github.avatar_url)
         i.icon-github.icon-3x
         div.user-info
           a(href="#{user.github.html_url}", target='_blank') @#{user.github.login}
-          p followers on github: #{user.github.followers}
-          p public repos: #{user.github.public_repos}
+          ul.list-unstyled
+           li followers on github: #{user.github.followers}
+           li public repos: #{user.github.public_repos}
 
     if (user._id != req.user.id)
       a.btn(href="#", class="btn-success follow", data-userid=user._id, data-logged=req.user.id,title="follow") follow

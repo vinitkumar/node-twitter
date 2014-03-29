@@ -1,17 +1,19 @@
 extends ../layouts/default
 
 block content
-  .row
-    .span2
-    .span8.login
-            a(href="/auth/facebook")
-                i(class="icon-facebook icon-4x")
-            a(href="/auth/github")
-                i(class="icon-github icon-4x")
-            a(href="/auth/twitter")
-                i(class="icon-twitter icon-4x")
-    .span2
-      if (typeof errors !== 'undefined')
+    .login-container
+      h1 Login
+        h3
+          a(href="/auth/github") Github
+            i(class="icon-github")
+        h3
+          a(href="/auth/facebook") Facebook
+            i(class="icon-facebook")
+        h3
+          a(href="/auth/twitter") Twitter
+            i(class="icon-twitter")
+
+    if (typeof errors !== 'undefined')
         .fade.in.alert.alert-block.alert-error
           a.close(data-dismiss="alert", href="javascript:void(0)") x
           ul
