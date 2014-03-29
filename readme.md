@@ -1,48 +1,44 @@
-## Node Twitter
+# Node Twitter
 
 Twitter Clone written in Node.js.
 
-![ntwitter](http://recordit.co/zdUvpAp7IS.gif)
+##Dependencies
+
+Node and npm here (http://nodejs.org)
+
+Mongodb (http://docs.mongodb.org/manual/installation/)
+
 
 ## Installation
 
-First of all:
-
-- Install node and npm here (http://nodejs.org)
-- Install mongodb (http://docs.mongodb.org/manual/installation/)
-
-Then clone the project:
-
-```bash
+```sh
 $ git clone git@github.com:vinitkumar/node-twitter.git
 $ cd node-twitter
 $ npm install
 $ cp config/config.local.js config/config.js
 ```
+The app uses facebook , twitter and github for authentication.
+Create these three apps here and add the keys in `config.js` .
  
-Once done, go to these links and create your own apps. Enter the information in `config.js`. 
+[Facebook Developer](http://developer.facebook.com)
 
-- [Facebook Developer](http://developer.facebook.com)
-- [Github Developer](https://github.com/settings/applications)
-- [Twitter Developer](https://dev.twitter.com/)
+[Github Developer](https://github.com/settings/applications)
 
-## Using the App
+[Twitter Developer](https://dev.twitter.com/)
 
-```bash
-$ mongod // in a seperate tab
+## Running
+
+```sh
+$ mongod 
 $ npm start 
 ```
+Open the app here [http://localhost:3000](http://localhost:3000)
 
-This will run the app on [http://localhost:3000](http://localhost:3000)
+## Contributions
 
-## Contributions:
-
-If you want to contribute, here are some advices:
-- Use proper git flow.
-- Follow the style guide.
-- Create issue about what you want to add or report a bug.
+Feel free to fork the project if you wish to contribute.
 
 ## Author
 
-Vinit Kumar, @vinitkumar (Github) 
+Vinit Kumar
 
