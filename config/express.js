@@ -24,6 +24,10 @@ module.exports = function (app, config, passport) {
   if (process.env.NODE_ENV !== 'test') {
     app.use(express.logger('dev'));
   }
+  app.configure('development', function(){
+    app.use(express.errorHandler());
+    app.locals.pretty = true;
+  });
 
   app.set('views', config.root+'/app/views');
   app.set('view engine', 'jade');
