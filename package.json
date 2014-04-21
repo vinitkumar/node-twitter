@@ -13,7 +13,7 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "latest",
+    "express": "3.5.0",
     "jade": "latest",
     "mongoose": "latest",
     "connect-mongo": "latest",
