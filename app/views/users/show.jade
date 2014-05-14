@@ -4,14 +4,19 @@ block content
   .well
     h3 Profile
     - if (user.provider == 'twitter')
-        img(class="profile-image", src="#{user.twitter.profile_image_url}")
+        img(class="profile-image img-thumbnail", src="#{user.twitter.profile_image_url}")
         i.icon-twitter.icon-3x
         div.container
-          #{user.name}
-          #{user.twitter.description}
-          a(href="https://twitter.com/#{user.username}", target="_blank")@#{user.username}
-          Friends on twitter: #{user.twitter.friends_count}
-          Followers on Twitter #{user.twitter.followers_count}
+          div.col-md-6
+            #{user.name}
+            #{user.twitter.description}
+          div.col-md-6
+            div
+              a(href="https://twitter.com/#{user.username}", target="_blank")@#{user.username}
+            div
+              Friends on twitter: #{user.twitter.friends_count}
+            div
+              Followers on Twitter #{user.twitter.followers_count}
     - if (user.provider == 'facebook')
        img(class="profile-image", src='http://graph.facebook.com/'+user.facebook.id+'/picture')
        i.icon-facebook.icon-3x
@@ -19,7 +24,7 @@ block content
         li #{user.name}
         li Facebook link: #{user.facebook.link}
     - if (user.provider == 'github')
-        img(class="profile-image", src=user.github.avatar_url)
+        img(class="profile-image img-thumbnail", src=user.github.avatar_url)
         i.icon-github.icon-3x
         div.user-info
           a(href="#{user.github.html_url}", target='_blank') @#{user.github.login}
