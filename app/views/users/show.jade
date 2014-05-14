@@ -6,12 +6,12 @@ block content
     - if (user.provider == 'twitter')
         img(class="profile-image", src="#{user.twitter.profile_image_url}")
         i.icon-twitter.icon-3x
-        ul
-         li #{user.name}
-         li #{user.twitter.description}
-         li a(href="https://twitter.com/#{user.username}", target="_blank")@#{user.username}
-         li Friends on twitter: #{user.twitter.friends_count}
-         li Followers on Twitter #{user.twitter.followers_count}
+        div.container
+          div#{user.name}
+          div#{user.twitter.description}
+          div a(href="https://twitter.com/#{user.username}", target="_blank")@#{user.username}
+          div Friends on twitter: #{user.twitter.friends_count}
+          div Followers on Twitter #{user.twitter.followers_count}
     - if (user.provider == 'facebook')
        img(class="profile-image", src='http://graph.facebook.com/'+user.facebook.id+'/picture')
        i.icon-facebook.icon-3x
