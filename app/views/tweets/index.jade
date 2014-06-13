@@ -64,3 +64,7 @@ block content
               include ../comments/comment
             hr
             include ../comments/form
+            
+    - if (pages > 1)
+      ul.pagination
+        != createPagination(pages, page)

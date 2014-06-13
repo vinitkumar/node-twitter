@@ -85,22 +85,50 @@ exports.destroy = function (req, res) {
 };
 
 
+
 exports.index = function (req, res) {
-  var page = req.param('page') > 0 ? req.param('page'):0;
-  var perPage  = 15;
+  var page = (req.param('page') > 0 ? req.param('page'):1) - 1;
+  var perPage = 15;
   var options = {
     perPage: perPage,
     page: page
   };
-  Tweet.list(options, function (err, tweets) {
-    if (err) return res.render('500');
+  
+  Tweet.list(options, function(err, tweets) {
+    if (err) return res.render('500')
     Tweet.count().exec(function (err, count) {
+      console.log('I am count', count);
       res.render('tweets/index', {
-        title: 'List of tweets',
+        title: 'List of Tweets',
         tweets: tweets,
-        page: page,
-        pages: count/perPage
+        page: page + 1,
+        pages: Math.ceil(count / perPage)
       });
     });
   });
 };
+
+
+// exports.index = function (req, res) {
+//   var page = req.param('page') > 0 ? req.param('page'):0;
+//   console.log('I am here', page);
+//   var perPage  = 15;
+//   var options = {
+//     perPage: perPage,
+//     page: page
+//   };
+//   Tweet.list(options, function (err, tweets) {
+//     if (err) return res.render('500');
+//     Tweet.countTweets().exec(function (err, count) {
+//       console.log('This is sparta', count);
+//     }); 
+//     Tweet.countTweets().exec(function (err, count) {
+//       res.render('tweets/index', {
+//         title: 'List of tweets',
+//         tweets: tweets,
+//         page: page,
+//         pages: count/perPage
+//       });
+//     });
+//   });
+// };
