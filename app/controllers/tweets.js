@@ -95,7 +95,7 @@ exports.index = function (req, res) {
   };
   
   Tweet.list(options, function(err, tweets) {
-    if (err) return res.render('500')
+    if (err) return res.render('500');
     Tweet.count().exec(function (err, count) {
       res.render('tweets/index', {
         title: 'List of Tweets',
@@ -106,28 +106,3 @@ exports.index = function (req, res) {
     });
   });
 };
-
-
-// exports.index = function (req, res) {
-//   var page = req.param('page') > 0 ? req.param('page'):0;
-//   console.log('I am here', page);
-//   var perPage  = 15;
-//   var options = {
-//     perPage: perPage,
-//     page: page
-//   };
-//   Tweet.list(options, function (err, tweets) {
-//     if (err) return res.render('500');
-//     Tweet.countTweets().exec(function (err, count) {
-//       console.log('This is sparta', count);
-//     }); 
-//     Tweet.countTweets().exec(function (err, count) {
-//       res.render('tweets/index', {
-//         title: 'List of tweets',
-//         tweets: tweets,
-//         page: page,
-//         pages: count/perPage
-//       });
-//     });
-//   });
-// };

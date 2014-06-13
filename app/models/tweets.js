@@ -1,7 +1,9 @@
 var mongoose = require('mongoose'),
     env = process.env.NODE_ENV || 'development',
     config = require('../../config/config')[env],
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    utils = require('../../lib/utils')
+
 
 //  Getters and Setters
 var getTags = function (tags) {
@@ -76,6 +78,16 @@ TweetSchema.methods = {
       body: comment.body,
       user: user._id
     });
+    this.save(cb);
+  },
+
+  removeComment: function (commentId, cb) {
+    var index = utils.indexof(this.comments, { id: commentId });
+    if (~index) {
+      this.comments.splice(index, 1);
+    } else {
+      return cb('not found');
+    }
     this.save(cb);
   }
 };
