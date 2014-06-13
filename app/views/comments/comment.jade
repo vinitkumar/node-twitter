@@ -1,7 +1,8 @@
 
 if (comment && comment.user)
   .comment
-    a(href="/users/"+ comment.user) #{comment.user}
+    - var name = comment.user.name ? comment.user.name : comment.user.username
+    a(href="/users/"+ comment.user._id)= name
     | :&nbsp;
     != comment.body
     .date= formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")

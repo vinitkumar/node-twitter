@@ -97,7 +97,6 @@ exports.index = function (req, res) {
   Tweet.list(options, function(err, tweets) {
     if (err) return res.render('500')
     Tweet.count().exec(function (err, count) {
-      console.log('I am count', count);
       res.render('tweets/index', {
         title: 'List of Tweets',
         tweets: tweets,
