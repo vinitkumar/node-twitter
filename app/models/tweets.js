@@ -86,7 +86,7 @@ TweetSchema.statics = {
   // Load tweets
   load: function (id, cb) {
     this.findOne({ _id: id })
-      .populate('user', 'name email')
+      .populate('user', 'name email username')
       .populate('comments.user')
       .exec(cb);
   },
@@ -96,7 +96,7 @@ TweetSchema.statics = {
     var criteria = options.criteria || {};
 
     this.find(criteria)
-      .populate('user', 'name')
+      .populate('user', 'name username')
       .sort({'createdAt': -1})
       .limit(options.perPage)
       .skip(options.perPage * options.page)
