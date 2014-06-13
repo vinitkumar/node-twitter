@@ -1,4 +1,18 @@
 var mongoose = require('mongoose');
+var utils = require('../../lib/utils');
+
+/**
+ * Load comment
+ */
+
+exports.load = function (req, res, next, id) {
+  var tweet = req.tweet
+  utils.findByParam(tweet.comments, { id: id }, function (err, comment) {
+    if (err) return next(err);
+    req.comment = comment;
+    next();
+  });
+};
 
 // ### Create Comment
 exports.create = function (req, res) {

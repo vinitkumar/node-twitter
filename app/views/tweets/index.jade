@@ -43,7 +43,11 @@ block content
             .row
               .col-lg-6.pull-left
                 h5
-                  a(href="/users/"+tweet.user._id)=tweet.user.name
+                  - var name = tweet.user.name ? tweet.user.name : tweet.user.username
+
+                  //- if (tweet.user.name)
+                  //-   a(href="/users/"+tweet.user._id)=tweet.user.name
+                  a(href="/users/"+tweet.user._id)= name
               .col-lg-5.date
                 .pull-right
                   = formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")
@@ -60,3 +64,7 @@ block content
               include ../comments/comment
             hr
             include ../comments/form
+            
+    - if (pages > 1)
+      ul.pagination
+        != createPagination(pages, page)
