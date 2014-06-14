@@ -8,8 +8,8 @@ module.exports = {
       name: 'Node Twitter'
     },
     facebook: {
-      clientID: "273381409494888",
-      clientSecret: "7752245834fc257678f9695c6684c29b",
+      clientID: "1446247922298685",
+      clientSecret: "0bb080780a38bdbbdbe192f9e9e6579b",
       callbackURL: "http://ntwitter.nodejitsu.com/auth/facebook/callback"
     },
     github: {
@@ -18,8 +18,8 @@ module.exports = {
       callbackURL: 'http://ntwitter.nodejitsu.com/auth/github/callback'
     },
     twitter: {
-       clientID: 'J3RJBEzrLd9lVloHf6uGQ',
-       clientSecret: 'DwAEaZX84iFg2LYdWHLHQF9l4idAqQWPL2LTCPnEjM',
+       clientID: 'FCx4C2yOFdkRaY7NXEw7bbe2S',
+       clientSecret: 'UVbi0ZNI0Fosglct06tGmuf740waDJ6ZrI5xPQIxarx2OnMSs2',
        callbackURL: "http://ntwitter.nodejitsu.com/auth/twitter/callback"
      },
   },
