@@ -2,6 +2,8 @@
 
 Twitter Clone written in Node.js.
 
+Hope you enjoy using it and if you do, you can tip me here at https://gratipay.com/vinitkme/. Thanks! :)
+
 ##Dependencies
 
 Node and npm here (http://nodejs.org)
