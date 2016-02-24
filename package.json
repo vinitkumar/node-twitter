@@ -23,7 +23,6 @@
     "passport-twitter": "~1.0.2",
     "passport-github": "latest",
     "passport-google-oauth": "latest",
-    "imager": "latest",
     "notifier": "latest",
     "underscore": "latest",
     "gzippo": "latest",
