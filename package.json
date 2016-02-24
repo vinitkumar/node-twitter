@@ -5,10 +5,6 @@
   "repository": "https://github.com/vinitcool76/node-twitter",
   "private": false,
   "author": "Vinit Kumar <vinit.kumar@changer.nl> (http://vinitkumar.me)",
-  "engines": {
-    "node": "0.8.x",
-    "npm": "1.2.x"
-  },
   "scripts": {
     "start": "node server.js"
   },
