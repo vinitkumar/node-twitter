@@ -1,9 +1,13 @@
 extends ../layouts/default
 
+block newtweet
+  li
+    a.btn.btn-primary.flat.btn-lg.new-tweet(data-toggle='modal', href='#myModal') New Tweet
+
 
 block content
   .row.twitter-container
-    .col-lg-4 
+    .col-lg-3 
       .logged-user
         p #{req.user.name}
         - if (req.user.provider == 'facebook')
@@ -12,10 +16,6 @@ block content
           img(class='profile-image', src=req.user.github.avatar_url)
         - if (req.user.provider == 'twitter')
           img(class='profile-image', src="#{req.user.twitter.profile_image_url}")
-
-        a.btn.btn-primary.flat.btn-lg.new-tweet(data-toggle='modal', href='#myModal') New Tweet
-      h3 List of Users
-      a(href="/userslist") Users List
        
         #myModal.modal.fade
           .modal-dialog
@@ -37,7 +37,7 @@ block content
                       a.btn(href='/tweets', title='cancel') Cancel
               .modal-footer
                 p Hope you enjoy it!
-    .col-lg-8
+    .col-lg-6
       each tweet in tweets
         .well.flat
           .tweet
@@ -65,7 +65,12 @@ block content
               include ../comments/comment
             hr
             include ../comments/form
-            
+    
+    .col-lg-3
+      .well
+        h3 Node Twitter Users
+        a(href="/userslist") Users List
+
     - if (pages > 1)
       ul.pagination
         != createPagination(pages, page)

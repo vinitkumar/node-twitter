@@ -46,7 +46,7 @@ module.exports = function (passport, config) {
       callbackURL: config.github.callbackURL
     },
     function(accessToken, refreshToken, profile, done) {
-      User.findOne({ 'github.id': profile.id }, function (err, user) {
+      User.findOne({'github.id': profile.id }, function(err, user) {
         if (!user) {
           user = new User({
               name: profile.displayName,

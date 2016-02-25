@@ -1,7 +1,11 @@
 
 if (comment && comment.user)
   .comment
-    a(href="/users/"+ comment.user)= comment.user
+    if (comment.commenterName && comment.user)
+        a(href="/users/"+ comment.user)= comment.commenterName
+    else if (comment.user)
+        a(href="/users/"+ comment.user)= comment.user
+
     | :&nbsp;
     != comment.body
     .date= formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")

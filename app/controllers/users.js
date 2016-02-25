@@ -1,87 +1,95 @@
-var Mongoose = require('mongoose'),
-    User = Mongoose.model('User');
+var Mongoose = require('mongoose');
+var User = Mongoose.model('User');
 
+exports.signin = function(req, res) {};
 
-exports.signin = function (req, res) {};
-
-exports.authCallback = function (req, res, next) {
+exports.authCallback = function(req, res) {
   res.redirect('/');
 };
 
-exports.login = function (req, res) {
+exports.login = function(req, res) {
   res.render('users/login', {
     title: 'Login',
     message: req.flash('error')
   });
 };
 
-exports.signup = function (req, res) {
+exports.signup = function(req, res) {
   res.render('users/signup', {
     title: 'Sign up',
     user: new User()
   });
 };
 
-exports.logout = function (req, res) {
+exports.logout = function(req, res) {
   req.logout();
   res.redirect('/login');
 };
 
-exports.session = function (req, res) {
+exports.session = function(req, res) {
   res.redirect('/');
 };
 
-exports.create = function (req, res) {
+exports.create = function(req, res, next) {
   var user = new User(req.body);
   user.provider = 'local';
-  user.save(function (err) {
+  user.save(function(err) {
     if (err) {
-      return res.render('users/signup', { errors: err.errors, user: user });
+      return res.render('users/signup', {errors: err.errors, user: user});
     }
-    req.logIn(user, function (err) {
-      if (err) return next(err);
+    req.logIn(user, function(err) {
+      if (err) {
+        return next(err);
+      }
       return res.redirect('/');
     });
   });
 };
 
-
-exports.list = function (req, res) {
-  var page = (req.param('page') > 0 ? req.param('page'):1) - 1;
+exports.list = function(req, res) {
+  var page = (req.param('page') > 0 ? req.param('page') : 1) - 1;
   var perPage = 5;
   var options = {
     perPage: perPage,
     page: page
   };
-  return User.list(options, function (err, users) {
-    if (err) return res.render('500');
+  return User.list(options, function(err, users) {
+    if (err) {
+      return res.render('500');
+    }
     User.count().exec(function(err, count) {
-      res.render('users/list', 
+      if (err) {
+        return res.render('500');
+      }
+      res.render('users/list',
         {
           title: 'List of Users',
           users: users,
           page: page + 1,
-          pages: Math.ceil(count /perPage)
+          pages: Math.ceil(count / perPage)
         });
     });
   });
-}
+};
 
-exports.show = function (req, res) {
+exports.show = function(req, res) {
   var user = req.profile;
-    res.render('users/show', {
+  res.render('users/show', {
     title: user.name,
     user: user
   });
 };
 
-
-exports.user = function (req, res, next, id) {
+exports.user = function(req, res, next, id) {
   User
-    .findOne({ _id: id})
-    .exec(function (err, user) {
-      if (err) return next(err);
-      if (!user) return next(new Error('failed to load user '+ id));
+    .findOne({_id: id})
+    .exec(function(err, user) {
+      if (err) {
+        return next(err);
+      }
+      if (!user) {
+        return next(new Error('failed to load user ' + id));
+      }
       req.profile = user;
       next();
     });
