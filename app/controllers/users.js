@@ -45,6 +45,11 @@ exports.create = function (req, res) {
   });
 };
 
+exports.list = function (req, res) {
+  return User.find({}, function (err, users) {
+    res.send(users);
+  });
+}
 
 exports.show = function (req, res) {
   var user = req.profile;
