@@ -46,6 +46,27 @@ exports.create = function (req, res) {
 };
 
 
+exports.list = function (req, res) {
+  var page = (req.param('page') > 0 ? req.param('page'):1) - 1;
+  var perPage = 5;
+  var options = {
+    perPage: perPage,
+    page: page
+  };
+  return User.list(options, function (err, users) {
+    if (err) return res.render('500');
+    User.count().exec(function(err, count) {
+      res.render('users/list', 
+        {
+          title: 'List of Users',
+          users: users,
+          page: page + 1,
+          pages: Math.ceil(count /perPage)
+        });
+    });
+  });
+}
+
 exports.show = function (req, res) {
   var user = req.profile;
     res.render('users/show', {

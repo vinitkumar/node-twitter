@@ -97,6 +97,16 @@ UserSchema.statics = {
     this.findOne({_id: id})
       .populate('followers')
       .exec(cb);
+  }, 
+  list: function (options, cb) {
+    var criteria = options.criteria || {};
+    console.log('I am here');
+    console.log(options)
+    this.find(criteria)
+      .populate('user', 'name username')
+      .limit(options.perPage)
+      .skip(options.perPage * options.page)
+      .exec(cb);
   }
 };
 

@@ -106,7 +106,7 @@ TweetSchema.statics = {
   // List tweets
   list: function (options, cb) {
     var criteria = options.criteria || {};
-
+    debugger;
     this.find(criteria)
       .populate('user', 'name username')
       .sort({'createdAt': -1})
