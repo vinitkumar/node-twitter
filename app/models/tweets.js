@@ -22,6 +22,7 @@ var TweetSchema = new Schema({
   comments: [{
     body: { type : String, default : '' },
     user: { type : Schema.ObjectId, ref : 'User' },
+    commenterName: { type: String, default: ''},
     createdAt: { type : Date, default : Date.now }
   }],
   tags: {type: [], get: getTags, set: setTags},
@@ -74,11 +75,24 @@ TweetSchema.methods = {
   },
 
   addComment: function (user, comment, cb) {
-    this.comments.push({
+    if (user.username) {
+        this.comments.push({
+        body: comment.body,
+        user: user._id,
+        commenterName: user.username    
+      });
+      console.log(user);
+      this.save(cb);  
+    } else {
+      this.comments.push({
       body: comment.body,
-      user: user._id
+      user: user._id,
+      commenterName: user.name    
     });
+    console.log(user);
     this.save(cb);
+    }
+    
   },
 
   removeComment: function (commentId, cb) {

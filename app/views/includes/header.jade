@@ -11,6 +11,7 @@ body
         nav.nav-collapse.collapse.bs-navbar-collapse.pull-right
           ul.nav.navbar-nav
             if (req.isAuthenticated())
+              block newtweet
               li
                 a(href="/users/"+req.user.id, title="Profile") Profile
               li
