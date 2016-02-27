@@ -9,26 +9,27 @@
     "start": "node server.js"
   },
   "engines": {
-    "node":"4.2.4"
+    "node": "4.2.4"
   },
   "dependencies": {
+    "async": "latest",
+    "connect-flash": "latest",
+    "connect-mongo": "latest",
     "express": "3.5.0",
+    "forever": "latest",
+    "gzippo": "latest",
     "jade": "latest",
     "mongoose": "latest",
-    "connect-mongo": "latest",
-    "connect-flash": "latest",
-    "passport": "latest",
-    "passport-local": "latest",
-    "passport-facebook": "latest",
-    "passport-twitter": "~1.0.2",
-    "passport-github": "latest",
-    "passport-google-oauth": "latest",
     "notifier": "latest",
+    "passport": "^0.3.2",
+    "passport-facebook": "latest",
+    "passport-github": "latest",
+    "passport-github2": "^0.1.9",
+    "passport-google-oauth": "latest",
+    "passport-local": "latest",
+    "passport-twitter": "~1.0.2",
     "underscore": "latest",
-    "gzippo": "latest",
-    "async": "latest",
-    "view-helpers": "latest",
-    "forever": "latest"
+    "view-helpers": "latest"
   },
   "devDependencies": {
     "supertest": "latest",

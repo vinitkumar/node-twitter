@@ -1,11 +1,10 @@
 
-var mongoose = require('mongoose'),
-    LocalStrategy = require('passport-local').Strategy,
-    GitHubStrategy = require('passport-github').Strategy,
-    User = mongoose.model('User');
+var mongoose = require('mongoose');
+var LocalStrategy = require('passport-local').Strategy;
+var GitHubStrategy = require('passport-github').Strategy;
+var User = mongoose.model('User');
 
-
-module.exports = function (passport, config) {
+module.exports = function(passport, config) {
   // require('./initializer')
 
   // serialize sessions
@@ -14,21 +13,23 @@ module.exports = function (passport, config) {
   });
 
   passport.deserializeUser(function(id, done) {
-    User.findOne({ _id: id }, function (err, user) {
+    User.findOne({_id: id}, function(err, user) {
       done(err, user);
     });
   });
 
   // use local strategy
   passport.use(new LocalStrategy({
-      usernameField: 'email',
-      passwordField: 'password'
-    },
+    usernameField: 'email',
+    passwordField: 'password'
+  },
     function(email, password, done) {
-      User.findOne({ email: email }, function (err, user) {
-        if (err) { return done(err); }
+      User.findOne({email: email}, function(err, user) {
+        if (err) {
+          return done(err);
+        }
         if (!user) {
-          return done(null, false, { message: 'Unknown user' });
+          return done(null, false, {message: 'Unknown user'});
         }
         if (!user.authenticate(password)) {
           return done(null, false, { message: 'Invalid password' });
@@ -50,7 +51,7 @@ module.exports = function (passport, config) {
         if (!user) {
           user = new User({
               name: profile.displayName,
-              email: profile.emails[0].value,
+              // email: profile.emails[0].value,
               username: profile.username,
               provider: 'github',
               github: profile._json
