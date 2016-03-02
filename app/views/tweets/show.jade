@@ -1,19 +1,29 @@
 extends ../layouts/default
 
 block main
-  h1 This is the tweet
+  - var name = tweet.user.name ? tweet.user.name : tweet.user.username
+  h1 Tweet from @#{name}
 
 block content
   .row
     .span9
       .well
+        - var name = tweet.user.name ? tweet.user.name : tweet.user.username
+        - if (tweet.user.provider == 'facebook')
+          img(class='tweet-image', src='http://graph.facebook.com/'+tweet.user.facebook.id+'/picture')
+        - if (tweet.user.provider == 'github')
+          img(class='tweet-image', src=tweet.user.github.avatar_url)
+        - if (tweet.user.provider == 'twitter')
+          img(class='tweet-image', src="#{tweet.user.twitter.profile_image_url}")
+        //- if (tweet.user.name)
+        //-   a(href="/users/"+tweet.user._id)=tweet.user.name
+        a(href="/users/"+tweet.user._id)= name
         p=tweet.body
     br
     form.center.form-inline.confirm(action="/tweets/"+tweet.id, method="post")
-      a.btn(href='/tweets/'+tweet._id+'/edit', title="edit") Edit
+      - if (req.user.username === tweet.user.username)
+        a.btn(href='/tweets/'+tweet._id+'/edit/', title="edit") Edit
       &nbsp;&nbsp;
-      input(type="hidden", name="_method", value="DELETE")
-      button.btn.btn-danger(type="submit") delete
-
-
-
+      - if( req.user.username === tweet.user.username)
+        input(type="hidden", name="_method", value="DELETE")
+        button.btn.btn-danger(type="submit") delete
