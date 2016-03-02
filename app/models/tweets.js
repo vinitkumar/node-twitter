@@ -108,7 +108,7 @@ TweetSchema.statics = {
   // Load tweets
   load: function(id, cb) {
     this.findOne({_id: id})
-      .populate('user', 'name email username')
+      .populate('user', 'name username provider github facebook twitter')
       .populate('comments.user')
       .exec(cb);
   },
@@ -117,7 +117,7 @@ TweetSchema.statics = {
   list: function(options, cb) {
     var criteria = options.criteria || {};
     this.find(criteria)
-      .populate('user', 'name username')
+      .populate('user', 'name username provider github facebook twitter')
       .sort({'createdAt': -1})
       .limit(options.perPage)
       .skip(options.perPage * options.page)
