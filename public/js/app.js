@@ -16,6 +16,7 @@ $(document).ready(function () {
       }
     });
   });
+  
   $('.follow').on('click', function(e) {
     var user = $(e.currentTarget).data('userid');
     var userID = user.split('"')[1];

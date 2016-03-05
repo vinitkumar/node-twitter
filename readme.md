@@ -25,7 +25,7 @@ and get back to you asap. If you find any bugs or feature requests, please open 
 description.
 
 ### Donations:
-If you enjoy using it and if you do, you can tip me here at https://gratipay.com/vinitkme/. Thanks! :)
+If you enjoy using it, you can tip me here at https://gratipay.com/vinitkme/. Thanks! :)
 
 ## LICENSE
 MIT
