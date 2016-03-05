@@ -1,46 +1,31 @@
 # Node Twitter
 
-Twitter Clone written in Node.js.
+Node twitter is an experimental twitter clone written in Node.js and MongoDB.
+The purpose of this project is to test and experiment with clean architecture and
+replicate the social media experience.
 
-Hope you enjoy using it and if you do, you can tip me here at https://gratipay.com/vinitkme/. Thanks! :)
+## Installation and Running
+You must have Node, npm and MongoDB installed.
+- [Node.js](http://nodejs.org)
+- [Mongodb](http://docs.mongodb.org/manual/installation/)
 
-##Dependencies
+The configuration part is in `config/config.js`. Please create your own
+github application and replace the token and keys.
 
-Node and npm here (http://nodejs.org)
+- [Github Developer](https://github.com/settings/applications)
 
-Mongodb (http://docs.mongodb.org/manual/installation/)
+## Important
+I work on this project in my own free time so there could be more or less activity depending on how
+much time I have at hand. But I would try to keep the `master` pretty much crash free and deployable. Anything
+that's on `develop` can break or have bugs.
 
+## Contributing
+If you wish to contribute to the project, please send me a PR with a feature/fix, I will try and review
+and get back to you asap. If you find any bugs or feature requests, please open a ticket for it with proper
+description.
 
-## Installation
+### Donations:
+If you enjoy using it and if you do, you can tip me here at https://gratipay.com/vinitkme/. Thanks! :)
 
-```sh
-$ git clone git@github.com:vinitkumar/node-twitter.git
-$ cd node-twitter
-$ npm install
-$ cp config/config.local.js config/config.js
-```
-The app uses facebook , twitter and github for authentication.
-Create these three apps here and add the keys in `config.js` .
- 
-[Facebook Developer](http://developer.facebook.com)
-
-[Github Developer](https://github.com/settings/applications)
-
-[Twitter Developer](https://dev.twitter.com/)
-
-## Running
-
-```sh
-$ mongod 
-$ npm start 
-```
-Open the app here [http://localhost:3000](http://localhost:3000)
-
-## Contributions
-
-Feel free to fork the project if you wish to contribute.
-
-## Author
-
-Vinit Kumar
-
+## LICENSE
+MIT
