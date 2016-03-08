@@ -18,6 +18,15 @@ block content
           img(class='profile-image', src="#{req.user.twitter.profile_image_url}")
         h4 #{req.user.name}
 
+      .useful-links
+        ul
+          li.links
+            a(href="http://vinitkumar.me") Author
+          li.links 
+            a(href="") License
+          li.links
+            a(href="https://github.com/vinitkumar/node-twitter/issues/new") File a Bug
+
         #myModal.modal.fade
           .modal-dialog
             .modal-content

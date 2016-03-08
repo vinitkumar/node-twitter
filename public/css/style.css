@@ -100,7 +100,8 @@ h1, .icon-twitter {
 }
 
 .logged-user {
- border: 1px solid #eeeeee;
+  padding: 20px;
+  border: 1px solid #eeeeee;
   margin-bottom: 20px;
 }
 
@@ -115,3 +116,11 @@ h1, .icon-twitter {
 .footer-container {
   bottom: 0px;
 }
+
+.useful-links {
+  text-align: left;
+  border-radius: 2px;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
