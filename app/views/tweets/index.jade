@@ -2,21 +2,22 @@ extends ../layouts/default
 
 block newtweet
   li
-    a.btn.btn-primary.flat.btn-lg.new-tweet(data-toggle='modal', href='#myModal') New Tweet
+    a.btn.btn-primary.flat.new-tweet(data-toggle='modal', href='#myModal')
+      i(class="icon-pencil")  Create new Tweet
 
 
 block content
   .row.twitter-container
     .col-lg-3 
       .logged-user
-        p #{req.user.name}
         - if (req.user.provider == 'facebook')
           img(class='profile-image', src='http://graph.facebook.com/'+req.user.facebook.id+'/picture')
         - if (req.user.provider == 'github')
           img(class='profile-image', src=req.user.github.avatar_url)
         - if (req.user.provider == 'twitter')
           img(class='profile-image', src="#{req.user.twitter.profile_image_url}")
-       
+        h4 #{req.user.name}
+
         #myModal.modal.fade
           .modal-dialog
             .modal-content
