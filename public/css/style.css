@@ -2,6 +2,8 @@ body {
   margin-top: 60px;
   ont-family: verdana;
   font-size: 13px;
+  background-image: url('../img/space-header.jpg');
+  background-size: cover;
 }
 
 .red-border {
@@ -45,9 +47,7 @@ a:hover {
 
 .login-container {
   text-align: center;
-  margin-left: 35%;
   padding: 20px;
-  border: 1px dashed #000;
   max-width: 300px;
 }
 
@@ -110,4 +110,8 @@ h1, .icon-twitter {
 
 .new-tweet {
   margin-right: 20px;
+}
+
+.footer-container {
+  bottom: 0px;
 }
