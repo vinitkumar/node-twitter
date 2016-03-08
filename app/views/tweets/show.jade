@@ -6,7 +6,7 @@ block main
 
 block content
   .row
-    .span9
+    .col-md-4
       .well
         - var name = tweet.user.name ? tweet.user.name : tweet.user.username
         - if (tweet.user.provider == 'facebook')
