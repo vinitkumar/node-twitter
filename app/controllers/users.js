@@ -1,4 +1,5 @@
 var Mongoose = require('mongoose');
+var Tweet = Mongoose.model('Tweet');
 var User = Mongoose.model('User');
 
 exports.signin = function(req, res) {};
@@ -74,10 +75,18 @@ exports.list = function(req, res) {
 
 exports.show = function(req, res) {
   var user = req.profile;
-  res.render('users/show', {
-    title: user.name,
-    user: user
-  });
+  user_id = user._id;
+  userId = user_id.toString();
+
+  Tweet.find({'user': userId }, function (err, tweets) {
+     res.render('users/show', {
+      title:  'Tweets from ' + user.name,
+      user: user, 
+      tweets: tweets,
+    });
+   });
+  
+
 };
 
 exports.user = function(req, res, next, id) {
