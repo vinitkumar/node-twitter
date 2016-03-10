@@ -10,11 +10,14 @@ footer.bs-docs-footer(role='contentinfo')
     |  
     p
       | Designed and built with all the love in the world by 
-      a(href='https://twitter.com/vinitkme', target='_blank') Vinit
+      a(href='https://twitter.com/vinitkme', target='_blank') @vinitkme
       |  using 
       a(href='https://vim.org', target='_blank') Vim
-      |  and 
+      | and 
       a(href='https://nodejs.org') nodejs
+      |  with the help of 
+      a(href='https://github.com/twbs/bootstrap/graphs/contributors') our contributors
+      | .
     |  
     p
       | Code licensed 
