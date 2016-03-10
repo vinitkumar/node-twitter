@@ -32,10 +32,11 @@
     "view-helpers": "latest"
   },
   "devDependencies": {
-    "supertest": "latest",
+    "ava": "latest",
+    "mocha": "^2.4.5",
+    "nodemon": "latest",
     "should": "latest",
-    "mocha": "latest",
-    "nodemon": "latest"
+    "supertest": "latest"
   },
   "subdomain": "ntwitter"
 }
