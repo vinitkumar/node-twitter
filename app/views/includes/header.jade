@@ -1,19 +1,17 @@
 body
-    //Docs master nav
-  .container
-    nav.navbar.navbar-inverse.navbar-fixed-top
-      .container
-        a.navbar-brand(href='/') Node Twitter
-        button.navbar-toggle(type='button', data-toggle='collapse', data-target='.bs-navbar-collapse')
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
-        nav.nav-collapse.collapse.bs-navbar-collapse.pull-right
-          ul.nav.navbar-nav
-            if (req.isAuthenticated())
-              block newtweet
-              li
-                a(href="/users/"+req.user.id, title="Profile") Profile
-              li
-                a(href="/logout", title="logout") Logout
-
+  header#top.navbar.navbar-static-top.bs-docs-nav(role='banner')
+    .container
+      nav#bs-navbar.collapse.navbar-collapse
+        ul.nav.navbar-nav
+          li
+            a.navbar-brand(href='/') Node Twitter
+        |  
+        ul.nav.navbar-nav.navbar-right
+          if (req.isAuthenticated())
+            block newtweet
+            |  
+            li
+              a(href="/users/"+req.user.id, title="Profile") Profile
+            |  
+            li
+              a(href="/logout", title="logout") Logout

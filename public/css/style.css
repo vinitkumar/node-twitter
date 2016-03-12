@@ -1,6 +1,5 @@
 body {
-  margin-top: 60px;
-  ont-family: verdana;
+  font-family: verdana;
   font-size: 13px;
   background-image: url('../img/space-header.jpg');
   background-size: cover;
@@ -124,3 +123,6 @@ h1, .icon-twitter {
   background-color: #f5f5f5;
 }
 
+header.navbar-static-top {
+  margin-bottom: 30px;
+}
