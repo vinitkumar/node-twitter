@@ -3,45 +3,45 @@ extends ../layouts/default
 
 block content
   .row
-  a.btn.btn-primary.btn-lg(data-toggle='modal', href='#myModal') Edit
-  #myModal.modal.fade
-    .modal-dialog
-      .modal-content
-        .modal-header
-          button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-          h4.modal-title Edit Tweet
-          i.icon-twitter.icon-2x
-        .modal-body
-          .tweet-body
-              - var action = '/tweets'
-              if (!tweet.isNew)
-                - action += '/'+tweet.id
+    .col-md-12
+      a.btn.btn-primary.btn-lg(data-toggle='modal', href='#myModal') Edit
+      #myModal.modal.fade
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+              h4.modal-title Edit Tweet
+              i.icon-twitter.icon-2x
+            .modal-body
+              .tweet-body
+                  - var action = '/tweets'
+                  if (!tweet.isNew)
+                    - action += '/'+tweet.id
 
-              if (typeof errors !== 'undefined')
-                .fade.in.alert.alert-block.alert-error
-                  a.close(data-dismiss="alert", href="javascript:void(0)") x
-                  ul
-                    each errors in errors
-                      li = error.type
+                  if (typeof errors !== 'undefined')
+                    .fade.in.alert.alert-block.alert-error
+                      a.close(data-dismiss="alert", href="javascript:void(0)") x
+                      ul
+                        each errors in errors
+                          li = error.type
 
 
-          
-              form(method="post", action=action, enctype="multipart/form-data")
-                if (!tweet.isNew)
-                  input(type="hidden", name="_method", value="PUT")
+              
+                  form(method="post", action=action, enctype="multipart/form-data")
+                    if (!tweet.isNew)
+                      input(type="hidden", name="_method", value="PUT")
 
-                .control-group
-                  label.control-label(for='tweet')
-                  br
-                  .controls
-                    textarea(type='text', class="form-control", name="body",
-                      placeholder='Enter your tweet here',maxlength='140')=tweet.body
-                br
-                .form-actions
-                  button.btn.btn-primary(type='submit') Publish Tweet
-                  &nbsp;
-                  a.btn(href='/tweets', title="cancel") Cancel
+                    .control-group
+                      label.control-label(for='tweet')
+                      br
+                      .controls
+                        textarea(type='text', class="form-control", name="body",
+                          placeholder='Enter your tweet here',maxlength='140')=tweet.body
+                    br
+                    .form-actions
+                      button.btn.btn-primary(type='submit') Publish Tweet
+                      &nbsp;
+                      a.btn(href='/tweets', title="cancel") Cancel
 
-        .modal-footer
-          p Hope you enjoy it!
-
+            .modal-footer
+              p Hope you enjoy it!

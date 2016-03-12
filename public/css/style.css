@@ -1,5 +1,4 @@
 body {
-  font-family: verdana;
   font-size: 13px;
   background-image: url('../img/space-header.jpg');
   background-size: cover;
@@ -125,4 +124,8 @@ h1, .icon-twitter {
 
 header.navbar-static-top {
   margin-bottom: 30px;
+}
+
+.modal-content {
+  padding: 6px;
 }
