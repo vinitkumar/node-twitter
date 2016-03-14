@@ -1,6 +1,19 @@
 var Mongoose = require('mongoose');
 var Tweet = Mongoose.model('Tweet');
 var User = Mongoose.model('User');
+var Analytics = Mongoose.model('Analytics');
+var _ = require('underscore');
+
+
+function logAnalytics(req) {
+  var url = req.protocol + '://' + req.get('host') + req.originalUrl;
+  var analytics = new Analytics({'ip': req.ip, 'user': req.user, 'url': url});
+  analytics.save(function (err) {
+    if (err) {
+      console.log(err);
+    }
+  });
+}
 
 exports.signin = function(req, res) {};
 
@@ -23,6 +36,7 @@ exports.signup = function(req, res) {
 };
 
 exports.logout = function(req, res) {
+  logAnalytics(req);
   req.logout();
   res.redirect('/login');
 };
@@ -32,6 +46,7 @@ exports.session = function(req, res) {
 };
 
 exports.create = function(req, res, next) {
+  logAnalytics(req);
   var user = new User(req.body);
   user.provider = 'local';
   user.save(function(err) {
@@ -48,6 +63,7 @@ exports.create = function(req, res, next) {
 };
 
 exports.list = function(req, res) {
+  logAnalytics(req);
   var page = (req.param('page') > 0 ? req.param('page') : 1) - 1;
   var perPage = 5;
   var options = {
@@ -74,6 +90,7 @@ exports.list = function(req, res) {
 };
 
 exports.show = function(req, res) {
+  logAnalytics(req);
   var user = req.profile;
   user_id = user._id;
   userId = user_id.toString();
@@ -88,6 +105,7 @@ exports.show = function(req, res) {
 };
 
 exports.user = function(req, res, next, id) {
+  logAnalytics(req);
   User
     .findOne({_id: id})
     .exec(function(err, user) {
