@@ -19,6 +19,12 @@ module.exports = function (app, passport, auth) {
   app.get('/auth/twitter', passport.authenticate('twitter', { failureRedirect: '/login' }), users.signin);
   app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/', failureRedirect: '/login' }));
 
+  /**
+   * API relate code
+   */
+  var apiv1 = require('../app/controllers/apiv1');
+  app.get('/apiv1/tweets', apiv1.tweetList);
+  app.get('/apiv1/users', apiv1.usersList);
 
   app.param('userId', users.user);
 

@@ -123,6 +123,16 @@ TweetSchema.statics = {
       .skip(options.perPage * options.page)
       .exec(cb);
   },
+  // List tweets
+  limitedList: function(options, cb) {
+    var criteria = options.criteria || {};
+    this.find(criteria)
+      .populate('user', 'name username')
+      .sort({'createdAt': -1})
+      .limit(options.perPage)
+      .skip(options.perPage * options.page)
+      .exec(cb);
+  },
   // Tweets of User
   userTweets: function(id, cb) {
     this.find({"user": ObjectId(id)})

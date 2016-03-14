@@ -79,14 +79,12 @@ exports.show = function(req, res) {
   userId = user_id.toString();
 
   Tweet.find({'user': userId }, function (err, tweets) {
-     res.render('users/show', {
+    res.render('users/show', {
       title:  'Tweets from ' + user.name,
-      user: user, 
+      user: user,
       tweets: tweets,
     });
    });
-  
-
 };
 
 exports.user = function(req, res, next, id) {
