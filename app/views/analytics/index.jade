@@ -1,0 +1,20 @@
+extends ../layouts/default
+
+block content
+  .row.analytics-container
+    table.table.table-bordered
+      thead
+        tr
+          th #
+          th User
+          th IP
+          th URL
+      tbody
+        each analytic in analytics
+          tr
+            - if (analytic.user != null && analytic.url != null)
+              th(scope='row') 1
+              td #{analytic.user.name}
+              td #{analytic.ip}
+              td #{analytic.url}
+          
