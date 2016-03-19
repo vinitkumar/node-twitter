@@ -17,4 +17,8 @@ block content
               td #{analytic.user.name}
               td #{analytic.ip}
               td #{analytic.url}
-          
+
+
+  - if (pages > 1)
+    ul.pagination
+      != createPagination(pages, page)
