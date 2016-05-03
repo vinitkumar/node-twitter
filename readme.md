@@ -2,7 +2,7 @@
 
 Node twitter is an experimental twitter clone written in Node.js and MongoDB.
 The purpose of this project is to test and experiment with clean architecture and
-replicate the social media experience.
+replicate the social media experience that twitter provides.
 
 ## Installation and Running
 You must have Node, npm and MongoDB installed.
