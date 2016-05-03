@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var Analytics = mongoose.model('Analytics');
 
 exports.index = function(req, res) {
-  // TODO: add pagination
   var page = (req.param('page') > 0 ? req.param('page') : 1) - 1;
   var perPage = 10;
   var options =  {
