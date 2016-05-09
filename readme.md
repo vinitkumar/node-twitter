@@ -21,7 +21,7 @@ that's on `develop` can break or have bugs.
 
 ## Contributing
 If you wish to contribute to the project, please send me a PR with a feature/fix, I will try and review
-and get back to you asap. If you find any bugs or feature requests, please open a ticket for it with proper
+and get back to you as soon as possible. If you find any bugs or feature requests, please open a ticket for it with proper
 description.
 
 ### Donations:
