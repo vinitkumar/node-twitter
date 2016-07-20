@@ -73,21 +73,19 @@ TweetSchema.methods = {
     }, 'article');
   },
   addComment: function(user, comment, cb) {
-    if (user.username) {
-      this.comments.push({
-        body: comment.body,
-        user: user._id,
-        commenterName: user.username
-      });
-      console.log(user);
-      this.save(cb);
-    } else {
+    if (user.name) {
       this.comments.push({
         body: comment.body,
         user: user._id,
         commenterName: user.name
       });
-      console.log(user);
+      this.save(cb);
+    } else {
+      this.comments.push({
+        body: comment.body,
+        user: user._id,
+        commenterName: user.username
+      });
       this.save(cb);
     }
   },
