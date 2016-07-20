@@ -7,7 +7,16 @@ var _ = require('underscore');
 
 function logAnalytics(req) {
   var url = req.protocol + '://' + req.get('host') + req.originalUrl;
-  var analytics = new Analytics({'ip': req.ip, 'user': req.user, 'url': url});
+  var crude_ip_array = req.ip.split(':')
+  var ipArrayLength = crude_ip_array.length;
+  // cleanup IP to remove unwanted characters
+  var cleanIp = crude_ip_array[ipArrayLength - 1];
+  var analytics = new Analytics(
+      {
+        'ip': cleanIp,
+        'user': req.user,
+        'url': url
+  });
   analytics.save(function (err) {
     if (err) {
       console.log(err);
