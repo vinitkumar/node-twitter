@@ -7,24 +7,23 @@ var _ = require('underscore');
 
 function logAnalytics(req) {
   var url = req.protocol + '://' + req.get('host') + req.originalUrl;
-  console.log(req.ip);
   var crude_ip_array = req.ip.split(':')
-  console.log(crude_ip_array);
   var ipArrayLength = crude_ip_array.length;
   // cleanup IP to remove unwanted characters
   var cleanIp = crude_ip_array[ipArrayLength - 1];
-  console.log('ip', cleanIp)
-  var analytics = new Analytics(
-      {
-        'ip': cleanIp,
-        'user': req.user,
-        'url': url
-  });
-  analytics.save(function (err) {
-    if (err) {
-      console.log(err);
-    }
-  });
+  if (req.get('host').split(':')[0] !== 'localhost') {
+    var analytics = new Analytics(
+        {
+          'ip': cleanIp,
+          'user': req.user,
+          'url': url
+    });
+    analytics.save(function (err) {
+      if (err) {
+        console.log(err);
+      }
+    });
+  }
 }
 
 exports.tweet = function(req, res, next, id) {
