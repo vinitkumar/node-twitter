@@ -4,7 +4,8 @@ var Schema = mongoose.Schema;
 var AnalyticsSchema = new Schema({
   ip: String,
   user: {type: Schema.ObjectId, ref: 'User'},
-  url: String
+  url: String,
+  createdAt: {type: Date, default: Date.now}
 });
 
 AnalyticsSchema.statics = {
