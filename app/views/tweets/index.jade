@@ -88,7 +88,7 @@ block content
           div
             - var name = analytic.user.name ? analytic.user.name : analytic.user.username
             a(href="/users/"+analytic.user._id)= name
-              span   #{formatDate(analytic.createdAt)}
+              span   #{formatDate(analytic.createdAt, "%b %d, %Y at %I:%M %p")}
     - if (pages > 1)
       ul.pagination
         != createPagination(pages, page)
