@@ -12,7 +12,7 @@ AnalyticsSchema.statics = {
   list: function(options, cb) {
     var criteria = options.criteria || {};
     this.find(criteria)
-      .populate('user', 'name provider')
+      .populate('user', 'name username provider')
       .sort({'createdAt': -1})
       .limit(options.perPage)
       .skip(options.perPage * options.page)

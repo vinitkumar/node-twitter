@@ -131,11 +131,14 @@ exports.index = function(req, res) {
       if (err) {
         return res.render('500');
       }
-      res.render('tweets/index', {
-        title: 'List of Tweets',
-        tweets: tweets,
-        page: page + 1,
-        pages: Math.ceil(count / perPage)
+      Analytics.list({perPage: 15}, function (err, analytics) {
+        res.render('tweets/index', {
+          title: 'List of Tweets',
+          tweets: tweets,
+          analytics: analytics,
+          page: page + 1,
+          pages: Math.ceil(count / perPage)
+        });
       });
     });
   });
