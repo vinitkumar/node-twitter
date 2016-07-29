@@ -1,8 +1,7 @@
 // ## Tweet Controller
-var mongoose = require('mongoose');
-var Tweet = mongoose.model('Tweet');
-var User = mongoose.model('User');
-var _ = require('underscore');
+const mongoose = require('mongoose');
+const Tweet = mongoose.model('Tweet');
+const User = mongoose.model('User');
 
 exports.tweetList = function(req, res) {
   var page = (req.param('page') > 0 ? req.param('page') : 1) - 1;

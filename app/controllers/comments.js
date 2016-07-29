@@ -1,4 +1,4 @@
-var utils = require('../../lib/utils');
+const utils = require('../../lib/utils');
 
 exports.load = function(req, res, next, id) {
   var tweet = req.tweet;

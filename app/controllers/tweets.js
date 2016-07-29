@@ -1,24 +1,23 @@
 // ## Tweet Controller
-var mongoose = require('mongoose');
-var Tweet = mongoose.model('Tweet');
-var Analytics = mongoose.model('Analytics');
-var _ = require('underscore');
-
+const mongoose = require('mongoose');
+const Tweet = mongoose.model('Tweet');
+const Analytics = mongoose.model('Analytics');
+const _ = require('underscore');
 
 function logAnalytics(req) {
   var url = req.protocol + '://' + req.get('host') + req.originalUrl;
-  var crude_ip_array = req.ip.split(':')
-  var ipArrayLength = crude_ip_array.length;
+  var crudeIpArray = req.ip.split(':');
+  var ipArrayLength = crudeIpArray.length;
   // cleanup IP to remove unwanted characters
-  var cleanIp = crude_ip_array[ipArrayLength - 1];
+  var cleanIp = crudeIpArray[ipArrayLength - 1];
   if (req.get('host').split(':')[0] !== 'localhost') {
     var analytics = new Analytics(
-        {
-          'ip': cleanIp,
-          'user': req.user,
-          'url': url
-    });
-    analytics.save(function (err) {
+      {
+        ip: cleanIp,
+        user: req.user,
+        url: url
+      });
+    analytics.save(function(err) {
       if (err) {
         console.log(err);
       }

@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
-var Analytics = mongoose.model('Analytics');
+const mongoose = require('mongoose');
+const Analytics = mongoose.model('Analytics');
 
 exports.index = function(req, res) {
   var page = (req.param('page') > 0 ? req.param('page') : 1) - 1;
@@ -10,7 +10,7 @@ exports.index = function(req, res) {
   };
   Analytics.list(options, function(err, analytics) {
     if (err) {
-      return res.render('500')
+      return res.render('500');
     }
     Analytics.count().exec(function (err, count) {
       res.render('analytics/index', {
