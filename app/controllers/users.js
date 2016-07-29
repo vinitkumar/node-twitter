@@ -1,14 +1,24 @@
-var Mongoose = require('mongoose');
-var Tweet = Mongoose.model('Tweet');
-var User = Mongoose.model('User');
-var Analytics = Mongoose.model('Analytics');
-var _ = require('underscore');
+const Mongoose = require('mongoose');
+const Tweet = Mongoose.model('Tweet');
+const User = Mongoose.model('User');
+const Analytics = Mongoose.model('Analytics');
 
-
+/**
+ * logAnalytics - Gets all the request and feeds to our analytics
+ * sysyem
+ *
+ * @param  {type} req Request
+ */
 function logAnalytics(req) {
   var url = req.protocol + '://' + req.get('host') + req.originalUrl;
-  var analytics = new Analytics({'ip': req.ip, 'user': req.user, 'url': url});
-  analytics.save(function (err) {
+  var analytics = new Analytics(
+    {
+      ip: req.ip,
+      user: req.user,
+      url: url
+    }
+  );
+  analytics.save(function(err) {
     if (err) {
       console.log(err);
     }
@@ -92,16 +102,19 @@ exports.list = function(req, res) {
 exports.show = function(req, res) {
   logAnalytics(req);
   var user = req.profile;
-  user_id = user._id;
-  userId = user_id.toString();
+  var reqUserId = user._id;
+  var userId = reqUserId.toString();
 
-  Tweet.find({'user': userId }, function (err, tweets) {
+  Tweet.find({user: userId}, function(err, tweets) {
+    if (err) {
+      return res.render('500');
+    }
     res.render('users/show', {
-      title:  'Tweets from ' + user.name,
+      title: 'Tweets from ' + user.name,
       user: user,
-      tweets: tweets,
+      tweets: tweets
     });
-   });
+  });
 };
 
 exports.user = function(req, res, next, id) {
