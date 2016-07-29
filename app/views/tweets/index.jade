@@ -8,7 +8,7 @@ block newtweet
 
 block content
   .row.twitter-container
-    .col-lg-3 
+    .col-lg-3
       .logged-user
         - if (req.user.provider == 'facebook')
           img(class='profile-image', src='http://graph.facebook.com/'+req.user.facebook.id+'/picture')
@@ -22,7 +22,7 @@ block content
         ul
           li.links
             a(href="http://vinitkumar.me") Author
-          li.links 
+          li.links
             a(href="") License
           li.links
             a(href="https://github.com/vinitkumar/node-twitter/issues/new") File a Bug
@@ -80,12 +80,15 @@ block content
               include ../comments/comment
             hr
             include ../comments/form
-    
+
     .col-lg-3
       .well
-        h3 Node Twitter Users
-        a(href="/userslist") Users List
-
+        h3 Recently Active Users
+        each analytic in analytics
+          div
+            - var name = analytic.user.name ? analytic.user.name : analytic.user.username
+            a(href="/users/"+analytic.user._id)= name
+              span   #{formatDate(analytic.createdAt)}
     - if (pages > 1)
       ul.pagination
         != createPagination(pages, page)
