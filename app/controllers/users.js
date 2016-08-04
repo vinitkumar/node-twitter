@@ -18,52 +18,52 @@ function logAnalytics(req) {
       url: url
     }
   );
-  analytics.save(function(err) {
+  analytics.save(err => {
     if (err) {
       console.log(err);
     }
   });
 }
 
-exports.signin = function(req, res) {};
+exports.signin = (req, res) => {};
 
-exports.authCallback = function(req, res) {
+exports.authCallback = (req, res) => {
   res.redirect('/');
 };
 
-exports.login = function(req, res) {
+exports.login = (req, res) => {
   res.render('users/login', {
     title: 'Login',
     message: req.flash('error')
   });
 };
 
-exports.signup = function(req, res) {
+exports.signup = (req, res) => {
   res.render('users/signup', {
     title: 'Sign up',
     user: new User()
   });
 };
 
-exports.logout = function(req, res) {
+exports.logout = (req, res) => {
   logAnalytics(req);
   req.logout();
   res.redirect('/login');
 };
 
-exports.session = function(req, res) {
+exports.session = (req, res) => {
   res.redirect('/');
 };
 
-exports.create = function(req, res, next) {
+exports.create = (req, res, next) => {
   logAnalytics(req);
   var user = new User(req.body);
   user.provider = 'local';
-  user.save(function(err) {
+  user.save(err => {
     if (err) {
       return res.render('users/signup', {errors: err.errors, user: user});
     }
-    req.logIn(user, function(err) {
+    req.logIn(user, err => {
       if (err) {
         return next(err);
       }
@@ -72,7 +72,7 @@ exports.create = function(req, res, next) {
   });
 };
 
-exports.list = function(req, res) {
+exports.list = (req, res) => {
   logAnalytics(req);
   var page = (req.param('page') > 0 ? req.param('page') : 1) - 1;
   var perPage = 5;
@@ -80,11 +80,11 @@ exports.list = function(req, res) {
     perPage: perPage,
     page: page
   };
-  return User.list(options, function(err, users) {
+  return User.list(options, (err, users) => {
     if (err) {
       return res.render('500');
     }
-    User.count().exec(function(err, count) {
+    User.count().exec((err, count) => {
       if (err) {
         return res.render('500');
       }
@@ -99,13 +99,13 @@ exports.list = function(req, res) {
   });
 };
 
-exports.show = function(req, res) {
+exports.show = (req, res) => {
   logAnalytics(req);
   var user = req.profile;
   var reqUserId = user._id;
   var userId = reqUserId.toString();
 
-  Tweet.find({user: userId}, function(err, tweets) {
+  Tweet.find({user: userId}, (err, tweets) => {
     if (err) {
       return res.render('500');
     }
@@ -117,11 +117,11 @@ exports.show = function(req, res) {
   });
 };
 
-exports.user = function(req, res, next, id) {
+exports.user = (req, res, next, id) => {
   logAnalytics(req);
   User
     .findOne({_id: id})
-    .exec(function(err, user) {
+    .exec((err, user) => {
       if (err) {
         return next(err);
       }
