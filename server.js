@@ -10,7 +10,7 @@ var env = process.env.NODE_ENV || 'development',
 mongoose.connect(config.db);
 
 var models_path = __dirname+'/app/models';
-fs.readdirSync(models_path).forEach(function (file) {
+fs.readdirSync(models_path).forEach(file => {
   require(models_path+'/'+file);
 });
 

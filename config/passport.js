@@ -4,16 +4,16 @@ var LocalStrategy = require('passport-local').Strategy;
 var GitHubStrategy = require('passport-github').Strategy;
 var User = mongoose.model('User');
 
-module.exports = function(passport, config) {
+module.exports = (passport, config) => {
   // require('./initializer')
 
   // serialize sessions
-  passport.serializeUser(function(user, done) {
+  passport.serializeUser((user, done) => {
     done(null, user.id);
   });
 
-  passport.deserializeUser(function(id, done) {
-    User.findOne({_id: id}, function(err, user) {
+  passport.deserializeUser((id, done) => {
+    User.findOne({_id: id}, (err, user) => {
       done(err, user);
     });
   });
@@ -23,8 +23,8 @@ module.exports = function(passport, config) {
     usernameField: 'email',
     passwordField: 'password'
   },
-    function(email, password, done) {
-      User.findOne({email: email}, function(err, user) {
+    (email, password, done) => {
+      User.findOne({email: email}, (err, user) => {
         if (err) {
           return done(err);
         }
@@ -46,8 +46,8 @@ module.exports = function(passport, config) {
       clientSecret: config.github.clientSecret,
       callbackURL: config.github.callbackURL
     },
-    function(accessToken, refreshToken, profile, done) {
-      User.findOne({'github.id': profile.id }, function(err, user) {
+    (accessToken, refreshToken, profile, done) => {
+      User.findOne({'github.id': profile.id }, (err, user) => {
         if (!user) {
           user = new User({
               name: profile.displayName,
@@ -56,7 +56,7 @@ module.exports = function(passport, config) {
               provider: 'github',
               github: profile._json
           });
-          user.save(function (err) {
+          user.save(err => {
             if (err) console.log(err);
             return done(err, user);
           });
