@@ -1,8 +1,8 @@
 // ### Create Favorite
-exports.create = function(req, res) {
+exports.create = (req, res) => {
   var tweet = req.tweet;
   tweet._favorites = req.user;
-  tweet.save(function(err) {
+  tweet.save(err => {
     if (err) {
       return res.send(400);
     }
@@ -11,11 +11,11 @@ exports.create = function(req, res) {
 };
 
 // ### Delete Favorite
-exports.destroy = function(req, res) {
+exports.destroy = (req, res) => {
   var tweet = req.tweet;
 
   tweet._favorites = req.user;
-  tweet.save(function(err) {
+  tweet.save(err => {
     if (err) {
       return res.send(400);
     }

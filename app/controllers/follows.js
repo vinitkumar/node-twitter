@@ -1,8 +1,8 @@
-exports.follow = function(req, res) {
+exports.follow = (req, res) => {
   var user = req.user;
   var id = req.url.split('/')[2];
   user.follow(id);
-  user.save(function(err) {
+  user.save(err => {
     if (err) {
       res.send(400);
     }

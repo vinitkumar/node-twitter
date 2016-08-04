@@ -30,9 +30,7 @@ UserSchema
     return this._password;
   });
 
-var validatePresenceOf = function(value) {
-  return value && value.length;
-};
+var validatePresenceOf = value => value && value.length;
 
 UserSchema.path('name').validate(function(name) {
   if (authTypes.indexOf(this.provider) !== -1) {

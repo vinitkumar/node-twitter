@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Tweet = mongoose.model('Tweet');
 const User = mongoose.model('User');
 
-exports.tweetList = function(req, res) {
+exports.tweetList = (req, res) => {
   var page = (req.param('page') > 0 ? req.param('page') : 1) - 1;
   var perPage = 15;
   var options = {
@@ -11,11 +11,11 @@ exports.tweetList = function(req, res) {
     page: page
   };
 
-  Tweet.limitedList(options, function(err, tweets) {
+  Tweet.limitedList(options, (err, tweets) => {
     if (err) {
       return res.render('500');
     }
-    Tweet.count().exec(function(err, count) {
+    Tweet.count().exec((err, count) => {
       if (err) {
         return res.render('500');
       }
@@ -24,7 +24,7 @@ exports.tweetList = function(req, res) {
   });
 };
 
-exports.usersList = function (req, res) {
+exports.usersList = (req, res) => {
   var page = (req.param('page') > 0 ? req.param('page') : 1) - 1;
   var perPage = 15;
   var options = {
@@ -32,11 +32,11 @@ exports.usersList = function (req, res) {
     page: page
   };
 
-  User.list(options, function(err, users) {
+  User.list(options, (err, users) => {
     if (err) {
       return res.render('500');
     }
-    User.count().exec(function(err, count) {
+    User.count().exec((err, count) => {
       if (err) {
         return res.render('500');
       }

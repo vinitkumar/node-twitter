@@ -17,7 +17,7 @@ function logAnalytics(req) {
         user: req.user,
         url: url
       });
-    analytics.save(function(err) {
+    analytics.save(err => {
       if (err) {
         console.log(err);
       }
@@ -25,9 +25,9 @@ function logAnalytics(req) {
   }
 }
 
-exports.tweet = function(req, res, next, id) {
+exports.tweet = (req, res, next, id) => {
   logAnalytics(req);
-  Tweet.load(id, function(err, tweet) {
+  Tweet.load(id, (err, tweet) => {
     if (err) {
       return next(err);
     }
@@ -40,7 +40,7 @@ exports.tweet = function(req, res, next, id) {
 };
 
 // ### New Tweet
-exports.new = function(req, res) {
+exports.new = (req, res) => {
   logAnalytics(req);
   res.render('tweets/new', {
     title: 'New Tweet',
@@ -49,11 +49,11 @@ exports.new = function(req, res) {
 };
 
 // ### Create a Tweet
-exports.create = function(req, res) {
+exports.create = (req, res) => {
   logAnalytics(req);
   var tweet = new Tweet(req.body);
   tweet.user = req.user;
-  tweet.uploadAndSave(req.files.image, function(err) {
+  tweet.uploadAndSave(req.files.image, err => {
     if (err) {
       res.render('tweets/new', {
         title: 'New Tweet',
@@ -67,7 +67,7 @@ exports.create = function(req, res) {
 };
 
 // ### Edit Tweet
-exports.edit = function(req, res) {
+exports.edit = (req, res) => {
   logAnalytics(req);
   res.render('tweets/edit', {
     title: 'Edit' + req.tweet.title,
@@ -76,7 +76,7 @@ exports.edit = function(req, res) {
 };
 
 // ### Show Tweet
-exports.show = function(req, res) {
+exports.show = (req, res) => {
   logAnalytics(req);
   res.render('tweets/show', {
     title: req.tweet.title,
@@ -85,11 +85,11 @@ exports.show = function(req, res) {
 };
 
 // ### Update a tweet
-exports.update = function(req, res) {
+exports.update = (req, res) => {
   logAnalytics(req);
   var tweet = req.tweet;
   tweet = _.extend(tweet, req.body);
-  tweet.uploadAndSave(req.files.image, function(err) {
+  tweet.uploadAndSave(req.files.image, err => {
     if (err) {
       res.render('tweets/edit', {
         title: 'Edit Tweet',
@@ -103,10 +103,10 @@ exports.update = function(req, res) {
 };
 
 // ### Delete a tweet
-exports.destroy = function(req, res) {
+exports.destroy = (req, res) => {
   logAnalytics(req);
   var tweet = req.tweet;
-  tweet.remove(function(err) {
+  tweet.remove(err => {
     if (err) {
       return res.render('500');
     }
@@ -114,7 +114,7 @@ exports.destroy = function(req, res) {
   });
 };
 
-exports.index = function(req, res) {
+exports.index = (req, res) => {
   logAnalytics(req);
   var page = (req.param('page') > 0 ? req.param('page') : 1) - 1;
   var perPage = 15;
@@ -123,15 +123,15 @@ exports.index = function(req, res) {
     page: page
   };
 
-  Tweet.list(options, function(err, tweets) {
+  Tweet.list(options, (err, tweets) => {
     if (err) {
       return res.render('500');
     }
-    Tweet.count().exec(function(err, count) {
+    Tweet.count().exec((err, count) => {
       if (err) {
         return res.render('500');
       }
-      Analytics.list({perPage: 15}, function (err, analytics) {
+      Analytics.list({perPage: 15}, (err, analytics) => {
         res.render('tweets/index', {
           title: 'List of Tweets',
           tweets: tweets,
