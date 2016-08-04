@@ -3,13 +3,9 @@ var Schema = mongoose.Schema;
 var utils = require('../../lib/utils');
 
 //  Getters and Setters
-var getTags = function(tags) {
-  return tags.join(',');
-};
+var getTags = tags => tags.join(',');
 
-var setTags = function(tags) {
-  return tags.split(',');
-};
+var setTags = tags => tags.split(',');
 
 // Tweet Schema
 var TweetSchema = new Schema({
@@ -40,9 +36,7 @@ TweetSchema.pre('save', function(next) {
 });
 
 // Validations in the schema
-TweetSchema.path('body').validate(function(body) {
-  return body.length > 0;
-}, 'Tweet body cannot be blank');
+TweetSchema.path('body').validate(body => body.length > 0, 'Tweet body cannot be blank');
 
 TweetSchema.virtual('_favorites').set(function(user) {
   if (this.favorites.indexOf(user._id) === -1) {
@@ -60,7 +54,7 @@ TweetSchema.methods = {
     var imager = new Imager(imagerConfig, 'S3');
     var self = this;
 
-    imager.upload(images, function(err, cdnUri, files) {
+    imager.upload(images, (err, cdnUri, files) => {
       if (err) {
         return cb(err);
       }
