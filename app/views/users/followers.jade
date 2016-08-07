@@ -1,0 +1,11 @@
+extends ../layouts/default
+
+block content
+  .well
+    h3 #{title}
+    if followers
+      each follower in followers
+          .well
+          a.btn(href="#{follower}") follows
+    else
+      h4 Seems like there is no one following you.
