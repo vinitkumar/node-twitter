@@ -22,7 +22,7 @@ block content
         - if (user.provider == 'facebook')
            img(class="profile-image", src='http://graph.facebook.com/'+user.facebook.id+'/picture')
            i.icon-facebook.icon-3x
-           ul 
+           ul
             li #{user.name}
             li Facebook link: #{user.facebook.link}
         - if (user.provider == 'github')
@@ -33,9 +33,9 @@ block content
               ul.list-unstyled
                 li followers on github: #{user.github.followers}
                 li public repos: #{user.github.public_repos}
-                li ntwitter followers: 
+                li ntwitter followers:
                   a(href="/users/" + user._id + "/followers") #{followerCount}
-                li ntwitter following: 
+                li ntwitter following:
                   a(href="/users/" + user._id + "/following") #{followingCount}
 
         if (user._id != req.user.id)

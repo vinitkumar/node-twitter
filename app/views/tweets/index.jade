@@ -93,9 +93,11 @@ block content
         h3 Recently Active Users
         each analytic in analytics
           div
-            - var name = analytic.user.name ? analytic.user.name : analytic.user.username
-            a(href="/users/"+analytic.user._id)= name
-              span   #{formatDate(analytic.createdAt, "%b %d, %Y at %I:%M %p")}
+            if analytic.user
+              if analytic.user.name
+                - var name = analytic.user.name ? analytic.user.name : analytic.user.username
+                a(href="/users/"+analytic.user._id)= name
+                  span   #{formatDate(analytic.createdAt, "%b %d, %Y at %I:%M %p")}
     - if (pages > 1)
       ul.pagination
         != createPagination(pages, page)
