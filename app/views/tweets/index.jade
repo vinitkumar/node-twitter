@@ -17,6 +17,13 @@ block content
         - if (req.user.provider == 'twitter')
           img(class='profile-image', src="#{req.user.twitter.profile_image_url}")
         h4 #{req.user.name}
+        ul.list-unstyled
+          li followers on github: #{req.user.github.followers}
+          li public repos: #{req.user.github.public_repos}
+          li ntwitter followers: 
+            a(href="/users/" + req.user._id + "/followers") #{followerCount}
+          li ntwitter following: 
+            a(href="/users/" + req.user._id + "/following") #{followingCount}
 
       .useful-links
         ul

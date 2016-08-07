@@ -1,0 +1,11 @@
+extends ../layouts/default
+
+block content
+  .well
+    h3 #{title}
+    if following
+      each user in following
+          .well
+              a.btn(href="/users/" + user._id)= user.username
+    else
+      h4 Sorry, Seems you have not followed anyone. Consider following people from their profiles

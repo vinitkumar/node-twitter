@@ -109,10 +109,14 @@ exports.show = (req, res) => {
     if (err) {
       return res.render('500');
     }
+    let followingCount = user.following.length;
+    let followerCount = user.followers.length;
     res.render('users/show', {
       title: 'Tweets from ' + user.name,
       user: user,
-      tweets: tweets
+      tweets: tweets,
+      followerCount: followerCount,
+      followingCount: followingCount
     });
   });
 };
@@ -131,4 +135,38 @@ exports.user = (req, res, next, id) => {
       req.profile = user;
       next();
     });
+};
+
+
+exports.showFollowers = (req, res) => {
+  let user = req.profile;
+  let followers = user.followers;
+  let userFollowers = User.find({_id: {$in: followers}})
+                          .populate('user', '_id name username');
+  userFollowers.exec((err, users) => {
+    if (err) {
+      return res.render('500');
+    }
+    res.render('users/followers', {
+      title: 'Followers of ' + user.name,
+      followers: users
+    });
+  });
+};
+
+
+exports.showFollowing = (req, res) => {
+  let user = req.profile;
+  let following = user.following;
+  let userFollowing = User.find({_id: {$in: following}})
+                          .populate('user', '_id name username');
+  userFollowing.exec((err, users) => {
+    if (err) {
+      res.render('500');
+    }
+    res.render('users/following', {
+      title: 'Followed by ' + user.name,
+      following: users
+    });
+  });
 };

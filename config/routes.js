@@ -4,14 +4,18 @@ var async = require('async');
 
 
 module.exports = (app, passport, auth) => {
-  var users = require('../app/controllers/users');
+  const users = require('../app/controllers/users');
   app.get('/login', users.login);
-  app.get('/signup',users.signup);
+  app.get('/signup', users.signup);
   app.get('/logout', users.logout);
   app.post('/users', users.create);
   app.get('/userslist', users.list);
   app.post('/users/sessions', passport.authenticate('local', {failureRedirect: '/login', failureFlash: 'Invalid email or password'}), users.session );
   app.get('/users/:userId', users.show);
+  app.get('/users/:userId/followers', users.showFollowers);
+  app.get('/users/:userId/following', users.showFollowing);
+
+
   app.get('/auth/facebook', passport.authenticate('facebook',{scope: ['email', 'user_about_me'], failureRedirect: '/login' }), users.signin);
   app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), users.authCallback);
   app.get('/auth/github', passport.authenticate('github', { failureRedirect: '/login' }), users.signin);
@@ -31,7 +35,7 @@ module.exports = (app, passport, auth) => {
   */
   var analytics = require('../app/controllers/analytics');
   app.get('/analytics', analytics.index);
-  
+
   app.param('userId', users.user);
 
   //tweets routes
@@ -56,7 +60,7 @@ module.exports = (app, passport, auth) => {
   /**
    * Favorite routes
    */
-   var favorites = require('../app/controllers/favorites');
+   const favorites = require('../app/controllers/favorites');
 
    app.post('/tweets/:id/favorites', auth.requiresLogin, favorites.create);
    app.del('/tweets/:id/favorites', auth.requiresLogin, favorites.destroy);
@@ -64,7 +68,7 @@ module.exports = (app, passport, auth) => {
    /**
     * Follow
     */
-   var follows = require('../app/controllers/follows');
+   const follows = require('../app/controllers/follows');
 
    app.post('/users/:userId/follow', auth.requiresLogin, follows.follow);
 };

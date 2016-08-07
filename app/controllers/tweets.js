@@ -131,13 +131,20 @@ exports.index = (req, res) => {
       if (err) {
         return res.render('500');
       }
+      let followingCount = req.user.following.length;
+      let followerCount = req.user.followers.length;
       Analytics.list({perPage: 15}, (err, analytics) => {
+        if (err) {
+          res.render('500');
+        }
         res.render('tweets/index', {
           title: 'List of Tweets',
           tweets: tweets,
           analytics: analytics,
           page: page + 1,
-          pages: Math.ceil(count / perPage)
+          pages: Math.ceil(count / perPage),
+          followerCount: followerCount,
+          followingCount: followingCount
         });
       });
     });
