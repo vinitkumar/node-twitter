@@ -23,7 +23,7 @@ module.exports = {
     github: {
       clientID: '48f4a99ce717f5531ff2',
       clientSecret: '26b13bec1117b421a5ca1b81b0fea8f77e59146e',
-      callbackURL: 'http://tatwitter.herokuapp.com/auth/github/callback'
+      callbackURL: 'http://intense-island-53686.herokuapp.com/auth/github/callback'
     }
   },
   production: {
@@ -35,7 +35,7 @@ module.exports = {
     github: {
       clientID: '48f4a99ce717f5531ff2',
       clientSecret: '26b13bec1117b421a5ca1b81b0fea8f77e59146e',
-      callbackURL: 'http://tatwitter.herokuapp.com/auth/github/callback'
+      callbackURL: 'http://intense-island-53686.herokuapp.com/auth/github/callback'
     }
   }
 };
