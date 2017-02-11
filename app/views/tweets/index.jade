@@ -61,27 +61,29 @@ block content
             .row
               .col-lg-6.pull-left
                 h5
-                  - var name = tweet.user.name ? tweet.user.name : tweet.user.username
-                  - if (tweet.user.provider == 'facebook')
-                    img(class='tweet-image', src='http://graph.facebook.com/'+tweet.user.facebook.id+'/picture')
-                  - if (tweet.user.provider == 'github')
-                    img(class='tweet-image', src=tweet.user.github.avatar_url)
-                  - if (tweet.user.provider == 'twitter')
-                    img(class='tweet-image', src="#{tweet.user.twitter.profile_image_url}")
-                  //- if (tweet.user.name)
-                  //-   a(href="/users/"+tweet.user._id)=tweet.user.name
-                  a(href="/users/"+tweet.user._id)= name
+                  if tweet.user
+                    - var name = tweet.user.name ? tweet.user.name : tweet.user.username
+                    - if (tweet.user.provider == 'facebook')
+                      img(class='tweet-image', src='http://graph.facebook.com/'+tweet.user.facebook.id+'/picture')
+                    - if (tweet.user.provider == 'github')
+                      img(class='tweet-image', src=tweet.user.github.avatar_url)
+                    - if (tweet.user.provider == 'twitter')
+                      img(class='tweet-image', src="#{tweet.user.twitter.profile_image_url}")
+                    //- if (tweet.user.name)
+                    //-   a(href="/users/"+tweet.user._id)=tweet.user.name
+                    a(href="/users/"+tweet.user._id)= name
               .col-lg-5.date
                 .pull-right
                   a(href="/tweets/"+tweet._id)= formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")
             p=tweet.body
             form.center.form-inline.confirm.settings-tweet(action="/tweets/"+tweet.id, method="post")
-              if (tweet.user._id == req.user.id)
-                 a.btn.btn-success.flat.edit(href='/tweets/'+tweet._id+'/edit', title="edit") Edit
-                 input(type="hidden", name="_method", value="DELETE")
-                 button.btn.flat(type="submit") delete
-               if (tweet.user._id != req.user.id)
-                 a.btn.btn-success(href="#", class="favorite", data-tweetId=tweet._id, title="favorite") Favorite
+              if tweet.user
+                if (tweet.user._id == req.user.id)
+                  a.btn.btn-success.flat.edit(href='/tweets/'+tweet._id+'/edit', title="edit") Edit
+                  input(type="hidden", name="_method", value="DELETE")
+                  button.btn.flat(type="submit") delete
+                if (tweet.user._id != req.user.id)
+                  a.btn.btn-success(href="#", class="favorite", data-tweetId=tweet._id, title="favorite") Favorite
           .comment
             each comment in tweet.comments
               include ../comments/comment
