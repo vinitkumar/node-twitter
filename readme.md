@@ -1,31 +1,59 @@
 # Node Twitter
 
-Node twitter is an experimental twitter clone written in Node.js and MongoDB.
-The purpose of this project is to test and experiment with clean architecture and
-replicate the social media experience that twitter provides.
+Node twitter is an effort to rewrite some of Twitters functionality using modern
+javascript based toolchain. It was mostly an effort to learn Node.js and trying to reverse
+engineer some of twitter's feature.
 
-## Installation and Running
-You must have Node, npm and MongoDB installed.
+## Prerequisites
+
+You would require Node, NPM and MongoDB installed:
+
 - [Node.js](http://nodejs.org)
 - [Mongodb](http://docs.mongodb.org/manual/installation/)
 
-The configuration part is in `config/config.js`. Please create your own
-github application and replace the token and keys.
+The configuration is in `config/config.js`. Please create your own
+github application [Github Developer Settings](https://github.com/settings/applications) and replace the token and keys.
 
-- [Github Developer](https://github.com/settings/applications)
 
-## Important
-I work on this project in my own free time so there could be more or less activity depending on how
-much time I have at hand. But I would try to keep the `master` pretty much crash free and deployable. Anything
-that's on `develop` can break or have bugs.
+```js
+var path = require('path'),
+    rootPath = path.normalize(__dirname + '/..');
+module.exports = {
+  production: {
+    db: '',
+    root: rootPath,
+    app: {
+      name: 'Node Twitter'
+    },
+    github: {
+      clientID: '',
+      clientSecret: '',
+      callbackURL: ''
+    }
+  }
+};
+```
 
-## Contributing
-If you wish to contribute to the project, please send me a PR with a feature/fix, I will try and review
-and get back to you as soon as possible. If you find any bugs or feature requests, please open a ticket for it with proper
-description.
+### Usage
 
-### Donations:
-If you enjoy using it, you can tip me here at https://gratipay.com/vinitkme/. Thanks! :)
+```sh
+# First install all the requirements.
+λ npm install
+# Now run the project
+λ ~/projects/js/node-twitter/ master npm start
+
+> nwitter@0.0.1-59 start /Users/vinitkumar/projects/js/node-twitter
+> node server.js
+
+Express app started on port 3000
+```
+
+## Author
+
+[![Vinit Kumar](https://avatars0.githubusercontent.com/u/537678?v=3&s=144)](https://vinitkumar.me)
+
+### Support:
+If you enjoy node-twitter, you can support the development here. https://gratipay.com/vinitkme/. :)
 
 ## LICENSE
 MIT
