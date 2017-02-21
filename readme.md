@@ -14,7 +14,6 @@ You would require Node, NPM and MongoDB installed:
 The configuration is in `config/config.js`. Please create your own
 github application [Github Developer Settings](https://github.com/settings/applications) and replace the token and keys.
 
-
 ```js
 var path = require('path'),
     rootPath = path.normalize(__dirname + '/..');
