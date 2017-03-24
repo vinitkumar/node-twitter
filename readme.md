@@ -52,6 +52,8 @@ Express app started on port 3000
 
 [![Vinit Kumar](https://avatars0.githubusercontent.com/u/537678?v=3&s=144)](https://vinitkumar.me)
 
+[Say Thanks](https://saythanks.io/to/vinitkumar)
+
 ### Support:
 If you enjoy node-twitter, you can support the development here. https://gratipay.com/vinitkme/. :)
 
