@@ -10,7 +10,7 @@
     "test": "make test"
   },
   "engines": {
-    "node": "6.3.1"
+    "node": "7.6.0"
   },
   "dependencies": {
     "async": "latest",
@@ -34,7 +34,6 @@
   },
   "devDependencies": {
     "ava": "latest",
-    "jest": "^19.0.2",
     "mocha": "^2.5.3",
     "nodemon": "latest",
     "should": "latest",

@@ -2,5 +2,5 @@ services:
   - mongodb
 language: node_js
 node_js:
-  - "4.2.4"
+  - "7.6.0"
 script: npm test
