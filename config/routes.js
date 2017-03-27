@@ -46,7 +46,7 @@ module.exports = (app, passport, auth) => {
   app.get('/tweets/:id', tweets.show);
   app.get('/tweets/:id/edit', auth.requiresLogin, auth.tweet.hasAuthorization, tweets.edit);
   app.put('/tweets/:id', auth.requiresLogin, auth.tweet.hasAuthorization, tweets.update);
-  app.del('/tweets/:id', auth.requiresLogin, auth.tweet.hasAuthorization, tweets.destroy);
+  app.delete('/tweets/:id', auth.requiresLogin, auth.tweet.hasAuthorization, tweets.destroy);
   app.param('id', tweets.tweet);
   //home route
   app.get('/', auth.requiresLogin, tweets.index );
@@ -55,7 +55,7 @@ module.exports = (app, passport, auth) => {
   var comments = require('../app/controllers/comments');
   app.post('/tweets/:id/comments', auth.requiresLogin, comments.create);
   app.get('/tweets/:id/comments', auth.requiresLogin, comments.create);
-  app.del('/tweets/:id/comments', auth.requiresLogin, comments.destroy);
+  app.delete('/tweets/:id/comments', auth.requiresLogin, comments.destroy);
 
   /**
    * Favorite routes
@@ -63,7 +63,7 @@ module.exports = (app, passport, auth) => {
    const favorites = require('../app/controllers/favorites');
 
    app.post('/tweets/:id/favorites', auth.requiresLogin, favorites.create);
-   app.del('/tweets/:id/favorites', auth.requiresLogin, favorites.destroy);
+   app.delete('/tweets/:id/favorites', auth.requiresLogin, favorites.destroy);
 
    /**
     * Follow
