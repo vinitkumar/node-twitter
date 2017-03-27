@@ -6,7 +6,8 @@
   "private": false,
   "author": "Vinit Kumar <vinit.kumar@changer.nl> (http://vinitkumar.me)",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "make test"
   },
   "engines": {
     "node": "6.3.1"
@@ -33,10 +34,11 @@
   },
   "devDependencies": {
     "ava": "latest",
-    "mocha": "^2.4.5",
+    "jest": "^19.0.2",
+    "mocha": "^2.5.3",
     "nodemon": "latest",
     "should": "latest",
-    "supertest": "latest"
+    "supertest": "^3.0.0"
   },
   "subdomain": "ntwitter"
 }

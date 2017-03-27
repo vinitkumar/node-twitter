@@ -3,3 +3,4 @@ services:
 language: node_js
 node_js:
   - "4.2.4"
+script: npm test
