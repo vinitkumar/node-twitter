@@ -32,3 +32,15 @@ describe('Test Login', function (done) {
     });
   });
 });
+
+describe('Test logout', function (done) {
+  it('logout should redirect because there is no active session', function (done) {
+    request(app)
+    .get('/logout')
+    .expect(302)
+    .end(function (err, res) {
+      if (err)  return done(err);
+      done();
+    });
+  });
+});

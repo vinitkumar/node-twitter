@@ -34,7 +34,6 @@
   },
   "devDependencies": {
     "ava": "latest",
-    "jest": "^19.0.2",
     "mocha": "^2.5.3",
     "nodemon": "latest",
     "should": "latest",
