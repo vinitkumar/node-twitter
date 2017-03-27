@@ -6,7 +6,8 @@
   "private": false,
   "author": "Vinit Kumar <vinit.kumar@changer.nl> (http://vinitkumar.me)",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "make test"
   },
   "engines": {
     "node": "6.3.1"
