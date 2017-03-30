@@ -5,17 +5,17 @@ const Analytics = Mongoose.model('Analytics');
 
 /**
  * logAnalytics - Gets all the request and feeds to our analytics
- * sysyem
+ * system
  *
  * @param  {type} req Request
  */
 function logAnalytics(req) {
-  var url = req.protocol + '://' + req.get('host') + req.originalUrl;
-  var analytics = new Analytics(
+  const url = req.protocol + '://' + req.get('host') + req.originalUrl;
+  const analytics = new Analytics(
     {
-      ip: req.ip,
-      user: req.user,
-      url: url
+        ip: req.ip,
+        user: req.user,
+        url: url
     }
   );
   analytics.save(err => {
@@ -57,7 +57,7 @@ exports.session = (req, res) => {
 
 exports.create = (req, res, next) => {
   logAnalytics(req);
-  var user = new User(req.body);
+  const user = new User(req.body);
   user.provider = 'local';
   user.save(err => {
     if (err) {
@@ -74,9 +74,9 @@ exports.create = (req, res, next) => {
 
 exports.list = (req, res) => {
   logAnalytics(req);
-  var page = (req.param('page') > 0 ? req.param('page') : 1) - 1;
-  var perPage = 5;
-  var options = {
+  const page = (req.param('page') > 0 ? req.param('page') : 1) - 1;
+  const perPage = 5;
+  const options = {
     perPage: perPage,
     page: page
   };
@@ -101,9 +101,9 @@ exports.list = (req, res) => {
 
 exports.show = (req, res) => {
   logAnalytics(req);
-  var user = req.profile;
-  var reqUserId = user._id;
-  var userId = reqUserId.toString();
+  const user = req.profile;
+  const reqUserId = user._id;
+  const userId = reqUserId.toString();
 
   Tweet.find({user: userId}, (err, tweets) => {
     if (err) {

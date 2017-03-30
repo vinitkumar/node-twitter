@@ -1,11 +1,10 @@
 /**
  * Module dependencies
  */
-
-var express = require('express');
-var mongoStore = require('connect-mongo')(express);
-var flash = require('connect-flash');
-var helpers = require('view-helpers');
+const express = require('express');
+const mongoStore = require('connect-mongo')(express);
+const flash = require('connect-flash');
+const helpers = require('view-helpers');
 
 module.exports = (app, config, passport) => {
   app.set('showStackError', true);

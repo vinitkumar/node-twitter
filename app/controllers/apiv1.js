@@ -4,9 +4,9 @@ const Tweet = mongoose.model('Tweet');
 const User = mongoose.model('User');
 
 exports.tweetList = (req, res) => {
-  var page = (req.param('page') > 0 ? req.param('page') : 1) - 1;
-  var perPage = 15;
-  var options = {
+  const page = (req.param('page') > 0 ? req.param('page') : 1) - 1;
+  const perPage = 15;
+  const options = {
     perPage: perPage,
     page: page
   };
@@ -25,9 +25,9 @@ exports.tweetList = (req, res) => {
 };
 
 exports.usersList = (req, res) => {
-  var page = (req.param('page') > 0 ? req.param('page') : 1) - 1;
-  var perPage = 15;
-  var options = {
+  const page = (req.param('page') > 0 ? req.param('page') : 1) - 1;
+  const perPage = 15;
+  const options = {
     perPage: perPage,
     page: page
   };

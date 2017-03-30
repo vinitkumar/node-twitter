@@ -1,8 +1,8 @@
 
-var mongoose = require('mongoose');
-var LocalStrategy = require('passport-local').Strategy;
-var GitHubStrategy = require('passport-github').Strategy;
-var User = mongoose.model('User');
+const mongoose = require('mongoose');
+const LocalStrategy = require('passport-local').Strategy;
+const GitHubStrategy = require('passport-github').Strategy;
+const User = mongoose.model('User');
 
 module.exports = (passport, config) => {
   // require('./initializer')

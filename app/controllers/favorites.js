@@ -1,6 +1,6 @@
 // ### Create Favorite
 exports.create = (req, res) => {
-  var tweet = req.tweet;
+  const tweet = req.tweet;
   tweet._favorites = req.user;
   tweet.save(err => {
     if (err) {
@@ -12,7 +12,7 @@ exports.create = (req, res) => {
 
 // ### Delete Favorite
 exports.destroy = (req, res) => {
-  var tweet = req.tweet;
+  const tweet = req.tweet;
 
   tweet._favorites = req.user;
   tweet.save(err => {

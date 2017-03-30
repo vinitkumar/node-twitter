@@ -10,7 +10,7 @@
 
 //called with every property and it's value
 function process(key,value) {
-    var items = [];
+    const items = [];
     if (typeof(value !== 'object')) {
      debugger;
      items.push( "<li id='" + key + "'>" + value + "</li>" ); 
@@ -22,7 +22,7 @@ function process(key,value) {
 }
 
 function traverse(o,func) {
-    for (var i in o) {
+    for (let i in o) {
         func.apply(this,[i,o[i]]);  
         if (o[i] !== null && typeof(o[i])=="object") {
             //going on step down in the object tree!!

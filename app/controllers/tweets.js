@@ -5,18 +5,18 @@ const Analytics = mongoose.model('Analytics');
 const _ = require('underscore');
 
 function logAnalytics(req) {
-  var url = req.protocol + '://' + req.get('host') + req.originalUrl;
-  var crudeIpArray = req.ip.split(':');
-  var ipArrayLength = crudeIpArray.length;
+  const url = req.protocol + '://' + req.get('host') + req.originalUrl;
+  const crudeIpArray = req.ip.split(':');
+  const ipArrayLength = crudeIpArray.length;
   // cleanup IP to remove unwanted characters
-  var cleanIp = crudeIpArray[ipArrayLength - 1];
+  const cleanIp = crudeIpArray[ipArrayLength - 1];
   if (req.get('host').split(':')[0] !== 'localhost') {
-    var analytics = new Analytics(
-      {
+    const analytics = new Analytics(
+        {
         ip: cleanIp,
         user: req.user,
         url: url
-      });
+        });
     analytics.save(err => {
       if (err) {
         console.log(err);
@@ -51,7 +51,7 @@ exports.new = (req, res) => {
 // ### Create a Tweet
 exports.create = (req, res) => {
   logAnalytics(req);
-  var tweet = new Tweet(req.body);
+  const tweet = new Tweet(req.body);
   tweet.user = req.user;
   tweet.uploadAndSave(req.files.image, err => {
     if (err) {
@@ -87,7 +87,7 @@ exports.show = (req, res) => {
 // ### Update a tweet
 exports.update = (req, res) => {
   logAnalytics(req);
-  var tweet = req.tweet;
+  let tweet = req.tweet;
   tweet = _.extend(tweet, req.body);
   tweet.uploadAndSave(req.files.image, err => {
     if (err) {
@@ -105,7 +105,7 @@ exports.update = (req, res) => {
 // ### Delete a tweet
 exports.destroy = (req, res) => {
   logAnalytics(req);
-  var tweet = req.tweet;
+  const tweet = req.tweet;
   tweet.remove(err => {
     if (err) {
       return res.render('500');
@@ -116,9 +116,9 @@ exports.destroy = (req, res) => {
 
 exports.index = (req, res) => {
   logAnalytics(req);
-  var page = (req.param('page') > 0 ? req.param('page') : 1) - 1;
-  var perPage = 15;
-  var options = {
+  const page = (req.param('page') > 0 ? req.param('page') : 1) - 1;
+  const perPage = 15;
+  const options = {
     perPage: perPage,
     page: page
   };

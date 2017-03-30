@@ -1,22 +1,22 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var crypto = require('crypto');
-var authTypes = ['github', 'facebook', 'twitter'];
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const crypto = require('crypto');
+const authTypes = ['github', 'facebook', 'twitter'];
 
 // ## Define UserSchema
-var UserSchema = new Schema({
-  name: String,
-  email: String,
-  username: String,
-  provider: String,
-  hashedPassword: String,
-  salt: String,
-  facebook: {},
-  twitter: {},
-  github: {},
-  followers: [{type: Schema.ObjectId, ref: 'User'}],
-  following: [{type: Schema.ObjectId, ref: 'User'}],
-  tweets: Number
+const UserSchema = new Schema({
+    name: String,
+    email: String,
+    username: String,
+    provider: String,
+    hashedPassword: String,
+    salt: String,
+    facebook: {},
+    twitter: {},
+    github: {},
+    followers: [{type: Schema.ObjectId, ref: 'User'}],
+    following: [{type: Schema.ObjectId, ref: 'User'}],
+    tweets: Number
 });
 
 UserSchema
@@ -30,7 +30,7 @@ UserSchema
     return this._password;
   });
 
-var validatePresenceOf = value => value && value.length;
+const validatePresenceOf = value => value && value.length;
 
 UserSchema.path('name').validate(function(name) {
   if (authTypes.indexOf(this.provider) !== -1) {
@@ -103,7 +103,7 @@ UserSchema.statics = {
       .exec(cb);
   },
   list: function(options, cb) {
-    var criteria = options.criteria || {};
+    const criteria = options.criteria || {};
     this.find(criteria)
       .populate('user', 'name username')
       .limit(options.perPage)
