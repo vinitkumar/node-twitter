@@ -1,4 +1,4 @@
-var _ = require('underscore');
+let _ = require('underscore');
 
 module.exports = function (grunt) {
 

@@ -1,7 +1,7 @@
 const utils = require('../../lib/utils');
 
 exports.load = (req, res, next, id) => {
-  var tweet = req.tweet;
+  const tweet = req.tweet;
   utils.findByParam(tweet.comments, {id: id}, (err, comment) => {
     if (err) {
       return next(err);
@@ -13,8 +13,8 @@ exports.load = (req, res, next, id) => {
 
 // ### Create Comment
 exports.create = (req, res) => {
-  var tweet = req.tweet;
-  var user = req.user;
+  const tweet = req.tweet;
+  const user = req.user;
 
   if (!req.body.body) {
     return res.redirect('/tweets/' + tweet.id);
@@ -30,7 +30,7 @@ exports.create = (req, res) => {
 // ### Delete Comment
 exports.destroy = (req, res) => {
 	// delete a comment here.
-  var comment = req.comment;
+  const comment = req.comment;
   comment.remove(err => {
     if (err) {
       res.send(400);

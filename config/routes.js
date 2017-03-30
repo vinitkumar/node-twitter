@@ -1,4 +1,4 @@
-var async = require('async');
+let async = require('async');
 
 
 
@@ -26,20 +26,20 @@ module.exports = (app, passport, auth) => {
   /**
    * API related code
    */
-  var apiv1 = require('../app/controllers/apiv1');
+    const apiv1 = require('../app/controllers/apiv1');
   app.get('/apiv1/tweets', apiv1.tweetList);
   app.get('/apiv1/users', apiv1.usersList);
 
   /**
   * Analytics related code
   */
-  var analytics = require('../app/controllers/analytics');
+    const analytics = require('../app/controllers/analytics');
   app.get('/analytics', analytics.index);
 
   app.param('userId', users.user);
 
   //tweets routes
-  var tweets = require('../app/controllers/tweets');
+  const tweets = require('../app/controllers/tweets');
   app.get('/tweets', tweets.index);
   app.get('/tweets/new', auth.requiresLogin, tweets.new);
   app.post('/tweets', auth.requiresLogin, tweets.create);
@@ -52,7 +52,7 @@ module.exports = (app, passport, auth) => {
   app.get('/', auth.requiresLogin, tweets.index );
 
   //comment routes
-  var comments = require('../app/controllers/comments');
+  const comments = require('../app/controllers/comments');
   app.post('/tweets/:id/comments', auth.requiresLogin, comments.create);
   app.get('/tweets/:id/comments', auth.requiresLogin, comments.create);
   app.del('/tweets/:id/comments', auth.requiresLogin, comments.destroy);

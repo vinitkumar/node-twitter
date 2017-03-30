@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const Analytics = mongoose.model('Analytics');
 
 exports.index = (req, res) => {
-  var page = (req.param('page') > 0 ? req.param('page') : 1) - 1;
-  var perPage = 10;
-  var options = {
+  const page = (req.param('page') > 0 ? req.param('page') : 1) - 1;
+  const perPage = 10;
+  const options = {
     perPage: perPage,
     page: page
   };

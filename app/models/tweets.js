@@ -1,27 +1,27 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var utils = require('../../lib/utils');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const utils = require('../../lib/utils');
 
 //  Getters and Setters
-var getTags = tags => tags.join(',');
+const getTags = tags => tags.join(',');
 
-var setTags = tags => tags.split(',');
+const setTags = tags => tags.split(',');
 
 // Tweet Schema
-var TweetSchema = new Schema({
-  body: {type: String, default: '', trim: true},
-  user: {type: Schema.ObjectId, ref: 'User'},
-  comments: [{
-    body: {type: String, default: ''},
+const TweetSchema = new Schema({
+    body: {type: String, default: '', trim: true},
     user: {type: Schema.ObjectId, ref: 'User'},
-    commenterName: {type: String, default: ''},
+    comments: [{
+        body: {type: String, default: ''},
+        user: {type: Schema.ObjectId, ref: 'User'},
+        commenterName: {type: String, default: ''},
+        createdAt: {type: Date, default: Date.now}
+    }],
+    tags: {type: [], get: getTags, set: setTags},
+    favorites: [{type: Schema.ObjectId, ref: 'User'}],
+    favoriters: [{type: Schema.ObjectId, ref: 'User'}],  // same as favorites
+    favoritesCount: Number,
     createdAt: {type: Date, default: Date.now}
-  }],
-  tags: {type: [], get: getTags, set: setTags},
-  favorites: [{type: Schema.ObjectId, ref: 'User'}],
-  favoriters: [{type: Schema.ObjectId, ref: 'User'}],  // same as favorites
-  favoritesCount: Number,
-  createdAt: {type: Date, default: Date.now}
 });
 
 // Pre save hook
@@ -51,8 +51,8 @@ TweetSchema.methods = {
     if (!images || !images.length) {
       return this.save(cb);
     }
-    var imager = new Imager(imagerConfig, 'S3');
-    var self = this;
+    const imager = new Imager(imagerConfig, 'S3');
+    const self = this;
 
     imager.upload(images, (err, cdnUri, files) => {
       if (err) {
@@ -83,7 +83,7 @@ TweetSchema.methods = {
   },
 
   removeComment: function(commentId, cb) {
-    var index = utils.indexof(this.comments, {id: commentId});
+    let index = utils.indexof(this.comments, {id: commentId});
     if (~index) {
       this.comments.splice(index, 1);
     } else {
@@ -105,7 +105,7 @@ TweetSchema.statics = {
 
   // List tweets
   list: function(options, cb) {
-    var criteria = options.criteria || {};
+    const criteria = options.criteria || {};
     this.find(criteria)
       .populate('user', 'name username provider github facebook twitter')
       .sort({'createdAt': -1})
@@ -115,7 +115,7 @@ TweetSchema.statics = {
   },
   // List tweets
   limitedList: function(options, cb) {
-    var criteria = options.criteria || {};
+    const criteria = options.criteria || {};
     this.find(criteria)
       .populate('user', 'name username')
       .sort({'createdAt': -1})

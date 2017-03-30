@@ -1,7 +1,7 @@
 /* global describe it */
 
-var request = require('supertest');
-var app = require('../server');
+const request = require('supertest');
+const app = require('../server');
 
 describe('Test Homepage', function (done) {
   it('should return 302', function (done) {
