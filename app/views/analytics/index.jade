@@ -2,20 +2,18 @@ extends ../layouts/default
 
 block content
   .container.analytics-container
-    h1 Node Twitter Analytics Data
+    h1 Analytics Dashboard: Total visits: #{count}
     table.table.table-bordered
       thead
         tr
           th User
-          th IP
           th URL
-          th Time
+          th Visit time
       tbody
         each analytic in analytics
           tr
             - if (analytic.user != null && analytic.url != null)
               td #{analytic.user.name}
-              td #{analytic.ip}
               td #{analytic.url}
               td #{analytic.createdAt}
 

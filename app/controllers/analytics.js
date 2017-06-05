@@ -19,6 +19,7 @@ exports.index = (req, res) => {
       res.render('analytics/index', {
         title: 'List of users',
         analytics: analytics,
+        count: count,
         page: page + 1,
         pages: Math.ceil(count / perPage)
       });
