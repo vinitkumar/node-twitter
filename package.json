@@ -1,16 +1,16 @@
 {
   "name": "nwitter",
   "description": "A twitter demo app in nodejs",
-  "version": "0.0.1-59",
-  "repository": "https://github.com/vinitcool76/node-twitter",
+  "version": "0.0.20",
+  "repository": "https://github.com/vinitkumar/node-twitter",
   "private": false,
-  "author": "Vinit Kumar <vinit.kumar@changer.nl> (http://vinitkumar.me)",
+  "author": "Vinit Kumar <vinit1414.08@bitmesra.ac.in> (http://vinitkumar.me)",
   "scripts": {
     "start": "node server.js",
     "test": "make test"
   },
   "engines": {
-    "node": "7.6.0"
+    "node": "8.0.0"
   },
   "dependencies": {
     "async": "latest",
