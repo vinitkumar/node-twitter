@@ -6,7 +6,7 @@ block content
       h3 Profile
       - if (user.provider == 'twitter')
           img(class="profile-image img-thumbnail", src="#{user.twitter.profile_image_url}")
-          i.icon-twitter.icon-3x
+          i.fa.fa-twitter.fa-3
           div.container
             div.col-md-6
               #{user.name}
