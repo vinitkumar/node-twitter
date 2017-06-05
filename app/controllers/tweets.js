@@ -142,6 +142,7 @@ exports.index = (req, res) => {
           tweets: tweets,
           analytics: analytics,
           page: page + 1,
+          count: count,
           pages: Math.ceil(count / perPage),
           followerCount: followerCount,
           followingCount: followingCount
