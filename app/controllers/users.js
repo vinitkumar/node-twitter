@@ -141,14 +141,18 @@ exports.user = (req, res, next, id) => {
 exports.showFollowers = (req, res) => {
   let user = req.profile;
   let followers = user.followers;
-  let userFollowers = User.find({_id: {$in: followers}})
-                          .populate('user', '_id name username');
+  let userFollowers = User
+    .find({_id: {$in: followers}})
+    .populate('user', '_id name username');
+
   userFollowers.exec((err, users) => {
     if (err) {
       return res.render('500');
     }
+    console.log('users', users);
+    const name = user.name ? user.name : user.username;
     res.render('users/followers', {
-      title: 'Followers of ' + user.name,
+      title: 'Followers of ' + name,
       followers: users
     });
   });
@@ -164,8 +168,9 @@ exports.showFollowing = (req, res) => {
     if (err) {
       res.render('500');
     }
+    const name = user.name ? user.name: user.username;
     res.render('users/following', {
-      title: 'Followed by ' + user.name,
+      title: 'Followed by ' + name,
       following: users
     });
   });

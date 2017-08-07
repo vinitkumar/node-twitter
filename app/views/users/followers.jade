@@ -6,6 +6,6 @@ block content
     if followers
       each follower in followers
           .well
-          a.btn(href="#{follower}") follows
+              a.btn(href="/users/" + follower._id)= follower.username
     else
       h4 Seems like there is no one following you.
