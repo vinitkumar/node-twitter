@@ -3,7 +3,7 @@ const rootPath = path.normalize(__dirname + '/..');
 
 module.exports = {
   development: {
-    db: 'mongodb://root:volvo76@ds039078.mongolab.com:39078/ntwitter',
+    db: 'mongodb://localhost/ntwitter',
     root: rootPath,
     app: {
       name: 'Node Twitter'

@@ -46,7 +46,6 @@ describe('Test logout', function (done) {
 });
 
 
-
 describe('Test Tweets API', function (done) {
   it('should return 200', function (done) {
     request(app)

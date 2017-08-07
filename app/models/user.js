@@ -76,7 +76,6 @@ UserSchema.methods = {
     } else {
       this.following.splice(this.following.indexOf(id), 1);
     }
-    console.log(this.following);
   },
 
   authenticate: function(plainText) {
