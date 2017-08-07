@@ -47,7 +47,10 @@ module.exports = (passport, config) => {
       callbackURL: config.github.callbackURL
     },
     (accessToken, refreshToken, profile, done) => {
-      User.findOne({'github.id': profile.id }, (err, user) => {
+      const options = {
+        criteria: { 'github.id': parseInt(profile.id) }
+      };
+      User.load(options, (err, user) => {
         if (!user) {
           user = new User({
               name: profile.displayName,

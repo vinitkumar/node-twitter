@@ -69,15 +69,6 @@ UserSchema.pre('save', function(next) {
 });
 
 UserSchema.methods = {
-  // Methods on the Schema
-  follow: function(id) {
-    if (this.following.indexOf(id) === -1) {
-      this.following.push(id);
-    } else {
-      this.following.splice(this.following.indexOf(id), 1);
-    }
-  },
-
   authenticate: function(plainText) {
     return this.encryptPassword(plainText) === this.hashedPassword;
   },
@@ -99,6 +90,12 @@ UserSchema.statics = {
   addfollow: function(id, cb) {
     this.findOne({_id: id})
       .populate('followers')
+      .exec(cb);
+  },
+  load: function (options, cb) {
+    options.select = options.select || 'name username';
+    return this.findOne(options.criteria)
+      .select(options.select)
       .exec(cb);
   },
   list: function(options, cb) {
