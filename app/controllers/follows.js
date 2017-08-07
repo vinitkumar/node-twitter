@@ -3,20 +3,24 @@ const User = mongoose.model('User');
 
 exports.follow = (req, res) => {
   const user = req.user;
+  console.log(user.id);
+
   const id = req.url.split('/')[2];
   // push the current user in the follower list of the target user
-  User.findOne({_id: id}, function (err, target) {
-    if (target.followers.indexOf(target.id) === -1) {
-      target.followers.push(target.id);
+
+  const currentId = user.id;
+
+  User.findOne({_id: id}, function (err, user) {
+    if (user.followers.indexOf(currentId) === -1) {
+      user.followers.push(currentId);
     }
-    target.save(err => {
-      if(err) {
-        res.send(400);
+    user.save(err => {
+      if (err) {
+        console.log(err);
       }
     });
   });
 
-  const currentId = user.id;
   User.findOne({_id: currentId}, function (err, user) {
     if (user.following.indexOf(id) === -1) {
       user.following.push(id);
@@ -28,4 +32,5 @@ exports.follow = (req, res) => {
       res.send(201, {});
     });
   });
+
 };
