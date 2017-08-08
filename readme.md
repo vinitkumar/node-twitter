@@ -4,6 +4,8 @@ Node twitter is an effort to rewrite some of Twitters functionality using modern
 javascript based toolchain. It was mostly an effort to learn Node.js and trying to reverse
 engineer some of twitter's feature.
 
+![screenshot](https://cldup.com/9U54a07O4F-3000x3000.png)
+
 ## Prerequisites
 
 You would require Node, NPM and MongoDB installed:
