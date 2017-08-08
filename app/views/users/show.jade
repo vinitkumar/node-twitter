@@ -4,7 +4,6 @@ block content
   .row
     .col-md-4
       .well
-        h3 Profile
         - if (user.provider == 'twitter')
             img(class="profile-image img-thumbnail", src="#{user.twitter.profile_image_url}")
             i.icon-twitter.icon-3x
