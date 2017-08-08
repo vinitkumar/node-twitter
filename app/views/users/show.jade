@@ -31,17 +31,16 @@ block content
             div.user-info
               a(href="#{user.github.html_url}", target='_blank') @#{user.github.login}
               ul.list-unstyled
-                li followers on github: #{user.github.followers}
+                li github followers: #{user.github.followers}
                 li public repos: #{user.github.public_repos}
-                li ntwitter followers:
-                  a(href="/users/" + user._id + "/followers") #{followerCount}
-                li ntwitter following:
-                  a(href="/users/" + user._id + "/following") #{followingCount}
+                li followers:
+                  a(href="/users/" + user._id + "/followers")  #{followerCount}
+                li following:
+                  a(href="/users/" + user._id + "/following")  #{followingCount}
 
         if (user._id != req.user.id)
           a.btn(href="#", class="btn-success follow", data-userid=user._id, data-logged=req.user.id,title="follow") follow
     .col-md-8
-      h1 Tweets from #{user.name}
       each tweet in tweets
         .well.flat
           .tweet

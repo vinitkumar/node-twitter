@@ -1,7 +1,6 @@
 body {
   font-size: 13px;
-  background-image: url('../img/space-header.jpg');
-  background-size: cover;
+  background-color: #e6ecf0;
 }
 
 .red-border {
@@ -101,6 +100,7 @@ h1, .icon-twitter {
   padding: 20px;
   border: 1px solid #eeeeee;
   margin-bottom: 20px;
+  text-align: left;
 }
 
 .github-btn {
@@ -132,4 +132,12 @@ header.navbar-static-top {
 
 .analytics-container {
   background: white;
+}
+
+a {
+  color: rgb(25, 165, 207);
+}
+
+.edit-tweet-actions {
+  margin-top: 10px;
 }

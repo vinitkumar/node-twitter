@@ -26,8 +26,8 @@ block content
             textarea#tweet.input-xlarge(type='text', rows="3", name="body",
               placeholder='Enter your tweet here',maxlength='140')=tweet.body
 
-        .form-actions
+        .form-actions.pull-right
           button.btn.btn-primary.flat(type='submit') Publish Tweet
           &nbsp;
-          a.btn(href='/tweets', title="cancel") Cancel
+          a.btn.btn-danger.flat(href='/tweets', title="cancel") Cancel
 

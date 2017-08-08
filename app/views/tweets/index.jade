@@ -18,12 +18,12 @@ block content
           img(class='profile-image', src="#{req.user.twitter.profile_image_url}")
         h4 #{req.user.name}
         ul.list-unstyled
-          li followers on github: #{req.user.github.followers}
+          li github followers: #{req.user.github.followers}
           li public repos: #{req.user.github.public_repos}
-          li ntwitter followers: 
-            a(href="/users/" + req.user._id + "/followers") #{followerCount}
-          li ntwitter following: 
-            a(href="/users/" + req.user._id + "/following") #{followingCount}
+          li followers:
+            a(href="/users/" + req.user._id + "/followers")  #{followerCount}
+          li following:
+            a(href="/users/" + req.user._id + "/following")  #{followingCount}
 
       .useful-links
         h5 Important links
@@ -39,7 +39,7 @@ block content
 
         #myModal.modal.fade
           .modal-dialog
-            .modal-content
+            .modal-content.flat
               .modal-header
                 button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
                 h4.modal-title New Tweet
@@ -52,11 +52,11 @@ block content
                       .controls
                         textarea.flat.form-control(type='text', name='body', placeholder='Enter your tweet here', maxlength='140')
                     br
-                    .form-actions
+                    .form-actions.pull-right
                       button.btn.btn-primary.flat(type='submit') Publish Tweet
-                      a.btn(href='/tweets', title='cancel') Cancel
+                      a.btn.btn-danger.flat(href='/tweets', title='cancel') Cancel
               .modal-footer
-                p Hope you enjoy it!
+    
     .col-lg-6
       each tweet in tweets
         .well.flat
@@ -84,7 +84,7 @@ block content
                 if (tweet.user._id == req.user.id)
                   a.btn.btn-success.flat.edit(href='/tweets/'+tweet._id+'/edit', title="edit") Edit
                   input(type="hidden", name="_method", value="DELETE")
-                  button.btn.flat(type="submit") delete
+                  button.btn.btn-danger.flat(type="submit") delete
                 if (tweet.user._id != req.user.id)
                   a.btn.btn-success(href="#", class="favorite", data-tweetId=tweet._id, title="favorite") Favorite
           .comment

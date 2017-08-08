@@ -9,7 +9,7 @@ exports.follow = (req, res) => {
   // push the current user in the follower list of the target user
 
   const currentId = user.id;
-
+  
   User.findOne({_id: id}, function (err, user) {
     if (user.followers.indexOf(currentId) === -1) {
       user.followers.push(currentId);

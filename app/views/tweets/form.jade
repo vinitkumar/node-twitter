@@ -4,14 +4,10 @@ extends ../layouts/default
 block content
   .row
     .col-md-12
-      a.btn.btn-primary.btn-lg(data-toggle='modal', href='#myModal') Edit
+      a.btn.btn-primary.btn-lg(data-toggle='modal', href='#myModal') Edit this tweet
       #myModal.modal.fade
         .modal-dialog
-          .modal-content
-            .modal-header
-              button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-              h4.modal-title Edit Tweet
-              i.fa.fa-twitter.fa-3x
+          .modal-content.flat
             .modal-body
               .tweet-body
                   - var action = '/tweets'
@@ -26,7 +22,7 @@ block content
                           li = error.type
 
 
-              
+
                   form(method="post", action=action, enctype="multipart/form-data")
                     if (!tweet.isNew)
                       input(type="hidden", name="_method", value="PUT")
@@ -37,11 +33,10 @@ block content
                       .controls
                         textarea(type='text', class="form-control", name="body",
                           placeholder='Enter your tweet here',maxlength='140')=tweet.body
-                    br
-                    .form-actions
-                      button.btn.btn-primary(type='submit') Publish Tweet
-                      &nbsp;
-                      a.btn(href='/tweets', title="cancel") Cancel
 
-            .modal-footer
-              p Hope you enjoy it!
+                    .form-actions.pull-right.edit-tweet-actions
+                      button.btn.btn-primary.flat(type='submit') Publish Tweet
+                      &nbsp;
+                      a.btn.btn-danger.flat(href='/tweets', title="cancel") Cancel
+
+                    .modal-footer
