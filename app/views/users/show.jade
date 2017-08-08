@@ -66,6 +66,4 @@ block content
                  a.btn.btn-success.flat.edit(href='/tweets/'+tweet._id+'/edit', title="edit") Edit
                  input(type="hidden", name="_method", value="DELETE")
                  button.btn.flat(type="submit") delete
-               if (tweet.user._id != req.user.id)
-                 a.btn.btn-success(href="#", class="favorite", data-tweetId=tweet._id, title="favorite") Favorite
 
