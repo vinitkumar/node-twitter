@@ -1,26 +1,25 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const crypto = require('crypto');
-const authTypes = ['github', 'facebook', 'twitter'];
+const crypto = require("crypto");
+const authTypes = ["github", "facebook", "twitter"];
 
 // ## Define UserSchema
 const UserSchema = new Schema({
-    name: String,
-    email: String,
-    username: String,
-    provider: String,
-    hashedPassword: String,
-    salt: String,
-    facebook: {},
-    twitter: {},
-    github: {},
-    followers: [{type: Schema.ObjectId, ref: 'User'}],
-    following: [{type: Schema.ObjectId, ref: 'User'}],
-    tweets: Number
+  name: String,
+  email: String,
+  username: String,
+  provider: String,
+  hashedPassword: String,
+  salt: String,
+  facebook: {},
+  twitter: {},
+  github: {},
+  followers: [{ type: Schema.ObjectId, ref: "User" }],
+  following: [{ type: Schema.ObjectId, ref: "User" }],
+  tweets: Number
 });
 
-UserSchema
-  .virtual('password')
+UserSchema.virtual("password")
   .set(function(password) {
     this._password = password;
     this.salt = this.makeSalt();
@@ -32,37 +31,40 @@ UserSchema
 
 const validatePresenceOf = value => value && value.length;
 
-UserSchema.path('name').validate(function(name) {
+UserSchema.path("name").validate(function(name) {
   if (authTypes.indexOf(this.provider) !== -1) {
     return true;
   }
   return name.length;
-}, 'Name cannot be blank');
+}, "Name cannot be blank");
 
-UserSchema.path('email').validate(function(email) {
+UserSchema.path("email").validate(function(email) {
   if (authTypes.indexOf(this.provider) !== -1) {
     return true;
   }
   return email.length;
-}, 'Email cannot be blank');
+}, "Email cannot be blank");
 
-UserSchema.path('username').validate(function(username) {
+UserSchema.path("username").validate(function(username) {
   if (authTypes.indexOf(this.provider) !== -1) {
     return true;
   }
   return username.length;
-}, 'username cannot be blank');
+}, "username cannot be blank");
 
-UserSchema.path('hashedPassword').validate(function(hashedPassword) {
+UserSchema.path("hashedPassword").validate(function(hashedPassword) {
   if (authTypes.indexOf(this.provider) !== -1) {
     return true;
   }
   return hashedPassword.length;
-}, 'Password cannot be blank');
+}, "Password cannot be blank");
 
-UserSchema.pre('save', function(next) {
-  if (!validatePresenceOf(this.password) && authTypes.indexOf(this.provider) === -1) {
-    next(new Error('Invalid password'));
+UserSchema.pre("save", function(next) {
+  if (
+    !validatePresenceOf(this.password) &&
+    authTypes.indexOf(this.provider) === -1
+  ) {
+    next(new Error("Invalid password"));
   } else {
     next();
   }
@@ -74,38 +76,33 @@ UserSchema.methods = {
   },
 
   makeSalt: function() {
-    return String(Math.round((new Date().valueOf() * Math.random())));
+    return String(Math.round(new Date().valueOf() * Math.random()));
   },
 
   encryptPassword: function(password) {
     if (!password) {
-      return '';
+      return "";
     }
-    return crypto.createHmac('sha1', this.salt).update(password).digest('hex');
+    return crypto.createHmac("sha1", this.salt).update(password).digest("hex");
   }
-
 };
 
 UserSchema.statics = {
   addfollow: function(id, cb) {
-    this.findOne({_id: id})
-      .populate('followers')
-      .exec(cb);
+    this.findOne({ _id: id }).populate("followers").exec(cb);
   },
-  load: function (options, cb) {
-    options.select = options.select || 'name username github';
-    return this.findOne(options.criteria)
-      .select(options.select)
-      .exec(cb);
+  load: function(options, cb) {
+    options.select = options.select || "name username github";
+    return this.findOne(options.criteria).select(options.select).exec(cb);
   },
   list: function(options, cb) {
     const criteria = options.criteria || {};
     this.find(criteria)
-      .populate('user', 'name username')
+      .populate("user", "name username")
       .limit(options.perPage)
       .skip(options.perPage * options.page)
       .exec(cb);
   }
 };
 
-mongoose.model('User', UserSchema);
+mongoose.model("User", UserSchema);
