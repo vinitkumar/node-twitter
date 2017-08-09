@@ -1,11 +1,11 @@
-const path = require('path'),
-    rootPath = path.normalize(__dirname + '/..');
+const path = require("path"),
+  rootPath = path.normalize(__dirname + "/..");
 module.exports = {
   development: {
-    db: '',
+    db: "",
     root: rootPath,
     app: {
-      name: 'Node Twitter'
+      name: "Node Twitter"
     },
     facebook: {
       clientID: "",
@@ -13,16 +13,16 @@ module.exports = {
       callbackURL: ""
     },
     github: {
-      clientID: '',
-      clientSecret: '',
-      callbackURL: ''
+      clientID: "",
+      clientSecret: "",
+      callbackURL: ""
     }
   },
   test: {
-    db: '',
+    db: "",
     root: rootPath,
     app: {
-      name: 'Node Twitter'
+      name: "Node Twitter"
     },
     facebook: {
       clientID: "",
@@ -30,16 +30,16 @@ module.exports = {
       callbackURL: ""
     },
     github: {
-      clientID: '',
-      clientSecret: '',
-      callbackURL: ''
+      clientID: "",
+      clientSecret: "",
+      callbackURL: ""
     }
   },
   production: {
-    db: '',
+    db: "",
     root: rootPath,
     app: {
-      name: 'Node Twitter'
+      name: "Node Twitter"
     },
     facebook: {
       clientID: "",
@@ -47,9 +47,9 @@ module.exports = {
       callbackURL: ""
     },
     github: {
-      clientID: '',
-      clientSecret: '',
-      callbackURL: ''
+      clientID: "",
+      clientSecret: "",
+      callbackURL: ""
     }
   }
 };
