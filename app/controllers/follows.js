@@ -21,6 +21,9 @@ exports.follow = (req, res) => {
     });
   });
 
+  // Over here, we find the id of the user we want to follow
+  // and add the user to the following list of the current
+  // logged in user
   User.findOne({ _id: currentId }, function(err, user) {
     if (user.following.indexOf(id) === -1) {
       user.following.push(id);
