@@ -1,4 +1,0 @@
-{
-  "glob": ["app/**/*.js", "readme.md", "app/views/*/*.jade"],
-  "github": true
-}
