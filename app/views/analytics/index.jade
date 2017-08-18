@@ -13,8 +13,8 @@ block content
       tbody
         each analytic in analytics
           tr
-            - var name = analytic.user.name ? analytic.user.name : analytic.user.username
             - if (analytic.user != null && analytic.url != null)
+              - var name = analytic.user.name ? analytic.user.name : analytic.user.username
               td #{name}
               td #{analytic.url}
               td #{analytic.createdAt}
