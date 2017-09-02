@@ -1,7 +1,7 @@
 {
   "name": "nwitter",
-  "description": "A twitter demo app in nodejs",
-  "version": "0.0.20",
+  "description": "A twitter clone written with express, mongodbe",
+  "version": "1.0.00",
   "repository": "https://github.com/vinitkumar/node-twitter",
   "private": false,
   "author": "Vinit Kumar <vinit1414.08@bitmesra.ac.in> (http://vinitkumar.me)",
@@ -38,6 +38,5 @@
     "nodemon": "latest",
     "should": "latest",
     "supertest": "^3.0.0"
-  },
-  "subdomain": "ntwitter"
+  }
 }
