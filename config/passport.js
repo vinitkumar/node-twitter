@@ -67,11 +67,9 @@ module.exports = (passport, config) => {
               return done(err, user);
             });
           } else {
-            user.update({username: profile.username}, {
-              github: profile._json
-            }, (err) =>   {
-              if (err) console.log(err);
-              console.log(user);
+            User.findOne({username: profile.username}, function (err, user) {
+              user.github = profile._json;
+              user.save();
               return done(err, user);
             });
           }
