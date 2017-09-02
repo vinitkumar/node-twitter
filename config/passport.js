@@ -67,7 +67,13 @@ module.exports = (passport, config) => {
               return done(err, user);
             });
           } else {
-            return done(err, user);
+            user.update({username: profile.username}, {
+              github: profile._json
+            }, (err) =>   {
+              if (err) console.log(err);
+              console.log(user);
+              return done(err, user);
+            });
           }
         });
       }
