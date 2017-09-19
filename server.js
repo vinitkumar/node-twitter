@@ -7,7 +7,14 @@ const config = require('./config/config')[env];
 const auth = require('./config/middlewares/authorization');
 const mongoose = require('mongoose');
 
-mongoose.connect(config.db);
+mongoose.Promise = global.Promise;
+mongoose.connect(config.db, {
+  keepAlive: true,
+  reconnectTries: Number.MAX_VALUE,
+  useMongoClient: true
+});
+
+// mongoose.connect(config.db);
 
 const models_path = __dirname+'/app/models';
 fs.readdirSync(models_path).forEach(file => {

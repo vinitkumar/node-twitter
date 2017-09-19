@@ -20,7 +20,7 @@
     "forever": "latest",
     "gzippo": "latest",
     "jade": "latest",
-    "mongoose": "latest",
+    "mongoose": "^4.11.12",
     "notifier": "latest",
     "passport": "^0.3.2",
     "passport-facebook": "latest",
