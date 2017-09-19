@@ -109,10 +109,6 @@ h1, .icon-twitter {
   margin-right: 20px;
 }
 
-.footer-container {
-  bottom: 0;
-}
-
 .useful-links {
   text-align: left;
   border-radius: 2px;
@@ -138,4 +134,8 @@ a {
 
 .edit-tweet-actions {
   margin-top: 10px;
+}
+
+footer.bs-docs-footer{
+  text-align: center;
 }
