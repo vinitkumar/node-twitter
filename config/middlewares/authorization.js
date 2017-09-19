@@ -2,20 +2,19 @@
  * Generic require login routing middlewares
  */
 
-exports.requiresLogin = function (req, res, next) {
+exports.requiresLogin = (req, res, next) => {
   if (!req.isAuthenticated()) {
     return res.redirect('/login');
   }
   next();
 };
 
-
 /**
  * User authorization routing middleware
  */
 
 exports.user = {
-  hasAuthorization: function (req, res, next) {
+  hasAuthorization: (req, res, next) => {
     if (req.profile.id != req.user.id) {
       return res.redirect('/users'+req.profile.id);
     }
@@ -23,9 +22,8 @@ exports.user = {
   }
 };
 
-
 exports.tweet = {
-  hasAuthorization: function (req, res, next) {
+  hasAuthorization: (req, res, next) => {
     if (req.tweet.user.id != req.user.id) {
       return res.redirect('/tweets'+req.tweet.id);
     }
@@ -39,7 +37,7 @@ exports.tweet = {
  */
 
 exports.comment = {
-  hasAuthorization: function (req, res, next) {
+  hasAuthorization: (req, res, next) => {
     // if the current user is comment owner or article owner
     // give them authority to delete
     if (req.user.id === req.comment.user.id || req.user.id === req.article.user.id) {
@@ -50,5 +48,3 @@ exports.comment = {
     }
   }
 };
-
-

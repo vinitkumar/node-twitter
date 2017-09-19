@@ -21,8 +21,6 @@ block content
                         each errors in errors
                           li = error.type
 
-
-
                   form(method="post", action=action, enctype="multipart/form-data")
                     if (!tweet.isNew)
                       input(type="hidden", name="_method", value="PUT")
