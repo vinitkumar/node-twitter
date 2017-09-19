@@ -24,5 +24,5 @@ require('./config/express')(app, config, passport);
 require('./config/routes')(app, passport, auth);
 const port = process.env.PORT || 3000;
 app.listen(port);
-console.log('Express app started on port '+port);
+console.log('Express app started on port ' + port);
 exports = module.exports = app;

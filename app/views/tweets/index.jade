@@ -5,7 +5,6 @@ block newtweet
     a.btn.btn-primary.flat.new-tweet(data-toggle='modal', href='#myModal')
       i(class="fa fa-paper-plane", style="display: initial")  Tweet
 
-
 block content
   .row.twitter-container
     .col-lg-3
@@ -24,7 +23,6 @@ block content
             a(href="/users/" + req.user._id + "/followers")  #{followerCount}
           li following:
             a(href="/users/" + req.user._id + "/following")  #{followingCount}
-
       .useful-links
         h5 Important links
         ul
@@ -35,8 +33,7 @@ block content
           li.links
             a(href="http://github.com/vinitkumar/node-twitter") Source Code
           li.links
-            a(href="https://github.com/vinitkumar/node-twitter/issues/new") File a Bug
-
+            a(href="https://github.com/vinitkumar/node-twitter/issues/new") Report a Bug
         #myModal.modal.fade
           .modal-dialog
             .modal-content.flat
@@ -56,7 +53,6 @@ block content
                       button.btn.btn-primary.flat(type='submit') Publish Tweet
                       a.btn.btn-danger.flat(href='/tweets', title='cancel') Cancel
               .modal-footer
-    
     .col-lg-6
       each tweet in tweets
         .well.flat
@@ -72,8 +68,6 @@ block content
                       img(class='tweet-image', src=tweet.user.github.avatar_url)
                     - if (tweet.user.provider == 'twitter')
                       img(class='tweet-image', src="#{tweet.user.twitter.profile_image_url}")
-                    //- if (tweet.user.name)
-                    //-   a(href="/users/"+tweet.user._id)=tweet.user.name
                     a(href="/users/"+tweet.user._id)= name
               .col-lg-5.date
                 .pull-right
@@ -90,7 +84,6 @@ block content
               include ../comments/comment
             hr
             include ../comments/form
-
     .col-lg-3
       .well
         h3 Recent Visits
@@ -102,7 +95,6 @@ block content
                 a(href="/users/"+analytic.user._id)= name
                   span   (#{formatDate(analytic.createdAt, "%b %d, %Y at %I:%M %p")})
         h5 Total tweet count : #{count}
-
     - if (pages > 1)
       ul.pagination
         != createPagination(pages, page)
