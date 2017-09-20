@@ -1,12 +1,24 @@
+/* General */
+
 body {
   font-size: 13px;
-  background-color: #e6ecf0;
+  background-color: #141d26;
+  color: #8899a6;
+  min-height: 100vh;
 }
 
-.red-border {
-  border: dashed 2px #95527;
+body > div.container {
+  /* Calculate the minimum height by subtracting the header and footer height */
+  min-height: calc(100vh - 50px - 150px);
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
 .icon-4x {
   font-size: 11em;
@@ -18,20 +30,50 @@ i {
   padding-right: 20px;
 }
 
-.navbar-inverse .navbar-brand {
-  font-size: 24px;
-  font-weight: 400;
-  color: #fff;
+/* Navbar */
+
+span.logo {
+  font-size: 20px;
 }
 
-
-
-.navbar {
+header.navbar {
+  background-color: #243447;
   height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0;
 }
 
-.navbar-inverse .navbar-nav > li > a {
-  color: #fff;
+ul#main-navigation {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-left: auto;
+  font-size: 14px;
+}
+
+ul#main-navigation li {
+  margin-right: 25px;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+ul#main-navigation a {
+  color: #8899a6;
+}
+
+ul#main-navigation li:hover {
+  color: #1da1f2 !important;
+  border-bottom: 5px solid #1da1f2;
+}
+
+ul#main-navigation i.fa {
+  display: inline;
+  padding: 0;
+  padding-right: 10px;
 }
 
 .login {
@@ -46,9 +88,8 @@ a:hover {
   text-align: center;
 }
 
-
-h1, .icon-twitter {
-	color: lightskyblue;
+.twitter-container > div {
+  padding: 0;
 }
 
 .modal-title {
@@ -57,8 +98,7 @@ h1, .icon-twitter {
 
 .profile-image {
   border-radius: 50%;
-  height: 100px;
-  border: 4px solid white;
+  width: 100%;
 }
 
 .tweet-image {
@@ -67,10 +107,55 @@ h1, .icon-twitter {
   border: 2px solid white;
 }
 
-.logged-user {
-  text-align: center;
+.logged-user,
+.useful-links,
+.recent-visits,
+.analytics-container {
+  background-color: #1b2836;
+  padding: 15px;
   border-radius: 2px;
-  background-color: #f5f5f5;
+  border: 1px solid #000;
+  margin-bottom: 20px;
+}
+
+.logged-user h4,
+.useful-links h4,
+.recent-visits h4 {
+  color: #fff;
+}
+
+.logged-user .avatar-row {
+  display: flex;
+  align-items: center;
+}
+
+.logged-user .user-stats ul {
+  margin-top: 10px;
+  text-align: center;
+  display: table;
+  font-weight: bold;
+  width: 100%;
+}
+
+.logged-user .user-stats ul li {
+  display: table-cell;
+}
+
+.user-stats .stat-title {
+  display: block;
+}
+
+.user-stats li span:not(.stat-title) {
+  font-size: 18px;
+  color: #1da1f2;
+}
+
+.useful-links a {
+  font-weight: bold;
+}
+
+.twitter-container .recent-visits {
+  padding: 15px;
 }
 
 .tweet {
@@ -94,13 +179,6 @@ h1, .icon-twitter {
   border-radius: 0;
 }
 
-.logged-user {
-  padding: 20px;
-  border: 1px solid #eeeeee;
-  margin-bottom: 20px;
-  text-align: left;
-}
-
 .github-btn {
   margin-left: 20px;
 }
@@ -109,33 +187,21 @@ h1, .icon-twitter {
   margin-right: 20px;
 }
 
-.useful-links {
-  text-align: left;
-  border-radius: 2px;
-  padding: 20px;
-  background-color: #f5f5f5;
-}
-
-header.navbar-static-top {
-  margin-bottom: 30px;
-}
-
 .modal-content {
   padding: 6px;
 }
 
-.analytics-container {
-  background: white;
-}
-
 a {
-  color: rgb(25, 165, 207);
+  color: #1da1f2;
 }
 
 .edit-tweet-actions {
   margin-top: 10px;
 }
 
-footer.bs-docs-footer{
+footer{
   text-align: center;
+  background-color: #243447;
+  padding-top: 30px;
+  height: 150px;
 }
