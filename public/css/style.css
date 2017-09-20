@@ -282,6 +282,43 @@ a {
   display: inline-block;
 }
 
+/* Analytics Page */
+
+.analytics-container h1 {
+  color: #fff;
+}
+
+.analytics-container table  th {
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+
+.analytics-container .total-visits {
+  font-size: 18px;
+}
+
+.analytics-container .total-visits span {
+  font-weight: bold;
+}
+
+.pagination-container {
+  text-align: center;
+}
+
+.pagination li a {
+  border-color: #000 !important;
+}
+
+.pagination .no a {
+  background-color: #1b2836;
+  color: #fff;
+}
+
+.pagination .active a {
+  background-color: #1da1f2;
+}
+
 /* Footer */
 
 footer{

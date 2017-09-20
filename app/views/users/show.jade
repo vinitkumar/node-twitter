@@ -51,23 +51,8 @@ block content
     .col-md-8
       each tweet in tweets
         .row.tweet
-          .col-md-1
-            - var name = tweet.user.name ? tweet.user.name : tweet.user.username
-            - if (tweet.user.provider == 'facebook')
-              img(class='tweet-image', src='http://graph.facebook.com/'+tweet.user.facebook.id+'/picture')
-            - if (tweet.user.provider == 'github')
-              img(class='tweet-image', src=tweet.user.github.avatar_url)
-            - if (tweet.user.provider == 'twitter')
-              img(class='tweet-image', src="#{tweet.user.twitter.profile_image_url}")
-          .col-md-11.tweet-description
+          .col-sm-12.tweet-description
             span.name-date-group
-              span.name
-                a(href="/users/"+tweet.user._id) #{name} 
               span.date
-                a(href="/tweets/"+tweet._id) • #{formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")}
+                a(href="/tweets/"+tweet._id) #{formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")}
             p.tweet-content= tweet.body
-            form.center.form-inline.confirm.settings-tweet(action="/tweets/"+tweet.id, method="post")
-              if (tweet.user._id == req.user.id)
-                a.btn.btn-success.edit(href='/tweets/'+tweet._id+'/edit', title="edit") Edit
-                input(type="hidden", name="_method", value="DELETE")
-                button.btn.btn-danger(type="submit") delete
