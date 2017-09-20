@@ -20,6 +20,11 @@ ul {
   padding: 0;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
+
 .icon-4x {
   font-size: 11em;
 }
@@ -76,12 +81,10 @@ ul#main-navigation i.fa {
   padding-right: 10px;
 }
 
+/* Login Page */
+
 .login {
   padding-top: 36px;
-}
-
-a:hover {
-  text-decoration: none;
 }
 
 .login-container {
@@ -110,7 +113,8 @@ a:hover {
 .logged-user,
 .useful-links,
 .recent-visits,
-.analytics-container {
+.analytics-container,
+#profile-page > div {
   background-color: #1b2836;
   padding: 15px;
   border-radius: 2px;
@@ -129,7 +133,7 @@ a:hover {
   align-items: center;
 }
 
-.logged-user .user-stats ul {
+.user-stats ul {
   margin-top: 10px;
   text-align: center;
   display: table;
@@ -137,7 +141,7 @@ a:hover {
   width: 100%;
 }
 
-.logged-user .user-stats ul li {
+.user-stats ul li {
   display: table-cell;
 }
 
@@ -198,6 +202,26 @@ a {
 .edit-tweet-actions {
   margin-top: 10px;
 }
+
+/* Profile Page */
+
+#profile-page .profile-image {
+  width: 150px;
+  border: 0;
+}
+
+#profile-page .profile-summary {
+  text-align: center;
+}
+
+#profile-page span.profile-handle {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+/* Footer */
 
 footer{
   text-align: center;
