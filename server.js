@@ -6,6 +6,7 @@ const config = require('./config/config')[env];
 const auth = require('./config/middlewares/authorization');
 const mongoose = require('mongoose');
 const app = express();
+const port = process.env.PORT || 3000;
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.db, {
@@ -22,7 +23,7 @@ fs.readdirSync(models_path).forEach(file => {
 require('./config/passport')(passport, config);
 require('./config/express')(app, config, passport);
 require('./config/routes')(app, passport, auth);
-const port = process.env.PORT || 3000;
+
 app.listen(port);
 console.log('Express app started on port ' + port);
 exports = module.exports = app;

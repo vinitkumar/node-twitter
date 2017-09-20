@@ -53,7 +53,7 @@ block content
                 h4.modal-title New Tweet
               .modal-body
                 .row
-                  form(method='post', action='/tweets', enctype='multipart/form-data')
+                  form(method='post', action='/tweets')
                     .control-group
                       label.control-label(for='tweet')
                       br
@@ -66,31 +66,28 @@ block content
               .modal-footer
     .col-lg-6
       each tweet in tweets
-        .well.flat
-          .tweet
-            .row
-              .col-lg-6.pull-left
-                h5
-                  if tweet.user
-                    - var name = tweet.user.name ? tweet.user.name : tweet.user.username
-                    - if (tweet.user.provider == 'facebook')
-                      img(class='tweet-image', src='http://graph.facebook.com/'+tweet.user.facebook.id+'/picture')
-                    - if (tweet.user.provider == 'github')
-                      img(class='tweet-image', src=tweet.user.github.avatar_url)
-                    - if (tweet.user.provider == 'twitter')
-                      img(class='tweet-image', src="#{tweet.user.twitter.profile_image_url}")
-                    a(href="/users/"+tweet.user._id)= name
-              .col-lg-5.date
-                .pull-right
-                  a(href="/tweets/"+tweet._id)= formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")
-            p=tweet.body
+        .row.tweet
+          .col-md-1
+            - var name = tweet.user.name ? tweet.user.name : tweet.user.username
+            - if (tweet.user.provider == 'facebook')
+              img(class='tweet-image', src='http://graph.facebook.com/'+tweet.user.facebook.id+'/picture')
+            - if (tweet.user.provider == 'github')
+              img(class='tweet-image', src=tweet.user.github.avatar_url)
+            - if (tweet.user.provider == 'twitter')
+              img(class='tweet-image', src="#{tweet.user.twitter.profile_image_url}")
+          .col-md-11.tweet-description
+            span.name-date-group
+              span.name
+                a(href="/users/"+tweet.user._id) #{name} 
+              span.date
+                a(href="/tweets/"+tweet._id) • #{formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")}
+            p.tweet-content= tweet.body
             form.center.form-inline.confirm.settings-tweet(action="/tweets/"+tweet.id, method="post")
-              if tweet.user
-                if (tweet.user._id == req.user.id)
-                  a.btn.btn-success.flat.edit(href='/tweets/'+tweet._id+'/edit', title="edit") Edit
-                  input(type="hidden", name="_method", value="DELETE")
-                  button.btn.btn-danger.flat(type="submit") delete
-          .comment
+              if (tweet.user._id == req.user.id)
+                a.btn.btn-success.edit(href='/tweets/'+tweet._id+'/edit', title="edit") Edit
+                input(type="hidden", name="_method", value="DELETE")
+                button.btn.btn-danger(type="submit") delete
+          .col-md-12.comment
             each comment in tweet.comments
               include ../comments/comment
             hr

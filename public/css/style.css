@@ -24,6 +24,10 @@ a:hover {
   text-decoration: none;
 }
 
+hr {
+  border-color: #000;
+}
+
 
 .icon-4x {
   font-size: 11em;
@@ -33,6 +37,12 @@ i {
   padding-top: 30px;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.btn {
+  border-radius: 100px;
+  font-size: 12px;
+  padding: 4px 10px;
 }
 
 /* Navbar */
@@ -107,14 +117,15 @@ ul#main-navigation i.fa {
 .tweet-image {
   border-radius: 50%;
   height: 40px;
-  border: 2px solid white;
+  border: 1px solid #000;
 }
 
 .logged-user,
 .useful-links,
 .recent-visits,
 .analytics-container,
-#profile-page > div {
+#profile-page > div,
+.row.tweet {
   background-color: #1b2836;
   padding: 15px;
   border-radius: 2px;
@@ -201,6 +212,56 @@ a {
 
 .edit-tweet-actions {
   margin-top: 10px;
+}
+
+/* Tweets */
+
+.row.tweet {
+  margin: 0 15px 15px;
+  color: #fff;
+}
+
+.row.tweet .tweet-description {
+  padding-left: 25px;
+}
+
+.row.tweet p.tweet-content {
+  margin: 5px 0 10px;
+  word-wrap: break-word;
+}
+
+.tweet span.name a,
+.comment span.name a {
+  color: #fff;
+  font-weight: bold;
+}
+
+.tweet span.date a,
+.comment span.date {
+  color: #8899a6;
+}
+
+.tweet .comment textarea {
+  background-color: #141d26;
+  border-color: #1B5881;
+}
+
+.tweet .comment textarea:focus {
+  color: #fff;
+}
+
+.tweet .comment .btn {
+  margin: auto;
+  display: block;
+  margin-top: 10px;
+}
+
+.comment .comment-item {
+  margin-top: 10px;
+}
+
+.comment .comment-content {
+  margin-top: 5px;
 }
 
 /* Profile Page */
