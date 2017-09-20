@@ -88,8 +88,10 @@ block content
                 input(type="hidden", name="_method", value="DELETE")
                 button.btn.btn-danger(type="submit") delete
           .col-md-12.comment
-            each comment in tweet.comments
-              include ../comments/comment
+            if tweet.comments.length > 1
+              hr
+              each comment in tweet.comments
+                include ../comments/comment
             hr
             include ../comments/form
     .col-lg-3.recent-visits
