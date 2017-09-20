@@ -47,23 +47,18 @@ block content
             a(href="https://github.com/vinitkumar/node-twitter/issues/new") #Report a Bug
         #myModal.modal.fade
           .modal-dialog
-            .modal-content.flat
+            .modal-content
               .modal-header
                 button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-                h4.modal-title New Tweet
+                h4.modal-title Compose new Tweet
               .modal-body
-                .row
-                  form(method='post', action='/tweets')
-                    .control-group
-                      label.control-label(for='tweet')
-                      br
-                      .controls
-                        textarea.flat.form-control(type='text', name='body', placeholder='Enter your tweet here', maxlength='140')
-                    br
-                    .form-actions.pull-right
-                      button.btn.btn-primary.flat(type='submit') Publish Tweet
-                      a.btn.btn-danger.flat(href='/tweets', title='cancel') Cancel
-              .modal-footer
+                form(method='post', action='/tweets')
+                  .control-group
+                    label.control-label(for='tweet')
+                    .controls
+                      textarea.flat.form-control(type='text', name='body', placeholder='Enter your tweet here', maxlength='140')
+                  .form-actions
+                    button.btn(type='submit') Tweet
     .col-lg-6
       each tweet in tweets
         .row.tweet

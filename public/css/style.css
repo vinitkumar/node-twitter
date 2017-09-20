@@ -319,6 +319,48 @@ a {
   background-color: #1da1f2;
 }
 
+/* New Tweet Modal */
+
+.modal-content {
+  padding: 0
+}
+
+.modal-content .modal-header {
+  background-color: #1b2836;
+  text-align: center;
+  border-bottom: 0;
+}
+
+button.close {
+  color: #8899a6;
+  opacity: 1;
+  text-shadow: none;
+}
+
+.modal-body {
+  background-color: #1b3449;
+}
+
+.modal-content .btn {
+  background-color: #1da1f2;
+  color: #fff;
+}
+
+.modal-content textarea {
+  background-color: #141d26;
+  border: solid 2px #1B5881;
+  border-radius: 8px;
+}
+
+.modal-content textarea:focus {
+  color: #fff;
+}
+
+.modal-content .form-actions {
+  text-align: center;
+  margin-top: 10px;
+}
+
 /* Footer */
 
 footer{
