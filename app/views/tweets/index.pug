@@ -2,7 +2,7 @@ extends ../layouts/default
 
 block content
   .row.twitter-container
-    .col-lg-3
+    .col-lg-3.col-md-4
       .logged-user
         .row.avatar-row
           .col-xs-4
@@ -15,8 +15,7 @@ block content
           .col-xs-8
             a(href="/users/" + req.user.id)
               h4 #{req.user.name}
-        .row
-          .col-xs-12.user-stats
+          .col-md-12.col-xs-8.user-stats
             ul.list-unstyled
               li
                 span.stat-title Tweets:
@@ -41,24 +40,12 @@ block content
             a(href="http://github.com/vinitkumar/node-twitter") #Source Code
           li.links
             a(href="https://github.com/vinitkumar/node-twitter/issues/new") #Report a Bug
-        #myModal.modal.fade
-          .modal-dialog
-            .modal-content
-              .modal-header
-                button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-                h4.modal-title Compose new Tweet
-              .modal-body
-                form(method='post', action='/tweets')
-                  .control-group
-                    label.control-label(for='tweet')
-                    .controls
-                      textarea.flat.form-control(type='text', name='body', placeholder='Enter your tweet here', maxlength='140')
-                  .form-actions
-                    button.btn(type='submit') Tweet
-    .col-lg-6
+      .recent-visits.medium
+        include ../analytics/recent-visits
+    .col-lg-6.col-md-8
       each tweet in tweets
-        .row.tweet
-          .col-md-1
+        .tweet
+          .col-xs-1
             - var name = tweet.user.name ? tweet.user.name : tweet.user.username
             - if (tweet.user.provider == 'facebook')
               img(class='tweet-image', src='http://graph.facebook.com/'+tweet.user.facebook.id+'/picture')
@@ -66,7 +53,7 @@ block content
               img(class='tweet-image', src=tweet.user.github.avatar_url)
             - if (tweet.user.provider == 'twitter')
               img(class='tweet-image', src="#{tweet.user.twitter.profile_image_url}")
-          .col-md-11.tweet-description
+          .col-xs-11.tweet-description
             span.name-date-group
               span.name
                 a(href="/users/"+tweet.user._id) #{name} 
@@ -78,22 +65,27 @@ block content
                 a.btn.btn-success.edit(href='/tweets/'+tweet._id+'/edit', title="edit") Edit
                 input(type="hidden", name="_method", value="DELETE")
                 button.btn.btn-danger(type="submit") delete
-          .col-md-12.comment
+          .col-xs-12.comment
             if tweet.comments > 0
               hr
               each comment in tweet.comments
                 include ../comments/comment
             hr
             include ../comments/form
-    .col-lg-3.recent-visits
-      h4 Recent Visits
-      each analytic in analytics
-        div
-          if analytic.user
-            if analytic.user.name
-              - var name = analytic.user.name ? analytic.user.name : analytic.user.username
-              a(href="/users/"+analytic.user._id)= name
-                span   (#{formatDate(analytic.createdAt, "%b %d, %Y at %I:%M %p")})
-    - if (pages > 1)
-      ul.pagination
-        != createPagination(pages, page)
+    .col-lg-3.col-md-4
+      .recent-visits.large.small
+        include ../analytics/recent-visits
+  #myModal.modal.fade
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+          h4.modal-title Compose new Tweet
+        .modal-body
+          form(method='post', action='/tweets')
+            .control-group
+              label.control-label(for='tweet')
+              .controls
+                textarea.flat.form-control(type='text', name='body', placeholder='Enter your tweet here', maxlength='140')
+            .form-actions
+              button.btn(type='submit') Tweet

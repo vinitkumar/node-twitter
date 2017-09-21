@@ -147,17 +147,15 @@ ul#main-navigation i.fa {
   text-align: center;
 }
 
-.twitter-container > div {
-  padding: 0;
-}
-
 .modal-title {
 	display: inline-block;
 }
 
 .profile-image {
   border-radius: 50%;
-  width: 100%;
+  width: 150px;
+  max-width: 100%;
+  float: right;
 }
 
 .tweet-image {
@@ -171,7 +169,7 @@ ul#main-navigation i.fa {
 .recent-visits,
 .analytics-container,
 .profile-summary,
-.row.tweet {
+.tweet {
   background-color: #1b2836;
   padding: 15px;
   border-radius: 2px;
@@ -186,8 +184,8 @@ ul#main-navigation i.fa {
 }
 
 .logged-user .avatar-row {
-  display: flex;
-  align-items: center;
+  /*display: flex;
+  align-items: center;*/
 }
 
 .user-stats ul {
@@ -217,10 +215,6 @@ ul#main-navigation i.fa {
 
 .twitter-container .recent-visits {
   padding: 15px;
-}
-
-.tweet {
-  padding: 5px;
 }
 
 .comment {
@@ -258,16 +252,21 @@ a {
 
 /* Tweets */
 
-.row.tweet {
-  margin: 0 15px 15px;
+.tweet {
   color: #fff;
 }
 
-.row.tweet .tweet-description {
+.tweet::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.tweet .tweet-description {
   padding-left: 25px;
 }
 
-.row.tweet p.tweet-content {
+.tweet p.tweet-content {
   margin: 5px 0 10px;
   word-wrap: break-word;
 }
@@ -410,4 +409,39 @@ footer{
   background-color: #243447;
   padding-top: 30px;
   height: 150px;
+}
+
+/* Media Queries */
+
+/* Large Width */
+
+@media (min-width: 1199px) {
+  .recent-visits.medium {
+    display: none;
+  }
+}
+
+/* Medium Width */
+@media (max-width: 1199px) {
+  .recent-visits.medium {
+    display: block;
+  }
+  .recent-visits.large {
+    display: none;
+  }
+}
+
+/* Small Width */
+
+@media (max-width: 991px) {
+  .recent-visits.medium {
+    display: none;
+  }
+  .recent-visits.small {
+    display: block;
+  }
+  .avatar-row h4 {
+    margin-top: 6%;
+    text-align: center;
+  }
 }
