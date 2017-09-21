@@ -1,7 +1,7 @@
 {
   "name": "nwitter",
   "description": "A twitter clone written with express, mongodbe",
-  "version": "1.0.00",
+  "version": "1.1.0",
   "repository": "https://github.com/vinitkumar/node-twitter",
   "private": false,
   "author": "Vinit Kumar <vinit1414.08@bitmesra.ac.in> (http://vinitkumar.me)",
