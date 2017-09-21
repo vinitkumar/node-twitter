@@ -29,17 +29,8 @@ block content
                 span.stat-title Followers: 
                 span
                   a(href="/users/" + req.user._id + "/followers")  #{followerCount}
-      .useful-links
-        h4 Important links
-        ul.list-unstyled
-          li.links
-            a(href="https://github.com/vinitkumar/node-twitter/blob/master/AUTHORS") #Authors
-          li.links
-            a(href="https://github.com/vinitkumar/node-twitter/blob/master/License") #License
-          li.links
-            a(href="http://github.com/vinitkumar/node-twitter") #Source Code
-          li.links
-            a(href="https://github.com/vinitkumar/node-twitter/issues/new") #Report a Bug
+      .useful-links.medium
+        include ../useful-links
       .recent-visits.medium
         include ../analytics/recent-visits
     .col-lg-6.col-md-8
@@ -73,8 +64,10 @@ block content
             hr
             include ../comments/form
     .col-lg-3.col-md-4
-      .recent-visits.large.small
+      .recent-visits.large.small.col-xs-6.col-md-12
         include ../analytics/recent-visits
+      .useful-links.small.col-xs-6.col-md-12
+        include ../useful-links
   #myModal.modal.fade
     .modal-dialog
       .modal-content

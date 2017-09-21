@@ -412,14 +412,19 @@ footer{
   .recent-visits.medium {
     display: none;
   }
+  .useful-links.small {
+    display: none;
+  }
 }
 
 /* Medium Width */
 @media (max-width: 1199px) {
-  .recent-visits.medium {
+  .recent-visits.medium,
+  .useful-links.medium {
     display: block;
   }
-  .recent-visits.large {
+  .recent-visits.small,
+  .useful-links.small {
     display: none;
   }
 }
@@ -427,14 +432,20 @@ footer{
 /* Small Width */
 
 @media (max-width: 991px) {
-  .recent-visits.medium {
+  .recent-visits.medium,
+  .useful-links.medium {
     display: none;
   }
-  .recent-visits.small {
+  .recent-visits.small,
+  .useful-links.small {
     display: block;
   }
   .avatar-row h4 {
     margin-top: 6%;
+    text-align: center;
+  }
+  .useful-links,
+  .recent-visits {
     text-align: center;
   }
 }
