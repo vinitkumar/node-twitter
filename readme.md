@@ -4,7 +4,7 @@ Node twitter is an effort to rewrite some of Twitters functionality using modern
 javascript based toolchain. It was mostly an effort to learn Node.js and trying to reverse
 engineer some of twitter's feature.
 
-![screenshot](https://cldup.com/9U54a07O4F-3000x3000.png)
+![screenshot](https://cldup.com/QCN3J88rC5-3000x3000.png)
 
 ## Prerequisites
 
@@ -49,9 +49,10 @@ module.exports = {
 Express app started on port 3000
 ```
 
-## Author
+## Authors
 
 [![Vinit Kumar](https://avatars0.githubusercontent.com/u/537678?v=3&s=144)](https://vinitkumar.me)
+[![Robert Cooper](https://avatars0.githubusercontent.com/u/16786990?v=3&s=144)](http://www.robertcooper.me/)
 
 [Say Thanks](https://saythanks.io/to/vinitkumar)
 
