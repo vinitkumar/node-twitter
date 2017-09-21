@@ -28,7 +28,6 @@ hr {
   border-color: #000;
 }
 
-
 .icon-4x {
   font-size: 11em;
 }
@@ -49,6 +48,11 @@ i {
 
 span.logo {
   font-size: 20px;
+  margin-right: auto;
+}
+
+span.logo a:hover {
+  color: #1da1f2;
 }
 
 header.navbar {
@@ -61,31 +65,63 @@ header.navbar {
   margin: 0;
 }
 
+a.new-tweet i.fa {
+  padding: 0;
+  padding-right: 10px;
+}
+
+a.new-tweet {
+  background-color: #1C88CC;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+a.new-tweet:hover {
+  background-color: #1da1f2;
+  color: #fff;
+}
+
 ul#main-navigation {
   display: flex;
   align-items: center;
   height: 100%;
-  margin-left: auto;
   font-size: 14px;
 }
 
 ul#main-navigation li {
-  margin-right: 25px;
+  margin-right: 5px;
   display: flex;
   height: 100%;
   align-items: center;
 }
 
 ul#main-navigation a {
+  height: 100%;
   color: #8899a6;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+ul#main-navigation a:hover {
+  border-bottom: 2px solid #1da1f2;
 }
 
 ul#main-navigation li:hover {
   color: #1da1f2 !important;
-  border-bottom: 5px solid #1da1f2;
+}
+
+ul#main-navigation a:hover {
+  color: #1da1f2 !important;
+}
+
+ul#main-navigation a span {
+  margin-top: 13px;
+  display: inline-block;
 }
 
 ul#main-navigation i.fa {
+  margin-top: 27px;
   display: inline;
   padding: 0;
   padding-right: 10px;
