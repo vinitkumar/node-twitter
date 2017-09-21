@@ -183,21 +183,13 @@ ul#main-navigation i.fa {
   color: #fff;
 }
 
-.logged-user .avatar-row {
-  /*display: flex;
-  align-items: center;*/
-}
-
 .user-stats ul {
   margin-top: 10px;
   text-align: center;
-  display: table;
+  display: flex;
+  justify-content: space-around;
   font-weight: bold;
   width: 100%;
-}
-
-.user-stats ul li {
-  display: table-cell;
 }
 
 .user-stats .stat-title {
@@ -310,6 +302,7 @@ a {
 #profile-page .profile-image {
   width: 150px;
   border: 0;
+  float: none;
 }
 
 #profile-page .profile-summary {
