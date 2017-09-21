@@ -20,7 +20,6 @@
     "express": "3.5.0",
     "forever": "latest",
     "gzippo": "latest",
-    "jade": "latest",
     "mongoose": "^4.11.12",
     "notifier": "latest",
     "passport": "^0.3.2",
@@ -30,6 +29,7 @@
     "passport-google-oauth": "latest",
     "passport-local": "latest",
     "passport-twitter": "~1.0.2",
+    "pug": "^2.0.0-rc.4",
     "underscore": "latest",
     "view-helpers": "latest"
   },

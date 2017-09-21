@@ -30,7 +30,7 @@ module.exports = (app, config, passport) => {
   });
 
   app.set("views", config.root + "/app/views");
-  app.set("view engine", "jade");
+  app.set("view engine", "pug");
   app.configure(() => {
     app.use(helpers(config.app.name));
     app.use(express.cookieParser());
