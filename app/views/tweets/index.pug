@@ -57,7 +57,7 @@ block content
                 input(type="hidden", name="_method", value="DELETE")
                 button.btn.btn-danger(type="submit") delete
           .col-xs-12.comment
-            if tweet.comments > 0
+            if tweet.comments.length > 0
               hr
               each comment in tweet.comments
                 include ../comments/comment
