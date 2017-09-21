@@ -16,7 +16,7 @@ exports.index = (req, res) => {
       if (err) {
         return res.render("500");
       }
-      res.render("analytics/index", {
+      res.render("analytics/analytics", {
         title: "List of users",
         analytics: analytics,
         count: count,

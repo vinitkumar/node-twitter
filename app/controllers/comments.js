@@ -17,7 +17,7 @@ exports.create = (req, res) => {
   const user = req.user;
 
   if (!req.body.body) {
-    return res.redirect("/tweets/" + tweet.id);
+    return res.redirect("/");
   }
   tweet.addComment(user, req.body, err => {
     if (err) {

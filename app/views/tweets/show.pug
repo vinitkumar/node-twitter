@@ -15,15 +15,12 @@ block content
           img(class='tweet-image', src=tweet.user.github.avatar_url)
         - if (tweet.user.provider == 'twitter')
           img(class='tweet-image', src="#{tweet.user.twitter.profile_image_url}")
-        //- if (tweet.user.name)
-        //-   a(href="/users/"+tweet.user._id)=tweet.user.name
         a(href="/users/"+tweet.user._id)= name
         p=tweet.body
     br
     form.center.form-inline.confirm(action="/tweets/"+tweet.id, method="post")
       - if (req.user.username === tweet.user.username)
         a.btn(href='/tweets/'+tweet._id+'/edit/', title="edit") Edit
-      &nbsp;&nbsp;
       - if( req.user.username === tweet.user.username)
         input(type="hidden", name="_method", value="DELETE")
         button.btn.btn-danger(type="submit") delete

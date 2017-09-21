@@ -43,7 +43,7 @@ exports.tweet = (req, res, next, id) => {
 // ### New Tweet
 exports.new = (req, res) => {
   logAnalytics(req);
-  res.render("tweets/new", {
+  res.render("tweets/form", {
     title: "New Tweet",
     tweet: new Tweet({})
   });
@@ -56,7 +56,7 @@ exports.create = (req, res) => {
   tweet.user = req.user;
   tweet.uploadAndSave({}, err => {
     if (err) {
-      res.render("tweets/new", {
+      res.render("tweets/form", {
         title: "New Tweet",
         tweet: tweet,
         error: err.errors
@@ -70,7 +70,7 @@ exports.create = (req, res) => {
 // ### Edit Tweet
 exports.edit = (req, res) => {
   logAnalytics(req);
-  res.render("tweets/edit", {
+  res.render("tweets/form", {
     title: "Edit" + req.tweet.title,
     tweet: req.tweet
   });
@@ -92,7 +92,7 @@ exports.update = (req, res) => {
   tweet = _.extend(tweet, req.body);
   tweet.uploadAndSave(req.files.image, err => {
     if (err) {
-      res.render("tweets/edit", {
+      res.render("tweets/form", {
         title: "Edit Tweet",
         tweet: tweet,
         error: err.errors
