@@ -10,7 +10,7 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
     concat: {
       dist: {
-        src: ['public/js/jquery.min.js', 'public/bootstrap.min.js', 'public/js/scripts.js', 'public/js/app.js'],
+        src: ['public/js/jquery.min.js', 'public/bootstrap.min.js', 'public/js/app.js'],
         dest: 'public/js/<%= pkg.name %>.add.js'
       }
     },
