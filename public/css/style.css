@@ -58,11 +58,13 @@ span.logo a:hover {
 header.navbar {
   background-color: #243447;
   height: 50px;
+  margin: 0;
+}
+
+header.navbar .container {
   display: flex;
   align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin: 0;
+  height: 100%;
 }
 
 a.new-tweet i.fa {
