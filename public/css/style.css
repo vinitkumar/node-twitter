@@ -46,15 +46,6 @@ i {
 
 /* Navbar */
 
-span.logo {
-  font-size: 20px;
-  margin-right: auto;
-}
-
-span.logo a:hover {
-  color: #1da1f2;
-}
-
 header.navbar {
   background-color: #243447;
   height: 50px;
@@ -67,21 +58,37 @@ header.navbar .container {
   height: 100%;
 }
 
-a.new-tweet i.fa {
-  padding: 0;
-  padding-right: 10px;
+header.navbar .container > * {
+  flex-grow: 1;
 }
 
-a.new-tweet {
+header.navbar span.logo {
+  font-size: 20px;
+}
+
+header.navbar span.logo a:hover {
+  color: #1da1f2;
+}
+
+header.navbar .new-tweet-container {
+  text-align: right;
+}
+
+header.navbar a.new-tweet {
   background-color: #1C88CC;
   color: #fff;
   font-weight: bold;
   font-size: 14px;
 }
 
-a.new-tweet:hover {
+header.navbar a.new-tweet:hover {
   background-color: #1da1f2;
   color: #fff;
+}
+
+header.navbar a.new-tweet i.fa {
+  padding: 0;
+  padding-right: 10px;
 }
 
 ul#main-navigation {
@@ -89,6 +96,7 @@ ul#main-navigation {
   align-items: center;
   height: 100%;
   font-size: 14px;
+  margin-right: auto;
 }
 
 ul#main-navigation li {
@@ -234,10 +242,6 @@ ul#main-navigation i.fa {
 
 .github-btn {
   margin-left: 20px;
-}
-
-.new-tweet {
-  margin-right: 20px;
 }
 
 .modal-content {

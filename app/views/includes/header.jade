@@ -1,12 +1,6 @@
 body
   header#top.navbar.navbar-static-top(role='banner')
     .container
-      span.logo
-        a(href='/') Node Twitter
-      if (req.isAuthenticated()) 
-        a.new-tweet.btn(data-toggle='modal', href='#myModal')
-          i(class="fa fa-paper-plane")
-          span Tweet
       if (req.isAuthenticated()) 
         ul#main-navigation
             li
@@ -23,3 +17,10 @@ body
               a(href="/logout", title="logout")
                 i(class="fa fa-sign-out", aria-hidden="true")
                 span Logout
+      span.logo
+        a(href='/') Node Twitter
+      div.new-tweet-container
+        if (req.isAuthenticated()) 
+          a.new-tweet.btn(data-toggle='modal', href='#myModal')
+            i(class="fa fa-paper-plane")
+            span Tweet
