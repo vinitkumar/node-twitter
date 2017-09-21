@@ -1,12 +1,32 @@
+/* General */
+
 body {
   font-size: 13px;
-  background-color: #e6ecf0;
+  background-color: #141d26;
+  color: #8899a6;
+  min-height: 100vh;
 }
 
-.red-border {
-  border: dashed 2px #95527;
+body > div.container {
+  /* Calculate the minimum height by subtracting the header and footer height */
+  min-height: calc(100vh - 50px - 150px);
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+hr {
+  border-color: #000;
+}
 
 .icon-4x {
   font-size: 11em;
@@ -18,37 +38,117 @@ i {
   padding-right: 20px;
 }
 
-.navbar-inverse .navbar-brand {
-  font-size: 24px;
-  font-weight: 400;
-  color: #fff;
+.btn {
+  border-radius: 100px;
+  font-size: 12px;
+  padding: 4px 10px;
 }
 
+/* Navbar */
 
-
-.navbar {
+header.navbar {
+  background-color: #243447;
   height: 50px;
+  margin: 0;
 }
 
-.navbar-inverse .navbar-nav > li > a {
+header.navbar .container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+header.navbar .container > * {
+  flex-grow: 1;
+}
+
+header.navbar span.logo {
+  font-size: 20px;
+}
+
+header.navbar span.logo a:hover {
+  color: #1da1f2;
+}
+
+header.navbar .new-tweet-container {
+  text-align: right;
+}
+
+header.navbar a.new-tweet {
+  background-color: #1C88CC;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+header.navbar a.new-tweet:hover {
+  background-color: #1da1f2;
   color: #fff;
 }
+
+header.navbar a.new-tweet i.fa {
+  padding: 0;
+  padding-right: 10px;
+}
+
+ul#main-navigation {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: 14px;
+  margin-right: auto;
+}
+
+ul#main-navigation li {
+  margin-right: 5px;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+ul#main-navigation a {
+  height: 100%;
+  color: #8899a6;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+ul#main-navigation a:hover {
+  border-bottom: 2px solid #1da1f2;
+}
+
+ul#main-navigation li:hover {
+  color: #1da1f2 !important;
+}
+
+ul#main-navigation a:hover {
+  color: #1da1f2 !important;
+}
+
+ul#main-navigation a span {
+  margin-top: 13px;
+  display: inline-block;
+}
+
+ul#main-navigation i.fa {
+  margin-top: 27px;
+  display: inline;
+  padding: 0;
+  padding-right: 10px;
+}
+
+/* Login Page */
 
 .login {
   padding-top: 36px;
-}
-
-a:hover {
-  text-decoration: none;
 }
 
 .login-container {
   text-align: center;
 }
 
-
-h1, .icon-twitter {
-	color: lightskyblue;
+.twitter-container > div {
+  padding: 0;
 }
 
 .modal-title {
@@ -57,20 +157,66 @@ h1, .icon-twitter {
 
 .profile-image {
   border-radius: 50%;
-  height: 100px;
-  border: 4px solid white;
+  width: 100%;
 }
 
 .tweet-image {
   border-radius: 50%;
   height: 40px;
-  border: 2px solid white;
+  border: 1px solid #000;
 }
 
-.logged-user {
-  text-align: center;
+.logged-user,
+.useful-links,
+.recent-visits,
+.analytics-container,
+.profile-summary,
+.row.tweet {
+  background-color: #1b2836;
+  padding: 15px;
   border-radius: 2px;
-  background-color: #f5f5f5;
+  border: 1px solid #000;
+  margin-bottom: 20px;
+}
+
+.logged-user h4,
+.useful-links h4,
+.recent-visits h4 {
+  color: #fff;
+}
+
+.logged-user .avatar-row {
+  display: flex;
+  align-items: center;
+}
+
+.user-stats ul {
+  margin-top: 10px;
+  text-align: center;
+  display: table;
+  font-weight: bold;
+  width: 100%;
+}
+
+.user-stats ul li {
+  display: table-cell;
+}
+
+.user-stats .stat-title {
+  display: block;
+}
+
+.user-stats li span:not(.stat-title) {
+  font-size: 18px;
+  color: #1da1f2;
+}
+
+.useful-links a {
+  font-weight: bold;
+}
+
+.twitter-container .recent-visits {
+  padding: 15px;
 }
 
 .tweet {
@@ -94,48 +240,174 @@ h1, .icon-twitter {
   border-radius: 0;
 }
 
-.logged-user {
-  padding: 20px;
-  border: 1px solid #eeeeee;
-  margin-bottom: 20px;
-  text-align: left;
-}
-
 .github-btn {
   margin-left: 20px;
-}
-
-.new-tweet {
-  margin-right: 20px;
-}
-
-.useful-links {
-  text-align: left;
-  border-radius: 2px;
-  padding: 20px;
-  background-color: #f5f5f5;
-}
-
-header.navbar-static-top {
-  margin-bottom: 30px;
 }
 
 .modal-content {
   padding: 6px;
 }
 
-.analytics-container {
-  background: white;
-}
-
 a {
-  color: rgb(25, 165, 207);
+  color: #1da1f2;
 }
 
 .edit-tweet-actions {
   margin-top: 10px;
 }
 
-footer.bs-docs-footer{
+/* Tweets */
+
+.row.tweet {
+  margin: 0 15px 15px;
+  color: #fff;
+}
+
+.row.tweet .tweet-description {
+  padding-left: 25px;
+}
+
+.row.tweet p.tweet-content {
+  margin: 5px 0 10px;
+  word-wrap: break-word;
+}
+
+.tweet span.name a,
+.comment span.name a {
+  color: #fff;
+  font-weight: bold;
+}
+
+.tweet span.date a,
+.comment span.date {
+  color: #8899a6;
+}
+
+.tweet .comment textarea {
+  background-color: #141d26;
+  border-color: #1B5881;
+}
+
+.tweet .comment textarea:focus {
+  color: #fff;
+}
+
+.tweet .comment .btn {
+  margin: auto;
+  display: block;
+  margin-top: 10px;
+}
+
+.comment .comment-item {
+  margin-top: 10px;
+}
+
+.comment .comment-content {
+  margin-top: 5px;
+}
+
+/* Profile Page */
+
+#profile-page .profile-image {
+  width: 150px;
+  border: 0;
+}
+
+#profile-page .profile-summary {
   text-align: center;
+}
+
+#profile-page span.profile-handle {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+/* Analytics Page */
+
+.analytics-container h1 {
+  color: #fff;
+}
+
+.analytics-container table  th {
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+
+.analytics-container .total-visits {
+  font-size: 18px;
+}
+
+.analytics-container .total-visits span {
+  font-weight: bold;
+}
+
+.pagination-container {
+  text-align: center;
+}
+
+.pagination li a {
+  border-color: #000 !important;
+}
+
+.pagination .no a {
+  background-color: #1b2836;
+  color: #fff;
+}
+
+.pagination .active a {
+  background-color: #1da1f2;
+}
+
+/* New Tweet Modal */
+
+.modal-content {
+  padding: 0
+}
+
+.modal-content .modal-header {
+  background-color: #1b2836;
+  text-align: center;
+  border-bottom: 0;
+}
+
+button.close {
+  color: #8899a6;
+  opacity: 1;
+  text-shadow: none;
+}
+
+.modal-body {
+  background-color: #1b3449;
+}
+
+.modal-content .btn {
+  background-color: #1da1f2;
+  color: #fff;
+}
+
+.modal-content textarea {
+  background-color: #141d26;
+  border: solid 2px #1B5881;
+  border-radius: 8px;
+}
+
+.modal-content textarea:focus {
+  color: #fff;
+}
+
+.modal-content .form-actions {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Footer */
+
+footer{
+  text-align: center;
+  background-color: #243447;
+  padding-top: 30px;
+  height: 150px;
 }

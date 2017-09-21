@@ -52,23 +52,22 @@ TweetSchema.virtual("_favorites").set(function(user) {
 });
 
 TweetSchema.methods = {
-  uploadAndSave: function(images, cb) {
-    if (!images || !images.length) {
-      return this.save(cb);
-    }
-    const imager = new Imager(imagerConfig, "S3");
+  uploadAndSave: function(images, callback) {
+    // const imager = new Imager(imagerConfig, "S3");
     const self = this;
-
+    if (!images || !images.length) {
+      return this.save(callback);
+    }
     imager.upload(
       images,
       (err, cdnUri, files) => {
         if (err) {
-          return cb(err);
+          return callback(err);
         }
         if (files.length) {
           self.image = { cdnUri: cdnUri, files: files };
         }
-        self.save(cb);
+        self.save(callback);
       },
       "article"
     );

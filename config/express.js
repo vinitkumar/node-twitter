@@ -5,6 +5,7 @@ const express = require("express");
 const mongoStore = require("connect-mongo")(express);
 const flash = require("connect-flash");
 const helpers = require("view-helpers");
+const bodyParser  = require('body-parser');;
 
 module.exports = (app, config, passport) => {
   app.set("showStackError", true);
@@ -33,9 +34,10 @@ module.exports = (app, config, passport) => {
   app.configure(() => {
     app.use(helpers(config.app.name));
     app.use(express.cookieParser());
-
-    app.use(express.urlencoded())
-    app.use(express.json())
+    app.use(bodyParser.urlencoded({
+      extended: true
+    }));
+    app.use(bodyParser.json());
     app.use(express.methodOverride());
     app.use(
       express.session({
@@ -48,7 +50,6 @@ module.exports = (app, config, passport) => {
     );
 
     app.use(flash());
-
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(app.router);
