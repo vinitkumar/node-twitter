@@ -13,27 +13,21 @@ block content
                   - var action = '/tweets'
                   if (!tweet.isNew)
                     - action += '/'+tweet.id
-
                   if (typeof errors !== 'undefined')
                     .fade.in.alert.alert-block.alert-error
                       a.close(data-dismiss="alert", href="javascript:void(0)") x
                       ul
                         each errors in errors
                           li = error.type
-
-
-
                   form(method="post", action=action, enctype="multipart/form-data")
                     if (!tweet.isNew)
                       input(type="hidden", name="_method", value="PUT")
-
                     .control-group
                       label.control-label(for='tweet')
                       br
                       .controls
                         textarea(type='text', class="form-control", name="body",
                           placeholder='Enter your tweet here',maxlength='140')=tweet.body
-
                     .form-actions.pull-right.edit-tweet-actions
                       button.btn.btn-primary.flat(type='submit') Publish Tweet
                       &nbsp;

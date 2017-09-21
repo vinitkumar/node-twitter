@@ -1,9 +1,9 @@
 extends ../layouts/default
 
 block content
-  .row
+  .row#profile-page
     .col-md-4
-      .well
+      .row.profile-summary
         - if (user.provider == 'twitter')
             img(class="profile-image img-thumbnail", src="#{user.twitter.profile_image_url}")
             i.icon-twitter.icon-3x
@@ -13,7 +13,7 @@ block content
                 #{user.twitter.description}
               div.col-md-6
                 div
-                  a(href="https://twitter.com/#{user.username}", target="_blank")@#{user.username}
+                  a(href="https://twitter.com/#{user.username}", target="_blank") @#{user.username}
                 div
                   Friends on twitter: #{user.twitter.friends_count}
                 div
@@ -25,44 +25,34 @@ block content
             li #{user.name}
             li Facebook link: #{user.facebook.link}
         - if (user.provider == 'github')
-            img(class="profile-image img-thumbnail", src=user.github.avatar_url)
-            i.icon-github.icon-3x
+            img(class="profile-image", src=user.github.avatar_url)
             div.user-info
-              a(href="#{user.github.html_url}", target='_blank') @#{user.github.login}
+              span.profile-handle
+                a(href="#{user.github.html_url}", target='_blank') @#{user.github.login}
               ul.list-unstyled
                 li github followers: #{user.github.followers}
                 li public repos: #{user.github.public_repos}
-                li followers:
-                  a(href="/users/" + user._id + "/followers")  #{followerCount}
-                li following:
-                  a(href="/users/" + user._id + "/following")  #{followingCount}
-
+              .row
+                .col-xs-12.user-stats
+                  ul.list-unstyled
+                    li
+                      span.stat-title Tweets:
+                      span #{count}
+                    li
+                      span.stat-title Following:
+                      span 
+                        a(href="/users/" + user._id + "/following")  #{followingCount}
+                    li
+                      span.stat-title Followers: 
+                      span
+                        a(href="/users/" + user._id + "/followers")  #{followerCount}
         if (user._id != req.user.id)
           a.btn(href="#", class="btn-success follow", data-userid=user._id, data-logged=req.user.id,title="follow") follow
     .col-md-8
       each tweet in tweets
-        .well.flat
-          .tweet
-            .row
-              .col-lg-6.pull-left
-                h5
-                  - var name = tweet.user.name ? tweet.user.name : tweet.user.username
-                  - if (tweet.user.provider == 'facebook')
-                    img(class='tweet-image', src='http://graph.facebook.com/'+tweet.user.facebook.id+'/picture')
-                  - if (tweet.user.provider == 'github')
-                    img(class='tweet-image', src=tweet.user.github.avatar_url)
-                  - if (tweet.user.provider == 'twitter')
-                    img(class='tweet-image', src="#{tweet.user.twitter.profile_image_url}")
-                  //- if (tweet.user.name)
-                  //-   a(href="/users/"+tweet.user._id)=tweet.user.name
-                  a(href="/users/"+tweet.user._id)= name
-              .col-lg-5.date
-                .pull-right
-                  a(href="/tweets/"+tweet._id)= formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")
-            p=tweet.body
-            form.center.form-inline.confirm.settings-tweet(action="/tweets/"+tweet.id, method="post")
-              if (tweet.user._id == req.user.id)
-                 a.btn.btn-success.flat.edit(href='/tweets/'+tweet._id+'/edit', title="edit") Edit
-                 input(type="hidden", name="_method", value="DELETE")
-                 button.btn.flat(type="submit") delete
-
+        .row.tweet
+          .col-sm-12.tweet-description
+            span.name-date-group
+              span.date
+                a(href="/tweets/"+tweet._id) #{formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")}
+            p.tweet-content= tweet.body

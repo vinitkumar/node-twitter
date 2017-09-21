@@ -1,7 +1,3 @@
 form(method="post", action="/tweets/#{tweet._id}/comments")
-  .control-group
-    .controls
-      textarea.flat(type='text',class='form-control', name="body", placeholder='Enter the comment')
-    br
-  button.btn.btn-primary.flat.pull-right(type='submit') Comment
-  hr
+  textarea(type='text',class='form-control', name="body", placeholder='Enter the comment')
+  button.btn.btn-primary(type='submit') Comment

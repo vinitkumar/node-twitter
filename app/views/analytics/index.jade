@@ -3,13 +3,14 @@ extends ../layouts/default
 block content
   .container.analytics-container
     h1 Analytics Dashboard
-    h2 Total visits: #{count}
+    p.total-visits Total visits:
+      span #{count}
     table.table.table-bordered
       thead
         tr
           th User
           th URL
-          th Visit time
+          th Date/Time
       tbody
         each analytic in analytics
           tr
@@ -18,8 +19,7 @@ block content
               td #{name}
               td #{analytic.url}
               td #{analytic.createdAt}
-
-
   - if (pages > 1)
-    ul.pagination
-      != createPagination(pages, page)
+    .pagination-container
+      ul.pagination
+        != createPagination(pages, page)

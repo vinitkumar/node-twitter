@@ -1,108 +1,97 @@
 extends ../layouts/default
 
-block newtweet
-  li
-    a.btn.btn-primary.flat.new-tweet(data-toggle='modal', href='#myModal')
-      i(class="fa fa-paper-plane", style="display: initial")  Tweet
-
-
 block content
   .row.twitter-container
     .col-lg-3
       .logged-user
-        - if (req.user.provider == 'facebook')
-          img(class='profile-image', src='http://graph.facebook.com/'+req.user.facebook.id+'/picture')
-        - if (req.user.provider == 'github')
-          img(class='profile-image', src=req.user.github.avatar_url)
-        - if (req.user.provider == 'twitter')
-          img(class='profile-image', src="#{req.user.twitter.profile_image_url}")
-        h4 #{req.user.name}
-        ul.list-unstyled
-          li github followers: #{req.user.github.followers}
-          li public repos: #{req.user.github.public_repos}
-          li followers:
-            a(href="/users/" + req.user._id + "/followers")  #{followerCount}
-          li following:
-            a(href="/users/" + req.user._id + "/following")  #{followingCount}
-
+        .row.avatar-row
+          .col-xs-4
+            - if (req.user.provider == 'facebook')
+              img(class='profile-image', src='http://graph.facebook.com/'+req.user.facebook.id+'/picture')
+            - if (req.user.provider == 'github')
+              img(class='profile-image', src=req.user.github.avatar_url)
+            - if (req.user.provider == 'twitter')
+              img(class='profile-image', src="#{req.user.twitter.profile_image_url}")
+          .col-xs-8
+            h4 #{req.user.name}
+        .row
+          .col-xs-12.user-stats
+            ul.list-unstyled
+              li
+                span.stat-title Tweets:
+                span #{count}
+              li
+                span.stat-title Following:
+                span 
+                  a(href="/users/" + req.user._id + "/following")  #{followingCount}
+              li
+                span.stat-title Followers: 
+                span
+                  a(href="/users/" + req.user._id + "/followers")  #{followerCount}
       .useful-links
-        h5 Important links
-        ul
+        h4 Important links
+        ul.list-unstyled
           li.links
-            a(href="http://vinitkumar.me") Author
+            a(href="http://vinitkumar.me") #Author
           li.links
-            a(href="https://github.com/vinitkumar/node-twitter/blob/a34b30b031a46e2f028d9e86a634aad158bf1297/License") License
+            a(href="https://github.com/vinitkumar/node-twitter/blob/a34b30b031a46e2f028d9e86a634aad158bf1297/License") #License
           li.links
-            a(href="http://github.com/vinitkumar/node-twitter") Source Code
+            a(href="http://github.com/vinitkumar/node-twitter") #Source Code
           li.links
-            a(href="https://github.com/vinitkumar/node-twitter/issues/new") File a Bug
-
+            a(href="https://github.com/vinitkumar/node-twitter/issues/new") #Report a Bug
         #myModal.modal.fade
           .modal-dialog
-            .modal-content.flat
+            .modal-content
               .modal-header
                 button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-                h4.modal-title New Tweet
+                h4.modal-title Compose new Tweet
               .modal-body
-                .row
-                  form(method='post', action='/tweets', enctype='multipart/form-data')
-                    .control-group
-                      label.control-label(for='tweet')
-                      br
-                      .controls
-                        textarea.flat.form-control(type='text', name='body', placeholder='Enter your tweet here', maxlength='140')
-                    br
-                    .form-actions.pull-right
-                      button.btn.btn-primary.flat(type='submit') Publish Tweet
-                      a.btn.btn-danger.flat(href='/tweets', title='cancel') Cancel
-              .modal-footer
-    
+                form(method='post', action='/tweets')
+                  .control-group
+                    label.control-label(for='tweet')
+                    .controls
+                      textarea.flat.form-control(type='text', name='body', placeholder='Enter your tweet here', maxlength='140')
+                  .form-actions
+                    button.btn(type='submit') Tweet
     .col-lg-6
       each tweet in tweets
-        .well.flat
-          .tweet
-            .row
-              .col-lg-6.pull-left
-                h5
-                  if tweet.user
-                    - var name = tweet.user.name ? tweet.user.name : tweet.user.username
-                    - if (tweet.user.provider == 'facebook')
-                      img(class='tweet-image', src='http://graph.facebook.com/'+tweet.user.facebook.id+'/picture')
-                    - if (tweet.user.provider == 'github')
-                      img(class='tweet-image', src=tweet.user.github.avatar_url)
-                    - if (tweet.user.provider == 'twitter')
-                      img(class='tweet-image', src="#{tweet.user.twitter.profile_image_url}")
-                    //- if (tweet.user.name)
-                    //-   a(href="/users/"+tweet.user._id)=tweet.user.name
-                    a(href="/users/"+tweet.user._id)= name
-              .col-lg-5.date
-                .pull-right
-                  a(href="/tweets/"+tweet._id)= formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")
-            p=tweet.body
+        .row.tweet
+          .col-md-1
+            - var name = tweet.user.name ? tweet.user.name : tweet.user.username
+            - if (tweet.user.provider == 'facebook')
+              img(class='tweet-image', src='http://graph.facebook.com/'+tweet.user.facebook.id+'/picture')
+            - if (tweet.user.provider == 'github')
+              img(class='tweet-image', src=tweet.user.github.avatar_url)
+            - if (tweet.user.provider == 'twitter')
+              img(class='tweet-image', src="#{tweet.user.twitter.profile_image_url}")
+          .col-md-11.tweet-description
+            span.name-date-group
+              span.name
+                a(href="/users/"+tweet.user._id) #{name} 
+              span.date
+                a(href="/tweets/"+tweet._id) • #{formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")}
+            p.tweet-content= tweet.body
             form.center.form-inline.confirm.settings-tweet(action="/tweets/"+tweet.id, method="post")
-              if tweet.user
-                if (tweet.user._id == req.user.id)
-                  a.btn.btn-success.flat.edit(href='/tweets/'+tweet._id+'/edit', title="edit") Edit
-                  input(type="hidden", name="_method", value="DELETE")
-                  button.btn.btn-danger.flat(type="submit") delete
-          .comment
-            each comment in tweet.comments
-              include ../comments/comment
+              if (tweet.user._id == req.user.id)
+                a.btn.btn-success.edit(href='/tweets/'+tweet._id+'/edit', title="edit") Edit
+                input(type="hidden", name="_method", value="DELETE")
+                button.btn.btn-danger(type="submit") delete
+          .col-md-12.comment
+            if tweet.comments.length > 1
+              hr
+              each comment in tweet.comments
+                include ../comments/comment
             hr
             include ../comments/form
-
-    .col-lg-3
-      .well
-        h3 Recent Visits
-        each analytic in analytics
-          div
-            if analytic.user
-              if analytic.user.name
-                - var name = analytic.user.name ? analytic.user.name : analytic.user.username
-                a(href="/users/"+analytic.user._id)= name
-                  span   (#{formatDate(analytic.createdAt, "%b %d, %Y at %I:%M %p")})
-        h5 Total tweet count : #{count}
-
+    .col-lg-3.recent-visits
+      h4 Recent Visits
+      each analytic in analytics
+        div
+          if analytic.user
+            if analytic.user.name
+              - var name = analytic.user.name ? analytic.user.name : analytic.user.username
+              a(href="/users/"+analytic.user._id)= name
+                span   (#{formatDate(analytic.createdAt, "%b %d, %Y at %I:%M %p")})
     - if (pages > 1)
       ul.pagination
         != createPagination(pages, page)

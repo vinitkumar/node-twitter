@@ -54,7 +54,7 @@ exports.create = (req, res) => {
   logAnalytics(req);
   const tweet = new Tweet(req.body);
   tweet.user = req.user;
-  tweet.uploadAndSave(req.files.image, err => {
+  tweet.uploadAndSave({}, err => {
     if (err) {
       res.render("tweets/new", {
         title: "New Tweet",
