@@ -3,7 +3,7 @@ extends ../layouts/default
 block content
   .row#profile-page
     .col-md-4
-      .row.profile-summary
+      .profile-summary
         - if (user.provider == 'twitter')
             img(class="profile-image img-thumbnail", src="#{user.twitter.profile_image_url}")
             i.icon-twitter.icon-3x
