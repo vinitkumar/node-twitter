@@ -123,12 +123,11 @@ exports.index = (req, res) => {
     perPage: perPage,
     page: page
   };
-
   Tweet.list(options, (err, tweets) => {
     if (err) {
       return res.render("500");
     }
-    Tweet.count().exec((err, count) => {
+    Tweet.countTweets(req.user._id, (err, tweetCount) => {
       if (err) {
         return res.render("500");
       }
@@ -143,8 +142,7 @@ exports.index = (req, res) => {
           tweets: tweets,
           analytics: analytics,
           page: page + 1,
-          count: count,
-          pages: Math.ceil(count / perPage),
+          tweetCount: tweetCount,
           followerCount: followerCount,
           followingCount: followingCount
         });
