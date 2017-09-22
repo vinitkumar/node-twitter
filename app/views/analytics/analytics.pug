@@ -3,8 +3,14 @@ extends ../layouts/default
 block content
   .container.analytics-container
     h1 Analytics Dashboard
-    p.total-visits Total visits:
-      span #{count}
+    .analytic-numbers
+      ul
+        li
+          span.analytic-title Total visits: 
+          span.analytic-value #{pageViews}
+        li
+          span.analytic-title Total tweets: 
+          span.analytic-value #{tweetCount}
     table.table.table-bordered
       thead
         tr

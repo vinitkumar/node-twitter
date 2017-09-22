@@ -137,10 +137,17 @@ TweetSchema.statics = {
   },
 
   // Count the number of tweets for a specific user
-  countTweets: function(id, callback) {
+  countUserTweets: function(id, callback) {
     return this.find({ user: id })
               .count()
               .exec(callback);
+  },
+
+  // Count the total app tweets
+  countTotalTweets: function(callback) {
+    return this.find({})
+               .count()
+               .exec(callback);
   }
 };
 

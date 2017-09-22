@@ -127,7 +127,7 @@ exports.index = (req, res) => {
     if (err) {
       return res.render("500");
     }
-    Tweet.countTweets(req.user._id, (err, tweetCount) => {
+    Tweet.countUserTweets(req.user._id, (err, tweetCount) => {
       if (err) {
         return res.render("500");
       }
