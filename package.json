@@ -22,7 +22,6 @@
     "mongoose": "^4.11.12",
     "notifier": "latest",
     "passport": "^0.3.2",
-    "passport-facebook": "latest",
     "passport-github": "latest",
     "passport-github2": "^0.1.9",
     "passport-google-oauth": "latest",
