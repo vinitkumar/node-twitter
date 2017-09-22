@@ -3,9 +3,9 @@ if (comment && comment.user)
   .comment-item
     span.name
       if (comment.commenterName && comment.user)
-          a(href="/users/"+ comment.user)= comment.commenterName 
+          a(href="/users/" + comment.user)= comment.commenterName 
       else if (comment.user)
-          a(href="/users/"+ comment.user)= comment.user 
+          a(href="/users/" + comment.user)= comment.user 
     span.date  • #{formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")}
     | &nbsp;
     p.comment-content= comment.body

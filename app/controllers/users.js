@@ -37,7 +37,7 @@ exports.login = (req, res) => {
 };
 
 exports.signup = (req, res) => {
-  res.render("users/signup", {
+  res.render("users/login", {
     title: "Sign up",
     user: new User()
   });
@@ -59,7 +59,7 @@ exports.create = (req, res, next) => {
   user.provider = "local";
   user.save(err => {
     if (err) {
-      return res.render("users/signup", { errors: err.errors, user: user });
+      return res.render("users/login", { errors: err.errors, user: user });
     }
     req.logIn(user, err => {
       if (err) {
@@ -106,14 +106,20 @@ exports.show = (req, res) => {
     if (err) {
       return res.render("500");
     }
-    let followingCount = user.following.length;
-    let followerCount = user.followers.length;
-    res.render("users/show", {
-      title: "Tweets from " + user.name,
-      user: user,
-      tweets: tweets,
-      followerCount: followerCount,
-      followingCount: followingCount
+    Tweet.countUserTweets(reqUserId, (error, tweetCount) => {
+      if (err) {
+        return res.render("500");
+      }
+      let followingCount = user.following.length;
+      let followerCount = user.followers.length;
+      res.render("users/profile", {
+        title: "Tweets from " + user.name,
+        user: user,
+        tweets: tweets,
+        tweetCount: tweetCount,
+        followerCount: followerCount,
+        followingCount: followingCount
+      });
     });
   });
 };

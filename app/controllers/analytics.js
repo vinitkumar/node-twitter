@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Analytics = mongoose.model("Analytics");
+const Tweet = mongoose.model("Tweet");
 
 exports.index = (req, res) => {
   const page = (req.param("page") > 0 ? req.param("page") : 1) - 1;
@@ -8,20 +9,23 @@ exports.index = (req, res) => {
     perPage: perPage,
     page: page
   };
-  Analytics.list(options, (err, analytics) => {
-    if (err) {
+  Analytics.list(options, (error, analytics) => {
+    if (error) {
       return res.render("500");
     }
-    Analytics.count().exec((err, count) => {
-      if (err) {
+    Analytics.count().exec( (error, pageViews) => {
+      if (error) {
         return res.render("500");
       }
-      res.render("analytics/index", {
-        title: "List of users",
-        analytics: analytics,
-        count: count,
-        page: page + 1,
-        pages: Math.ceil(count / perPage)
+      Tweet.countTotalTweets( (error, tweetCount) => {
+        res.render("analytics/analytics", {
+          title: "List of users",
+          analytics: analytics,
+          pageViews: pageViews,
+          tweetCount: tweetCount,
+          page: page + 1,
+          pages: Math.ceil(pageViews / perPage)
+        });
       });
     });
   });

@@ -147,17 +147,15 @@ ul#main-navigation i.fa {
   text-align: center;
 }
 
-.twitter-container > div {
-  padding: 0;
-}
-
 .modal-title {
 	display: inline-block;
 }
 
 .profile-image {
   border-radius: 50%;
-  width: 100%;
+  width: 150px;
+  max-width: 100%;
+  float: right;
 }
 
 .tweet-image {
@@ -171,7 +169,7 @@ ul#main-navigation i.fa {
 .recent-visits,
 .analytics-container,
 .profile-summary,
-.row.tweet {
+.tweet {
   background-color: #1b2836;
   padding: 15px;
   border-radius: 2px;
@@ -185,21 +183,13 @@ ul#main-navigation i.fa {
   color: #fff;
 }
 
-.logged-user .avatar-row {
-  display: flex;
-  align-items: center;
-}
-
 .user-stats ul {
   margin-top: 10px;
   text-align: center;
-  display: table;
+  display: flex;
+  justify-content: space-around;
   font-weight: bold;
   width: 100%;
-}
-
-.user-stats ul li {
-  display: table-cell;
 }
 
 .user-stats .stat-title {
@@ -217,10 +207,6 @@ ul#main-navigation i.fa {
 
 .twitter-container .recent-visits {
   padding: 15px;
-}
-
-.tweet {
-  padding: 5px;
 }
 
 .comment {
@@ -258,16 +244,21 @@ a {
 
 /* Tweets */
 
-.row.tweet {
-  margin: 0 15px 15px;
+.tweet {
   color: #fff;
 }
 
-.row.tweet .tweet-description {
+.tweet::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.tweet .tweet-description {
   padding-left: 25px;
 }
 
-.row.tweet p.tweet-content {
+.tweet p.tweet-content {
   margin: 5px 0 10px;
   word-wrap: break-word;
 }
@@ -311,6 +302,7 @@ a {
 #profile-page .profile-image {
   width: 150px;
   border: 0;
+  float: none;
 }
 
 #profile-page .profile-summary {
@@ -328,6 +320,7 @@ a {
 
 .analytics-container h1 {
   color: #fff;
+  text-align: center;
 }
 
 .analytics-container table  th {
@@ -336,12 +329,33 @@ a {
   text-align: center;
 }
 
-.analytics-container .total-visits {
-  font-size: 18px;
+.analytic-numbers {
+  margin: 20px 0;
 }
 
-.analytics-container .total-visits span {
+.analytic-numbers ul {
+  display: flex;
+  justify-content: space-evenly;
   font-weight: bold;
+}
+
+.analytic-numbers ul li {
+  text-align: center;
+}
+
+.analytic-numbers .analytic-title {
+  font-size: 16px;
+}
+
+.analytic-numbers .analytic-value {
+  font-size: 18px;
+  color: #1da1f2;
+  display: block;
+}
+
+.analytics-user {
+  font-weight: bold;
+  text-align: center;
 }
 
 .pagination-container {
@@ -410,4 +424,50 @@ footer{
   background-color: #243447;
   padding-top: 30px;
   height: 150px;
+}
+
+/* Media Queries */
+
+/* Large Width */
+
+@media (min-width: 1199px) {
+  .recent-visits.medium {
+    display: none;
+  }
+  .useful-links.small {
+    display: none;
+  }
+}
+
+/* Medium Width */
+@media (max-width: 1199px) {
+  .recent-visits.medium,
+  .useful-links.medium {
+    display: block;
+  }
+  .recent-visits.small,
+  .useful-links.small {
+    display: none;
+  }
+}
+
+/* Small Width */
+
+@media (max-width: 991px) {
+  .recent-visits.medium,
+  .useful-links.medium {
+    display: none;
+  }
+  .recent-visits.small,
+  .useful-links.small {
+    display: block;
+  }
+  .avatar-row h4 {
+    margin-top: 6%;
+    text-align: center;
+  }
+  .useful-links,
+  .recent-visits {
+    text-align: center;
+  }
 }

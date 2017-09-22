@@ -3,7 +3,7 @@ extends ../layouts/default
 block content
   .row#profile-page
     .col-md-4
-      .row.profile-summary
+      .profile-summary
         - if (user.provider == 'twitter')
             img(class="profile-image img-thumbnail", src="#{user.twitter.profile_image_url}")
             i.icon-twitter.icon-3x
@@ -37,7 +37,7 @@ block content
                   ul.list-unstyled
                     li
                       span.stat-title Tweets:
-                      span #{count}
+                      span #{tweetCount}
                     li
                       span.stat-title Following:
                       span 
@@ -50,7 +50,7 @@ block content
           a.btn(href="#", class="btn-success follow", data-userid=user._id, data-logged=req.user.id,title="follow") follow
     .col-md-8
       each tweet in tweets
-        .row.tweet
+        .tweet
           .col-sm-12.tweet-description
             span.name-date-group
               span.date

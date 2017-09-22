@@ -104,41 +104,50 @@ TweetSchema.methods = {
 // ## Static Methods in the TweetSchema
 TweetSchema.statics = {
   // Load tweets
-  load: function(id, cb) {
+  load: function(id, callback) {
     this.findOne({ _id: id })
       .populate("user", "name username provider github facebook twitter")
       .populate("comments.user")
-      .exec(cb);
+      .exec(callback);
   },
 
   // List tweets
-  list: function(options, cb) {
+  list: function(options, callback) {
     const criteria = options.criteria || {};
     this.find(criteria)
       .populate("user", "name username provider github facebook twitter")
       .sort({ createdAt: -1 })
       .limit(options.perPage)
       .skip(options.perPage * options.page)
-      .exec(cb);
+      .exec(callback);
   },
   // List tweets
-  limitedList: function(options, cb) {
+  limitedList: function(options, callback) {
     const criteria = options.criteria || {};
     this.find(criteria)
       .populate("user", "name username")
       .sort({ createdAt: -1 })
       .limit(options.perPage)
       .skip(options.perPage * options.page)
-      .exec(cb);
+      .exec(callback);
   },
   // Tweets of User
-  userTweets: function(id, cb) {
-    this.find({ user: ObjectId(id) }).toArray().exec(cb);
+  userTweets: function(id, callback) {
+    this.find({ user: ObjectId(id) }).toArray().exec(callback);
   },
 
-  // Count the number of tweets
-  countTweets: function(id, cb) {
-    this.find({ user: ObjectId(id) }).length().exec(cb);
+  // Count the number of tweets for a specific user
+  countUserTweets: function(id, callback) {
+    return this.find({ user: id })
+              .count()
+              .exec(callback);
+  },
+
+  // Count the total app tweets
+  countTotalTweets: function(callback) {
+    return this.find({})
+               .count()
+               .exec(callback);
   }
 };
 

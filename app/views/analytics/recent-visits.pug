@@ -1,0 +1,8 @@
+h4 Recent Visits
+each analytic in analytics
+  div
+    if analytic.user
+      if analytic.user.name
+        - var name = analytic.user.name ? analytic.user.name : analytic.user.username
+        a(href="/users/"+analytic.user._id)= name
+          span   (#{formatDate(analytic.createdAt, "%b %d, %Y at %I:%M %p")})
