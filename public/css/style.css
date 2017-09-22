@@ -274,6 +274,11 @@ a {
   color: #8899a6;
 }
 
+.tweet textarea.edit-tweet {
+  display: block;
+}
+
+.tweet textarea.edit-tweet,
 .tweet .comment textarea {
   background-color: #141d26;
   border-color: #1B5881;
