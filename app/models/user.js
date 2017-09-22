@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const crypto = require("crypto");
-const authTypes = ["github", "facebook", "twitter"];
+const authTypes = ["github"];
 
 // ## Define UserSchema
 const UserSchema = new Schema({
@@ -11,8 +11,6 @@ const UserSchema = new Schema({
   provider: String,
   hashedPassword: String,
   salt: String,
-  facebook: {},
-  twitter: {},
   github: {},
   followers: [{ type: Schema.ObjectId, ref: "User" }],
   following: [{ type: Schema.ObjectId, ref: "User" }],
