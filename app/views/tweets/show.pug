@@ -9,12 +9,7 @@ block content
     .col-md-4
       .well
         - var name = tweet.user.name ? tweet.user.name : tweet.user.username
-        - if (tweet.user.provider == 'facebook')
-          img(class='tweet-image', src='http://graph.facebook.com/'+tweet.user.facebook.id+'/picture')
-        - if (tweet.user.provider == 'github')
-          img(class='tweet-image', src=tweet.user.github.avatar_url)
-        - if (tweet.user.provider == 'twitter')
-          img(class='tweet-image', src="#{tweet.user.twitter.profile_image_url}")
+        img(class='tweet-image', src=tweet.user.github.avatar_url)
         a(href="/users/"+tweet.user._id)= name
         p=tweet.body
     br
