@@ -40,15 +40,6 @@ exports.tweet = (req, res, next, id) => {
   });
 };
 
-// ### New Tweet
-exports.new = (req, res) => {
-  logAnalytics(req);
-  res.render("tweets/form", {
-    title: "New Tweet",
-    tweet: new Tweet({})
-  });
-};
-
 // ### Create a Tweet
 exports.create = (req, res) => {
   logAnalytics(req);

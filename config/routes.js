@@ -73,7 +73,6 @@ module.exports = (app, passport, auth) => {
   //tweets routes
   const tweets = require("../app/controllers/tweets");
   app.get("/tweets", tweets.index);
-  app.get("/tweets/new", auth.requiresLogin, tweets.new);
   app.post("/tweets", auth.requiresLogin, tweets.create);
   app.get("/tweets/:id", tweets.show);
   app.get(
