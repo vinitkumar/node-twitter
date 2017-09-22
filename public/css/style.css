@@ -320,6 +320,7 @@ a {
 
 .analytics-container h1 {
   color: #fff;
+  text-align: center;
 }
 
 .analytics-container table  th {
@@ -328,12 +329,28 @@ a {
   text-align: center;
 }
 
-.analytics-container .total-visits {
-  font-size: 18px;
+.analytic-numbers {
+  margin: 20px 0;
 }
 
-.analytics-container .total-visits span {
+.analytic-numbers ul {
+  display: flex;
+  justify-content: space-evenly;
   font-weight: bold;
+}
+
+.analytic-numbers ul li {
+  text-align: center;
+}
+
+.analytic-numbers .analytic-title {
+  font-size: 16px;
+}
+
+.analytic-numbers .analytic-value {
+  font-size: 18px;
+  color: #1da1f2;
+  display: block;
 }
 
 .pagination-container {
