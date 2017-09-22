@@ -53,16 +53,11 @@ $(document).ready(function() {
       if (modifiedText !== originalText) {
         // Make a PUT request to /tweets/:id
         let tweetId = $editButton.closest(".tweet").attr("data-tweetId");
-        console.log(tweetId);
         $.ajax($editButton.attr("href"), {
           method: 'POST',
           data: {"id": tweetId, "tweet": modifiedText},
-          success: function(data) {
-            console.log('Tweet text updated in database');
-          },
-          error: function(data) {
-            console.log('Tweet text not updated in database');
-          }
+          success: function(data) {},
+          error: function(data) {}
         });
       }
       let $tweetElement = $('<p>').addClass("tweet-content").text(modifiedText);
