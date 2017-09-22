@@ -37,13 +37,13 @@ module.exports = {
 };
 ```
 
-### Usage
+## Usage
 
 ```sh
 # First install all the requirements.
 λ npm install
 # Now run the project
-λ ~/projects/js/node-twitter/ master npm start
+λ ~/node-twitter/ master npm start
 
 > nwitter@0.0.1-59 start /Users/vinitkumar/projects/js/node-twitter
 > node server.js
@@ -58,11 +58,11 @@ Express app started on port 3000
 
 [Say Thanks](https://saythanks.io/to/vinitkumar)
 
-### Support:
+## Support
 If you enjoy node-twitter, you can support the development here. https://gratipay.com/vinitkme/. :)
 
 ## LICENSE
-MIT
+[GPL-3.0](https://github.com/vinitkumar/node-twitter/blob/master/License)
 
-
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/uyhQ2YHmpDTZbNRraFXJEvTa/vinitkumar/node-twitter'>  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/uyhQ2YHmpDTZbNRraFXJEvTa/vinitkumar/node-twitter.svg' /></a>
+## SPONSORS
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/uyhQ2YHmpDTZbNRraFXJEvTa/vinitkumar/node-twitter'><img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/uyhQ2YHmpDTZbNRraFXJEvTa/vinitkumar/node-twitter.svg' /></a>
