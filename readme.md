@@ -61,8 +61,8 @@ Express app started on port 3000
 ## Support
 If you enjoy node-twitter, you can support the development here. https://gratipay.com/vinitkme/. :)
 
-## LICENSE
+## License
 [GPL-3.0](https://github.com/vinitkumar/node-twitter/blob/master/License)
 
-## SPONSORS
+## Sponsors
 <a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/uyhQ2YHmpDTZbNRraFXJEvTa/vinitkumar/node-twitter'><img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/uyhQ2YHmpDTZbNRraFXJEvTa/vinitkumar/node-twitter.svg' /></a>
