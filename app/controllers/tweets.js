@@ -92,14 +92,9 @@ exports.update = (req, res) => {
   tweet = _.extend(tweet, {"body": req.body.tweet});
   tweet.uploadAndSave({}, (err) => {
     if (err) {
-      res.render("tweets/form", {
-        title: "Edit Tweet",
-        tweet: tweet,
-        error: err.errors
-      });
-    } else {
-      res.redirect("/");
+      return res.render("500");
     }
+    res.redirect("/");
   });
 };
 
