@@ -49,10 +49,4 @@ block content
         if (user._id != req.user.id)
           a.btn(href="#", class="btn-success follow", data-userid=user._id, data-logged=req.user.id,title="follow") follow
     .col-md-8
-      each tweet in tweets
-        .tweet
-          .col-sm-12.tweet-description
-            span.name-date-group
-              span.date
-                a(href="/tweets/"+tweet._id) #{formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")}
-            p.tweet-content= tweet.body
+      include ../tweets/tweets

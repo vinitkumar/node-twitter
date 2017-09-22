@@ -118,9 +118,8 @@ exports.destroy = (req, res) => {
 exports.index = (req, res) => {
   logAnalytics(req);
   const page = (req.param("page") > 0 ? req.param("page") : 1) - 1;
-  const perPage = 10;
   const options = {
-    perPage: perPage,
+    perPage: 10,
     page: page
   };
   Tweet.list(options, (err, tweets) => {

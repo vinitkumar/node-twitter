@@ -34,35 +34,7 @@ block content
       .recent-visits.medium
         include ../analytics/recent-visits
     .col-lg-6.col-md-8
-      each tweet in tweets
-        .tweet
-          .col-xs-1
-            - var name = tweet.user.name ? tweet.user.name : tweet.user.username
-            - if (tweet.user.provider == 'facebook')
-              img(class='tweet-image', src='http://graph.facebook.com/'+tweet.user.facebook.id+'/picture')
-            - if (tweet.user.provider == 'github')
-              img(class='tweet-image', src=tweet.user.github.avatar_url)
-            - if (tweet.user.provider == 'twitter')
-              img(class='tweet-image', src="#{tweet.user.twitter.profile_image_url}")
-          .col-xs-11.tweet-description
-            span.name-date-group
-              span.name
-                a(href="/users/"+tweet.user._id) #{name} 
-              span.date
-                a(href="/tweets/"+tweet._id) • #{formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")}
-            p.tweet-content= tweet.body
-            form.center.form-inline.confirm.settings-tweet(action="/tweets/"+tweet.id, method="post")
-              if (tweet.user._id == req.user.id)
-                a.btn.btn-success.edit(href='/tweets/'+tweet._id+'/edit', title="edit") Edit
-                input(type="hidden", name="_method", value="DELETE")
-                button.btn.btn-danger(type="submit") delete
-          .col-xs-12.comment
-            if tweet.comments.length > 0
-              hr
-              each comment in tweet.comments
-                include ../comments/comment
-            hr
-            include ../comments/form
+      include tweets
     .col-lg-3.col-md-4
       .recent-visits.large.small.col-xs-6.col-md-12
         include ../analytics/recent-visits

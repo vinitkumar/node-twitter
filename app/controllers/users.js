@@ -101,8 +101,14 @@ exports.show = (req, res) => {
   const user = req.profile;
   const reqUserId = user._id;
   const userId = reqUserId.toString();
+  const page = (req.param("page") > 0 ? req.param("page") : 1) - 1;
+  const options = {
+    perPage: 100,
+    page: page,
+    criteria: { user: userId }
+  };
 
-  Tweet.find({ user: userId }, (err, tweets) => {
+  Tweet.list(options, (err, tweets) => {
     if (err) {
       return res.render("500");
     }
@@ -112,6 +118,7 @@ exports.show = (req, res) => {
       }
       let followingCount = user.following.length;
       let followerCount = user.followers.length;
+      console.log(tweets);
       res.render("users/profile", {
         title: "Tweets from " + user.name,
         user: user,
