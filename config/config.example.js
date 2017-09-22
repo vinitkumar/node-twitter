@@ -7,11 +7,6 @@ module.exports = {
     app: {
       name: "Node Twitter"
     },
-    facebook: {
-      clientID: "",
-      clientSecret: "",
-      callbackURL: ""
-    },
     github: {
       clientID: "",
       clientSecret: "",
@@ -24,11 +19,6 @@ module.exports = {
     app: {
       name: "Node Twitter"
     },
-    facebook: {
-      clientID: "",
-      clientSecret: "",
-      callbackURL: ""
-    },
     github: {
       clientID: "",
       clientSecret: "",
@@ -40,11 +30,6 @@ module.exports = {
     root: rootPath,
     app: {
       name: "Node Twitter"
-    },
-    facebook: {
-      clientID: "",
-      clientSecret: "",
-      callbackURL: ""
     },
     github: {
       clientID: "",
