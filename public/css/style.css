@@ -353,6 +353,11 @@ a {
   display: block;
 }
 
+.analytics-user {
+  font-weight: bold;
+  text-align: center;
+}
+
 .pagination-container {
   text-align: center;
 }
