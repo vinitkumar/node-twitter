@@ -1,5 +1,5 @@
 each tweet in tweets
-  .tweet
+  .tweet(data-tweetId = tweet._id)
     .col-xs-1
       - var name = tweet.user.name
       - if (tweet.user.provider == 'facebook')
@@ -17,7 +17,7 @@ each tweet in tweets
       p.tweet-content= tweet.body
       form.center.form-inline.confirm.settings-tweet(action="/tweets/"+tweet.id, method="post")
         if (tweet.user._id == req.user.id)
-          a.btn.btn-success.edit(href='/tweets/'+tweet._id+'/edit', title="edit") Edit
+          a(href="/tweets/"+tweet._id).btn.btn-success.edit Edit
           input(type="hidden", name="_method", value="DELETE")
           button.btn.btn-danger(type="submit") delete
     .col-xs-12.comment

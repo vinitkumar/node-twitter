@@ -67,22 +67,15 @@ module.exports = (app, passport, auth) => {
   */
   const analytics = require("../app/controllers/analytics");
   app.get("/analytics", analytics.index);
-  
+
   app.param("userId", users.user);
 
   //tweets routes
   const tweets = require("../app/controllers/tweets");
   app.get("/tweets", tweets.index);
-  app.get("/tweets/new", auth.requiresLogin, tweets.new);
   app.post("/tweets", auth.requiresLogin, tweets.create);
   app.get("/tweets/:id", tweets.show);
-  app.get(
-    "/tweets/:id/edit",
-    auth.requiresLogin,
-    auth.tweet.hasAuthorization,
-    tweets.edit
-  );
-  app.put(
+  app.post(
     "/tweets/:id",
     auth.requiresLogin,
     auth.tweet.hasAuthorization,

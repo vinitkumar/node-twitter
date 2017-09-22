@@ -31,4 +31,37 @@ $(document).ready(function() {
       }
     });
   });
+
+  $('.btn.edit').on('click', function(e) {
+    e.preventDefault();
+    let $editButton = $(e.target);
+    if ($editButton.hasClass("edit")) {
+      // Change "edit" to "save" on the button
+      $editButton.text("Save").removeClass("edit").addClass("save");
+      // Get the tweet content text
+      let $originalTweet = $(e.target).parent().siblings(".tweet-content")
+      let tweetText = $originalTweet.text();
+      // Replace the tweet text element with a textarea element
+      let $modifiedText = $("<textarea>").addClass("edit-tweet").val(tweetText).attr("placeholder", tweetText);
+      $originalTweet.after($modifiedText).remove();
+    } else if ($editButton.hasClass("save")) {
+      // Change "save" to "edit" on the button
+      $editButton.text("Edit").removeClass("save").addClass("edit");
+      let $modifiedTweet = $(e.target).parent().siblings("textarea");
+      let originalText = $modifiedTweet.attr("placeholder");
+      let modifiedText = $modifiedTweet.val();
+      if (modifiedText !== originalText) {
+        // Make a PUT request to /tweets/:id
+        let tweetId = $editButton.closest(".tweet").attr("data-tweetId");
+        $.ajax($editButton.attr("href"), {
+          method: 'POST',
+          data: {"id": tweetId, "tweet": modifiedText},
+          success: function(data) {},
+          error: function(data) {}
+        });
+      }
+      let $tweetElement = $('<p>').addClass("tweet-content").text(modifiedText);
+      $modifiedTweet.after($tweetElement).remove();
+    }
+  });
 });

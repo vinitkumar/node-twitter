@@ -40,15 +40,6 @@ exports.tweet = (req, res, next, id) => {
   });
 };
 
-// ### New Tweet
-exports.new = (req, res) => {
-  logAnalytics(req);
-  res.render("tweets/form", {
-    title: "New Tweet",
-    tweet: new Tweet({})
-  });
-};
-
 // ### Create a Tweet
 exports.create = (req, res) => {
   logAnalytics(req);
@@ -56,23 +47,10 @@ exports.create = (req, res) => {
   tweet.user = req.user;
   tweet.uploadAndSave({}, err => {
     if (err) {
-      res.render("tweets/form", {
-        title: "New Tweet",
-        tweet: tweet,
-        error: err.errors
-      });
+      res.render("500");
     } else {
       res.redirect("/");
     }
-  });
-};
-
-// ### Edit Tweet
-exports.edit = (req, res) => {
-  logAnalytics(req);
-  res.render("tweets/form", {
-    title: "Edit" + req.tweet.title,
-    tweet: req.tweet
   });
 };
 
@@ -89,17 +67,12 @@ exports.show = (req, res) => {
 exports.update = (req, res) => {
   logAnalytics(req);
   let tweet = req.tweet;
-  tweet = _.extend(tweet, req.body);
-  tweet.uploadAndSave(req.files.image, err => {
+  tweet = _.extend(tweet, {"body": req.body.tweet});
+  tweet.uploadAndSave({}, (err) => {
     if (err) {
-      res.render("tweets/form", {
-        title: "Edit Tweet",
-        tweet: tweet,
-        error: err.errors
-      });
-    } else {
-      res.redirect("/");
+      return res.render("500");
     }
+    res.redirect("/");
   });
 };
 
