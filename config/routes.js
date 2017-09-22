@@ -67,7 +67,7 @@ module.exports = (app, passport, auth) => {
   */
   const analytics = require("../app/controllers/analytics");
   app.get("/analytics", analytics.index);
-  
+
   app.param("userId", users.user);
 
   //tweets routes
