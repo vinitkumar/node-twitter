@@ -106,14 +106,20 @@ exports.show = (req, res) => {
     if (err) {
       return res.render("500");
     }
-    let followingCount = user.following.length;
-    let followerCount = user.followers.length;
-    res.render("users/profile", {
-      title: "Tweets from " + user.name,
-      user: user,
-      tweets: tweets,
-      followerCount: followerCount,
-      followingCount: followingCount
+    Tweet.countUserTweets(reqUserId, (error, tweetCount) => {
+      if (err) {
+        return res.render("500");
+      }
+      let followingCount = user.following.length;
+      let followerCount = user.followers.length;
+      res.render("users/profile", {
+        title: "Tweets from " + user.name,
+        user: user,
+        tweets: tweets,
+        tweetCount: tweetCount,
+        followerCount: followerCount,
+        followingCount: followingCount
+      });
     });
   });
 };
