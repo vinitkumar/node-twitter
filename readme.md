@@ -1,6 +1,8 @@
 # Node Twitter
 
-Node twitter is an effort to rewrite some of Twitters functionality using modern
+[![Build Status](https://travis-ci.org/vinitkumar/node-twitter.svg?branch=master)](https://travis-ci.org/vinitkumar/node-twitter)
+
+Node twitter is an effort to rewrite some of Twitter functionality using modern
 javascript based toolchain. It was mostly an effort to learn Node.js and trying to reverse
 engineer some of twitter's feature.
 
