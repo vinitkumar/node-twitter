@@ -110,7 +110,6 @@ TweetSchema.statics = {
       .populate("comments.user")
       .exec(callback);
   },
-
   // List tweets
   list: function(options, callback) {
     const criteria = options.criteria || {};
