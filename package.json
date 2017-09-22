@@ -10,7 +10,7 @@
     "test": "make test"
   },
   "engines": {
-    "node": "8.0.0"
+    "node": "8.5.0"
   },
   "dependencies": {
     "async": "latest",
@@ -19,7 +19,6 @@
     "connect-mongo": "latest",
     "express": "3.5.0",
     "forever": "latest",
-    "gzippo": "latest",
     "mongoose": "^4.11.12",
     "notifier": "latest",
     "passport": "^0.3.2",
