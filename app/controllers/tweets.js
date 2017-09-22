@@ -47,23 +47,10 @@ exports.create = (req, res) => {
   tweet.user = req.user;
   tweet.uploadAndSave({}, err => {
     if (err) {
-      res.render("tweets/form", {
-        title: "New Tweet",
-        tweet: tweet,
-        error: err.errors
-      });
+      res.render("500");
     } else {
       res.redirect("/");
     }
-  });
-};
-
-// ### Edit Tweet
-exports.edit = (req, res) => {
-  logAnalytics(req);
-  res.render("tweets/form", {
-    title: "Edit" + req.tweet.title,
-    tweet: req.tweet
   });
 };
 
