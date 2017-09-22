@@ -218,7 +218,8 @@ ul#main-navigation i.fa {
 }
 
 
-.edit {
+.btn.edit,
+.btn.save {
   margin-right: 10px;
 }
 
@@ -275,16 +276,22 @@ a {
 }
 
 .tweet textarea.edit-tweet {
-  display: block;
+  margin: 10px 0 15px;
 }
 
 .tweet textarea.edit-tweet,
 .tweet .comment textarea {
   background-color: #141d26;
   border-color: #1B5881;
+  display: block;
+  padding: 6px 12px;
+  color: #fff;
+  border-radius: 4px;
+  width: 100%;
 }
 
-.tweet .comment textarea:focus {
+.tweet .comment textarea:focus,
+.tweet textarea.edit-tweet:focus {
   color: #fff;
 }
 
