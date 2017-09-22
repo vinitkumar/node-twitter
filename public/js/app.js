@@ -1,10 +1,7 @@
 $(document).ready(function() {
   $('.favorite').on('click', function(e) {
-    const tweet = $(e.currentTarget).data('tweetid');
-    const tweetID = tweet.split('"')[1];
-    console.log(tweet);
-    const url = "tweets/" + tweetID + "/favorites";
-    console.log(url);
+    const tweetID = $(e.currentTarget).data('tweetid');
+    const url = 'tweets/' + tweetID + '/favorites';
     $.ajax({
       type: 'POST',
       url: url,
@@ -18,12 +15,10 @@ $(document).ready(function() {
   });
 
   $('.follow').on('click', function(e) {
-    const user = $(e.currentTarget).data('userid');
-    const userID = user.split('"')[1];
-    const url = "/users/" + userID + "/follow";
-    console.log(url);
+    const userID = $(e.currentTarget).data('userid');
+    const url = '/users/' + userID + '/follow';
     $(this).text(function(i, text) {
-      return text === "follow" ? "unfollow" : "follow";
+      return text === 'follow' ? 'unfollow' : 'follow';
     });
     $.ajax({
       type: 'POST',
