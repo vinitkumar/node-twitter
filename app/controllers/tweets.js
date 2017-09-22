@@ -89,8 +89,8 @@ exports.show = (req, res) => {
 exports.update = (req, res) => {
   logAnalytics(req);
   let tweet = req.tweet;
-  tweet = _.extend(tweet, req.body);
-  tweet.uploadAndSave({}, err => {
+  tweet = _.extend(tweet, {"body": req.body.tweet});
+  tweet.uploadAndSave({}, (err) => {
     if (err) {
       res.render("tweets/form", {
         title: "Edit Tweet",

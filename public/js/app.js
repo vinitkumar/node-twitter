@@ -50,13 +50,23 @@ $(document).ready(function() {
       let $modifiedTweet = $(e.target).parent().siblings("textarea");
       let originalText = $modifiedTweet.attr("placeholder");
       let modifiedText = $modifiedTweet.val();
-      if (modifiedText === originalText) {
+      if (modifiedText !== originalText) {
         // Make a PUT request to /tweets/:id
+        let tweetId = $editButton.closest(".tweet").attr("data-tweetId");
+        console.log(tweetId);
+        $.ajax($editButton.attr("href"), {
+          method: 'POST',
+          data: {"id": tweetId, "tweet": modifiedText},
+          success: function(data) {
+            console.log('Tweet text updated in database');
+          },
+          error: function(data) {
+            console.log('Tweet text not updated in database');
+          }
+        });
       }
       let $tweetElement = $('<p>').addClass("tweet-content").text(modifiedText);
       $modifiedTweet.after($tweetElement).remove();
-      console.log("Textarea value: " + $modifiedTweet.val());
-      console.log("Original tweet value: " + $modifiedTweet.attr("placeholder"));
     }
   });
 });

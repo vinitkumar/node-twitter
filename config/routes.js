@@ -82,7 +82,7 @@ module.exports = (app, passport, auth) => {
     auth.tweet.hasAuthorization,
     tweets.edit
   );
-  app.put(
+  app.post(
     "/tweets/:id",
     auth.requiresLogin,
     auth.tweet.hasAuthorization,
