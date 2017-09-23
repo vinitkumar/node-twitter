@@ -8,11 +8,6 @@ module.exports = {
     app: {
       name: "Node Twitter"
     },
-    facebook: {
-      clientID: "476135909128021",
-      clientSecret: "0f6a6403b1c9cb678164400032369a16",
-      callbackURL: "http://localhost:3000/auth/facebook/callback"
-    },
     github: {
       clientID: "c2e0f478634366e1289d",
       clientSecret: "0bfde82383deeb99b28d0f6a9eac001a0deb798a",
@@ -25,11 +20,6 @@ module.exports = {
     app: {
       name: "Nodejs Express Mongoose Demo"
     },
-    facebook: {
-      clientID: "476135909128021",
-      clientSecret: "0f6a6403b1c9cb678164400032369a16",
-      callbackURL: "http://localhost:3000/auth/facebook/callback"
-    },
     github: {
       clientID: "c2e0f478634366e1289d",
       clientSecret: "0bfde82383deeb99b28d0f6a9eac001a0deb798a",
@@ -41,11 +31,6 @@ module.exports = {
     root: rootPath,
     app: {
       name: "Nodejs Express Mongoose Demo"
-    },
-    facebook: {
-      clientID: "476135909128021",
-      clientSecret: "0f6a6403b1c9cb678164400032369a16",
-      callbackURL: "http://localhost:3000/auth/facebook/callback"
     },
     github: {
       clientID: "c2e0f478634366e1289d",

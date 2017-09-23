@@ -4,48 +4,27 @@ block content
   .row#profile-page
     .col-md-4
       .profile-summary
-        - if (user.provider == 'twitter')
-            img(class="profile-image img-thumbnail", src="#{user.twitter.profile_image_url}")
-            i.icon-twitter.icon-3x
-            div.container
-              div.col-md-6
-                #{user.name}
-                #{user.twitter.description}
-              div.col-md-6
-                div
-                  a(href="https://twitter.com/#{user.username}", target="_blank") @#{user.username}
-                div
-                  Friends on twitter: #{user.twitter.friends_count}
-                div
-                  Followers on Twitter #{user.twitter.followers_count}
-        - if (user.provider == 'facebook')
-           img(class="profile-image", src='http://graph.facebook.com/'+user.facebook.id+'/picture')
-           i.icon-facebook.icon-3x
-           ul
-            li #{user.name}
-            li Facebook link: #{user.facebook.link}
-        - if (user.provider == 'github')
-            img(class="profile-image", src=user.github.avatar_url)
-            div.user-info
-              span.profile-handle
-                a(href="#{user.github.html_url}", target='_blank') @#{user.github.login}
+        img(class="profile-image", src=user.github.avatar_url)
+        div.user-info
+          span.profile-handle
+            a(href="#{user.github.html_url}", target='_blank') @#{user.github.login}
+          ul.list-unstyled
+            li github followers: #{user.github.followers}
+            li public repos: #{user.github.public_repos}
+          .row
+            .col-xs-12.user-stats
               ul.list-unstyled
-                li github followers: #{user.github.followers}
-                li public repos: #{user.github.public_repos}
-              .row
-                .col-xs-12.user-stats
-                  ul.list-unstyled
-                    li
-                      span.stat-title Tweets:
-                      span #{tweetCount}
-                    li
-                      span.stat-title Following:
-                      span 
-                        a(href="/users/" + user._id + "/following")  #{followingCount}
-                    li
-                      span.stat-title Followers: 
-                      span
-                        a(href="/users/" + user._id + "/followers")  #{followerCount}
+                li
+                  span.stat-title Tweets:
+                  span #{tweetCount}
+                li
+                  span.stat-title Following:
+                  span 
+                    a(href="/users/" + user._id + "/following")  #{followingCount}
+                li
+                  span.stat-title Followers: 
+                  span
+                    a(href="/users/" + user._id + "/followers")  #{followerCount}
         if (user._id != req.user.id)
           a.btn(href="#", class="btn-success follow", data-userid=user._id, data-logged=req.user.id,title="follow") follow
     .col-md-8

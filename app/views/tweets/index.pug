@@ -6,12 +6,7 @@ block content
       .logged-user
         .row.avatar-row
           .col-xs-4
-            - if (req.user.provider == 'facebook')
-              img(class='profile-image', src='http://graph.facebook.com/' + req.user.facebook.id + '/picture')
-            - if (req.user.provider == 'github')
-              img(class='profile-image', src=req.user.github.avatar_url)
-            - if (req.user.provider == 'twitter')
-              img(class='profile-image', src="#{req.user.twitter.profile_image_url}")
+            img(class='profile-image', src=req.user.github.avatar_url)
           .col-xs-8
             a(href="/users/" + req.user.id)
               h4 #{req.user.name}

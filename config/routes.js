@@ -20,19 +20,6 @@ module.exports = (app, passport, auth) => {
   app.get("/users/:userId/following", users.showFollowing);
 
   app.get(
-    "/auth/facebook",
-    passport.authenticate("facebook", {
-      scope: ["email", "user_about_me"],
-      failureRedirect: "/login"
-    }),
-    users.signin
-  );
-  app.get(
-    "/auth/facebook/callback",
-    passport.authenticate("facebook", { failureRedirect: "/login" }),
-    users.authCallback
-  );
-  app.get(
     "/auth/github",
     passport.authenticate("github", { failureRedirect: "/login" }),
     users.signin
@@ -41,18 +28,6 @@ module.exports = (app, passport, auth) => {
     "/auth/github/callback",
     passport.authenticate("github", { failureRedirect: "/login" }),
     users.authCallback
-  );
-  app.get(
-    "/auth/twitter",
-    passport.authenticate("twitter", { failureRedirect: "/login" }),
-    users.signin
-  );
-  app.get(
-    "/auth/twitter/callback",
-    passport.authenticate("twitter", {
-      successRedirect: "/",
-      failureRedirect: "/login"
-    })
   );
 
   /**
