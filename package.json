@@ -1,6 +1,6 @@
 {
-  "name": "nwitter",
-  "description": "A twitter clone written with express, mongodbe",
+  "name": "node-twitter",
+  "description": "A twitter clone written with Node.js, Express, and MongoDB",
   "version": "1.1.0",
   "repository": "https://github.com/vinitkumar/node-twitter",
   "private": false,
