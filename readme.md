@@ -10,7 +10,7 @@ engineer some of twitter's feature.
 
 ## Prerequisites
 
-You would require Node, NPM and MongoDB installed:
+You are required to have Node.js and MongoDB installed if you'd like to run the app locally.
 
 - [Node.js](http://nodejs.org)
 - [Mongodb](http://docs.mongodb.org/manual/installation/)
@@ -40,12 +40,12 @@ module.exports = {
 ## Usage
 
 ```sh
-# First install all the requirements.
-λ npm install
-# Now run the project
-λ ~/node-twitter/ master npm start
+# First install all the project dependencies.
+~/node-twitter/ npm install
+# Now run the app
+~/node-twitter/ npm start
 
-> nwitter@0.0.1-59 start /Users/vinitkumar/projects/js/node-twitter
+> node-twitter@1.1.0 start ~/node-twitter
 > node server.js
 
 Express app started on port 3000
