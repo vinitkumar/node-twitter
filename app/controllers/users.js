@@ -118,7 +118,6 @@ exports.show = (req, res) => {
       }
       let followingCount = user.following.length;
       let followerCount = user.followers.length;
-      console.log(tweets);
       res.render("users/profile", {
         title: "Tweets from " + user.name,
         user: user,
@@ -157,7 +156,6 @@ exports.showFollowers = (req, res) => {
     if (err) {
       return res.render("500");
     }
-    console.log("users", users);
     const name = user.name ? user.name : user.username;
     res.render("users/followers", {
       title: "Followers of " + name,

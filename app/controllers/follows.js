@@ -3,8 +3,6 @@ const User = mongoose.model("User");
 
 exports.follow = (req, res) => {
   const user = req.user;
-  console.log(user.id);
-
   const id = req.url.split("/")[2];
   // push the current user in the follower list of the target user
 
