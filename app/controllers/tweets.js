@@ -95,30 +95,32 @@ exports.index = (req, res) => {
     perPage: 10,
     page: page
   };
-  Tweet.list(options, (err, tweets) => {
-    if (err) {
-      return res.render("500");
-    }
-    Tweet.countUserTweets(req.user._id, (err, tweetCount) => {
-      if (err) {
-        return res.render("500");
-      }
-      let followingCount = req.user.following.length;
-      let followerCount = req.user.followers.length;
-      Analytics.list({ perPage: 15 }, (err, analytics) => {
-        if (err) {
-          res.render("500");
-        }
-        res.render("tweets/index", {
-          title: "List of Tweets",
-          tweets: tweets,
-          analytics: analytics,
-          page: page + 1,
-          tweetCount: tweetCount,
-          followerCount: followerCount,
-          followingCount: followingCount
-        });
+  let followingCount = req.user.following.length;
+  let followerCount = req.user.followers.length;
+  let tweets, tweetCount, analytics;
+  Tweet.list(options)
+    .then(result => {
+      tweets = result;
+      return Tweet.countUserTweets(req.user._id)
+    })
+    .then(result => {
+      tweetCount = result;
+      return Analytics.list({ perPage: 15 })
+    })
+    .then(result => {
+      analytics = result;
+      res.render("tweets/index", {
+        title: "List of Tweets",
+        tweets: tweets,
+        analytics: analytics,
+        page: page + 1,
+        tweetCount: tweetCount,
+        followerCount: followerCount,
+        followingCount: followingCount
       });
-    });
-  });
-};
+    })
+    .catch(error => {
+      console.log(error);
+      res.render("500");
+    })
+}
