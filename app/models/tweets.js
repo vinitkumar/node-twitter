@@ -111,14 +111,13 @@ TweetSchema.statics = {
       .exec(callback);
   },
   // List tweets
-  list: function(options, callback) {
+  list: function(options) {
     const criteria = options.criteria || {};
-    this.find(criteria)
+    return this.find(criteria)
       .populate("user", "name username provider github")
       .sort({ createdAt: -1 })
       .limit(options.perPage)
-      .skip(options.perPage * options.page)
-      .exec(callback);
+      .skip(options.perPage * options.page);
   },
   // List tweets
   limitedList: function(options, callback) {

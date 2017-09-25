@@ -57,18 +57,20 @@ exports.create = (req, res, next) => {
   logAnalytics(req);
   const user = new User(req.body);
   user.provider = "local";
-  user.save(err => {
-    if (err) {
+  user.save()
+    .catch( error => {
       return res.render("users/login", { errors: err.errors, user: user });
-    }
-    req.logIn(user, err => {
-      if (err) {
-        return next(err);
-      }
+    })
+    .then( () => {
+      return req.login(user);
+    })
+    .then( () => {
       return res.redirect("/");
+    })
+    .catch( error => {
+      return next(error);
     });
-  });
-};
+}
 
 exports.list = (req, res) => {
   logAnalytics(req);
@@ -78,23 +80,25 @@ exports.list = (req, res) => {
     perPage: perPage,
     page: page
   };
-  return User.list(options, (err, users) => {
-    if (err) {
-      return res.render("500");
-    }
-    User.count().exec((err, count) => {
-      if (err) {
-        return res.render("500");
-      }
+  let users, count;
+  User.list(options)
+    .then( result => {
+      users = result;
+      return User.count();
+    })
+    .then( result => {
+      count = result;
       res.render("users/list", {
         title: "List of Users",
         users: users,
         page: page + 1,
         pages: Math.ceil(count / perPage)
       });
+    })
+    .catch( error => {
+      return res.render("500");
     });
-  });
-};
+}
 
 exports.show = (req, res) => {
   logAnalytics(req);
@@ -107,17 +111,17 @@ exports.show = (req, res) => {
     page: page,
     criteria: { user: userId }
   };
+  let tweets, tweetCount;
+  let followingCount = user.following.length;
+  let followerCount = user.followers.length;
 
-  Tweet.list(options, (err, tweets) => {
-    if (err) {
-      return res.render("500");
-    }
-    Tweet.countUserTweets(reqUserId, (error, tweetCount) => {
-      if (err) {
-        return res.render("500");
-      }
-      let followingCount = user.following.length;
-      let followerCount = user.followers.length;
+  Tweet.list(options)
+    .then( result => {
+      tweets = result;
+      return Tweet.countUserTweets(reqUserId);
+    })
+    .then( result => {
+      tweetCount = result;
       res.render("users/profile", {
         title: "Tweets from " + user.name,
         user: user,
@@ -126,9 +130,11 @@ exports.show = (req, res) => {
         followerCount: followerCount,
         followingCount: followingCount
       });
-    });
-  });
-};
+    })
+    .catch( error => {
+      return res.render("500");
+    })
+}
 
 exports.user = (req, res, next, id) => {
   logAnalytics(req);
