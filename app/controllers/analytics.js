@@ -12,28 +12,33 @@ exports.index = (req, res) => {
     page: page
   };
 
-  Analytics.list(options, (error, analytics) => {
-    if (error) {
-      return res.render("500");
-    }
-    Analytics.count().exec( (error, pageViews) => {
-      if (error) {
-        return res.render("500");
-      }
-      console.log(createPagination(req, Math.ceil(pageViews / perPage), page+1));
-      let pagination = createPagination(req, Math.ceil(pageViews / perPage), page+1)
-      Tweet.countTotalTweets( (error, tweetCount) => {
-        res.render("analytics/analytics", {
-          title: "List of users",
-          analytics: analytics,
-          pageViews: pageViews,
-          tweetCount: tweetCount,
-          pagination: pagination,
-          pages: Math.ceil(pageViews / perPage)
-        });
+  let analytics, pageViews, tweetCount, pagination;
+
+  Analytics.list(options)
+    .then(result => {
+      analytics = result;
+      return Analytics.count();
+    })
+    .then(result => {
+      pageViews = result;
+      pagination = createPagination(req, Math.ceil(pageViews / perPage), page+1)
+      return Tweet.countTotalTweets()
+    })
+    .then(result => {
+      tweetCount = result;
+      res.render("analytics/analytics", {
+        title: "List of users",
+        analytics: analytics,
+        pageViews: pageViews,
+        tweetCount: tweetCount,
+        pagination: pagination,
+        pages: Math.ceil(pageViews / perPage)
       });
+    })
+    .catch(error => {
+      console.log(error);
+      return res.render("500");
     });
-  });
 };
 
 function createPagination (req, pages, page) {
