@@ -19,19 +19,18 @@ describe('Test Login', function (done) {
   });
 });
 
-
-// describe('Test Users API', function (done) {
-//   it('should return 200', function (done) {
-//     request(app)
-//     .get('/apiv1/users')
-//     .expect(200)
-//     .expect('Content-Type', /json/)
-//     .end(function(err, res) {
-//       if (err) return done(err);
-//       done();
-//     });
-//   });
-// });
+describe('Test Users API', function (done) {
+  it('should return 200', function (done) {
+    request(app)
+    .get('/apiv1/users')
+    .expect(200)
+    .expect('Content-Type', /json/)
+    .end(function(err, res) {
+      if (err) return done(err);
+      done();
+    });
+  });
+});
 
 describe('Test logout', function (done) {
   it('logout should redirect because there is no active session', function (done) {
@@ -45,16 +44,15 @@ describe('Test logout', function (done) {
   });
 });
 
-
-// describe('Test Tweets API', function (done) {
-//   it('should return 200', function (done) {
-//     request(app)
-//     .get('/apiv1/tweets')
-//     .expect(200)
-//     .expect('Content-Type', /json/)
-//     .end(function(err, res) {
-//       if (err) return done(err);
-//       done();
-//     });
-//   });
-// });
+describe('Test Tweets API', function (done) {
+  it('should return 200', function (done) {
+    request(app)
+    .get('/apiv1/tweets')
+    .expect(200)
+    .expect('Content-Type', /json/)
+    .end(function(err, res) {
+      if (err) return done(err);
+      done();
+    });
+  });
+});

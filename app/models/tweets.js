@@ -120,14 +120,13 @@ TweetSchema.statics = {
       .skip(options.perPage * options.page);
   },
   // List tweets
-  limitedList: function(options, callback) {
+  limitedList: function(options) {
     const criteria = options.criteria || {};
-    this.find(criteria)
+    return this.find(criteria)
       .populate("user", "name username")
       .sort({ createdAt: -1 })
       .limit(options.perPage)
-      .skip(options.perPage * options.page)
-      .exec(callback);
+      .skip(options.perPage * options.page);
   },
   // Tweets of User
   userTweets: function(id, callback) {
