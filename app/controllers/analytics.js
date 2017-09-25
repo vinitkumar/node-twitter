@@ -9,24 +9,28 @@ exports.index = (req, res) => {
     perPage: perPage,
     page: page
   };
-  Analytics.list(options, (error, analytics) => {
-    if (error) {
-      return res.render("500");
-    }
-    Analytics.count().exec( (error, pageViews) => {
-      if (error) {
-        return res.render("500");
-      }
-      Tweet.countTotalTweets( (error, tweetCount) => {
-        res.render("analytics/analytics", {
-          title: "List of users",
-          analytics: analytics,
-          pageViews: pageViews,
-          tweetCount: tweetCount,
-          page: page + 1,
-          pages: Math.ceil(pageViews / perPage)
-        });
+
+  let analytics, pageViews, tweetCount;
+
+  Analytics.list(options)
+    .then(result => {
+      analytics = result;
+      return Analytics.count().exec();
+    })
+    .then(result => {
+      pageViews = result;
+      return Tweet.countTotalTweets()
+    })
+    .then(result => {
+      tweetCount = result;
+      res.render("analytics/analytics", {
+        title: "List of users",
+        analytics: analytics,
+        pageViews: pageViews,
+        tweetCount: tweetCount,
+        page: page + 1,
+        pages: Math.ceil(pageViews / perPage)
       });
-    });
-  });
+    })
+    .catch(error => console.log(error));
 };

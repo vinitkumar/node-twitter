@@ -93,13 +93,12 @@ UserSchema.statics = {
     options.select = options.select || "name username github";
     return this.findOne(options.criteria).select(options.select).exec(cb);
   },
-  list: function(options, cb) {
+  list: function(options) {
     const criteria = options.criteria || {};
-    this.find(criteria)
+    return this.find(criteria)
       .populate("user", "name username")
       .limit(options.perPage)
-      .skip(options.perPage * options.page)
-      .exec(cb);
+      .skip(options.perPage * options.page);
   }
 };
 

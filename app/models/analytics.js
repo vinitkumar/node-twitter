@@ -9,14 +9,13 @@ const AnalyticsSchema = new Schema({
 });
 
 AnalyticsSchema.statics = {
-  list: function(options, cb) {
+  list: function(options) {
     const criteria = options.criteria || {};
-    this.find(criteria)
-      .populate("user", "name username provider")
-      .sort({ createdAt: -1 })
-      .limit(options.perPage)
-      .skip(options.perPage * options.page)
-      .exec(cb);
+    return this.find(criteria)
+                  .populate("user", "name username provider")
+                  .sort({ createdAt: -1 })
+                  .limit(options.perPage)
+                  .skip(options.perPage * options.page);
   }
 };
 

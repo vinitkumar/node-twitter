@@ -10,19 +10,20 @@ exports.tweetList = (req, res) => {
     perPage: perPage,
     page: page
   };
-
-  Tweet.limitedList(options, (err, tweets) => {
-    if (err) {
+  let tweets, count;
+  Tweet.limitedList(options)
+    .then( result => {
+      tweets = result;
+      return Tweet.count();
+    })
+    .then( result => {
+      count = result;
+      return res.send(tweets);
+    })
+    .catch( error => {
       return res.render("500");
-    }
-    Tweet.count().exec((err, count) => {
-      if (err) {
-        return res.render("500");
-      }
-      res.send(tweets);
     });
-  });
-};
+}
 
 exports.usersList = (req, res) => {
   const page = (req.param("page") > 0 ? req.param("page") : 1) - 1;
@@ -31,16 +32,17 @@ exports.usersList = (req, res) => {
     perPage: perPage,
     page: page
   };
-
-  User.list(options, (err, users) => {
-    if (err) {
+  let users, count;
+  User.list(options)
+    .then( result => {
+      users = result;
+      return User.count();
+    })
+    .then( result => {
+      count = result;
+      return res.send(users);
+    })
+    .catch( error => {
       return res.render("500");
-    }
-    User.count().exec((err, count) => {
-      if (err) {
-        return res.render("500");
-      }
-      res.send(users);
     });
-  });
-};
+}
