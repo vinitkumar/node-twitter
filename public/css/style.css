@@ -374,6 +374,11 @@ a {
   text-align: center;
 }
 
+.pagination-container li.out-of-range {
+  float: left;
+  padding: 6px 12px;
+}
+
 .pagination li a {
   border-color: #000 !important;
 }
