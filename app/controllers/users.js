@@ -76,7 +76,8 @@ exports.list = (req, res) => {
   const perPage = 5;
   const options = {
     perPage: perPage,
-    page: page
+    page: page,
+    criteria: {github: { $exists: true}},
   };
   return User.list(options, (err, users) => {
     if (err) {

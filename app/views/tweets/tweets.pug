@@ -5,7 +5,8 @@ each tweet in tweets
     .col-xs-11.tweet-description
       span.name-date-group
         span.name
-          a(href="/users/"+tweet.user._id) #{tweet.user.name} 
+          -var name = tweet.user.name ? tweet.user.name : tweet.user.username
+          a(href="/users/"+tweet.user._id) #{name}
         span.date
           a(href="/tweets/"+tweet._id) • #{formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")}
       p.tweet-content= tweet.body
