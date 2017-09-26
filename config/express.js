@@ -6,10 +6,16 @@ const mongoStore = require("connect-mongo")(express);
 const flash = require("connect-flash");
 const helpers = require("view-helpers");
 const bodyParser  = require('body-parser');;
+const Raven = require('raven');
 
 module.exports = (app, config, passport) => {
   app.set("showStackError", true);
-
+  // setup Sentry to get any crashes
+  if (process.env.SENTRY_DSN !== null) {
+    Raven.config(process.env.SENTRY_DSN).install();
+    app.use(Raven.requestHandler());
+    app.use(Raven.errorHandler());
+  }
   app.use(
     express.compress({
       filter: function(req, res) {
