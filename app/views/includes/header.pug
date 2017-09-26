@@ -25,14 +25,14 @@ body
       span.logo
         a(href='/')
           img(src='/img/bird.svg')
-      div.new-tweet-container
-        if (req.isAuthenticated()) 
+      if (req.isAuthenticated())
+        div.new-tweet-container
           a.new-tweet.btn(data-toggle='modal', href='#myModal')
             i(class="fa fa-paper-plane")
             span Tweet
   if (req.isAuthenticated())
     #myModal.modal.fade
-      .modal-dialog
+      .modal-dialog(role='document')
         .modal-content
           .modal-header
             button.close(type='button', data-dismiss='modal', aria-hidden='true') ×

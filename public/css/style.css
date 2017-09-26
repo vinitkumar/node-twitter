@@ -14,6 +14,10 @@ body > div.container {
   padding-bottom: 30px;
 }
 
+h4 {
+  font-size: 1.2rem;
+}
+
 ul {
   list-style: none;
   margin: 0;
@@ -50,12 +54,26 @@ header.navbar {
   background-color: #243447;
   height: 50px;
   margin: 0;
+  padding: 0;
 }
 
 header.navbar .container {
   display: flex;
   align-items: center;
   height: 100%;
+}
+
+ul#main-navigation a span,
+header.navbar span.logo {
+  display: none;
+}
+
+ul#main-navigation i.fa {
+  font-size: 22px;
+  display: inline-block;
+  padding: 0;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 header.navbar .container > * {
@@ -121,15 +139,9 @@ ul#main-navigation a:hover {
   color: #1da1f2 !important;
 }
 
-ul#main-navigation a span {
-  margin-top: 13px;
-  display: inline-block;
-}
-
-ul#main-navigation i.fa {
-  display: inline;
-  padding: 0;
-  padding-right: 10px;
+ul#main-navigation a {
+  display: flex;
+  align-items: center;
 }
 
 /* Login Page */
@@ -140,6 +152,7 @@ ul#main-navigation i.fa {
 
 .login-container {
   text-align: center;
+  margin: auto;
 }
 
 .modal-title {
@@ -204,14 +217,10 @@ ul#main-navigation i.fa {
   padding: 15px;
 }
 
-.comment {
-  font-size: 12px;
+.btn:hover,
+button:hover {
+  cursor: pointer;
 }
-
-.btn:hover {
-  color: black;
-}
-
 
 .btn.edit,
 .btn.save {
@@ -236,6 +245,34 @@ a {
 
 .edit-tweet-actions {
   margin-top: 10px;
+}
+
+/* Main Dashboard */
+
+.logged-user > .row {
+  align-items: center;
+}
+
+.logged-user .image-column {
+  padding-right: 0;
+}
+
+.logged-user .information-column {
+  text-align: center;
+}
+
+.logged-user .user-stats-column {
+  display: none;
+}
+
+.useful-links,
+.recent-visits {
+  text-align: center;
+}
+
+.first-column .recent-visits,
+.first-column .useful-links {
+  display: none;
 }
 
 /* Tweets */
@@ -275,7 +312,9 @@ a {
 }
 
 .tweet textarea.edit-tweet,
-.tweet .comment textarea {
+.tweet .comment textarea,
+textarea.form-control {
+  font-size: 13px;
   background-color: #141d26;
   border-color: #1B5881;
   display: block;
@@ -283,6 +322,10 @@ a {
   color: #fff;
   border-radius: 4px;
   width: 100%;
+}
+
+textarea.form-control:focus {
+  background-color: #141d26;
 }
 
 .tweet .comment textarea:focus,
@@ -325,6 +368,11 @@ a {
 
 /* Analytics Page */
 
+.analytics-container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
 .analytics-container h1 {
   color: #fff;
   text-align: center;
@@ -332,6 +380,15 @@ a {
 
 .analytics-container table {
   table-layout: fixed;
+}
+
+.analytics-container table th.user-column {
+  width: 25%;
+}
+
+.analytics-container th,
+.analytics-container td {
+  padding: .25rem .75rem;
 }
 
 .analytics-container table  th {
@@ -342,6 +399,7 @@ a {
 
 .analytics-container table tr td {
   word-wrap: break-word;
+  vertical-align: middle;
 }
 
 .analytic-numbers {
@@ -377,12 +435,17 @@ a {
   text-align: center;
 }
 
+.pagination-container a,
 .pagination-container li.out-of-range {
-  float: left;
   padding: 6px 12px;
 }
 
+.pagination {
+  justify-content: center;
+}
+
 .pagination li a {
+  color: #fff;
   border-color: #000 !important;
 }
 
@@ -403,7 +466,7 @@ a {
 
 .modal-content .modal-header {
   background-color: #1b2836;
-  text-align: center;
+  justify-content: center;
   border-bottom: 0;
 }
 
@@ -411,6 +474,8 @@ button.close {
   color: #8899a6;
   opacity: 1;
   text-shadow: none;
+  position: absolute;
+  right: 15px;
 }
 
 .modal-body {
@@ -448,59 +513,69 @@ footer{
 
 /* Media Queries */
 
-/* Large Width */
 
-@media (min-width: 1199px) {
-  .recent-visits.medium {
-    display: none;
-  }
-  .useful-links.small {
-    display: none;
-  }
+/*Extra small devices (portrait phones, less than 576px)*/
+/*No media query since this is the default in Bootstrap*/
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
 }
 
-/* Medium Width */
-@media (max-width: 1199px) {
-  .recent-visits.medium,
-  .useful-links.medium {
-    display: block;
-  }
-  .recent-visits.small,
-  .useful-links.small {
-    display: none;
-  }
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+
 }
 
-/* Small Width */
-
-@media (max-width: 991px) {
-  .recent-visits.medium,
-  .useful-links.medium {
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  header.navbar span.logo,
+  ul#main-navigation a span {
+    display: inline-block;
+    text-align: center;
+  }
+  .information-column .user-stats {
     display: none;
   }
-  .recent-visits.small,
-  .useful-links.small {
+  .logged-user .user-stats-column {
     display: block;
   }
-  .avatar-row h4 {
-    margin-top: 6%;
-    text-align: center;
+  .first-column .recent-visits,
+  .first-column .useful-links {
+    display: block;
   }
-  .useful-links,
-  .recent-visits {
-    text-align: center;
-  }
-  header.navbar span.logo {
+  .third-column .recent-visits,
+  .third-column .useful-links {
     display: none;
   }
   ul#main-navigation i.fa {
-    margin-top: 13px;
-    font-size: 22px;
-    display: inline-block;
-    padding-right: 10px;
-    padding-left: 10px;
-  }
-  ul#main-navigation a span {
-    display: none;
+    padding-left: 0;
   }
 }
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+  .first-column .recent-visits,
+  .third-column .useful-links {
+    display: none;
+  }
+  .third-column .recent-visits {
+    display: block;
+  }
+}
+
+/* Going to other way */
+
+/*Extra small devices (portrait phones, less than 576px)*/
+/*@media (max-width: 575px) { ... }*/
+
+/*Small devices (landscape phones, less than 768px)*/
+/*@media (max-width: 767px) { ... }*/
+
+/*Medium devices (tablets, less than 992px)*/
+/*@media (max-width: 991px) { ... }*/
+
+/*Large devices (desktops, less than 1200px)*/
+/*@media (max-width: 1199px) { ... }*/
+
+/*Extra large devices (large desktops)*/
+/*No media query since the extra-large breakpoint has no upper bound on its width*/
