@@ -1,7 +1,7 @@
 body
   header#top.navbar.navbar-static-top(role='banner')
     .container
-      if (req.isAuthenticated()) 
+      if (req.isAuthenticated())
         ul#main-navigation
             li
               a(href="/users/"+req.user.id, title="Profile")
@@ -24,3 +24,18 @@ body
           a.new-tweet.btn(data-toggle='modal', href='#myModal')
             i(class="fa fa-paper-plane")
             span Tweet
+  if (req.isAuthenticated())
+    #myModal.modal.fade
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4.modal-title Compose new Tweet
+          .modal-body
+            form(method='post', action='/tweets')
+              .control-group
+                label.control-label(for='tweet')
+                .controls
+                  textarea.flat.form-control(type='text', name='body', placeholder='Enter your tweet here', maxlength='140')
+              .form-actions
+                button.btn(type='submit') Tweet
