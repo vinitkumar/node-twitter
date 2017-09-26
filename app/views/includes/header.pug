@@ -32,7 +32,7 @@ body
             span Tweet
   if (req.isAuthenticated())
     #myModal.modal.fade
-      .modal-dialog
+      .modal-dialog(role='document')
         .modal-content
           .modal-header
             button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
