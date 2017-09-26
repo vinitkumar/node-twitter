@@ -2,15 +2,29 @@ extends ../layouts/default
 
 block content
   .row.twitter-container
-    .col-lg-3.col-md-4
+    .col-xl-3.col-lg-4.first-column
       .logged-user
-        .row.avatar-row
-          .col-xs-4
+        .row
+          .col-4.image-column
             img(class='profile-image', src=req.user.github.avatar_url)
-          .col-xs-8
+          .col-8.information-column
             a(href="/users/" + req.user.id)
               h4 #{req.user.name}
-          .col-md-12.col-xs-8.user-stats
+            .user-stats
+              ul
+                li
+                  span.stat-title Tweets:
+                  span
+                    a(href="/users/" + req.user.id) #{tweetCount}
+                li
+                  span.stat-title Following:
+                  span 
+                    a(href="/users/" + req.user._id + "/following")  #{followingCount}
+                li
+                  span.stat-title Followers: 
+                  span
+                    a(href="/users/" + req.user._id + "/followers")  #{followerCount}
+          .col-md-12.user-stats-column.user-stats
             ul
               li
                 span.stat-title Tweets:
@@ -24,14 +38,14 @@ block content
                 span.stat-title Followers: 
                 span
                   a(href="/users/" + req.user._id + "/followers")  #{followerCount}
-      .useful-links.medium
+      .useful-links
         include ../useful-links
-      .recent-visits.medium
+      .recent-visits
         include ../analytics/recent-visits
-    .col-lg-6.col-md-8
+    .col-xl-6.col-lg-8.second-column
       include tweets
-    .col-lg-3.col-md-4
-      .recent-visits.large.small.col-xs-6.col-md-12
+    .col-xl-3.col-lg-4.third-column
+      .recent-visits.col-xs-6.col-md-12
         include ../analytics/recent-visits
-      .useful-links.small.col-xs-6.col-md-12
+      .useful-links.col-xs-6.col-md-12
         include ../useful-links

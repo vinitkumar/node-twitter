@@ -2,18 +2,18 @@ extends ../layouts/default
 
 block content
   .row#profile-page
-    .col-md-4
+    .col-lg-4
       .profile-summary
         img(class="profile-image", src=user.github.avatar_url)
         div.user-info
           span.profile-handle
             a(href=user.github.html_url, target='_blank') @#{user.github.login}
-          ul.list-unstyled
-            li github followers: #{user.github.followers}
-            li public repos: #{user.github.public_repos}
+          ul
+            li Github followers: #{user.github.followers}
+            li Public repositories: #{user.github.public_repos}
           .row
-            .col-xs-12.user-stats
-              ul.list-unstyled
+            .col-12.user-stats
+              ul
                 li
                   span.stat-title Tweets:
                   span #{tweetCount}
@@ -27,5 +27,5 @@ block content
                     a(href="/users/" + user._id + "/followers")  #{followerCount}
         if (user._id != req.user.id)
           a.btn(href="#", class="btn-success follow", data-userid=user._id, data-logged=req.user.id,title="follow") follow
-    .col-md-8
+    .col-lg-8
       include ../tweets/tweets
