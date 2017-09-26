@@ -49,7 +49,7 @@ function createPagination (req, pages, page) {
   let pageCutHigh = page + 1;
   // Show the Previous button only if you are on a page other than the first
   if (page > 1) {
-    str += '<li class="no"><a href="?page='+(page-1)+'">Previous</a></li>';
+    str += '<li class="page-item no"><a class="page-link" href="?page='+(page-1)+'">Previous</a></li>';
   }
   // Show all the pagination elements if there are less than 6 pages total
   if (pages < 6) {
@@ -57,7 +57,7 @@ function createPagination (req, pages, page) {
       params.page = p;
       pageNumberClass = page == p ? "active" : "no";
       let href = '?' + qs.stringify(params);
-      str += '<li class="'+pageNumberClass+'"><a href="'+ href +'">'+ p +'</a></li>';
+      str += '<li class="'+pageNumberClass+'"><a class="page-link" href="'+ href +'">'+ p +'</a></li>';
     }
   }
   // Use "..." to collapse pages outside of a certain range
@@ -65,7 +65,7 @@ function createPagination (req, pages, page) {
     // Show the very first page followed by a "..." at the beginning of the
     // pagination section (after the Previous button)
     if (page > 2) {
-      str += '<li class="no"><a href="?page=1">1</a></li>';
+      str += '<li class="no page-item"><a class="page-link" href="?page=1">1</a></li>';
       if (page > 3) {
           str += '<li class="out-of-range">...</li>';
       }
@@ -94,7 +94,7 @@ function createPagination (req, pages, page) {
       params.page = p;
       pageNumberClass = page == p ? "active" : "no";
       let href = '?' + qs.stringify(params);
-      str += '<li class="'+pageNumberClass+'"><a href="'+ href +'">'+ p +'</a></li>';
+      str += '<li class="page-item '+pageNumberClass+'"><a class="page-link" href="'+ href +'">'+ p +'</a></li>';
     }
     // Show the very last page preceded by a "..." at the end of the pagination
     // section (before the Next button)
@@ -102,12 +102,12 @@ function createPagination (req, pages, page) {
       if (page < pages-2) {
         str += '<li class="out-of-range">...</li>';
       }
-      str += '<li class="no"><a href="?page='+pages+'">'+pages+'</a></li>';
+      str += '<li class="page-item no"><a class="page-link" href="?page='+pages+'">'+pages+'</a></li>';
     }
   }
   // Show the Next button only if you are on a page other than the last
   if (page < pages) {
-    str += '<li class="no"><a href="?page='+(page+1)+'">Next</a></li>';
+    str += '<li class="page-item no"><a class="page-link" href="?page='+(page+1)+'">Next</a></li>';
   }
   // Return the pagination string to be outputted in the pug templates
   return str;

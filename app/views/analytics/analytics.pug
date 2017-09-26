@@ -14,9 +14,9 @@ block content
     table.table.table-bordered
       thead
         tr
-          th User
-          th URL
-          th Date/Time
+          th.user-column User
+          th.url-column URL
+          th.date-column Date/Time
       tbody
         each analytic in analytics
           tr
@@ -26,6 +26,8 @@ block content
               td.analytics-url #{analytic.url}
               td.analytics-date #{analytic.createdAt}
   - if (pages > 1)
-    .pagination-container
+    nav(aria-label='Page navigation example').pagination-container
       ul.pagination
         != pagination
+        
+        

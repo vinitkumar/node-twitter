@@ -367,6 +367,11 @@ textarea.form-control:focus {
 
 /* Analytics Page */
 
+.analytics-container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
 .analytics-container h1 {
   color: #fff;
   text-align: center;
@@ -374,6 +379,15 @@ textarea.form-control:focus {
 
 .analytics-container table {
   table-layout: fixed;
+}
+
+.analytics-container table th.user-column {
+  width: 25%;
+}
+
+.analytics-container th,
+.analytics-container td {
+  padding: .25rem .75rem;
 }
 
 .analytics-container table  th {
@@ -384,6 +398,7 @@ textarea.form-control:focus {
 
 .analytics-container table tr td {
   word-wrap: break-word;
+  vertical-align: middle;
 }
 
 .analytic-numbers {
@@ -419,12 +434,17 @@ textarea.form-control:focus {
   text-align: center;
 }
 
+.pagination-container a,
 .pagination-container li.out-of-range {
-  float: left;
   padding: 6px 12px;
 }
 
+.pagination {
+  justify-content: center;
+}
+
 .pagination li a {
+  color: #fff;
   border-color: #000 !important;
 }
 
