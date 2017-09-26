@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/vinitkumar/node-twitter.svg?branch=master)](https://travis-ci.org/vinitkumar/node-twitter)
 
-Node twitter is an effort to rewrite some of Twitter functionality using modern
+Node twitter is an effort to rewrite some of Twitter's functionality using modern
 javascript based toolchain. It was mostly an effort to learn Node.js and trying to reverse
 engineer some of twitter's feature.
 
@@ -66,3 +66,7 @@ If you enjoy node-twitter, you can support the development here. https://gratipa
 
 ## Sponsors
 <a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/uyhQ2YHmpDTZbNRraFXJEvTa/vinitkumar/node-twitter'><img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/uyhQ2YHmpDTZbNRraFXJEvTa/vinitkumar/node-twitter.svg' /></a>
+
+## Important
+
+Twitter is a registered trademark of Twitter Inc. This project is just for learning purposes and should be treated as such.
