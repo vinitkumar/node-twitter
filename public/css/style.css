@@ -54,12 +54,26 @@ header.navbar {
   background-color: #243447;
   height: 50px;
   margin: 0;
+  padding: 0;
 }
 
 header.navbar .container {
   display: flex;
   align-items: center;
   height: 100%;
+}
+
+ul#main-navigation a span,
+header.navbar span.logo {
+  display: none;
+}
+
+ul#main-navigation i.fa {
+  font-size: 22px;
+  display: inline-block;
+  padding: 0;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 header.navbar .container > * {
@@ -125,15 +139,9 @@ ul#main-navigation a:hover {
   color: #1da1f2 !important;
 }
 
-ul#main-navigation a span {
-  margin-top: 13px;
-  display: inline-block;
-}
-
-ul#main-navigation i.fa {
-  display: inline;
-  padding: 0;
-  padding-right: 10px;
+ul#main-navigation a {
+  display: flex;
+  align-items: center;
 }
 
 /* Login Page */
@@ -208,7 +216,8 @@ ul#main-navigation i.fa {
   padding: 15px;
 }
 
-.btn:hover {
+.btn:hover,
+button:hover {
   cursor: pointer;
 }
 
@@ -489,19 +498,6 @@ footer{
 
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
-  header.navbar span.logo {
-    display: none;
-  }
-  ul#main-navigation i.fa {
-    margin-top: 13px;
-    font-size: 22px;
-    display: inline-block;
-    padding-right: 10px;
-    padding-left: 10px;
-  }
-  ul#main-navigation a span {
-    display: none;
-  }
 }
 
 /*Medium devices (tablets, 768px and up)*/
@@ -511,6 +507,10 @@ footer{
 
 /*Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
+  header.navbar span.logo,
+  ul#main-navigation a span {
+    display: inline-block;
+  }
   .information-column .user-stats {
     display: none;
   }
@@ -524,6 +524,9 @@ footer{
   .third-column .recent-visits,
   .third-column .useful-links {
     display: none;
+  }
+  ul#main-navigation i.fa {
+    padding-left: 0;
   }
 }
 
