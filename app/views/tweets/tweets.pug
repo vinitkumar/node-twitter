@@ -14,7 +14,7 @@ each tweet in tweets
         if (tweet.user._id == req.user.id)
           a(href="/tweets/"+tweet._id).btn.btn-success.edit Edit
           input(type="hidden", name="_method", value="DELETE")
-          button.btn.btn-danger(type="submit") delete
+          button.btn.btn-danger(type="submit") Delete
     .col-xs-12.comment
       if tweet.comments.length > 0
         hr
