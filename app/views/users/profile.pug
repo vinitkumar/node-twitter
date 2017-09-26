@@ -7,7 +7,7 @@ block content
         img(class="profile-image", src=user.github.avatar_url)
         div.user-info
           span.profile-handle
-            a(href="#{user.github.html_url}", target='_blank') @#{user.github.login}
+            a(href=user.github.html_url, target='_blank') @#{user.github.login}
           ul.list-unstyled
             li github followers: #{user.github.followers}
             li public repos: #{user.github.public_repos}
