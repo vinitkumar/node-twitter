@@ -330,10 +330,18 @@ a {
   text-align: center;
 }
 
+.analytics-container table {
+  table-layout: fixed;
+}
+
 .analytics-container table  th {
   font-weight: bold;
   color: #fff;
   text-align: center;
+}
+
+.analytics-container table tr td {
+  word-wrap: break-word;
 }
 
 .analytic-numbers {
