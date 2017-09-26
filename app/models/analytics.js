@@ -12,10 +12,10 @@ AnalyticsSchema.statics = {
   list: function(options) {
     const criteria = options.criteria || {};
     return this.find(criteria)
-                  .populate("user", "name username provider")
-                  .sort({ createdAt: -1 })
-                  .limit(options.perPage)
-                  .skip(options.perPage * options.page);
+      .populate("user", "name username provider")
+      .sort({ createdAt: -1 })
+      .limit(options.perPage)
+      .skip(options.perPage * options.page);
   }
 };
 
