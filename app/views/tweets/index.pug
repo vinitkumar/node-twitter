@@ -35,17 +35,3 @@ block content
         include ../analytics/recent-visits
       .useful-links.small.col-xs-6.col-md-12
         include ../useful-links
-  #myModal.modal.fade
-    .modal-dialog
-      .modal-content
-        .modal-header
-          button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-          h4.modal-title Compose new Tweet
-        .modal-body
-          form(method='post', action='/tweets')
-            .control-group
-              label.control-label(for='tweet')
-              .controls
-                textarea.flat.form-control(type='text', name='body', placeholder='Enter your tweet here', maxlength='140')
-            .form-actions
-              button.btn(type='submit') Tweet
