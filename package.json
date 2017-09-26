@@ -28,6 +28,7 @@
     "passport-local": "latest",
     "passport-twitter": "~1.0.2",
     "pug": "^2.0.0-rc.4",
+    "raven": "^2.1.2",
     "underscore": "latest",
     "view-helpers": "latest"
   },
