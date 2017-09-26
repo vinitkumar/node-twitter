@@ -127,7 +127,6 @@ ul#main-navigation a span {
 }
 
 ul#main-navigation i.fa {
-  margin-top: 27px;
   display: inline;
   padding: 0;
   padding-right: 10px;
@@ -479,6 +478,16 @@ footer{
     text-align: center;
   }
   header.navbar span.logo {
+    display: none;
+  }
+  ul#main-navigation i.fa {
+    margin-top: 13px;
+    font-size: 22px;
+    display: inline-block;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  ul#main-navigation a span {
     display: none;
   }
 }
