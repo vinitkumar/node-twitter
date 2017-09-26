@@ -18,7 +18,8 @@ body
                 i(class="fa fa-sign-out", aria-hidden="true")
                 span Logout
       span.logo
-        a(href='/') Node Twitter
+        a(href='/')
+          img(src='/img/bird.svg')
       div.new-tweet-container
         if (req.isAuthenticated()) 
           a.new-tweet.btn(data-toggle='modal', href='#myModal')

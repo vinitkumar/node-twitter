@@ -62,12 +62,8 @@ header.navbar .container > * {
   flex-grow: 1;
 }
 
-header.navbar span.logo {
-  font-size: 20px;
-}
-
-header.navbar span.logo a:hover {
-  color: #1da1f2;
+header.navbar span.logo img {
+  height: 26px;
 }
 
 header.navbar .new-tweet-container {
@@ -481,5 +477,8 @@ footer{
   .useful-links,
   .recent-visits {
     text-align: center;
+  }
+  header.navbar span.logo {
+    display: none;
   }
 }
