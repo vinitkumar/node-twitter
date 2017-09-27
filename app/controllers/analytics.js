@@ -21,7 +21,7 @@ exports.index = (req, res) => {
     })
     .then(result => {
       pageViews = result;
-      pagination = createPagination(req, Math.ceil(pageViews / perPage), page+1)
+      pagination = createPagination(req, Math.ceil(pageViews / perPage), page + 1);
       return Tweet.countTotalTweets()
     })
     .then(result => {
@@ -41,7 +41,7 @@ exports.index = (req, res) => {
     });
 };
 
-function createPagination (req, pages, page) {
+exports.createPagination = function(req, pages, page) {
   let params = qs.parse(url.parse(req.url).query);
   let str = '';
   let pageNumberClass;
