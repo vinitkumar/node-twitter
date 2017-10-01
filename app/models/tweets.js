@@ -9,11 +9,11 @@ const setTags = tags => tags.split(",");
 
 // Tweet Schema
 const TweetSchema = new Schema({
-  body: { type: String, default: "", trim: true },
+  body: { type: String, default: "", trim: true, validate: { validator: (v) => { return v.length < 150; }, message: 'Tweet is over 140 chars :-(.'}},
   user: { type: Schema.ObjectId, ref: "User" },
   comments: [
     {
-      body: { type: String, default: "" },
+      body: { type: String, default: ""},
       user: { type: Schema.ObjectId, ref: "User" },
       commenterName: { type: String, default: "" },
       createdAt: { type: Date, default: Date.now }
