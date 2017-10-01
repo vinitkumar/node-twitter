@@ -2,7 +2,8 @@ each tweet in tweets
   .tweet(data-tweetId = tweet._id)
     .row
       .col-1
-        img(class='tweet-image', src=tweet.user.github.avatar_url)
+        - if (tweet.user.github !== undefined)
+          img(class='tweet-image', src=tweet.user.github.avatar_url)
       .col-11.tweet-description
         span.name-date-group
           span.name
