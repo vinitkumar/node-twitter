@@ -48,7 +48,7 @@ exports.create = (req, res) => {
   tweet.user = req.user;
   tweet.uploadAndSave({}, err => {
     if (err) {
-      res.render("500");
+      res.render("500", {error: err});
     } else {
       res.redirect("/");
     }
