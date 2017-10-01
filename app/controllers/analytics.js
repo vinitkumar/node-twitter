@@ -4,44 +4,8 @@ const Tweet = mongoose.model("Tweet");
 const qs = require('querystring')
 const url = require('url')
 
-exports.index = (req, res) => {
-  const page = (req.param("page") > 0 ? req.param("page") : 1) - 1;
-  const perPage = 10;
-  const options = {
-    perPage: perPage,
-    page: page
-  };
 
-  let analytics, pageViews, tweetCount, pagination;
-
-  Analytics.list(options)
-    .then(result => {
-      analytics = result;
-      return Analytics.count();
-    })
-    .then(result => {
-      pageViews = result;
-      pagination = createPagination(req, Math.ceil(pageViews / perPage), page+1)
-      return Tweet.countTotalTweets()
-    })
-    .then(result => {
-      tweetCount = result;
-      res.render("analytics/analytics", {
-        title: "List of users",
-        analytics: analytics,
-        pageViews: pageViews,
-        tweetCount: tweetCount,
-        pagination: pagination,
-        pages: Math.ceil(pageViews / perPage)
-      });
-    })
-    .catch(error => {
-      console.log(error);
-      return res.render("500");
-    });
-};
-
-function createPagination (req, pages, page) {
+exports.createPagination = (req, pages, page) => {
   let params = qs.parse(url.parse(req.url).query);
   let str = '';
   let pageNumberClass;
@@ -67,7 +31,7 @@ function createPagination (req, pages, page) {
     if (page > 2) {
       str += '<li class="no page-item"><a class="page-link" href="?page=1">1</a></li>';
       if (page > 3) {
-          str += '<li class="out-of-range">...</li>';
+        str += '<li class="out-of-range">...</li>';
       }
     }
     // Determine how many pages to show after the current page index
@@ -112,3 +76,41 @@ function createPagination (req, pages, page) {
   // Return the pagination string to be outputted in the pug templates
   return str;
 }
+
+
+exports.index = (req, res) => {
+  const page = (req.param("page") > 0 ? req.param("page") : 1) - 1;
+  const perPage = 10;
+  const options = {
+    perPage: perPage,
+    page: page
+  };
+
+  let analytics, pageViews, tweetCount, pagination;
+
+  Analytics.list(options)
+    .then(result => {
+      analytics = result;
+      return Analytics.count();
+    })
+    .then(result => {
+      pageViews = result;
+      pagination = createPagination(req, Math.ceil(pageViews / perPage), page+1)
+      return Tweet.countTotalTweets()
+    })
+    .then(result => {
+      tweetCount = result;
+      res.render("analytics/analytics", {
+        title: "List of users",
+        analytics: analytics,
+        pageViews: pageViews,
+        tweetCount: tweetCount,
+        pagination: pagination,
+        pages: Math.ceil(pageViews / perPage)
+      });
+    })
+    .catch(error => {
+      console.log(error);
+      return res.render("500");
+    });
+};

@@ -1,4 +1,6 @@
 // ## Tweet Controller
+import {createPagination} from "./analytics";
+
 const mongoose = require("mongoose");
 const Tweet = mongoose.model("Tweet");
 const Analytics = mongoose.model("Analytics");
@@ -97,7 +99,7 @@ exports.index = (req, res) => {
   };
   let followingCount = req.user.following.length;
   let followerCount = req.user.followers.length;
-  let tweets, tweetCount, analytics;
+  let tweets, tweetCount, pageViews, analytics;
   Tweet.list(options)
     .then(result => {
       tweets = result;
@@ -105,6 +107,8 @@ exports.index = (req, res) => {
     })
     .then(result => {
       tweetCount = result;
+      pageViews = result;
+      pagination = createPagination(req, Math.ceil(pageViews/ perPage),  page+1);
       return Analytics.list({ perPage: 15 })
     })
     .then(result => {
@@ -115,6 +119,7 @@ exports.index = (req, res) => {
         analytics: analytics,
         page: page + 1,
         tweetCount: tweetCount,
+        pagination: pagination,
         followerCount: followerCount,
         followingCount: followingCount
       });
