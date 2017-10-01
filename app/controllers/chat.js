@@ -30,7 +30,7 @@ exports.index = (req, res) => {
     page: page,
     criteria: {github: { $exists: true}},
   };
-  let users, count;
+  let users, count, chats;
   User.list(options)
     .then( result => {
       users = result;

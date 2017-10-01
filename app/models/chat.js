@@ -8,4 +8,20 @@ const ChatSchema = new Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
+
+
+ChatSchema.statics = {
+  load: function(options, cb) {
+    options.select = options.select || "message sender receiver createdAt";
+    return this.findOne(options.criteria).select(options.select).exec(cb);    
+  },
+  list: function (options) {
+    const criteria = options.criteria || {};
+    return this.find(criteria)
+      .populate("user", "name username")
+      .limit(options.perPage)
+      .skip(options.perPage * options.page);
+  }
+};
+
 mongoose.model("Chat", ChatSchema);
