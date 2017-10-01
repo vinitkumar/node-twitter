@@ -79,6 +79,7 @@ exports.createPagination = (req, pages, page) => {
 
 
 exports.index = (req, res) => {
+  let createPagination = exports.createPagination;
   const page = (req.param("page") > 0 ? req.param("page") : 1) - 1;
   const perPage = 10;
   const options = {
@@ -106,7 +107,7 @@ exports.index = (req, res) => {
         pageViews: pageViews,
         tweetCount: tweetCount,
         pagination: pagination,
-        pages: Math.ceil(pageViews / perPage)
+        pages: Math.ceil(pageViews / perPage),
       });
     })
     .catch(error => {
