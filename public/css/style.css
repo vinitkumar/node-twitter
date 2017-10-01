@@ -579,3 +579,21 @@ footer{
 
 /*Extra large devices (large desktops)*/
 /*No media query since the extra-large breakpoint has no upper bound on its width*/
+
+pre {
+  white-space: pre-wrap; /* css-3 */
+  white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+
+pre code {
+  color: black;
+}
+
+#error-stack-trace {
+  background: yellow;
+  padding: 20px;
+  margin-top: 20px;
+}

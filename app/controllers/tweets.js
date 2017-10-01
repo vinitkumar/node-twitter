@@ -48,7 +48,7 @@ exports.create = (req, res) => {
   tweet.user = req.user;
   tweet.uploadAndSave({}, err => {
     if (err) {
-      res.render("500");
+      res.render("500", {error: err});
     } else {
       res.redirect("/");
     }
@@ -71,7 +71,7 @@ exports.update = (req, res) => {
   tweet = _.extend(tweet, {"body": req.body.tweet});
   tweet.uploadAndSave({}, (err) => {
     if (err) {
-      return res.render("500");
+      return res.render("500", {error: err});
     }
     res.redirect("/");
   });
