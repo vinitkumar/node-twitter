@@ -1,4 +1,5 @@
 // ## Tweet Controller
+const createPagination = require('./analytics').createPagination;
 const mongoose = require("mongoose");
 const Tweet = mongoose.model("Tweet");
 const Analytics = mongoose.model("Analytics");
@@ -47,7 +48,7 @@ exports.create = (req, res) => {
   tweet.user = req.user;
   tweet.uploadAndSave({}, err => {
     if (err) {
-      res.render("500");
+      res.render("500", {error: err});
     } else {
       res.redirect("/");
     }
@@ -70,7 +71,7 @@ exports.update = (req, res) => {
   tweet = _.extend(tweet, {"body": req.body.tweet});
   tweet.uploadAndSave({}, (err) => {
     if (err) {
-      return res.render("500");
+      return res.render("500", {error: err});
     }
     res.redirect("/");
   });
@@ -91,20 +92,23 @@ exports.destroy = (req, res) => {
 exports.index = (req, res) => {
   logAnalytics(req);
   const page = (req.param("page") > 0 ? req.param("page") : 1) - 1;
+  const perPage = 10;
   const options = {
-    perPage: 10,
+    perPage: perPage,
     page: page
   };
   let followingCount = req.user.following.length;
   let followerCount = req.user.followers.length;
-  let tweets, tweetCount, analytics;
+  let tweets, tweetCount, pageViews, analytics;
   Tweet.list(options)
     .then(result => {
       tweets = result;
-      return Tweet.countUserTweets(req.user._id)
+      return Tweet.countTotalTweets()
     })
     .then(result => {
       tweetCount = result;
+      pageViews = result;
+      pagination = createPagination(req, Math.ceil(pageViews/ perPage),  page+1);
       return Analytics.list({ perPage: 15 })
     })
     .then(result => {
@@ -115,8 +119,10 @@ exports.index = (req, res) => {
         analytics: analytics,
         page: page + 1,
         tweetCount: tweetCount,
+        pagination: pagination,
         followerCount: followerCount,
-        followingCount: followingCount
+        followingCount: followingCount,
+        pages: Math.ceil(pageViews / perPage),
       });
     })
     .catch(error => {

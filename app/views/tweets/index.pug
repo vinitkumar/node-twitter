@@ -44,6 +44,12 @@ block content
         include ../analytics/recent-visits
     .col-xl-6.col-lg-8.second-column
       include tweets
+      - if (pages > 1)
+        nav(aria-label='Page navigation example').pagination-container
+          ul.pagination
+            != pagination
+
+
     .col-xl-3.col-lg-4.third-column
       .recent-visits.col-xs-6.col-md-12
         include ../analytics/recent-visits
