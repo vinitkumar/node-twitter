@@ -1,5 +1,9 @@
 /* General */
 
+#error-stack-trace {
+  color: white;
+}
+
 body {
   font-size: 13px;
   background-color: #141d26;
