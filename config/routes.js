@@ -38,6 +38,14 @@ module.exports = (app, passport, auth) => {
   app.get("/apiv1/users", apiv1.usersList);
 
   /**
+   * Chat related code
+   */
+
+  const chat = require('../app/controllers/chat');
+  app.get('/chat', auth.requiresLogin, chat.index);
+  app.get('/chat/:id', auth.requiresLogin, chat.show);
+  app.post('/chats', auth.requiresLogin, chat.create);
+  /**
   * Analytics related code
   */
   const analytics = require("../app/controllers/analytics");

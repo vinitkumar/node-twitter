@@ -1,0 +1,30 @@
+extends ../layouts/default
+
+block content
+  .row.twitter-container
+    .col-xl-3.col-lg-4.first-column
+      .logged-user
+        .row
+          ul
+            each user in users
+              li
+                - var id = user._id + 'ChatModal';
+                a(data-toggle='modal', href='#'+ id) chat with #{user.name}
+
+              if (req.isAuthenticated())
+                div(id=id, class='modal fade')
+                  .modal-dialog(role='document')
+                    .modal-content
+                      .modal-header
+                        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                        h4.modal-title Send new Chat to #{user.name}
+                      .modal-body
+                        form(method='post', action='/chats')
+                          .control-group
+                            label.control-label(for='chat')
+                            .controls
+                              textarea.flat.form-control(type='text', name='body', placeholder='Enter your Message here', maxlength='200')
+                              input(type="hidden", name='receiver', value=user._id)
+                          .form-actions
+                            button.btn(type='submit') Send chat
+                
