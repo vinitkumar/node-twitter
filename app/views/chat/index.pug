@@ -9,7 +9,10 @@ block content
             each user in users
               li
                 - var id = user._id + 'ChatModal';
-                a(data-toggle='modal', href='#'+ id) chat with #{user.name}
+                a(data-toggle='modal', href='#'+ id) 
+                  i(class="fa fa-comments fa-2x", aria-hidden="true") #{user.name}
+                a(target='_blank', href='/chat/get/' + user._id) 
+                  i(class="fa fa-envelope fa-2x", aria-hidden="true") Chat list with #{user.name}
 
               if (req.isAuthenticated())
                 div(id=id, class='modal fade')

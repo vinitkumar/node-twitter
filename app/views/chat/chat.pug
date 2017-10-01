@@ -1,0 +1,10 @@
+extends ../layouts/default
+
+block content
+  .row.twitter-container
+    .col-xl-3.col-lg-4.first-column
+      .logged-user
+        .row
+          ul
+            each chat in chats
+              p #{chat.sender.username}: #{chat.message} #{chat.createdAt}

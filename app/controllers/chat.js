@@ -55,6 +55,18 @@ exports.show = (req, res) => {
   res.send(req.chat);
 };
 
+exports.getChat = (req, res) => {
+  const options = {
+    criteria: {'receiver': req.param.userid}
+  };
+  let chats;
+  Chat.list(options)
+    .then(result => {
+      chats = result;
+      res.render('chat/chat', {chats: chats});
+    });
+};
+
 exports.create = (req, res) => {
   const chat = new Chat({
     message: req.body.body,
@@ -64,8 +76,7 @@ exports.create = (req, res) => {
   chat.save( (err) => {
     console.log(err);
     if (!err) {
-      res.send('200 ok');
+      res.redirect('/chat');
     }
   });
-  
 };

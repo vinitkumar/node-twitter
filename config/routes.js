@@ -44,6 +44,7 @@ module.exports = (app, passport, auth) => {
   const chat = require('../app/controllers/chat');
   app.get('/chat', auth.requiresLogin, chat.index);
   app.get('/chat/:id', auth.requiresLogin, chat.show);
+  app.get('/chat/get/:userid', auth.requiresLogin, chat.getChat);
   app.post('/chats', auth.requiresLogin, chat.create);
   /**
   * Analytics related code
