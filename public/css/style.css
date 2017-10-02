@@ -597,3 +597,48 @@ pre code {
   padding: 20px;
   margin-top: 20px;
 }
+
+.chatbox {
+  padding: 20px;
+}
+
+.chatMessage {
+  display: inline;
+}
+
+span.sender {
+  color: red;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+span.message {
+  border: 1px solid gray;
+  border-radius: 4px;
+  width: fit-content;
+  padding: 6px;
+}
+
+.msgtime {
+  font-size: 10px;
+}
+
+.chatlist {
+  margin-left: 20px;
+}
+
+.chat-image {
+  margin-left: 5px;
+  margin-right: 5px
+}
+
+.chatrow {
+  border: 1px solid lightslategray;
+  margin-bottom: 10px;
+  padding: 4px;
+  border-radius: 7px;
+}
+
+.inboxlink {
+  margin-left: 40px;
+}
