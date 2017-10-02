@@ -7,4 +7,4 @@ block content
         .row
           ul
             each chat in chats
-              p #{chat.sender.username}: #{chat.message} #{chat.createdAt}
+              p #{chat.sender.username}: #{chat.message} #{formatDate(chat.createdAt, "%b %d, %Y at %I:%M %p")}

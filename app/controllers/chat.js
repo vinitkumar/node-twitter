@@ -57,7 +57,7 @@ exports.show = (req, res) => {
 
 exports.getChat = (req, res) => {
   const options = {
-    criteria: {'receiver': req.param.userid}
+    criteria: {'receiver': req.params.userid}
   };
   let chats;
   Chat.list(options)
@@ -70,9 +70,10 @@ exports.getChat = (req, res) => {
 exports.create = (req, res) => {
   const chat = new Chat({
     message: req.body.body,
-    receiver: req.user.receiver,
+    receiver: req.body.receiver,
     sender: req.user.id,
   });
+  console.log('chat instance', chat);
   chat.save( (err) => {
     console.log(err);
     if (!err) {

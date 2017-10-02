@@ -13,13 +13,14 @@ const ChatSchema = new Schema({
 ChatSchema.statics = {
   load: function(options, cb) {
     options.select = options.select || "message sender receiver createdAt";
-    return this.findOne(options.criteria).select(options.select).exec(cb);    
+    return this.findOne(options.criteria).select(options.select).exec(cb);
   },
   list: function (options) {
     const criteria = options.criteria || {};
     return this.find(criteria)
       .populate("sender", "name username")
-      .populate("receiver", "name username")    
+      .populate("receiver", "name username")
+      .sort({ createdAt: -1 })
       .limit(options.perPage)
       .skip(options.perPage * options.page);
   }
