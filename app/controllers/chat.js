@@ -24,7 +24,7 @@ exports.chat = (req, res, next, id) => {
 exports.index = (req, res) => {
   // so basically this is going to be a list of all chats the user had till date.
   const page = (req.param("page") > 0 ? req.param("page") : 1) - 1;
-  const perPage = 5;
+  const perPage = 50;
   const options = {
     perPage: perPage,
     page: page,

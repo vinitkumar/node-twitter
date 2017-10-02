@@ -18,8 +18,8 @@ ChatSchema.statics = {
   list: function (options) {
     const criteria = options.criteria || {};
     return this.find(criteria)
-      .populate("sender", "name username")
-      .populate("receiver", "name username")
+      .populate("sender", "name username github")
+      .populate("receiver", "name username github")
       .sort({ createdAt: -1 })
       .limit(options.perPage)
       .skip(options.perPage * options.page);
