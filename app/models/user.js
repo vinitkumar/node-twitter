@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Tweet = mongoose.model("Tweet");
 const Schema = mongoose.Schema;
 const crypto = require("crypto");
 const authTypes = ["github"];
@@ -88,6 +89,9 @@ UserSchema.methods = {
 UserSchema.statics = {
   addfollow: function(id, cb) {
     this.findOne({ _id: id }).populate("followers").exec(cb);
+  },
+  countUserTweets:  function (id, cb) {
+    return Tweet.find({ user: id }).count().exec(cb);
   },
   load: function(options, cb) {
     options.select = options.select || "name username github";

@@ -2,6 +2,7 @@
 const createPagination = require('./analytics').createPagination;
 const mongoose = require("mongoose");
 const Tweet = mongoose.model("Tweet");
+const User = mongoose.model("User");
 const Analytics = mongoose.model("Analytics");
 const _ = require("underscore");
 
@@ -99,17 +100,19 @@ exports.index = (req, res) => {
   };
   let followingCount = req.user.following.length;
   let followerCount = req.user.followers.length;
-  let tweets, tweetCount, pageViews, analytics;
+  let tweets, tweetCount, pageViews, analytics, pagination;
+  User.countUserTweets(req.user._id).then(result => {
+    tweetCount = result;
+  });
   Tweet.list(options)
     .then(result => {
       tweets = result;
-      return Tweet.countTotalTweets()
+      return Tweet.countTotalTweets();
     })
     .then(result => {
-      tweetCount = result;
       pageViews = result;
       pagination = createPagination(req, Math.ceil(pageViews/ perPage),  page+1);
-      return Analytics.list({ perPage: 15 })
+      return Analytics.list({ perPage: 15 });
     })
     .then(result => {
       analytics = result;
@@ -128,5 +131,5 @@ exports.index = (req, res) => {
     .catch(error => {
       console.log(error);
       res.render("500");
-    })
+    });
 }
