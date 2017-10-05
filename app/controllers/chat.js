@@ -77,7 +77,7 @@ exports.create = (req, res) => {
   chat.save( (err) => {
     console.log(err);
     if (!err) {
-      res.redirect('/chat');
+      res.redirect(req.header('Referrer'));
     }
   });
 };
