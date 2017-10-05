@@ -6,8 +6,8 @@ Node twitter is an effort to rewrite some of Twitter's functionality using moder
 javascript based toolchain. It was mostly an effort to learn Node.js and trying to reverse
 engineer some of twitter's feature.
 
-<img src="https://cldup.com/smoNHY-9mI.png" height="600" width="800">
-<img src="https://cldup.com/oEa3EIGhyJ.png" height="600" width="800">
+<img src="https://cldup.com/smoNHY-9mI.png">
+<img src="https://cldup.com/oEa3EIGhyJ.png">
 
 ## Prerequisites
 
