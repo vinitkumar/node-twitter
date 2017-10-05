@@ -642,3 +642,7 @@ span.message {
 .inboxlink {
   margin-left: 40px;
 }
+
+.message-row {
+  margin-top: 6px;
+}

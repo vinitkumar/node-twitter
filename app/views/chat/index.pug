@@ -16,8 +16,11 @@ block content
                   a(data-toggle='modal', href='#'+ id)
                     img(class='tweet-image chat-image', src=user.github.avatar_url) 
                     span #{name}
-                  a(target='_blank', href='/chat/get/' + user._id) 
-                    span.inboxlink Check Inbox
+                  - var currentUserId = req.user._id.toString()
+                  - var userId = user._id.toString()
+                  - if (currentUserId == userId)
+                    a(target='_blank', href='/chat/get/' + user._id) 
+                      span.inboxlink Check Inbox
 
                 if (req.isAuthenticated())
                   div(id=id, class='modal fade')
