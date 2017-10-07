@@ -139,6 +139,10 @@ ul#main-navigation a:hover {
   color: #1da1f2 !important;
 }
 
+ul#main-navigation a.logout:hover {
+  color: orangered !important;
+}
+
 ul#main-navigation a {
   display: flex;
   align-items: center;
@@ -649,4 +653,8 @@ span.message {
 
 .following-image, .follower-image {
   margin-right: 6px;
+}
+
+a.logout {
+  color: red !important;
 }
