@@ -658,3 +658,7 @@ span.message {
 a.logout {
   color: red !important;
 }
+
+.btn-message {
+  margin-right: 12px;
+}

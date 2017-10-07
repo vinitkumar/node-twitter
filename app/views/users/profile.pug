@@ -17,12 +17,12 @@ block content
               li Github followers: #{user.github.followers}
               li Public repositories: #{user.github.public_repos}
               li.message-row
-                a(data-toggle='modal', href='#'+ id, class="btn btn-success edit") 
+                a(data-toggle='modal', href='#'+ id, class="btn btn-success btn-message")
                   span Message #{name}
                 - var currentUserId = req.user._id.toString()
                 - var userId = user._id.toString()
                 - if (currentUserId == userId)
-                  a(target='_blank', href='/chat/get/' + user._id, class="btn btn-success edit") 
+                  a(target='_blank', href='/chat/get/' + user._id, class="btn btn-success")
                     span Check Inbox
           if (req.isAuthenticated())
             div(id=id, class='modal fade')
