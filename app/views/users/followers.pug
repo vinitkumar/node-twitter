@@ -4,7 +4,7 @@ block content
   .well
     h3 #{title}
     if (followers.length !== 0)
-      each follower in followers
+      each user in followers
           .well
             a.btn(href="/users/" + user._id)
               img(src=user.github.avatar_url, class='tweet-image follower-image')
