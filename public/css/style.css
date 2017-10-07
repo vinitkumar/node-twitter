@@ -646,3 +646,7 @@ span.message {
 .message-row {
   margin-top: 6px;
 }
+
+.following-image, .follower-image {
+  margin-right: 6px;
+}

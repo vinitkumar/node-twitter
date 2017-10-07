@@ -156,7 +156,7 @@ exports.showFollowers = (req, res) => {
   let followers = user.followers;
   let userFollowers = User.find({ _id: { $in: followers } }).populate(
     "user",
-    "_id name username"
+    "_id name username github"
   );
 
   userFollowers.exec((err, users) => {
@@ -176,7 +176,7 @@ exports.showFollowing = (req, res) => {
   let following = user.following;
   let userFollowing = User.find({ _id: { $in: following } }).populate(
     "user",
-    "_id name username"
+    "_id name username github"
   );
   userFollowing.exec((err, users) => {
     if (err) {
