@@ -12,8 +12,9 @@ block content
               each chat in chats
                 li
                   img(class='tweet-image', src=chat.sender.github.avatar_url)
-                  p.chatMessage 
-                  span.sender #{chat.sender.username}: 
+                  p.chatMessage
+                  a(class='sender', href="/users/" + chat.sender._id) 
+                    span.sender #{chat.sender.username}: 
                   span.message #{chat.message} 
                   p.msgtime #{formatDate(chat.createdAt, "%b %d, %Y at %I:%M %p")}
           
