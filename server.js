@@ -1,7 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const passport = require('passport');
-const env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV || 'test';
 const config = require('./config/config')[env];
 const auth = require('./config/middlewares/authorization');
 const mongoose = require('mongoose');
