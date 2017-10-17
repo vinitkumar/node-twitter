@@ -33,7 +33,6 @@ body
       if (req.isAuthenticated())
         div.new-tweet-container
           a.new-tweet.btn(data-toggle='modal', href='#myModal')
-            i(class="fa fa-paper-plane")
             span Tweet
   if (req.isAuthenticated())
     #myModal.modal.fade
