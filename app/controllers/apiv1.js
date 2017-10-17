@@ -21,7 +21,7 @@ exports.tweetList = (req, res) => {
       return res.send(tweets);
     })
     .catch( error => {
-      return res.render("500");
+      return res.render("pages/500");
     });
 }
 
@@ -43,6 +43,6 @@ exports.usersList = (req, res) => {
       return res.send(users);
     })
     .catch( error => {
-      return res.render("500");
+      return res.render("pages/500");
     });
 }

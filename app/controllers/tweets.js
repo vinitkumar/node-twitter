@@ -49,7 +49,7 @@ exports.create = (req, res) => {
   tweet.user = req.user;
   tweet.uploadAndSave({}, err => {
     if (err) {
-      res.render("500", {error: err});
+      res.render("pages/500", {error: err});
     } else {
       res.redirect("/");
     }
@@ -59,7 +59,7 @@ exports.create = (req, res) => {
 // ### Show Tweet
 exports.show = (req, res) => {
   logAnalytics(req);
-  res.render("tweets/show", {
+  res.render("components/show-tweet", {
     title: req.tweet.title,
     tweet: req.tweet
   });
@@ -72,7 +72,7 @@ exports.update = (req, res) => {
   tweet = _.extend(tweet, {"body": req.body.tweet});
   tweet.uploadAndSave({}, (err) => {
     if (err) {
-      return res.render("500", {error: err});
+      return res.render("pages/500", {error: err});
     }
     res.redirect("/");
   });
@@ -84,7 +84,7 @@ exports.destroy = (req, res) => {
   const tweet = req.tweet;
   tweet.remove(err => {
     if (err) {
-      return res.render("500");
+      return res.render("pages/500");
     }
     res.redirect("/");
   });
@@ -116,7 +116,7 @@ exports.index = (req, res) => {
     })
     .then(result => {
       analytics = result;
-      res.render("tweets/index", {
+      res.render("index", {
         title: "List of Tweets",
         tweets: tweets,
         analytics: analytics,
@@ -130,6 +130,6 @@ exports.index = (req, res) => {
     })
     .catch(error => {
       console.log(error);
-      res.render("500");
+      res.render("pages/500");
     });
 }
