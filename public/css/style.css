@@ -51,81 +51,70 @@ pre code {
   color: black; }
 
 /* Navbar */
-header.navbar {
+#main-navigation a span,
+.logo {
+  display: none; }
+
+.navbar {
   background-color: #243447;
   height: 50px;
   margin: 0;
   padding: 0; }
+  .navbar .container {
+    display: flex;
+    align-items: center;
+    height: 100%; }
+    .navbar .container > * {
+      flex-grow: 1; }
 
-header.navbar .container {
-  display: flex;
-  align-items: center;
-  height: 100%; }
-
-ul#main-navigation a span,
-header.navbar span.logo {
-  display: none; }
-
-ul#main-navigation i.fa {
-  font-size: 22px;
-  display: inline-block;
-  padding: 0;
-  padding-right: 10px;
-  padding-left: 10px; }
-
-header.navbar .container > * {
-  flex-grow: 1; }
-
-header.navbar span.logo img {
+.logo img {
   height: 26px; }
 
-header.navbar .new-tweet-container {
+.new-tweet {
   text-align: right; }
 
-header.navbar a.new-tweet {
+.new-tweet__button {
   background-color: #1C88CC;
   color: #fff;
   font-weight: bold;
   font-size: 14px; }
+  .new-tweet__button:hover {
+    background-color: #1da1f2;
+    color: #fff; }
 
-header.navbar a.new-tweet:hover {
-  background-color: #1da1f2;
-  color: #fff; }
-
-ul#main-navigation {
+#main-navigation {
   display: flex;
   align-items: center;
   height: 100%;
   font-size: 14px;
   margin-right: auto; }
-
-ul#main-navigation li {
-  margin-right: 5px;
-  display: flex;
-  height: 100%;
-  align-items: center; }
-
-ul#main-navigation a {
-  height: 100%;
-  color: #8899a6;
-  padding-left: 8px;
-  padding-right: 8px; }
-
-ul#main-navigation a:hover {
-  border-bottom: 2px solid #1da1f2; }
-
-ul#main-navigation li:hover {
-  color: #1da1f2 !important; }
-
-ul#main-navigation a:hover {
-  color: #1da1f2 !important; }
-
-ul#main-navigation a.logout:hover {
-  color: orangered !important; }
-
-ul#main-navigation a {
-  display: flex;
-  align-items: center; }
+  #main-navigation li {
+    margin-right: 5px;
+    display: flex;
+    height: 100%;
+    align-items: center; }
+    #main-navigation li:hover {
+      color: #1da1f2 !important; }
+  #main-navigation a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: #8899a6;
+    padding-left: 8px;
+    padding-right: 8px; }
+    #main-navigation a:hover {
+      color: #1da1f2 !important;
+      border-bottom: 2px solid #1da1f2; }
+      #main-navigation a:hover > * {
+        margin-bottom: -2px; }
+  #main-navigation i.fa {
+    font-size: 22px;
+    display: inline-block;
+    padding: 0;
+    padding-right: 10px;
+    padding-left: 10px; }
+  #main-navigation .logout:hover {
+    color: orangered !important; }
 
 /* Tweets */
 .tweet {
@@ -207,39 +196,34 @@ textarea.form-control:focus {
   background-color: #1da1f2; }
 
 /* New Tweet Modal */
-.modal-content {
+.tweet-modal {
   padding: 0; }
-
-.modal-content .modal-header {
-  background-color: #1b2836;
-  justify-content: center;
-  border-bottom: 0; }
-
-button.close {
-  color: #8899a6;
-  opacity: 1;
-  text-shadow: none;
-  position: absolute;
-  right: 15px; }
-
-.modal-body {
-  background-color: #1b3449; }
-
-.modal-content .btn {
-  background-color: #1da1f2;
-  color: #fff; }
-
-.modal-content textarea {
-  background-color: #141d26;
-  border: solid 2px #1B5881;
-  border-radius: 8px; }
-
-.modal-content textarea:focus {
-  color: #fff; }
-
-.modal-content .form-actions {
-  text-align: center;
-  margin-top: 10px; }
+  .tweet-modal .modal-content {
+    background: none; }
+  .tweet-modal .modal-header {
+    background-color: #1b2836;
+    justify-content: center;
+    border-bottom: 0; }
+    .tweet-modal .modal-header button.close {
+      color: #8899a6;
+      opacity: 1;
+      text-shadow: none;
+      position: absolute;
+      right: 15px; }
+  .tweet-modal .modal-body {
+    background-color: #1b3449; }
+  .tweet-modal .form-actions {
+    text-align: center;
+    margin-top: 10px; }
+  .tweet-modal .btn {
+    background-color: #1da1f2;
+    color: #fff; }
+  .tweet-modal textarea {
+    background-color: #141d26;
+    border: solid 2px #1B5881;
+    border-radius: 8px; }
+    .tweet-modal textarea:focus {
+      color: #fff; }
 
 /* Login Page */
 .login {
