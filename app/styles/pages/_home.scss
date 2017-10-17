@@ -1,0 +1,27 @@
+/* Main Dashboard */
+
+.logged-user > .row {
+  align-items: center;
+}
+
+.logged-user .image-column {
+  padding-right: 0;
+}
+
+.logged-user .information-column {
+  text-align: center;
+}
+
+.logged-user .user-stats-column {
+  display: none;
+}
+
+.useful-links,
+.recent-visits {
+  text-align: center;
+}
+
+.first-column .recent-visits,
+.first-column .useful-links {
+  display: none;
+}

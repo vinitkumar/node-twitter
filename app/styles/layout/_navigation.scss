@@ -1,0 +1,99 @@
+/* Navbar */
+
+header.navbar {
+  background-color: #243447;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+}
+
+header.navbar .container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+ul#main-navigation a span,
+header.navbar span.logo {
+  display: none;
+}
+
+ul#main-navigation i.fa {
+  font-size: 22px;
+  display: inline-block;
+  padding: 0;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+header.navbar .container > * {
+  flex-grow: 1;
+}
+
+header.navbar span.logo img {
+  height: 26px;
+}
+
+header.navbar .new-tweet-container {
+  text-align: right;
+}
+
+header.navbar a.new-tweet {
+  background-color: #1C88CC;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+header.navbar a.new-tweet:hover {
+  background-color: #1da1f2;
+  color: #fff;
+}
+
+header.navbar a.new-tweet i.fa {
+  padding: 0;
+  padding-right: 10px;
+}
+
+ul#main-navigation {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: 14px;
+  margin-right: auto;
+}
+
+ul#main-navigation li {
+  margin-right: 5px;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+ul#main-navigation a {
+  height: 100%;
+  color: #8899a6;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+ul#main-navigation a:hover {
+  border-bottom: 2px solid #1da1f2;
+}
+
+ul#main-navigation li:hover {
+  color: #1da1f2 !important;
+}
+
+ul#main-navigation a:hover {
+  color: #1da1f2 !important;
+}
+
+ul#main-navigation a.logout:hover {
+  color: orangered !important;
+}
+
+ul#main-navigation a {
+  display: flex;
+  align-items: center;
+}

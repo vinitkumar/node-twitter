@@ -1,319 +1,163 @@
 /* General */
-
 body {
   font-size: 13px;
   background-color: #141d26;
   color: #8899a6;
-  min-height: 100vh;
-}
+  min-height: 100vh; }
 
 body > div.container {
   /* Calculate the minimum height by subtracting the header and footer height */
   min-height: calc(100vh - 50px - 150px);
   padding-top: 30px;
-  padding-bottom: 30px;
-}
+  padding-bottom: 30px; }
 
 h4 {
-  font-size: 1.2rem;
-}
+  font-size: 1.2rem; }
 
 ul {
   list-style: none;
   margin: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 a:hover {
-  text-decoration: none;
-}
+  text-decoration: none; }
 
 hr {
-  border-color: #000;
-}
-
-.icon-4x {
-  font-size: 11em;
-}
+  border-color: #000; }
 
 i {
   padding-top: 30px;
   padding-left: 20px;
-  padding-right: 20px;
-}
+  padding-right: 20px; }
 
 .btn {
   border-radius: 100px;
   font-size: 12px;
-  padding: 4px 10px;
-}
+  padding: 4px 10px; }
+
+pre {
+  white-space: pre-wrap;
+  /* css-3 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* Internet Explorer 5.5+ */ }
+
+pre code {
+  color: black; }
 
 /* Navbar */
-
 header.navbar {
   background-color: #243447;
   height: 50px;
   margin: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 header.navbar .container {
   display: flex;
   align-items: center;
-  height: 100%;
-}
+  height: 100%; }
 
 ul#main-navigation a span,
 header.navbar span.logo {
-  display: none;
-}
+  display: none; }
 
 ul#main-navigation i.fa {
   font-size: 22px;
   display: inline-block;
   padding: 0;
   padding-right: 10px;
-  padding-left: 10px;
-}
+  padding-left: 10px; }
 
 header.navbar .container > * {
-  flex-grow: 1;
-}
+  flex-grow: 1; }
 
 header.navbar span.logo img {
-  height: 26px;
-}
+  height: 26px; }
 
 header.navbar .new-tweet-container {
-  text-align: right;
-}
+  text-align: right; }
 
 header.navbar a.new-tweet {
   background-color: #1C88CC;
   color: #fff;
   font-weight: bold;
-  font-size: 14px;
-}
+  font-size: 14px; }
 
 header.navbar a.new-tweet:hover {
   background-color: #1da1f2;
-  color: #fff;
-}
+  color: #fff; }
 
 header.navbar a.new-tweet i.fa {
   padding: 0;
-  padding-right: 10px;
-}
+  padding-right: 10px; }
 
 ul#main-navigation {
   display: flex;
   align-items: center;
   height: 100%;
   font-size: 14px;
-  margin-right: auto;
-}
+  margin-right: auto; }
 
 ul#main-navigation li {
   margin-right: 5px;
   display: flex;
   height: 100%;
-  align-items: center;
-}
+  align-items: center; }
 
 ul#main-navigation a {
   height: 100%;
   color: #8899a6;
   padding-left: 8px;
-  padding-right: 8px;
-}
+  padding-right: 8px; }
 
 ul#main-navigation a:hover {
-  border-bottom: 2px solid #1da1f2;
-}
+  border-bottom: 2px solid #1da1f2; }
 
 ul#main-navigation li:hover {
-  color: #1da1f2 !important;
-}
+  color: #1da1f2 !important; }
 
 ul#main-navigation a:hover {
-  color: #1da1f2 !important;
-}
+  color: #1da1f2 !important; }
 
 ul#main-navigation a.logout:hover {
-  color: orangered !important;
-}
+  color: orangered !important; }
 
 ul#main-navigation a {
   display: flex;
-  align-items: center;
-}
-
-/* Login Page */
-
-.login {
-  padding-top: 36px;
-}
-
-.login-container {
-  text-align: center;
-  margin: auto;
-}
-
-.modal-title {
-	display: inline-block;
-}
-
-.profile-image {
-  border-radius: 50%;
-  width: 150px;
-  max-width: 100%;
-  float: right;
-}
-
-.tweet-image {
-  border-radius: 50%;
-  height: 40px;
-  border: 1px solid #000;
-}
-
-.logged-user,
-.useful-links,
-.recent-visits,
-.analytics-container,
-.profile-summary,
-.tweet {
-  background-color: #1b2836;
-  padding: 15px;
-  border-radius: 2px;
-  border: 1px solid #000;
-  margin-bottom: 20px;
-}
-
-.logged-user h4,
-.useful-links h4,
-.recent-visits h4 {
-  color: #fff;
-}
-
-.user-stats ul {
-  margin-top: 10px;
-  text-align: center;
-  display: flex;
-  justify-content: space-around;
-  font-weight: bold;
-  width: 100%;
-}
-
-.user-stats .stat-title {
-  display: block;
-}
-
-.user-stats li span:not(.stat-title) {
-  font-size: 18px;
-  color: #1da1f2;
-}
-
-.useful-links a {
-  font-weight: bold;
-}
-
-.twitter-container .recent-visits {
-  padding: 15px;
-}
-
-.btn:hover,
-button:hover {
-  cursor: pointer;
-}
-
-.btn.edit,
-.btn.save {
-  margin-right: 10px;
-}
-
-.flat {
-  border-radius: 0;
-}
-
-.github-btn {
-  margin-left: 20px;
-}
-
-.modal-content {
-  padding: 6px;
-}
-
-a {
-  color: #1da1f2;
-}
-
-.edit-tweet-actions {
-  margin-top: 10px;
-}
-
-/* Main Dashboard */
-
-.logged-user > .row {
-  align-items: center;
-}
-
-.logged-user .image-column {
-  padding-right: 0;
-}
-
-.logged-user .information-column {
-  text-align: center;
-}
-
-.logged-user .user-stats-column {
-  display: none;
-}
-
-.useful-links,
-.recent-visits {
-  text-align: center;
-}
-
-.first-column .recent-visits,
-.first-column .useful-links {
-  display: none;
-}
+  align-items: center; }
 
 /* Tweets */
-
 .tweet {
-  color: #fff;
-}
+  color: #fff; }
 
 .tweet::after {
   content: "";
   clear: both;
-  display: block;
-}
+  display: block; }
 
 .tweet .tweet-description {
-  padding-left: 25px;
-}
+  padding-left: 25px; }
 
 .tweet p.tweet-content {
   margin: 5px 0 10px;
-  word-wrap: break-word;
-}
+  word-wrap: break-word; }
 
 .tweet span.name a,
 .comment span.name a {
   color: #fff;
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 .tweet span.date a,
 .comment span.date {
-  color: #8899a6;
-}
+  color: #8899a6; }
 
 .tweet textarea.edit-tweet {
-  margin: 10px 0 15px;
-}
+  margin: 10px 0 15px; }
 
 .tweet textarea.edit-tweet,
 .tweet .comment textarea,
@@ -325,340 +169,346 @@ textarea.form-control {
   padding: 6px 12px;
   color: #fff;
   border-radius: 4px;
-  width: 100%;
-}
+  width: 100%; }
 
 textarea.form-control:focus {
-  background-color: #141d26;
-}
+  background-color: #141d26; }
 
 .tweet .comment textarea:focus,
 .tweet textarea.edit-tweet:focus {
-  color: #fff;
-}
+  color: #fff; }
 
 .tweet .comment .btn {
   margin: auto;
   display: block;
-  margin-top: 10px;
-}
+  margin-top: 10px; }
 
 .comment .comment-item {
-  margin-top: 10px;
-}
+  margin-top: 10px; }
 
 .comment .comment-content {
-  margin-top: 5px;
-}
-
-/* Profile Page */
-
-#profile-page .profile-image {
-  width: 150px;
-  border: 0;
-  float: none;
-}
-
-#profile-page .profile-summary {
-  text-align: center;
-}
-
-#profile-page span.profile-handle {
-  font-size: 18px;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  display: inline-block;
-}
-
-/* Analytics Page */
-
-.analytics-container {
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-
-.analytics-container h1 {
-  color: #fff;
-  text-align: center;
-}
-
-.analytics-container table {
-  table-layout: fixed;
-}
-
-.analytics-container table th.user-column {
-  width: 25%;
-}
-
-.analytics-container th,
-.analytics-container td {
-  padding: .25rem .75rem;
-}
-
-.analytics-container table  th {
-  font-weight: bold;
-  color: #fff;
-  text-align: center;
-}
-
-.analytics-container table tr td {
-  word-wrap: break-word;
-  vertical-align: middle;
-}
-
-.analytic-numbers {
-  margin: 20px 0;
-}
-
-.analytic-numbers ul {
-  display: flex;
-  justify-content: space-evenly;
-  font-weight: bold;
-}
-
-.analytic-numbers ul li {
-  text-align: center;
-}
-
-.analytic-numbers .analytic-title {
-  font-size: 16px;
-}
-
-.analytic-numbers .analytic-value {
-  font-size: 18px;
-  color: #1da1f2;
-  display: block;
-}
-
-.analytics-user {
-  font-weight: bold;
-  text-align: center;
-}
+  margin-top: 5px; }
 
 .pagination-container {
-  text-align: center;
-}
+  text-align: center; }
 
 .pagination-container a,
 .pagination-container li.out-of-range {
-  padding: 6px 12px;
-}
+  padding: 6px 12px; }
 
 .pagination {
-  justify-content: center;
-}
+  justify-content: center; }
 
 .pagination li a {
   color: #fff;
-  border-color: #000 !important;
-}
+  border-color: #000 !important; }
 
 .pagination .no a {
   background-color: #1b2836;
-  color: #fff;
-}
+  color: #fff; }
 
 .pagination .active a {
-  background-color: #1da1f2;
-}
+  background-color: #1da1f2; }
 
 /* New Tweet Modal */
-
 .modal-content {
-  padding: 0
-}
+  padding: 0; }
 
 .modal-content .modal-header {
   background-color: #1b2836;
   justify-content: center;
-  border-bottom: 0;
-}
+  border-bottom: 0; }
 
 button.close {
   color: #8899a6;
   opacity: 1;
   text-shadow: none;
   position: absolute;
-  right: 15px;
-}
+  right: 15px; }
 
 .modal-body {
-  background-color: #1b3449;
-}
+  background-color: #1b3449; }
 
 .modal-content .btn {
   background-color: #1da1f2;
-  color: #fff;
-}
+  color: #fff; }
 
 .modal-content textarea {
   background-color: #141d26;
   border: solid 2px #1B5881;
-  border-radius: 8px;
-}
+  border-radius: 8px; }
 
 .modal-content textarea:focus {
-  color: #fff;
-}
+  color: #fff; }
 
 .modal-content .form-actions {
   text-align: center;
-  margin-top: 10px;
-}
+  margin-top: 10px; }
 
-/* Footer */
+/* Login Page */
+.login {
+  padding-top: 36px; }
 
-footer{
+.login-container {
   text-align: center;
-  background-color: #243447;
+  margin: auto; }
+
+.modal-title {
+  display: inline-block; }
+
+.profile-image {
+  border-radius: 50%;
+  width: 150px;
+  max-width: 100%;
+  float: right; }
+
+.tweet-image {
+  border-radius: 50%;
+  height: 40px;
+  border: 1px solid #000; }
+
+.logged-user,
+.useful-links,
+.recent-visits,
+.analytics-container,
+.profile-summary,
+.tweet {
+  background-color: #1b2836;
+  padding: 15px;
+  border-radius: 2px;
+  border: 1px solid #000;
+  margin-bottom: 20px; }
+
+.logged-user h4,
+.useful-links h4,
+.recent-visits h4 {
+  color: #fff; }
+
+.user-stats ul {
+  margin-top: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  font-weight: bold;
+  width: 100%; }
+
+.user-stats .stat-title {
+  display: block; }
+
+.user-stats li span:not(.stat-title) {
+  font-size: 18px;
+  color: #1da1f2; }
+
+.useful-links a {
+  font-weight: bold; }
+
+.twitter-container .recent-visits {
+  padding: 15px; }
+
+.btn:hover,
+button:hover {
+  cursor: pointer; }
+
+.btn.edit,
+.btn.save {
+  margin-right: 10px; }
+
+.flat {
+  border-radius: 0; }
+
+.github-btn {
+  margin-left: 20px; }
+
+.modal-content {
+  padding: 6px; }
+
+a {
+  color: #1da1f2; }
+
+.edit-tweet-actions {
+  margin-top: 10px; }
+
+/* Main Dashboard */
+.logged-user > .row {
+  align-items: center; }
+
+.logged-user .image-column {
+  padding-right: 0; }
+
+.logged-user .information-column {
+  text-align: center; }
+
+.logged-user .user-stats-column {
+  display: none; }
+
+.useful-links,
+.recent-visits {
+  text-align: center; }
+
+.first-column .recent-visits,
+.first-column .useful-links {
+  display: none; }
+
+/* Profile Page */
+#profile-page .profile-image {
+  width: 150px;
+  border: 0;
+  float: none; }
+
+#profile-page .profile-summary {
+  text-align: center; }
+
+#profile-page span.profile-handle {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  display: inline-block; }
+
+/* Analytics Page */
+.analytics-container {
   padding-top: 30px;
-  height: 150px;
-}
+  padding-bottom: 30px; }
 
-/* Media Queries */
+.analytics-container h1 {
+  color: #fff;
+  text-align: center; }
 
+.analytics-container table {
+  table-layout: fixed; }
 
-/*Extra small devices (portrait phones, less than 576px)*/
-/*No media query since this is the default in Bootstrap*/
+.analytics-container table th.user-column {
+  width: 25%; }
 
-/*Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) {
-}
+.analytics-container th,
+.analytics-container td {
+  padding: .25rem .75rem; }
 
-/*Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) {
+.analytics-container table th {
+  font-weight: bold;
+  color: #fff;
+  text-align: center; }
 
-}
+.analytics-container table tr td {
+  word-wrap: break-word;
+  vertical-align: middle; }
 
-/*Large devices (desktops, 992px and up)*/
-@media (min-width: 992px) {
-  header.navbar span.logo,
-  ul#main-navigation a span {
-    display: inline-block;
-    text-align: center;
-  }
-  .information-column .user-stats {
-    display: none;
-  }
-  .logged-user .user-stats-column {
-    display: block;
-  }
-  .first-column .recent-visits,
-  .first-column .useful-links {
-    display: block;
-  }
-  .third-column .recent-visits,
-  .third-column .useful-links {
-    display: none;
-  }
-  ul#main-navigation i.fa {
-    padding-left: 0;
-  }
-}
+.analytic-numbers {
+  margin: 20px 0; }
 
-/*Extra large devices (large desktops, 1200px and up)*/
-@media (min-width: 1200px) {
-  .first-column .recent-visits,
-  .third-column .useful-links {
-    display: none;
-  }
-  .third-column .recent-visits {
-    display: block;
-  }
-}
+.analytic-numbers ul {
+  display: flex;
+  justify-content: space-evenly;
+  font-weight: bold; }
 
-/* Going to other way */
+.analytic-numbers ul li {
+  text-align: center; }
 
-/*Extra small devices (portrait phones, less than 576px)*/
-/*@media (max-width: 575px) { ... }*/
+.analytic-numbers .analytic-title {
+  font-size: 16px; }
 
-/*Small devices (landscape phones, less than 768px)*/
-/*@media (max-width: 767px) { ... }*/
+.analytic-numbers .analytic-value {
+  font-size: 18px;
+  color: #1da1f2;
+  display: block; }
 
-/*Medium devices (tablets, less than 992px)*/
-/*@media (max-width: 991px) { ... }*/
-
-/*Large devices (desktops, less than 1200px)*/
-/*@media (max-width: 1199px) { ... }*/
-
-/*Extra large devices (large desktops)*/
-/*No media query since the extra-large breakpoint has no upper bound on its width*/
-
-pre {
-  white-space: pre-wrap; /* css-3 */
-  white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
-  white-space: -pre-wrap; /* Opera 4-6 */
-  white-space: -o-pre-wrap; /* Opera 7 */
-  word-wrap: break-word; /* Internet Explorer 5.5+ */
-}
-
-pre code {
-  color: black;
-}
-
-#error-stack-trace {
-  background: yellow;
-  padding: 20px;
-  margin-top: 20px;
-}
+.analytics-user {
+  font-weight: bold;
+  text-align: center; }
 
 .chatbox {
-  padding: 20px;
-}
+  padding: 20px; }
 
 .chatMessage {
-  display: inline;
-}
+  display: inline; }
 
 span.sender {
   color: red;
   margin-left: 5px;
-  margin-right: 5px;
-}
+  margin-right: 5px; }
 
 span.message {
   border: 1px solid gray;
   border-radius: 4px;
   width: fit-content;
-  padding: 6px;
-}
+  padding: 6px; }
 
 .msgtime {
-  font-size: 10px;
-}
+  font-size: 10px; }
 
 .chatlist {
-  margin-left: 20px;
-}
+  margin-left: 20px; }
 
 .chat-image {
   margin-left: 5px;
-  margin-right: 5px
-}
+  margin-right: 5px; }
 
 .chatrow {
   border: 1px solid lightslategray;
   margin-bottom: 10px;
   padding: 4px;
-  border-radius: 7px;
-}
+  border-radius: 7px; }
 
 .inboxlink {
-  margin-left: 40px;
-}
+  margin-left: 40px; }
 
 .message-row {
-  margin-top: 6px;
-}
+  margin-top: 6px; }
 
 .following-image, .follower-image {
-  margin-right: 6px;
-}
+  margin-right: 6px; }
 
 a.logout {
-  color: red !important;
-}
+  color: red !important; }
 
 .btn-message {
-  margin-right: 12px;
-}
+  margin-right: 12px; }
+
+/* Footer */
+footer {
+  text-align: center;
+  background-color: #243447;
+  padding-top: 30px;
+  height: 150px; }
+
+/* Media Queries */
+/*Extra small devices (portrait phones, less than 576px)*/
+/*No media query since this is the default in Bootstrap*/
+/*Small devices (landscape phones, 576px and up)*/
+/*Medium devices (tablets, 768px and up)*/
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  header.navbar span.logo,
+  ul#main-navigation a span {
+    display: inline-block;
+    text-align: center; }
+
+  .information-column .user-stats {
+    display: none; }
+
+  .logged-user .user-stats-column {
+    display: block; }
+
+  .first-column .recent-visits,
+  .first-column .useful-links {
+    display: block; }
+
+  .third-column .recent-visits,
+  .third-column .useful-links {
+    display: none; }
+
+  ul#main-navigation i.fa {
+    padding-left: 0; } }
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+  .first-column .recent-visits,
+  .third-column .useful-links {
+    display: none; }
+
+  .third-column .recent-visits {
+    display: block; } }
+#error-stack-trace {
+  background: yellow;
+  padding: 20px;
+  margin-top: 20px; }
+
+/*# sourceMappingURL=style.css.map */

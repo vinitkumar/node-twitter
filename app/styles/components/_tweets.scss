@@ -1,0 +1,71 @@
+/* Tweets */
+
+.tweet {
+  color: #fff;
+}
+
+.tweet::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.tweet .tweet-description {
+  padding-left: 25px;
+}
+
+.tweet p.tweet-content {
+  margin: 5px 0 10px;
+  word-wrap: break-word;
+}
+
+.tweet span.name a,
+.comment span.name a {
+  color: #fff;
+  font-weight: bold;
+}
+
+.tweet span.date a,
+.comment span.date {
+  color: #8899a6;
+}
+
+.tweet textarea.edit-tweet {
+  margin: 10px 0 15px;
+}
+
+.tweet textarea.edit-tweet,
+.tweet .comment textarea,
+textarea.form-control {
+  font-size: 13px;
+  background-color: #141d26;
+  border-color: #1B5881;
+  display: block;
+  padding: 6px 12px;
+  color: #fff;
+  border-radius: 4px;
+  width: 100%;
+}
+
+textarea.form-control:focus {
+  background-color: #141d26;
+}
+
+.tweet .comment textarea:focus,
+.tweet textarea.edit-tweet:focus {
+  color: #fff;
+}
+
+.tweet .comment .btn {
+  margin: auto;
+  display: block;
+  margin-top: 10px;
+}
+
+.comment .comment-item {
+  margin-top: 10px;
+}
+
+.comment .comment-content {
+  margin-top: 5px;
+}

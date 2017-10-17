@@ -1,0 +1,102 @@
+/* Login Page */
+
+.login {
+  padding-top: 36px;
+}
+
+.login-container {
+  text-align: center;
+  margin: auto;
+}
+
+.modal-title {
+	display: inline-block;
+}
+
+.profile-image {
+  border-radius: 50%;
+  width: 150px;
+  max-width: 100%;
+  float: right;
+}
+
+.tweet-image {
+  border-radius: 50%;
+  height: 40px;
+  border: 1px solid #000;
+}
+
+.logged-user,
+.useful-links,
+.recent-visits,
+.analytics-container,
+.profile-summary,
+.tweet {
+  background-color: #1b2836;
+  padding: 15px;
+  border-radius: 2px;
+  border: 1px solid #000;
+  margin-bottom: 20px;
+}
+
+.logged-user h4,
+.useful-links h4,
+.recent-visits h4 {
+  color: #fff;
+}
+
+.user-stats ul {
+  margin-top: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  font-weight: bold;
+  width: 100%;
+}
+
+.user-stats .stat-title {
+  display: block;
+}
+
+.user-stats li span:not(.stat-title) {
+  font-size: 18px;
+  color: #1da1f2;
+}
+
+.useful-links a {
+  font-weight: bold;
+}
+
+.twitter-container .recent-visits {
+  padding: 15px;
+}
+
+.btn:hover,
+button:hover {
+  cursor: pointer;
+}
+
+.btn.edit,
+.btn.save {
+  margin-right: 10px;
+}
+
+.flat {
+  border-radius: 0;
+}
+
+.github-btn {
+  margin-left: 20px;
+}
+
+.modal-content {
+  padding: 6px;
+}
+
+a {
+  color: #1da1f2;
+}
+
+.edit-tweet-actions {
+  margin-top: 10px;
+}

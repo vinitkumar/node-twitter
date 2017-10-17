@@ -1,0 +1,64 @@
+/* Analytics Page */
+
+.analytics-container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.analytics-container h1 {
+  color: #fff;
+  text-align: center;
+}
+
+.analytics-container table {
+  table-layout: fixed;
+}
+
+.analytics-container table th.user-column {
+  width: 25%;
+}
+
+.analytics-container th,
+.analytics-container td {
+  padding: .25rem .75rem;
+}
+
+.analytics-container table  th {
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+
+.analytics-container table tr td {
+  word-wrap: break-word;
+  vertical-align: middle;
+}
+
+.analytic-numbers {
+  margin: 20px 0;
+}
+
+.analytic-numbers ul {
+  display: flex;
+  justify-content: space-evenly;
+  font-weight: bold;
+}
+
+.analytic-numbers ul li {
+  text-align: center;
+}
+
+.analytic-numbers .analytic-title {
+  font-size: 16px;
+}
+
+.analytic-numbers .analytic-value {
+  font-size: 18px;
+  color: #1da1f2;
+  display: block;
+}
+
+.analytics-user {
+  font-weight: bold;
+  text-align: center;
+}
