@@ -41,17 +41,17 @@ block content
                       .form-actions
                               button.btn(type='submit') Send Message
           .row
-            .col-12.user-stats
+            .col-12.user-information__stats
               ul
                 li
-                  span.stat-title Tweets:
+                  span.user-information__stat-title Tweets:
                   span #{tweetCount}
                 li
-                  span.stat-title Following:
+                  span.user-information__stat-title Following:
                   span 
                     a(href="/users/" + user._id + "/following")  #{followingCount}
                 li
-                  span.stat-title Followers: 
+                  span.user-information__stat-title Followers: 
                   span
                     a(href="/users/" + user._id + "/followers")  #{followerCount}
         if (user._id != req.user.id)

@@ -26,51 +26,6 @@
   border: 1px solid #000;
 }
 
-.logged-user,
-.useful-links,
-.recent-visits,
-.analytics-container,
-.profile-summary,
-.tweet {
-  background-color: #1b2836;
-  padding: 15px;
-  border-radius: 2px;
-  border: 1px solid #000;
-  margin-bottom: 20px;
-}
-
-.logged-user h4,
-.useful-links h4,
-.recent-visits h4 {
-  color: #fff;
-}
-
-.user-stats ul {
-  margin-top: 10px;
-  text-align: center;
-  display: flex;
-  justify-content: space-around;
-  font-weight: bold;
-  width: 100%;
-}
-
-.user-stats .stat-title {
-  display: block;
-}
-
-.user-stats li span:not(.stat-title) {
-  font-size: 18px;
-  color: #1da1f2;
-}
-
-.useful-links a {
-  font-weight: bold;
-}
-
-.twitter-container .recent-visits {
-  padding: 15px;
-}
-
 .btn:hover,
 button:hover {
   cursor: pointer;
