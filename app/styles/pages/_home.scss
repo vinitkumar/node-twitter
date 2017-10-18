@@ -1,0 +1,59 @@
+/* Main Dashboard */
+
+@import '../abstracts/variables';
+
+.logged-user > .row {
+  align-items: center;
+}
+
+.logged-user .image-column {
+  padding-right: 0;
+}
+
+.logged-user .information-column {
+  text-align: center;
+}
+
+.logged-user .user-stats-column {
+  display: none;
+
+  @media #{$large} {
+    display: block;
+  }
+}
+
+.useful-links,
+.recent-visits {
+  text-align: center;
+}
+
+.first-column .recent-visits,
+.first-column .useful-links {
+  display: none;
+
+  @media #{$large} {
+    display: block;
+  }
+  @media #{$xlarge} {
+    display: none;
+  }
+}
+
+.third-column .recent-visits,
+.third-column .useful-links {
+  @media #{$large} {
+    display: none;
+  }
+}
+
+.third-column .recent-visits {
+  @media #{$xlarge} {
+    display: block;
+  }
+}
+
+.information-column .user-stats {
+  @media #{$large} {
+    display: none;
+  }
+}

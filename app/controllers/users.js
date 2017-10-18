@@ -30,14 +30,14 @@ exports.authCallback = (req, res) => {
 };
 
 exports.login = (req, res) => {
-  res.render("users/login", {
+  res.render("pages/login", {
     title: "Login",
     message: req.flash("error")
   });
 };
 
 exports.signup = (req, res) => {
-  res.render("users/login", {
+  res.render("pages/login", {
     title: "Sign up",
     user: new User()
   });
@@ -59,7 +59,7 @@ exports.create = (req, res, next) => {
   user.provider = "local";
   user.save()
     .catch( error => {
-      return res.render("users/login", { errors: err.errors, user: user });
+      return res.render("pages/login", { errors: err.errors, user: user });
     })
     .then( () => {
       return req.login(user);
@@ -89,7 +89,7 @@ exports.list = (req, res) => {
     })
     .then( result => {
       count = result;
-      res.render("users/list", {
+      res.render("pages/user-list", {
         title: "List of Users",
         users: users,
         page: page + 1,
@@ -97,7 +97,7 @@ exports.list = (req, res) => {
       });
     })
     .catch( error => {
-      return res.render("500");
+      return res.render("pages/500");
     });
 }
 
@@ -123,7 +123,7 @@ exports.show = (req, res) => {
     })
     .then( result => {
       tweetCount = result;
-      res.render("users/profile", {
+      res.render("pages/profile", {
         title: "Tweets from " + user.name,
         user: user,
         tweets: tweets,
@@ -133,7 +133,7 @@ exports.show = (req, res) => {
       });
     })
     .catch( error => {
-      return res.render("500");
+      return res.render("pages/500");
     })
 }
 
@@ -161,10 +161,10 @@ exports.showFollowers = (req, res) => {
 
   userFollowers.exec((err, users) => {
     if (err) {
-      return res.render("500");
+      return res.render("pages/500");
     }
     const name = user.name ? user.name : user.username;
-    res.render("users/followers", {
+    res.render("pages/user-followers", {
       title: "Followers of " + name,
       followers: users
     });
@@ -180,10 +180,10 @@ exports.showFollowing = (req, res) => {
   );
   userFollowing.exec((err, users) => {
     if (err) {
-      res.render("500");
+      res.render("pages/500");
     }
     const name = user.name ? user.name : user.username;
-    res.render("users/following", {
+    res.render("pages/user-following", {
       title: "Followed by " + name,
       following: users
     });

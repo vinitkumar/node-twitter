@@ -1,10 +1,10 @@
 doctype html
 html(lang='en')
-  include ../includes/head
+  include head
   if (req.isAuthenticated())
   body.login-screen
-    include ../includes/header
+    include header
     .container
       block main
       block content
-    include ../includes/footer
+    include footer

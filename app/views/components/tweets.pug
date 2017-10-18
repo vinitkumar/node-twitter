@@ -21,6 +21,6 @@ each tweet in tweets
         if tweet.comments.length > 0
           hr
           each comment in tweet.comments
-            include ../comments/comment
+            include comment
         hr
-        include ../comments/form
+        include comment-form

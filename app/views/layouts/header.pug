@@ -1,8 +1,8 @@
 body
-  header#top.navbar.navbar-static-top(role='banner')
+  header.navbar(role='banner')
     .container
       if (req.isAuthenticated())
-        ul#main-navigation
+        ul.navbar__main-navigation
           li
             a(href="/" title="Home")
               i(class="fa fa-home", aria-hidden="true")
@@ -27,16 +27,16 @@ body
             a(href="/logout", title="logout", class="logout")
               i(class="fa fa-sign-out", aria-hidden="true")
               span Logout
-      span.logo
+      span.navbar__logo
         a(href='/')
           img(src='/img/bird.svg')
       if (req.isAuthenticated())
-        div.new-tweet-container
-          a.new-tweet.btn(data-toggle='modal', href='#myModal')
-            i(class="fa fa-paper-plane")
+        .navbar__profile
+        .navbar__new-tweet
+          a.navbar__new-tweet-button.btn(data-toggle='modal', href='.tweet-modal')
             span Tweet
   if (req.isAuthenticated())
-    #myModal.modal.fade
+    #tweet-modal.modal.fade
       .modal-dialog(role='document')
         .modal-content
           .modal-header

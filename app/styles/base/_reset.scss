@@ -1,0 +1,57 @@
+/* General */
+
+body {
+  font-size: 13px;
+  background-color: #141d26;
+  color: #8899a6;
+  min-height: 100vh;
+}
+
+body > div.container {
+  /* Calculate the minimum height by subtracting the header and footer height */
+  min-height: calc(100vh - 50px - 150px);
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+h4 {
+  font-size: 1.2rem;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+hr {
+  border-color: #000;
+}
+
+i {
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.btn {
+  border-radius: 100px;
+  font-size: 12px;
+  padding: 4px 10px;
+}
+
+pre {
+  white-space: pre-wrap; /* css-3 */
+  white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+
+pre code {
+  color: black;
+}

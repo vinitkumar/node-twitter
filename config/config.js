@@ -27,7 +27,7 @@ module.exports = {
     github: {
       clientID: "c2e0f478634366e1289d",
       clientSecret: "0bfde82383deeb99b28d0f6a9eac001a0deb798a",
-      callbackURL: "http://nitter.herokuapp.com/auth/github/callback"
+      callbackURL: "http://localhost:3000/auth/github/callback"
     }
   },
   production: {

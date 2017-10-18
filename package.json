@@ -34,6 +34,12 @@
   },
   "devDependencies": {
     "ava": "latest",
+    "grunt": "^1.0.1",
+    "grunt-contrib": "^0.11.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
     "mocha": "^2.5.3",
     "nodemon": "latest",
     "should": "latest",

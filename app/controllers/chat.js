@@ -46,7 +46,7 @@ exports.index = (req, res) => {
       });
     })
     .catch( error => {
-      return res.render("500");
+      return res.render("pages/500");
     });
 };
 

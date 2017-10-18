@@ -1,10 +1,4 @@
-let _ = require('underscore');
-
 module.exports = function (grunt) {
-
-  grunt.loadNpmTasks('grunt-contrib');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-concat');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -23,8 +17,29 @@ module.exports = function (grunt) {
           'public/js/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
         }
       }
+    },
+    sass: {
+      dist: {
+        files: {
+        'public/css/style.css' : 'app/styles/main.scss'
+        }
+      }
+    },
+    watch: {
+      css: {
+        files: '**/*.scss',
+        tasks: ['sass']
+      }
     }
   });
 
+  // Load Grunt plugins
+  grunt.loadNpmTasks('grunt-contrib');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
+  // Register custom tasks to run from the terminal
+  grunt.registerTask('default',['watch']);
 };

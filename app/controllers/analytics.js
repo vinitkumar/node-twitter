@@ -101,7 +101,7 @@ exports.index = (req, res) => {
     })
     .then(result => {
       tweetCount = result;
-      res.render("analytics/analytics", {
+      res.render("pages/analytics", {
         title: "List of users",
         analytics: analytics,
         pageViews: pageViews,
@@ -112,6 +112,6 @@ exports.index = (req, res) => {
     })
     .catch(error => {
       console.log(error);
-      return res.render("500");
+      return res.render("pages/500");
     });
 };

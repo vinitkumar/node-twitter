@@ -1,0 +1,103 @@
+/* Navbar */
+
+@import '../abstracts/variables';
+
+// Initially don't display these elements and have the media queries decide if they get displayed
+.navbar__main-navigation span,
+.navbar__logo {
+  display: none;
+
+  @media #{$large} {
+    display: inline-block;
+    text-align: center;
+  }
+}
+
+.navbar {
+  background-color: #243447;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+
+  .container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    > * {
+      flex-grow: 1;
+    }
+  }
+}
+
+.navbar__main-navigation {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: 14px;
+  margin-right: auto;
+
+  li {
+    margin-right: 5px;
+    display: flex;
+    height: 100%;
+    align-items: center;
+
+    &:hover {
+      color: #1da1f2 !important;
+    }
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: #8899a6;
+    padding-left: 8px;
+    padding-right: 8px;
+
+    &:hover {
+      color: #1da1f2 !important;
+      border-bottom: 2px solid #1da1f2;
+
+      > * {
+        margin-bottom: -2px;
+      }
+    }
+  }
+
+  i.fa {
+    font-size: 22px;
+    display: inline-block;
+    padding: 0;
+    padding-right: 10px;
+    padding-left: 10px;
+
+    @media #{$large} {
+      padding-left: 0;
+    }
+  }
+
+  .logout:hover {
+    color: orangered !important;
+  }
+}
+
+.navbar__logo img {
+  height: 26px;
+}
+.navbar__new-tweet {
+  text-align: right;
+
+  .navbar__new-tweet-button{
+    background-color: #1C88CC;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+
+    &:hover {
+      background-color: #1da1f2;
+      color: #fff;
+    }
+  }
+}
