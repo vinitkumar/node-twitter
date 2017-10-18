@@ -19,18 +19,18 @@ module.exports = function (grunt) {
       }
     },
     sass: {
-			dist: {
-				files: {
-					'public/css/style.css' : 'app/styles/main.scss'
-				}
-			}
-		},
-		watch: {
-			css: {
-				files: '**/*.scss',
-				tasks: ['sass']
-			}
-		}
+      dist: {
+        files: {
+        'public/css/style.css' : 'app/styles/main.scss'
+        }
+      }
+    },
+    watch: {
+      css: {
+        files: '**/*.scss',
+        tasks: ['sass']
+      }
+    }
   });
 
   // Load Grunt plugins
@@ -38,8 +38,8 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-sass');
-	grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Register custom tasks to run from the terminal
-	grunt.registerTask('default',['watch']);
+  grunt.registerTask('default',['watch']);
 };
