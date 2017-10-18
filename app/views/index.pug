@@ -1,41 +1,41 @@
 extends layouts/default
 
 block content
-  .row.twitter-container
+  .row
     .col-xl-3.col-lg-4.first-column
-      .logged-user
+      .user-information
         .row
-          .col-4.image-column
+          .col-4.user-information__image
             img(class='profile-image', src=req.user.github.avatar_url)
-          .col-8.information-column
+          .col-8.user-information__text
             a(href="/users/" + req.user.id)
               h4 #{req.user.name}
-            .user-stats
+            .user-information__stats
               ul
                 li
-                  span.stat-title Tweets:
+                  span.user-information__stat-title Tweets:
                   span
                     a(href="/users/" + req.user.id) #{tweetCount}
                 li
-                  span.stat-title Following:
+                  span.user-information__stat-title Following:
                   span 
                     a(href="/users/" + req.user._id + "/following")  #{followingCount}
                 li
-                  span.stat-title Followers: 
+                  span.user-information__stat-title Followers: 
                   span
                     a(href="/users/" + req.user._id + "/followers")  #{followerCount}
-          .col-md-12.user-stats-column.user-stats
+          .col-md-12.user-information__stats.user-information__stats_large
             ul
               li
-                span.stat-title Tweets:
+                span.user-information__stat-title Tweets:
                 span
                   a(href="/users/" + req.user.id) #{tweetCount}
               li
-                span.stat-title Following:
+                span.user-information__stat-title Following:
                 span 
                   a(href="/users/" + req.user._id + "/following")  #{followingCount}
               li
-                span.stat-title Followers: 
+                span.user-information__stat-title Followers: 
                 span
                   a(href="/users/" + req.user._id + "/followers")  #{followerCount}
       .useful-links

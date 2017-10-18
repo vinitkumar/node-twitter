@@ -2,19 +2,66 @@
 
 @import '../abstracts/variables';
 
-.logged-user > .row {
+.user-information > .row {
   align-items: center;
 }
 
-.logged-user .image-column {
+.user-information__image {
   padding-right: 0;
 }
 
-.logged-user .information-column {
+.user-information__text {
   text-align: center;
 }
 
-.logged-user .user-stats-column {
+.user-information,
+.useful-links,
+.recent-visits,
+.analytics-container,
+.profile-summary,
+.tweet {
+  background-color: #1b2836;
+  padding: 15px;
+  border-radius: 2px;
+  border: 1px solid #000;
+  margin-bottom: 20px;
+}
+
+.user-information h4,
+.useful-links h4,
+.recent-visits h4 {
+  color: #fff;
+}
+
+.user-information__stats {
+  ul {
+    margin-top: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+    width: 100%;
+  }
+
+  @media #{$large} {
+    display: none;
+  }
+}
+
+.user-information__stat-title {
+  display: block;
+}
+
+.user-information__stats span:not(.user-information__stat-title) {
+  font-size: 18px;
+  color: #1da1f2;
+}
+
+.useful-links a {
+  font-weight: bold;
+}
+
+.user-information__stats_large {
   display: none;
 
   @media #{$large} {
@@ -27,33 +74,33 @@
   text-align: center;
 }
 
-.first-column .recent-visits,
-.first-column .useful-links {
-  display: none;
-
-  @media #{$large} {
-    display: block;
-  }
-  @media #{$xlarge} {
+.first-column {
+  .recent-visits,
+  .useful-links {
     display: none;
+
+    @media #{$large} {
+      display: block;
+    }
+  }
+
+  .recent-visits {
+    @media #{$xlarge} {
+      display: none;
+    }
   }
 }
 
-.third-column .recent-visits,
-.third-column .useful-links {
-  @media #{$large} {
-    display: none;
+.third-column {
+  .recent-visits,
+  .useful-links {
+    @media #{$large} {
+      display: none;
+    }
   }
-}
-
-.third-column .recent-visits {
-  @media #{$xlarge} {
-    display: block;
-  }
-}
-
-.information-column .user-stats {
-  @media #{$large} {
-    display: none;
+  .recent-visits {
+    @media #{$xlarge} {
+      display: block;
+    }
   }
 }
