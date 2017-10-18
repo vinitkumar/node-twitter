@@ -31,8 +31,7 @@ body
         a(href='/')
           img(src='/img/bird.svg')
       if (req.isAuthenticated())
-        div.new-tweet
-          a.new-tweet__button.btn(data-toggle='modal', href='.tweet-modal')
+        .navbar__profile
         .navbar__new-tweet
           a.navbar__new-tweet-button.btn(data-toggle='modal', href='.tweet-modal')
             span Tweet

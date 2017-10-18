@@ -51,9 +51,14 @@ pre code {
   color: black; }
 
 /* Navbar */
-#main-navigation a span,
-.logo {
+.navbar__main-navigation span,
+.navbar__logo {
   display: none; }
+  @media (min-width: 992px) {
+    .navbar__main-navigation span,
+    .navbar__logo {
+      display: inline-block;
+      text-align: center; } }
 
 .navbar {
   background-color: #243447;
@@ -67,54 +72,56 @@ pre code {
     .navbar .container > * {
       flex-grow: 1; }
 
-.logo img {
-  height: 26px; }
-
-.new-tweet {
-  text-align: right; }
-
-.new-tweet__button {
-  background-color: #1C88CC;
-  color: #fff;
-  font-weight: bold;
-  font-size: 14px; }
-  .new-tweet__button:hover {
-    background-color: #1da1f2;
-    color: #fff; }
-
-#main-navigation {
+.navbar__main-navigation {
   display: flex;
   align-items: center;
   height: 100%;
   font-size: 14px;
   margin-right: auto; }
-  #main-navigation li {
+  .navbar__main-navigation li {
     margin-right: 5px;
     display: flex;
     height: 100%;
     align-items: center; }
-    #main-navigation li:hover {
+    .navbar__main-navigation li:hover {
       color: #1da1f2 !important; }
-  #main-navigation a {
+  .navbar__main-navigation a {
     display: flex;
     align-items: center;
     height: 100%;
     color: #8899a6;
     padding-left: 8px;
     padding-right: 8px; }
-    #main-navigation a:hover {
+    .navbar__main-navigation a:hover {
       color: #1da1f2 !important;
       border-bottom: 2px solid #1da1f2; }
-      #main-navigation a:hover > * {
+      .navbar__main-navigation a:hover > * {
         margin-bottom: -2px; }
-  #main-navigation i.fa {
+  .navbar__main-navigation i.fa {
     font-size: 22px;
     display: inline-block;
     padding: 0;
     padding-right: 10px;
     padding-left: 10px; }
-  #main-navigation .logout:hover {
+    @media (min-width: 992px) {
+      .navbar__main-navigation i.fa {
+        padding-left: 0; } }
+  .navbar__main-navigation .logout:hover {
     color: orangered !important; }
+
+.navbar__logo img {
+  height: 26px; }
+
+.navbar__new-tweet {
+  text-align: right; }
+  .navbar__new-tweet .navbar__new-tweet-button {
+    background-color: #1C88CC;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px; }
+    .navbar__new-tweet .navbar__new-tweet-button:hover {
+      background-color: #1da1f2;
+      color: #fff; }
 
 /* Tweets */
 .tweet {
@@ -320,6 +327,9 @@ a {
 
 .logged-user .user-stats-column {
   display: none; }
+  @media (min-width: 992px) {
+    .logged-user .user-stats-column {
+      display: block; } }
 
 .useful-links,
 .recent-visits {
@@ -328,6 +338,27 @@ a {
 .first-column .recent-visits,
 .first-column .useful-links {
   display: none; }
+  @media (min-width: 992px) {
+    .first-column .recent-visits,
+    .first-column .useful-links {
+      display: block; } }
+  @media (min-width: 1200px) {
+    .first-column .recent-visits,
+    .first-column .useful-links {
+      display: none; } }
+
+@media (min-width: 992px) {
+  .third-column .recent-visits,
+  .third-column .useful-links {
+    display: none; } }
+
+@media (min-width: 1200px) {
+  .third-column .recent-visits {
+    display: block; } }
+
+@media (min-width: 992px) {
+  .information-column .user-stats {
+    display: none; } }
 
 /* Profile Page */
 #profile-page .profile-image {
@@ -451,41 +482,6 @@ footer {
   height: 150px; }
 
 /* Media Queries */
-/*Extra small devices (portrait phones, less than 576px)*/
-/*No media query since this is the default in Bootstrap*/
-/*Small devices (landscape phones, 576px and up)*/
-/*Medium devices (tablets, 768px and up)*/
-/*Large devices (desktops, 992px and up)*/
-@media (min-width: 992px) {
-  header.navbar span.logo,
-  ul#main-navigation a span {
-    display: inline-block;
-    text-align: center; }
-
-  .information-column .user-stats {
-    display: none; }
-
-  .logged-user .user-stats-column {
-    display: block; }
-
-  .first-column .recent-visits,
-  .first-column .useful-links {
-    display: block; }
-
-  .third-column .recent-visits,
-  .third-column .useful-links {
-    display: none; }
-
-  ul#main-navigation i.fa {
-    padding-left: 0; } }
-/*Extra large devices (large desktops, 1200px and up)*/
-@media (min-width: 1200px) {
-  .first-column .recent-visits,
-  .third-column .useful-links {
-    display: none; }
-
-  .third-column .recent-visits {
-    display: block; } }
 #error-stack-trace {
   background: yellow;
   padding: 20px;

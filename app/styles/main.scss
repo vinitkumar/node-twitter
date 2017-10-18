@@ -12,35 +12,6 @@
 
 /* Media Queries */
 
-/*Large devices (desktops, 992px and up)*/
-@media (min-width: 992px) {
-  .information-column .user-stats {
-    display: none;
-  }
-  .logged-user .user-stats-column {
-    display: block;
-  }
-  .first-column .recent-visits,
-  .first-column .useful-links {
-    display: block;
-  }
-  .third-column .recent-visits,
-  .third-column .useful-links {
-    display: none;
-  }
-}
-
-/*Extra large devices (large desktops, 1200px and up)*/
-@media (min-width: 1200px) {
-  .first-column .recent-visits,
-  .third-column .useful-links {
-    display: none;
-  }
-  .third-column .recent-visits {
-    display: block;
-  }
-}
-
 #error-stack-trace {
   background: yellow;
   padding: 20px;
