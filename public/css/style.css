@@ -196,33 +196,33 @@ textarea.form-control:focus {
   background-color: #1da1f2; }
 
 /* New Tweet Modal */
-.tweet-modal {
+#tweet-modal {
   padding: 0; }
-  .tweet-modal .modal-content {
+  #tweet-modal .modal-content {
     background: none; }
-  .tweet-modal .modal-header {
+  #tweet-modal .modal-header {
     background-color: #1b2836;
     justify-content: center;
     border-bottom: 0; }
-    .tweet-modal .modal-header button.close {
+    #tweet-modal .modal-header button.close {
       color: #8899a6;
       opacity: 1;
       text-shadow: none;
       position: absolute;
       right: 15px; }
-  .tweet-modal .modal-body {
+  #tweet-modal .modal-body {
     background-color: #1b3449; }
-  .tweet-modal .form-actions {
+  #tweet-modal .form-actions {
     text-align: center;
     margin-top: 10px; }
-  .tweet-modal .btn {
+  #tweet-modal .btn {
     background-color: #1da1f2;
     color: #fff; }
-  .tweet-modal textarea {
+  #tweet-modal textarea {
     background-color: #141d26;
     border: solid 2px #1B5881;
     border-radius: 8px; }
-    .tweet-modal textarea:focus {
+    #tweet-modal textarea:focus {
       color: #fff; }
 
 /* Login Page */

@@ -35,7 +35,7 @@ body
           a.new-tweet__button.btn(data-toggle='modal', href='.tweet-modal')
             span Tweet
   if (req.isAuthenticated())
-    .tweet-modal.modal.fade
+    #tweet-modal.modal.fade
       .modal-dialog(role='document')
         .modal-content
           .modal-header
