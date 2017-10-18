@@ -1,9 +1,16 @@
 /* Navbar */
 
+@import '../abstracts/variables';
+
 // Initially don't display these elements and have the media queries decide if they get displayed
-#main-navigation a span,
-.logo {
+.navbar__main-navigation span,
+.navbar__logo {
   display: none;
+
+  @media #{$large} {
+    display: inline-block;
+    text-align: center;
+  }
 }
 
 .navbar {
@@ -23,27 +30,7 @@
   }
 }
 
-.logo img {
-  height: 26px;
-}
-
-.new-tweet {
-  text-align: right;
-}
-
-.new-tweet__button {
-  background-color: #1C88CC;
-  color: #fff;
-  font-weight: bold;
-  font-size: 14px;
-
-  &:hover {
-    background-color: #1da1f2;
-    color: #fff;
-  }
-}
-
-#main-navigation {
+.navbar__main-navigation {
   display: flex;
   align-items: center;
   height: 100%;
@@ -85,9 +72,32 @@
     padding: 0;
     padding-right: 10px;
     padding-left: 10px;
+
+    @media #{$large} {
+      padding-left: 0;
+    }
   }
 
   .logout:hover {
     color: orangered !important;
+  }
+}
+
+.navbar__logo img {
+  height: 26px;
+}
+.navbar__new-tweet {
+  text-align: right;
+
+  .navbar__new-tweet-button{
+    background-color: #1C88CC;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+
+    &:hover {
+      background-color: #1da1f2;
+      color: #fff;
+    }
   }
 }
