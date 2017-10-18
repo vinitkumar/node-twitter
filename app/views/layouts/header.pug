@@ -33,7 +33,7 @@ body
       if (req.isAuthenticated())
         .navbar__profile
         .navbar__new-tweet
-          a.navbar__new-tweet-button.btn(data-toggle='modal', href='.tweet-modal')
+          a.navbar__new-tweet-button.btn(data-toggle='modal', href='#tweet-modal')
             span Tweet
   if (req.isAuthenticated())
     #tweet-modal.modal.fade
