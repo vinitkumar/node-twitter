@@ -1,6 +1,10 @@
 /* Analytics Page */
 
 .analytics-container {
+@import '../abstracts/placeholders';
+
+.analytics {
+  @extend %block-content;
   padding-top: 30px;
   padding-bottom: 30px;
 }

@@ -1,6 +1,9 @@
 /* Tweets */
 
+@import '../abstracts/placeholders';
+
 .tweet {
+  @extend %block-content;
   color: #fff;
 }
 

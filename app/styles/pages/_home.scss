@@ -1,6 +1,11 @@
 /* Main Dashboard */
 
 @import '../abstracts/variables';
+@import '../abstracts/placeholders';
+
+.user-information {
+  @extend %block-content;
+}
 
 .user-information > .row {
   align-items: center;

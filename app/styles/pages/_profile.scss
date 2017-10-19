@@ -1,12 +1,17 @@
 /* Profile Page */
 
 #profile-page .profile-image {
+@import '../abstracts/placeholders';
+
+.profile__image {
   width: 150px;
   border: 0;
   float: none;
 }
 
 #profile-page .profile-summary {
+.profile {
+  @extend %block-content;
   text-align: center;
 }
 
