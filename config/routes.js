@@ -12,7 +12,6 @@ module.exports = (app, passport, auth) => {
    * Main routes
    */
   app.get("/", auth.requiresLogin, tweets.index);
-
   app.get("/login", users.login);
   app.get("/signup", users.signup);
   app.get("/logout", users.logout);
