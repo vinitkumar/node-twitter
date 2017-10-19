@@ -72,7 +72,6 @@ module.exports = (app, passport, auth) => {
    */
   app.get("/tweets", tweets.index);
   app.post("/tweets", auth.requiresLogin, tweets.create);
-  app.get("/tweets/:id", tweets.show);
   app.post(
     "/tweets/:id",
     auth.requiresLogin,
