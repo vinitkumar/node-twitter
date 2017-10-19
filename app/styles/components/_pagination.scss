@@ -1,28 +1,32 @@
 // Pagination
 
-.pagination-container {
+.pagination {
   text-align: center;
-}
 
-.pagination-container a,
-.pagination-container li.out-of-range {
-  padding: 6px 12px;
+  a,
+  li.out-of-range {
+    padding: 6px 12px;
+  }
 }
 
 .pagination {
   justify-content: center;
 }
 
-.pagination li a {
-  color: #fff;
-  border-color: #000 !important;
-}
+.pagination__list {
+  display: flex;
 
-.pagination .no a {
-  background-color: #1b2836;
-  color: #fff;
-}
+  li a {
+    color: #fff;
+    border-color: #000 !important;
+  }
 
-.pagination .active a {
-  background-color: #1da1f2;
+  .no a {
+    background-color: #1b2836;
+    color: #fff;
+  }
+
+  .active a {
+    background-color: #1da1f2;
+  }
 }
