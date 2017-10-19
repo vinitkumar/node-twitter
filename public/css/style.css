@@ -25,11 +25,6 @@ a:hover {
 hr {
   border-color: #000; }
 
-i {
-  padding-top: 30px;
-  padding-left: 20px;
-  padding-right: 20px; }
-
 .btn {
   border-radius: 100px;
   font-size: 12px;
@@ -72,6 +67,14 @@ pre code {
     .navbar .container > * {
       flex-grow: 1; }
 
+.navbar__group {
+  height: 100%; }
+  .navbar__group_right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center; }
+
 .navbar__main-navigation {
   display: flex;
   align-items: center;
@@ -97,28 +100,43 @@ pre code {
       border-bottom: 2px solid #1da1f2; }
       .navbar__main-navigation a:hover > * {
         margin-bottom: -2px; }
-  .navbar__main-navigation i.fa {
+  .navbar__main-navigation .fa {
     font-size: 22px;
     display: inline-block;
     padding: 0;
     padding-right: 10px;
     padding-left: 10px; }
     @media (min-width: 992px) {
-      .navbar__main-navigation i.fa {
+      .navbar__main-navigation .fa {
         padding-left: 0; } }
-  .navbar__main-navigation .logout:hover {
-    color: orangered !important; }
 
-.navbar__logo img {
-  height: 26px; }
+.navbar__logo {
+  position: absolute;
+  left: 50%;
+  margin-left: -13px; }
+  .navbar__logo img {
+    height: 26px; }
+
+.navbar__profile {
+  display: flex;
+  align-items: center;
+  margin-right: 20px; }
+  .navbar__profile .navbar__profile-logout {
+    display: flex;
+    color: #dc3545; }
+    .navbar__profile .navbar__profile-logout:hover {
+      color: #c82333; }
+  .navbar__profile .fa {
+    font-size: 20px;
+    padding-right: 10px; }
 
 .navbar__new-tweet {
   text-align: right; }
   .navbar__new-tweet .navbar__new-tweet-button {
     background-color: #1C88CC;
     color: #fff;
-    font-weight: bold;
-    font-size: 14px; }
+    font-size: 14px;
+    padding: 7px 14px; }
     .navbar__new-tweet .navbar__new-tweet-button:hover {
       background-color: #1da1f2;
       color: #fff; }
