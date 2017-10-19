@@ -16,10 +16,4 @@ each tweet in tweets
             a(href="/tweets/"+tweet._id).btn.btn-success.edit Edit
             input(type="hidden", name="_method", value="DELETE")
             button.btn.btn-danger(type="submit") Delete
-      .col-12.comment
-        if tweet.comments.length > 0
-          hr
-          each comment in tweet.comments
-            include comment
-        hr
-        include comment-form
+      include comments
