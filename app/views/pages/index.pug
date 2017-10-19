@@ -1,4 +1,4 @@
-extends layouts/default
+extends ../layouts/default
 
 block content
   .row
@@ -39,11 +39,11 @@ block content
                 span
                   a(href="/users/" + req.user._id + "/followers")  #{followerCount}
       .useful-links
-        include components/useful-links
+        include ../components/useful-links
       .recent-visits
-        include components/recent-visits
+        include ../components/recent-visits
     .col-xl-6.col-lg-8.second-column
-      include components/tweets
+      include ../components/tweets
       - if (pages > 1)
         nav(aria-label='Page navigation example').pagination-container
           ul.pagination
@@ -52,6 +52,6 @@ block content
 
     .col-xl-3.col-lg-4.third-column
       .recent-visits.col-xs-6.col-md-12
-        include components/recent-visits
+        include ../components/recent-visits
       .useful-links.col-xs-6.col-md-12
-        include components/useful-links
+        include ../components/useful-links
