@@ -1,30 +1,30 @@
 extends ../layouts/default
 
 block content
-  .container.analytics-container
+  .analytics
     h1 Analytics Dashboard
-    .analytic-numbers
+    .analytics__stats
       ul
         li
-          span.analytic-title Total visits: 
-          span.analytic-value #{pageViews}
+          span.analytics__stats-title Total visits: 
+          span.analytics__stats-value #{pageViews}
         li
-          span.analytic-title Total tweets: 
-          span.analytic-value #{tweetCount}
-    table.table.table-bordered
+          span.analytics__stats-title Total tweets: 
+          span.analytics__stats-value #{tweetCount}
+    table.analytics__table
       thead
         tr
-          th.user-column User
-          th.url-column URL
-          th.date-column Date/Time
+          th.analytics__user-column User
+          th.analytics__url-column URL
+          th.analytics__date-column Date/Time
       tbody
         each analytic in analytics
           tr
             - if (analytic.user != null && analytic.url != null)
               - var name = analytic.user.name ? analytic.user.name : analytic.user.username
-              td.analytics-user #{name}
-              td.analytics-url #{analytic.url}
-              td.analytics-date #{analytic.createdAt}
-  include ../components/pagination 
+              td.analytics__user #{name}
+              td.analytics__url #{analytic.url}
+              td.analytics__date #{analytic.createdAt}
+  include ../components/pagination
         
         
