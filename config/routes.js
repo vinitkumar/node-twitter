@@ -15,12 +15,15 @@ module.exports = (app, passport, auth) => {
   app.get("/login", users.login);
   app.get("/signup", users.signup);
   app.get("/logout", users.logout);
-  app.post("/users", users.create);
   app.get("/userslist", users.list);
 
   /**
    * User routes
    */
+  app.get("/users/:userId", users.show);
+  app.get("/users/:userId/followers", users.showFollowers);
+  app.get("/users/:userId/following", users.showFollowing);
+  app.post("/users", users.create);
   app.post(
     "/users/sessions",
     passport.authenticate("local", {
@@ -29,9 +32,6 @@ module.exports = (app, passport, auth) => {
     }),
     users.session
   );
-  app.get("/users/:userId", users.show);
-  app.get("/users/:userId/followers", users.showFollowers);
-  app.get("/users/:userId/following", users.showFollowing);
   app.post("/users/:userId/follow", auth.requiresLogin, follows.follow);
   app.param("userId", users.user);
 
@@ -70,32 +70,38 @@ module.exports = (app, passport, auth) => {
   /**
    * Tweet routes
    */
-  app.get("/tweets", tweets.index);
-  app.post("/tweets", auth.requiresLogin, tweets.create);
-  app.post(
-    "/tweets/:id",
-    auth.requiresLogin,
-    auth.tweet.hasAuthorization,
-    tweets.update
-  );
-  app.del(
-    "/tweets/:id",
-    auth.requiresLogin,
-    auth.tweet.hasAuthorization,
-    tweets.destroy
-  );
+  app.route("/tweets")
+    .get(tweets.index)
+    .post(auth.requiresLogin, tweets.create)
+
+  app.route("/tweets/:id")
+    .post(auth.requiresLogin, auth.tweet.hasAuthorization, tweets.update)
+    .delete(auth.requiresLogin, auth.tweet.hasAuthorization, tweets.destroy)
+
   app.param("id", tweets.tweet);
 
   /**
    * Comment routes
    */
-  app.post("/tweets/:id/comments", auth.requiresLogin, comments.create);
-  app.get("/tweets/:id/comments", auth.requiresLogin, comments.create);
-  app.del("/tweets/:id/comments", auth.requiresLogin, comments.destroy);
+  app.route("/tweets/:id/comments")
+    .get(auth.requiresLogin, comments.create)
+    .post(auth.requiresLogin, comments.create)
+    .delete(auth.requiresLogin, comments.destroy)
 
   /**
    * Favorite routes
    */
-  app.post("/tweets/:id/favorites", auth.requiresLogin, favorites.create);
-  app.del("/tweets/:id/favorites", auth.requiresLogin, favorites.destroy);
+  app.route("/tweets/:id/favorites")
+    .post(auth.requiresLogin, favorites.create)
+    .delete(auth.requiresLogin, favorites.destroy)
+
+  /**
+   * Page not found route (must be at the end of all routes)
+   */
+  app.use((req, res) => {
+    res.status(404).render("pages/404", {
+      url: req.originalUrl,
+      error: "Not found"
+    });
+  });
 };
