@@ -221,34 +221,37 @@ pre code {
   .pagination__list .active a {
     background-color: #1da1f2; }
 
+.modal-dialog {
+  margin-top: 60px; }
+
 /* New Tweet Modal */
-#tweet-modal {
+#new-tweet-modal {
   padding: 0; }
-  #tweet-modal .modal-content {
+  #new-tweet-modal .modal-content {
     background: none; }
-  #tweet-modal .modal-header {
+  #new-tweet-modal .modal-header {
     background-color: #1b2836;
     justify-content: center;
     border-bottom: 0; }
-    #tweet-modal .modal-header button.close {
+    #new-tweet-modal .modal-header button.close {
       color: #8899a6;
       opacity: 1;
       text-shadow: none;
       position: absolute;
       right: 15px; }
-  #tweet-modal .modal-body {
+  #new-tweet-modal .modal-body {
     background-color: #1b3449; }
-  #tweet-modal .form-actions {
+  #new-tweet-modal .form-actions {
     text-align: center;
     margin-top: 10px; }
-  #tweet-modal .btn {
+  #new-tweet-modal .btn {
     background-color: #1da1f2;
     color: #fff; }
-  #tweet-modal textarea {
+  #new-tweet-modal textarea {
     background-color: #141d26;
     border: solid 2px #1B5881;
     border-radius: 8px; }
-    #tweet-modal textarea:focus {
+    #new-tweet-modal textarea:focus {
       color: #fff; }
 
 /* Login Page */
