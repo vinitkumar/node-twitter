@@ -6,7 +6,7 @@ const config = require('../config/config')[env];
 const auth = require('../config/middlewares/authorization');
 const mongoose = require('mongoose');
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.db, {
