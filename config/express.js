@@ -66,11 +66,11 @@ module.exports = (app, config, passport) => {
       }
       console.log(err.stack);
 
-      res.status(500).render("500", { error: err.stack });
+      res.status(500).render("pages/500", { error: err.stack });
     });
 
     app.use((req, res) => {
-      res.status(404).render("404", {
+      res.status(404).render("pages/404", {
         url: req.originalUrl,
         error: "Not found"
       });
