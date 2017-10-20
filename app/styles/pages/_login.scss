@@ -26,6 +26,13 @@
   border: 1px solid #000;
 }
 
+.comment-image {
+  border-radius: 50%;
+  height: 20px;
+  border: 1px solid #000;
+  margin-right: 6px;
+}
+
 .btn:hover,
 button:hover {
   cursor: pointer;

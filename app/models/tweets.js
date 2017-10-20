@@ -16,6 +16,7 @@ const TweetSchema = new Schema({
       body: { type: String, default: "", maxlength: 140},
       user: { type: Schema.ObjectId, ref: "User" },
       commenterName: { type: String, default: "" },
+      commenterPicture: { type: String, default: ""},
       createdAt: { type: Date, default: Date.now }
     }
   ],
@@ -77,15 +78,19 @@ TweetSchema.methods = {
       this.comments.push({
         body: comment.body,
         user: user._id,
-        commenterName: user.name
+        commenterName: user.name,
+        commenterPicture: user.github.avatar_url,
       });
       this.save(cb);
     } else {
       this.comments.push({
         body: comment.body,
         user: user._id,
-        commenterName: user.username
+        commenterName: user.username,
+        commenterPicture: user.github.avatar_url,
       });
+
+      
       this.save(cb);
     }
   },
