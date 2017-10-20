@@ -56,15 +56,6 @@ exports.create = (req, res) => {
   });
 };
 
-// ### Show Tweet
-exports.show = (req, res) => {
-  logAnalytics(req);
-  res.render("components/show-tweet", {
-    title: req.tweet.title,
-    tweet: req.tweet
-  });
-};
-
 // ### Update a tweet
 exports.update = (req, res) => {
   logAnalytics(req);
