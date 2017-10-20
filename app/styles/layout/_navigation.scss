@@ -30,6 +30,17 @@
   }
 }
 
+.navbar__group {
+  height: 100%;
+
+  &_right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
 .navbar__main-navigation {
   display: flex;
   align-items: center;
@@ -66,7 +77,7 @@
     }
   }
 
-  i.fa {
+  .fa {
     font-size: 22px;
     display: inline-block;
     padding: 0;
@@ -77,23 +88,45 @@
       padding-left: 0;
     }
   }
+}
 
-  .logout:hover {
-    color: orangered !important;
+.navbar__logo {
+  position: absolute;
+  left: 50%;
+  margin-left: -13px;
+
+  img {
+    height: 26px;
   }
 }
 
-.navbar__logo img {
-  height: 26px;
+.navbar__profile {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+
+  .navbar__profile-logout {
+    display: flex;
+    color: #dc3545;
+    &:hover {
+      color: #c82333;
+    }
+  }
+
+  .fa {
+    font-size: 20px;
+    padding-right: 10px;
+  }
 }
+
 .navbar__new-tweet {
   text-align: right;
 
   .navbar__new-tweet-button{
     background-color: #1C88CC;
     color: #fff;
-    font-weight: bold;
     font-size: 14px;
+    padding: 7px 14px;
 
     &:hover {
       background-color: #1da1f2;
