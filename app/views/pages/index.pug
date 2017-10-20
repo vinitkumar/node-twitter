@@ -44,10 +44,7 @@ block content
         include ../components/recent-visits
     .col-xl-6.col-lg-8.second-column
       include ../components/tweets
-      - if (pages > 1)
-        nav(aria-label='Page navigation example').pagination-container
-          ul.pagination
-            != pagination
+      include ../components/pagination 
 
 
     .col-xl-3.col-lg-4.third-column
