@@ -143,6 +143,13 @@ pre code {
 
 /* Tweets */
 .tweet {
+  background-color: #1b2836;
+  padding: 15px;
+  border-radius: 2px;
+  border: 1px solid #000;
+  margin-bottom: 20px; }
+
+.tweet {
   color: #fff; }
 
 .tweet::after {
@@ -150,28 +157,30 @@ pre code {
   clear: both;
   display: block; }
 
-.tweet .tweet-description {
+.tweet__image {
+  border-radius: 50%;
+  height: 40px;
+  border: 1px solid #000; }
+
+.tweet__description {
   padding-left: 25px; }
 
-.tweet p.tweet-content {
+.tweet__content {
   margin: 5px 0 10px;
   word-wrap: break-word; }
 
-.tweet span.name a,
-.comment span.name a {
+.tweet__username a {
   color: #fff;
   font-weight: bold; }
 
-.tweet span.date a,
-.comment span.date {
+.tweet__date,
+.tweet__date a {
   color: #8899a6; }
 
 .tweet textarea.edit-tweet {
   margin: 10px 0 15px; }
 
-.tweet textarea.edit-tweet,
-.tweet .comment textarea,
-textarea.form-control {
+.tweet textarea {
   font-size: 13px;
   background-color: #141d26;
   border-color: #1B5881;
@@ -181,23 +190,16 @@ textarea.form-control {
   border-radius: 4px;
   width: 100%; }
 
-textarea.form-control:focus {
-  background-color: #141d26; }
-
-.tweet .comment textarea:focus,
-.tweet textarea.edit-tweet:focus {
-  color: #fff; }
-
-.tweet .comment .btn {
+.tweet__comments .btn {
   margin: auto;
   display: block;
   margin-top: 10px; }
 
-.comment .comment-item {
-  margin-top: 10px; }
-
-.comment .comment-content {
-  margin-top: 5px; }
+.tweets__comment-image {
+  border-radius: 50%;
+  height: 20px;
+  border: 1px solid #000;
+  margin-right: 6px; }
 
 .pagination {
   text-align: center; }
@@ -271,12 +273,6 @@ textarea.form-control:focus {
   height: 40px;
   border: 1px solid #000; }
 
-.comment-image {
-  border-radius: 50%;
-  height: 20px;
-  border: 1px solid #000;
-  margin-right: 6px; }
-
 .btn:hover,
 button:hover {
   cursor: pointer; }
@@ -314,8 +310,7 @@ a {
 .useful-links,
 .recent-visits,
 .analytics-container,
-.profile-summary,
-.tweet {
+.profile-summary {
   background-color: #1b2836;
   padding: 15px;
   border-radius: 2px;

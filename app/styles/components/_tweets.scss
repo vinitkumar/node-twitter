@@ -1,6 +1,9 @@
 /* Tweets */
 
+@import '../abstracts/placeholders';
+
 .tweet {
+  @extend %block-content;
   color: #fff;
 }
 
@@ -10,23 +13,28 @@
   display: block;
 }
 
-.tweet .tweet-description {
+.tweet__image {
+  border-radius: 50%;
+  height: 40px;
+  border: 1px solid #000;
+}
+
+.tweet__description {
   padding-left: 25px;
 }
 
-.tweet p.tweet-content {
+.tweet__content {
   margin: 5px 0 10px;
   word-wrap: break-word;
 }
 
-.tweet span.name a,
-.comment span.name a {
+.tweet__username a {
   color: #fff;
   font-weight: bold;
 }
 
-.tweet span.date a,
-.comment span.date {
+.tweet__date,
+.tweet__date a {
   color: #8899a6;
 }
 
@@ -34,9 +42,7 @@
   margin: 10px 0 15px;
 }
 
-.tweet textarea.edit-tweet,
-.tweet .comment textarea,
-textarea.form-control {
+.tweet textarea {
   font-size: 13px;
   background-color: #141d26;
   border-color: #1B5881;
@@ -47,25 +53,15 @@ textarea.form-control {
   width: 100%;
 }
 
-textarea.form-control:focus {
-  background-color: #141d26;
-}
-
-.tweet .comment textarea:focus,
-.tweet textarea.edit-tweet:focus {
-  color: #fff;
-}
-
-.tweet .comment .btn {
+.tweet__comments .btn {
   margin: auto;
   display: block;
   margin-top: 10px;
 }
 
-.comment .comment-item {
-  margin-top: 10px;
-}
-
-.comment .comment-content {
-  margin-top: 5px;
+.tweets__comment-image {
+  border-radius: 50%;
+  height: 20px;
+  border: 1px solid #000;
+  margin-right: 6px;
 }
