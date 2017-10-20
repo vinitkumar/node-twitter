@@ -6,7 +6,7 @@ block content
       .user-information
         .row
           .col-4.user-information__image
-            img(class='profile-image', src=req.user.github.avatar_url)
+            img(src=req.user.github.avatar_url)
           .col-8.user-information__text
             a(href="/users/" + req.user.id)
               h4 #{req.user.name}

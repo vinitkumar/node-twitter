@@ -1,6 +1,11 @@
 /* Main Dashboard */
 
 @import '../abstracts/variables';
+@import '../abstracts/placeholders';
+
+.user-information {
+  @extend %block-content;
+}
 
 .user-information > .row {
   align-items: center;
@@ -8,22 +13,17 @@
 
 .user-information__image {
   padding-right: 0;
+
+  img {
+    border-radius: 50%;
+    width: 100px;
+    max-width: 100%;
+    float: right;
+  }
 }
 
 .user-information__text {
   text-align: center;
-}
-
-.user-information,
-.useful-links,
-.recent-visits,
-.analytics-container,
-.profile-summary {
-  background-color: #1b2836;
-  padding: 15px;
-  border-radius: 2px;
-  border: 1px solid #000;
-  margin-bottom: 20px;
 }
 
 .user-information h4,
@@ -70,6 +70,7 @@
 
 .useful-links,
 .recent-visits {
+  @extend %block-content;
   text-align: center;
 }
 

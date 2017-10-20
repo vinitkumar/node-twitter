@@ -142,7 +142,8 @@ pre code {
       color: #fff; }
 
 /* Tweets */
-.tweet {
+.tweet, .user-information, .useful-links,
+.recent-visits {
   background-color: #1b2836;
   padding: 15px;
   border-radius: 2px;
@@ -300,25 +301,27 @@ a {
   margin-top: 10px; }
 
 /* Main Dashboard */
-.user-information > .row {
-  align-items: center; }
-
-.user-information__image {
-  padding-right: 0; }
-
-.user-information__text {
-  text-align: center; }
-
-.user-information,
-.useful-links,
-.recent-visits,
-.analytics-container,
-.profile-summary {
+.tweet, .user-information, .useful-links,
+.recent-visits {
   background-color: #1b2836;
   padding: 15px;
   border-radius: 2px;
   border: 1px solid #000;
   margin-bottom: 20px; }
+
+.user-information > .row {
+  align-items: center; }
+
+.user-information__image {
+  padding-right: 0; }
+  .user-information__image img {
+    border-radius: 50%;
+    width: 100px;
+    max-width: 100%;
+    float: right; }
+
+.user-information__text {
+  text-align: center; }
 
 .user-information h4,
 .useful-links h4,
