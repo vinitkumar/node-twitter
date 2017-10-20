@@ -1,4 +1,4 @@
-extends layouts/default
+extends ../layouts/default
 
 block content
   .row
@@ -6,7 +6,7 @@ block content
       .user-information
         .row
           .col-4.user-information__image
-            img(class='profile-image', src=req.user.github.avatar_url)
+            img(src=req.user.github.avatar_url)
           .col-8.user-information__text
             a(href="/users/" + req.user.id)
               h4 #{req.user.name}
@@ -39,19 +39,15 @@ block content
                 span
                   a(href="/users/" + req.user._id + "/followers")  #{followerCount}
       .useful-links
-        include components/useful-links
+        include ../components/useful-links
       .recent-visits
-        include components/recent-visits
+        include ../components/recent-visits
     .col-xl-6.col-lg-8.second-column
-      include components/tweets
-      - if (pages > 1)
-        nav(aria-label='Page navigation example').pagination-container
-          ul.pagination
-            != pagination
-
+      include ../components/tweets
+      include ../components/pagination
 
     .col-xl-3.col-lg-4.third-column
       .recent-visits.col-xs-6.col-md-12
-        include components/recent-visits
+        include ../components/recent-visits
       .useful-links.col-xs-6.col-md-12
-        include components/useful-links
+        include ../components/useful-links

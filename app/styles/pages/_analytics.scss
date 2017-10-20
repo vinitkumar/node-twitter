@@ -1,64 +1,69 @@
 /* Analytics Page */
 
-.analytics-container {
+@import '../abstracts/placeholders';
+
+.analytics {
+  @extend %block-content;
   padding-top: 30px;
   padding-bottom: 30px;
+
+  h1 {
+    color: #fff;
+    text-align: center;
+  }
 }
 
-.analytics-container h1 {
-  color: #fff;
-  text-align: center;
-}
-
-.analytics-container table {
+.analytics__table {
   table-layout: fixed;
+  width: 100%;
+
+  th,
+  td {
+    border: 1px solid #fff;
+    padding: .25rem .75rem;
+  }
+
+  th {
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+  }
+
+  td {
+    word-wrap: break-word;
+    vertical-align: middle;
+  }
 }
 
-.analytics-container table th.user-column {
+.analytics__user-column {
   width: 25%;
 }
 
-.analytics-container th,
-.analytics-container td {
-  padding: .25rem .75rem;
-}
-
-.analytics-container table  th {
-  font-weight: bold;
-  color: #fff;
-  text-align: center;
-}
-
-.analytics-container table tr td {
-  word-wrap: break-word;
-  vertical-align: middle;
-}
-
-.analytic-numbers {
+.analytics__stats {
   margin: 20px 0;
+
+  ul {
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: bold;
+
+    li {
+      text-align: center;
+    }
+  }
 }
 
-.analytic-numbers ul {
-  display: flex;
-  justify-content: space-evenly;
-  font-weight: bold;
-}
-
-.analytic-numbers ul li {
-  text-align: center;
-}
-
-.analytic-numbers .analytic-title {
+.analytics__stats-title {
   font-size: 16px;
 }
 
-.analytic-numbers .analytic-value {
+.analytics__stats-value {
   font-size: 18px;
   color: #1da1f2;
   display: block;
 }
 
-.analytics-user {
+.analytics__user {
   font-weight: bold;
   text-align: center;
 }

@@ -39,7 +39,7 @@ $(document).ready(function() {
       // Change "edit" to "save" on the button
       $editButton.text("Save").removeClass("edit").addClass("save");
       // Get the tweet content text
-      let $originalTweet = $(e.target).parent().siblings(".tweet-content")
+      let $originalTweet = $(e.target).parent().siblings(".tweet__content")
       let tweetText = $originalTweet.text();
       // Replace the tweet text element with a textarea element
       let $modifiedText = $("<textarea>").addClass("edit-tweet").val(tweetText).attr("placeholder", tweetText);
@@ -60,7 +60,7 @@ $(document).ready(function() {
           error: function(data) {}
         });
       }
-      let $tweetElement = $('<p>').addClass("tweet-content").text(modifiedText);
+      let $tweetElement = $('<p>').addClass("tweet__content").text(modifiedText);
       $modifiedTweet.after($tweetElement).remove();
     }
   });
