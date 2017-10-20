@@ -11,7 +11,7 @@ block content
             - if (chats)
               each chat in chats
                 li
-                  img(class='tweet-image', src=chat.sender.github.avatar_url)
+                  img(class='tweet__image', src=chat.sender.github.avatar_url)
                   p.chatMessage
                   a(class='sender', href="/users/" + chat.sender._id) 
                     span.sender #{chat.sender.username}: 
