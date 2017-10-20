@@ -14,7 +14,7 @@ block content
                   - var name = user.name ? user.name : user.username
                   - var id = user._id + 'ChatModal';
                   a(data-toggle='modal', href='#'+ id)
-                    img(class='tweet-image chat-image', src=user.github.avatar_url) 
+                    img(class='tweet__image chat-image', src=user.github.avatar_url) 
                     span #{name}
                   - var currentUserId = req.user._id.toString()
                   - var userId = user._id.toString()

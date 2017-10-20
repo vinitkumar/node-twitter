@@ -7,7 +7,7 @@ block content
       each user in followers
           .well
             a.btn(href="/users/" + user._id)
-              img(src=user.github.avatar_url, class='tweet-image follower-image')
+              img(src=user.github.avatar_url, class='tweet__image follower-image')
               span #{user.username}
     else
       h4 Seems like there is no one following you.
