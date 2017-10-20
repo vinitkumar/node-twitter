@@ -143,7 +143,7 @@ pre code {
 
 /* Tweets */
 .tweet, .user-information, .useful-links,
-.recent-visits, .analytics {
+.recent-visits, .profile, .analytics {
   background-color: #1b2836;
   padding: 15px;
   border-radius: 2px;
@@ -302,7 +302,7 @@ a {
 
 /* Main Dashboard */
 .tweet, .user-information, .useful-links,
-.recent-visits, .analytics {
+.recent-visits, .profile, .analytics {
   background-color: #1b2836;
   padding: 15px;
   border-radius: 2px;
@@ -379,26 +379,39 @@ a {
     display: block; } }
 
 /* Profile Page */
-#profile-page .profile-image {
+.tweet, .user-information, .useful-links,
+.recent-visits, .profile, .analytics {
+  background-color: #1b2836;
+  padding: 15px;
+  border-radius: 2px;
+  border: 1px solid #000;
+  margin-bottom: 20px; }
+
+.profile__image {
   width: 150px;
   border: 0;
   float: none; }
 
-#profile-page .profile-summary {
+.profile {
   text-align: center; }
 
-#profile-page span.profile-handle {
+.profile__handle {
   font-size: 18px;
   margin-top: 10px;
   margin-bottom: 5px;
   display: inline-block; }
 
-.profile-summary .user-information__stats {
+.profile__image {
+  border-radius: 50%;
+  width: 150px;
+  max-width: 100%; }
+
+.profile .user-information__stats {
   display: block; }
 
 /* Analytics Page */
 .tweet, .user-information, .useful-links,
-.recent-visits, .analytics {
+.recent-visits, .profile, .analytics {
   background-color: #1b2836;
   padding: 15px;
   border-radius: 2px;
