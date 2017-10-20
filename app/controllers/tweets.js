@@ -116,7 +116,7 @@ exports.index = (req, res) => {
     })
     .then(result => {
       analytics = result;
-      res.render("index", {
+      res.render("pages/index", {
         title: "List of Tweets",
         tweets: tweets,
         analytics: analytics,
