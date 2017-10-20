@@ -1,6 +1,10 @@
 if (comment && comment.user)
   .comment-item
     span.name
+      if (comment.commenterPicture)
+        img(class='comment-image', src=comment.commenterPicture)
+      else
+        img(class='comment-image', src='http://via.placeholder.com/20x20')
       if (comment.commenterName && comment.user)
           a(href="/users/" + comment.user)= comment.commenterName 
       else if (comment.user)
