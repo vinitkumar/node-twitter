@@ -16,6 +16,14 @@ You are required to have Node.js and MongoDB installed if you'd like to run the 
 - [Node.js](http://nodejs.org)
 - [Mongodb](http://docs.mongodb.org/manual/installation/)
 
+Install sass and grunt too to compile the CSS files
+
+```
+sudo npm install -g grunt-cli
+sudo npm install -g sass
+
+```
+
 The configuration is in `config/config.js`. Please create your own
 github application [Github Developer Settings](https://github.com/settings/applications) and replace the token and keys.
 
