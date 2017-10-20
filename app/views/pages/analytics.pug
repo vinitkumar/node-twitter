@@ -25,9 +25,6 @@ block content
               td.analytics-user #{name}
               td.analytics-url #{analytic.url}
               td.analytics-date #{analytic.createdAt}
-  - if (pages > 1)
-    nav(aria-label='Page navigation example').pagination-container
-      ul.pagination
-        != pagination
+  include ../components/pagination 
         
         
