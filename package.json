@@ -6,7 +6,7 @@
   "private": false,
   "author": "Vinit Kumar <vinit1414.08@bitmesra.ac.in> (http://vinitkumar.me)",
   "scripts": {
-    "start": "node app/server.js",
+    "start": "node server.js",
     "test": "make test"
   },
   "engines": {
