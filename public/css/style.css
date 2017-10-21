@@ -1,9 +1,9 @@
 /* General */
 body {
   font-size: 13px;
-  background-color: #141d26;
-  color: #8899a6;
-  min-height: 100vh; }
+  min-height: 100vh;
+  background-color: #141D26;
+  color: #8899A6; }
 
 body > div.container {
   /* Calculate the minimum height by subtracting the header and footer height */
@@ -23,12 +23,16 @@ a:hover {
   text-decoration: none; }
 
 hr {
-  border-color: #000; }
+  border-color: #141D26; }
 
 .btn {
-  border-radius: 100px;
+  border-radius: 5px;
   font-size: 12px;
-  padding: 4px 10px; }
+  padding: 4px 10px;
+  color: #ffffff;
+  background-color: #1DA1F2; }
+  .btn:hover {
+    color: inherit; }
 
 pre {
   white-space: pre-wrap;
@@ -170,7 +174,7 @@ pre code {
   margin-bottom: 20px; }
 
 .tweet {
-  color: #fff; }
+  color: #ffffff; }
 
 .tweet::after {
   content: "";
@@ -189,24 +193,34 @@ pre code {
   margin: 5px 0 10px;
   word-wrap: break-word; }
 
+.tweet__form .tweet__edit {
+  background-color: #2AAF81; }
+  .tweet__form .tweet__edit:hover {
+    background-color: #2fc490; }
+.tweet__form .tweet__delete {
+  margin-left: 10px;
+  background-color: #E53939; }
+  .tweet__form .tweet__delete:hover {
+    background-color: #e85050; }
+
 .tweet__username a {
-  color: #fff;
+  color: #ffffff;
   font-weight: bold; }
 
 .tweet__date,
 .tweet__date a {
-  color: #8899a6; }
+  color: #8899A6; }
 
 .tweet textarea.edit-tweet {
   margin: 10px 0 15px; }
 
 .tweet textarea {
   font-size: 13px;
-  background-color: #141d26;
-  border-color: #1B5881;
+  background-color: #141D26;
+  border-color: #000;
   display: block;
   padding: 6px 12px;
-  color: #fff;
+  color: #ffffff;
   border-radius: 4px;
   width: 100%; }
 
