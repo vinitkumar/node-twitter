@@ -1,10 +1,11 @@
 /* Tweets */
 
 @import '../abstracts/placeholders';
+@import '../abstracts/variables';
 
 .tweet {
   @extend %block-content;
-  color: #fff;
+  color: $white;
 }
 
 .tweet::after {
@@ -16,7 +17,7 @@
 .tweet__image {
   border-radius: 50%;
   height: 40px;
-  border: 1px solid #000;
+  border: 1px solid $black;
 }
 
 .tweet__description {
@@ -28,14 +29,32 @@
   word-wrap: break-word;
 }
 
+.tweet__form {
+  .tweet__edit {
+    background-color: $jungle-green;
+
+    &:hover {
+      background-color: lighten($jungle-green, 5%);
+    }
+  }
+  .tweet__delete {
+    margin-left: 10px;
+    background-color: $go-red;
+
+    &:hover {
+      background-color: lighten($go-red, 5%);
+    }
+  }
+}
+
 .tweet__username a {
-  color: #fff;
+  color: $white;
   font-weight: bold;
 }
 
 .tweet__date,
 .tweet__date a {
-  color: #8899a6;
+  color: $grey-blue;
 }
 
 .tweet textarea.edit-tweet {
@@ -44,11 +63,11 @@
 
 .tweet textarea {
   font-size: 13px;
-  background-color: #141d26;
-  border-color: #1B5881;
+  background-color: $dark-jungle-green;
+  border-color: $black;
   display: block;
   padding: 6px 12px;
-  color: #fff;
+  color: $white;
   border-radius: 4px;
   width: 100%;
 }
@@ -62,6 +81,6 @@
 .tweets__comment-image {
   border-radius: 50%;
   height: 20px;
-  border: 1px solid #000;
+  border: 1px solid $black;
   margin-right: 6px;
 }

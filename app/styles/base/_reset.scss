@@ -1,10 +1,12 @@
 /* General */
 
+@import '../abstracts/variables';
+
 body {
   font-size: 13px;
-  background-color: #141d26;
-  color: #8899a6;
   min-height: 100vh;
+  background-color: $dark-jungle-green;
+  color: $grey-blue;
 }
 
 body > div.container {
@@ -24,18 +26,31 @@ ul {
   padding: 0;
 }
 
-a:hover {
-  text-decoration: none;
+a {
+  color: $dodger-blue;
+
+  &:hover {
+    color: darken($dodger-blue, 10%);
+    text-decoration: none;
+  }
 }
 
 hr {
-  border-color: #000;
+  border-color: $dark-jungle-green;
 }
 
 .btn {
-  border-radius: 100px;
-  font-size: 12px;
-  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 11px;
+  padding: 3px 8px;
+  color: $white;
+  background-color: $dodger-blue;
+
+  &:hover {
+    background-color: lighten($dodger-blue, 5%);
+    cursor: pointer;
+    color: inherit;
+  }
 }
 
 pre {

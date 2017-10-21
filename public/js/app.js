@@ -32,21 +32,21 @@ $(document).ready(function() {
     });
   });
 
-  $('.btn.edit').on('click', function(e) {
+  $('.tweet__edit').on('click', function(e) {
     e.preventDefault();
     let $editButton = $(e.target);
-    if ($editButton.hasClass("edit")) {
+    if ($editButton.hasClass("tweet__edit")) {
       // Change "edit" to "save" on the button
-      $editButton.text("Save").removeClass("edit").addClass("save");
+      $editButton.text("Save").removeClass("tweet__edit").addClass("tweet__save");
       // Get the tweet content text
       let $originalTweet = $(e.target).parent().siblings(".tweet__content")
       let tweetText = $originalTweet.text();
       // Replace the tweet text element with a textarea element
       let $modifiedText = $("<textarea>").addClass("edit-tweet").val(tweetText).attr("placeholder", tweetText);
       $originalTweet.after($modifiedText).remove();
-    } else if ($editButton.hasClass("save")) {
+    } else if ($editButton.hasClass("tweet__save")) {
       // Change "save" to "edit" on the button
-      $editButton.text("Edit").removeClass("save").addClass("edit");
+      $editButton.text("Edit").removeClass("tweet__save").addClass("tweet__edit");
       let $modifiedTweet = $(e.target).parent().siblings("textarea");
       let originalText = $modifiedTweet.attr("placeholder");
       let modifiedText = $modifiedTweet.val();

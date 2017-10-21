@@ -1,9 +1,9 @@
 /* General */
 body {
   font-size: 13px;
-  background-color: #141d26;
-  color: #8899a6;
-  min-height: 100vh; }
+  min-height: 100vh;
+  background-color: #141D26;
+  color: #8899A6; }
 
 body > div.container {
   /* Calculate the minimum height by subtracting the header and footer height */
@@ -19,16 +19,25 @@ ul {
   margin: 0;
   padding: 0; }
 
-a:hover {
-  text-decoration: none; }
+a {
+  color: #1DA1F2; }
+  a:hover {
+    color: #0c85d0;
+    text-decoration: none; }
 
 hr {
-  border-color: #000; }
+  border-color: #141D26; }
 
 .btn {
-  border-radius: 100px;
-  font-size: 12px;
-  padding: 4px 10px; }
+  border-radius: 5px;
+  font-size: 11px;
+  padding: 3px 8px;
+  color: #ffffff;
+  background-color: #1DA1F2; }
+  .btn:hover {
+    background-color: #35abf3;
+    cursor: pointer;
+    color: inherit; }
 
 pre {
   white-space: pre-wrap;
@@ -56,16 +65,20 @@ pre code {
       text-align: center; } }
 
 .navbar {
-  background-color: #243447;
+  background-color: #1f2e3f;
   height: 50px;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  font-size: 14px;
+  border-bottom: 1px solid #000; }
   .navbar .container {
     display: flex;
     align-items: center;
     height: 100%; }
     .navbar .container > * {
       flex-grow: 1; }
+  .navbar a {
+    color: #8899A6; }
 
 .navbar__group {
   height: 100%; }
@@ -79,7 +92,6 @@ pre code {
   display: flex;
   align-items: center;
   height: 100%;
-  font-size: 14px;
   margin-right: auto; }
   .navbar__main-navigation li {
     margin-right: 5px;
@@ -87,17 +99,16 @@ pre code {
     height: 100%;
     align-items: center; }
     .navbar__main-navigation li:hover {
-      color: #1da1f2 !important; }
+      color: #1DA1F2 !important; }
   .navbar__main-navigation a {
     display: flex;
     align-items: center;
     height: 100%;
-    color: #8899a6;
     padding-left: 8px;
     padding-right: 8px; }
     .navbar__main-navigation a:hover {
-      color: #1da1f2 !important;
-      border-bottom: 2px solid #1da1f2; }
+      color: #1DA1F2 !important;
+      border-bottom: 2px solid #1DA1F2; }
       .navbar__main-navigation a:hover > * {
         margin-bottom: -2px; }
   .navbar__main-navigation .fa {
@@ -122,10 +133,7 @@ pre code {
   align-items: center;
   margin-right: 20px; }
   .navbar__profile .navbar__profile-logout {
-    display: flex;
-    color: #dc3545; }
-    .navbar__profile .navbar__profile-logout:hover {
-      color: #c82333; }
+    display: flex; }
   .navbar__profile .fa {
     font-size: 20px;
     padding-right: 10px; }
@@ -133,17 +141,16 @@ pre code {
 .navbar__new-tweet {
   text-align: right; }
   .navbar__new-tweet .navbar__new-tweet-button {
-    background-color: #1C88CC;
-    color: #fff;
+    color: #ffffff;
     font-size: 14px;
-    padding: 7px 14px; }
+    padding: 7px 14px;
+    border-radius: 20px; }
     .navbar__new-tweet .navbar__new-tweet-button:hover {
-      background-color: #1da1f2;
-      color: #fff; }
+      color: #ffffff; }
 
 .follower, .tweet, .user-information, .useful-links,
 .recent-visits, .profile, .analytics {
-  background-color: #1b2836;
+  background-color: #1B2836;
   padding: 15px;
   border-radius: 2px;
   border: 1px solid #000;
@@ -163,14 +170,14 @@ pre code {
 /* Tweets */
 .follower, .tweet, .user-information, .useful-links,
 .recent-visits, .profile, .analytics {
-  background-color: #1b2836;
+  background-color: #1B2836;
   padding: 15px;
   border-radius: 2px;
   border: 1px solid #000;
   margin-bottom: 20px; }
 
 .tweet {
-  color: #fff; }
+  color: #ffffff; }
 
 .tweet::after {
   content: "";
@@ -189,24 +196,34 @@ pre code {
   margin: 5px 0 10px;
   word-wrap: break-word; }
 
+.tweet__form .tweet__edit {
+  background-color: #2AAF81; }
+  .tweet__form .tweet__edit:hover {
+    background-color: #2fc490; }
+.tweet__form .tweet__delete {
+  margin-left: 10px;
+  background-color: #E53939; }
+  .tweet__form .tweet__delete:hover {
+    background-color: #e85050; }
+
 .tweet__username a {
-  color: #fff;
+  color: #ffffff;
   font-weight: bold; }
 
 .tweet__date,
 .tweet__date a {
-  color: #8899a6; }
+  color: #8899A6; }
 
 .tweet textarea.edit-tweet {
   margin: 10px 0 15px; }
 
 .tweet textarea {
   font-size: 13px;
-  background-color: #141d26;
-  border-color: #1B5881;
+  background-color: #141D26;
+  border-color: #000;
   display: block;
   padding: 6px 12px;
-  color: #fff;
+  color: #ffffff;
   border-radius: 4px;
   width: 100%; }
 
@@ -282,36 +299,13 @@ pre code {
   text-align: center;
   margin: auto; }
 
-.modal-title {
-  display: inline-block; }
-
-.btn:hover,
-button:hover {
-  cursor: pointer; }
-
-.btn.edit,
-.btn.save {
-  margin-right: 10px; }
-
-.flat {
-  border-radius: 0; }
-
 .github-btn {
   margin-left: 20px; }
-
-.modal-content {
-  padding: 6px; }
-
-a {
-  color: #1da1f2; }
-
-.edit-tweet-actions {
-  margin-top: 10px; }
 
 /* Main Dashboard */
 .follower, .tweet, .user-information, .useful-links,
 .recent-visits, .profile, .analytics {
-  background-color: #1b2836;
+  background-color: #1B2836;
   padding: 15px;
   border-radius: 2px;
   border: 1px solid #000;
@@ -389,7 +383,7 @@ a {
 /* Profile Page */
 .follower, .tweet, .user-information, .useful-links,
 .recent-visits, .profile, .analytics {
-  background-color: #1b2836;
+  background-color: #1B2836;
   padding: 15px;
   border-radius: 2px;
   border: 1px solid #000;
@@ -420,7 +414,7 @@ a {
 /* Analytics Page */
 .follower, .tweet, .user-information, .useful-links,
 .recent-visits, .profile, .analytics {
-  background-color: #1b2836;
+  background-color: #1B2836;
   padding: 15px;
   border-radius: 2px;
   border: 1px solid #000;
