@@ -4,49 +4,42 @@
   margin-top: 60px;
 }
 
-/* New Tweet Modal */
+.modal-content {
+  background: none;
+}
 
-#new-tweet-modal {
+.modal-header {
+  background-color: $dark-jungle-green;
+  justify-content: center;
+  border-bottom: 0;
+
+  button.close {
+    color: $grey-blue;
+    opacity: 1;
+    text-shadow: none;
+    position: absolute;
+    right: 15px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.modal-body {
+  background-color: $yankees-blue;
+  padding: 20px 15px;
+}
+
+.modal {
   padding: 0;
+}
 
-  .modal-content {
-    background: none;
-  }
-
-  .modal-header {
-    background-color: #1b2836;
-    justify-content: center;
-    border-bottom: 0;
-
-    button.close {
-      color: #8899a6;
-      opacity: 1;
-      text-shadow: none;
-      position: absolute;
-      right: 15px;
-    }
-  }
-
-  .modal-body {
-    background-color: #1b3449;
-  }
-
-  .form-actions {
-    text-align: center;
-    margin-top: 10px;
-  }
-
-  .btn {
-    background-color: #1da1f2;
-    color: #fff;
-  }
-
-  textarea {
-    background-color: #141d26;
-    border: solid 2px #1B5881;
-    border-radius: 8px;
-    &:focus {
-      color: #fff;
-    }
-  }
+.new-tweet__button {
+  font-size: 14px;
+  padding: 4px 10px;
+  background-color: #1da1f2;
+  color: #fff;
+  margin: auto;
+  margin-top: 10px;
+  display: block;
 }
