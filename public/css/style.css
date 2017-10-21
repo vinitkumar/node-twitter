@@ -19,8 +19,10 @@ ul {
   margin: 0;
   padding: 0; }
 
-a:hover {
-  text-decoration: none; }
+a {
+  color: #1DA1F2; }
+  a:hover {
+    text-decoration: none; }
 
 hr {
   border-color: #141D26; }
@@ -32,6 +34,7 @@ hr {
   color: #ffffff;
   background-color: #1DA1F2; }
   .btn:hover {
+    cursor: pointer;
     color: inherit; }
 
 pre {
@@ -296,31 +299,8 @@ pre code {
   text-align: center;
   margin: auto; }
 
-.modal-title {
-  display: inline-block; }
-
-.btn:hover,
-button:hover {
-  cursor: pointer; }
-
-.btn.edit,
-.btn.save {
-  margin-right: 10px; }
-
-.flat {
-  border-radius: 0; }
-
 .github-btn {
   margin-left: 20px; }
-
-.modal-content {
-  padding: 6px; }
-
-a {
-  color: #1da1f2; }
-
-.edit-tweet-actions {
-  margin-top: 10px; }
 
 /* Main Dashboard */
 .follower, .tweet, .user-information, .useful-links,
