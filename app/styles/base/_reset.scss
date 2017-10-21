@@ -1,10 +1,12 @@
 /* General */
 
+@import '../abstracts/variables';
+
 body {
   font-size: 13px;
-  background-color: #141d26;
-  color: #8899a6;
   min-height: 100vh;
+  background-color: $dark-jungle-green;
+  color: $grey-blue;
 }
 
 body > div.container {
@@ -29,13 +31,19 @@ a:hover {
 }
 
 hr {
-  border-color: #000;
+  border-color: $dark-jungle-green;
 }
 
 .btn {
-  border-radius: 100px;
+  border-radius: 5px;
   font-size: 12px;
   padding: 4px 10px;
+  color: $white;
+  background-color: $dodger-blue;
+
+  &:hover {
+    color: inherit;
+  }
 }
 
 pre {
