@@ -11,9 +11,9 @@ each tweet in tweets
           span.tweet__date
             a(data-toggle='modal', href="#tweet-modal-"+tweet._id)  • #{formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")}
         p.tweet__content= tweet.body
-      if (tweet.user._id == req.user.id)
-        form.tweet__form(action="/tweets/"+tweet.id+"?_method=DELETE", method="post")
-          a.btn.tweet__edit(href="/tweets/"+tweet._id) Edit
-          button.btn.tweet__delete(type="submit") Delete
+        if (tweet.user._id == req.user.id)
+          form.tweet__form(action="/tweets/"+tweet.id+"?_method=DELETE", method="post")
+            a.btn.tweet__edit(href="/tweets/"+tweet._id) Edit
+            button.btn.tweet__delete(type="submit") Delete
       include comments
   include tweet-modal 
