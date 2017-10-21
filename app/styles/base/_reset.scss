@@ -26,8 +26,12 @@ ul {
   padding: 0;
 }
 
-a:hover {
-  text-decoration: none;
+a {
+  color: $dodger-blue;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 hr {
@@ -42,6 +46,7 @@ hr {
   background-color: $dodger-blue;
 
   &:hover {
+    cursor: pointer;
     color: inherit;
   }
 }
