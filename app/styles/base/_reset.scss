@@ -53,6 +53,21 @@ hr {
   }
 }
 
+textarea {
+  color: $grey-blue;
+  padding: 5px 10px;
+  width: 100%;
+  background-color: $dark-jungle-green;
+  border: solid 1px $black;
+  border-radius: 8px;
+  &::placeholder{
+    color: $grey-blue;
+  }
+  &:focus {
+    color: $white;
+  }
+}
+
 pre {
   white-space: pre-wrap; /* css-3 */
   white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
