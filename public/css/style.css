@@ -22,6 +22,7 @@ ul {
 a {
   color: #1DA1F2; }
   a:hover {
+    color: #0c85d0;
     text-decoration: none; }
 
 hr {
@@ -29,11 +30,12 @@ hr {
 
 .btn {
   border-radius: 5px;
-  font-size: 12px;
-  padding: 4px 10px;
+  font-size: 11px;
+  padding: 3px 8px;
   color: #ffffff;
   background-color: #1DA1F2; }
   .btn:hover {
+    background-color: #35abf3;
     cursor: pointer;
     color: inherit; }
 
@@ -63,16 +65,20 @@ pre code {
       text-align: center; } }
 
 .navbar {
-  background-color: #243447;
+  background-color: #1f2e3f;
   height: 50px;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  font-size: 14px;
+  border-bottom: 1px solid #000; }
   .navbar .container {
     display: flex;
     align-items: center;
     height: 100%; }
     .navbar .container > * {
       flex-grow: 1; }
+  .navbar a {
+    color: #8899A6; }
 
 .navbar__group {
   height: 100%; }
@@ -86,7 +92,6 @@ pre code {
   display: flex;
   align-items: center;
   height: 100%;
-  font-size: 14px;
   margin-right: auto; }
   .navbar__main-navigation li {
     margin-right: 5px;
@@ -94,17 +99,16 @@ pre code {
     height: 100%;
     align-items: center; }
     .navbar__main-navigation li:hover {
-      color: #1da1f2 !important; }
+      color: #1DA1F2 !important; }
   .navbar__main-navigation a {
     display: flex;
     align-items: center;
     height: 100%;
-    color: #8899a6;
     padding-left: 8px;
     padding-right: 8px; }
     .navbar__main-navigation a:hover {
-      color: #1da1f2 !important;
-      border-bottom: 2px solid #1da1f2; }
+      color: #1DA1F2 !important;
+      border-bottom: 2px solid #1DA1F2; }
       .navbar__main-navigation a:hover > * {
         margin-bottom: -2px; }
   .navbar__main-navigation .fa {
@@ -129,10 +133,7 @@ pre code {
   align-items: center;
   margin-right: 20px; }
   .navbar__profile .navbar__profile-logout {
-    display: flex;
-    color: #dc3545; }
-    .navbar__profile .navbar__profile-logout:hover {
-      color: #c82333; }
+    display: flex; }
   .navbar__profile .fa {
     font-size: 20px;
     padding-right: 10px; }
@@ -140,17 +141,16 @@ pre code {
 .navbar__new-tweet {
   text-align: right; }
   .navbar__new-tweet .navbar__new-tweet-button {
-    background-color: #1C88CC;
-    color: #fff;
+    color: #ffffff;
     font-size: 14px;
-    padding: 7px 14px; }
+    padding: 7px 14px;
+    border-radius: 20px; }
     .navbar__new-tweet .navbar__new-tweet-button:hover {
-      background-color: #1da1f2;
-      color: #fff; }
+      color: #ffffff; }
 
 .follower, .tweet, .user-information, .useful-links,
 .recent-visits, .profile, .analytics {
-  background-color: #1b2836;
+  background-color: #1B2836;
   padding: 15px;
   border-radius: 2px;
   border: 1px solid #000;
@@ -170,7 +170,7 @@ pre code {
 /* Tweets */
 .follower, .tweet, .user-information, .useful-links,
 .recent-visits, .profile, .analytics {
-  background-color: #1b2836;
+  background-color: #1B2836;
   padding: 15px;
   border-radius: 2px;
   border: 1px solid #000;
@@ -305,7 +305,7 @@ pre code {
 /* Main Dashboard */
 .follower, .tweet, .user-information, .useful-links,
 .recent-visits, .profile, .analytics {
-  background-color: #1b2836;
+  background-color: #1B2836;
   padding: 15px;
   border-radius: 2px;
   border: 1px solid #000;
@@ -383,7 +383,7 @@ pre code {
 /* Profile Page */
 .follower, .tweet, .user-information, .useful-links,
 .recent-visits, .profile, .analytics {
-  background-color: #1b2836;
+  background-color: #1B2836;
   padding: 15px;
   border-radius: 2px;
   border: 1px solid #000;
@@ -414,7 +414,7 @@ pre code {
 /* Analytics Page */
 .follower, .tweet, .user-information, .useful-links,
 .recent-visits, .profile, .analytics {
-  background-color: #1b2836;
+  background-color: #1B2836;
   padding: 15px;
   border-radius: 2px;
   border: 1px solid #000;
