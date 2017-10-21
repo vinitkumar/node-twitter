@@ -37,7 +37,8 @@
       ul
         li
           span.user-information__stat-title Tweets:
-          span #{tweetCount}
+          span
+            a(href="/users/" + user._id) #{tweetCount}
         li
           span.user-information__stat-title Following:
           span
