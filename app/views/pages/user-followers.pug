@@ -1,13 +1,13 @@
 extends ../layouts/default
 
 block content
-  .well
-    h3 #{title}
-    if (followers.length !== 0)
-      each user in followers
-          .well
-            a.btn(href="/users/" + user._id)
-              img(src=user.github.avatar_url, class='tweet__image follower-image')
-              span #{user.username}
-    else
-      h4 Seems like there is no one following you.
+  .row#follower-page
+    .col-lg-4
+      include ../components/profile-card
+    .col-lg-8
+      if (followers.length !== 0)
+        .row
+          each user in followers
+            include ../components/followers 
+      else
+        h4 Seems like there is no one following you.
