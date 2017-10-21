@@ -14,10 +14,12 @@
 }
 
 .navbar {
-  background-color: #243447;
+  background-color: lighten($yankees-blue, 2.5%);
   height: 50px;
   margin: 0;
   padding: 0;
+  font-size: 14px;
+  border-bottom: 1px solid $black;
 
   .container {
     display: flex;
@@ -27,6 +29,10 @@
     > * {
       flex-grow: 1;
     }
+  }
+
+  a {
+    color: $grey-blue;
   }
 }
 
@@ -45,7 +51,6 @@
   display: flex;
   align-items: center;
   height: 100%;
-  font-size: 14px;
   margin-right: auto;
 
   li {
@@ -55,7 +60,7 @@
     align-items: center;
 
     &:hover {
-      color: #1da1f2 !important;
+      color: $dodger-blue !important;
     }
   }
 
@@ -63,13 +68,12 @@
     display: flex;
     align-items: center;
     height: 100%;
-    color: #8899a6;
     padding-left: 8px;
     padding-right: 8px;
 
     &:hover {
-      color: #1da1f2 !important;
-      border-bottom: 2px solid #1da1f2;
+      color: $dodger-blue !important;
+      border-bottom: 2px solid $dodger-blue;
 
       > * {
         margin-bottom: -2px;
@@ -107,10 +111,6 @@
 
   .navbar__profile-logout {
     display: flex;
-    color: #dc3545;
-    &:hover {
-      color: #c82333;
-    }
   }
 
   .fa {
@@ -123,14 +123,13 @@
   text-align: right;
 
   .navbar__new-tweet-button{
-    background-color: #1C88CC;
-    color: #fff;
+    color: $white;
     font-size: 14px;
     padding: 7px 14px;
+    border-radius: 20px;
 
     &:hover {
-      background-color: #1da1f2;
-      color: #fff;
+      color: $white;
     }
   }
 }
