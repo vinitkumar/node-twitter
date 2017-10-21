@@ -1,0 +1,16 @@
+@import '../abstracts/placeholders';
+
+.follower {
+  @extend %block-content;
+  text-align: center;
+}
+
+.follower__user-info {
+  margin-top: 10px;
+}
+
+.follower__image {
+  border-radius: 50%;
+  width: 100px;
+  max-width: 100%;
+}

@@ -15,7 +15,6 @@ module.exports = (app, passport, auth) => {
   app.get("/login", users.login);
   app.get("/signup", users.signup);
   app.get("/logout", users.logout);
-  app.get("/userslist", users.list);
 
   /**
    * User routes

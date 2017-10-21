@@ -1,0 +1,13 @@
+extends ../layouts/default
+
+block content
+  .row#followers-page
+    .col-lg-4
+      include ../components/profile-card
+    .col-lg-8
+      if (followers.length !== 0)
+        .row
+          each user in followers
+            include ../components/followers 
+      else
+        h4 Seems like there is no one following you.

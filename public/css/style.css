@@ -141,8 +141,27 @@ pre code {
       background-color: #1da1f2;
       color: #fff; }
 
+.follower, .tweet, .user-information, .useful-links,
+.recent-visits, .profile, .analytics {
+  background-color: #1b2836;
+  padding: 15px;
+  border-radius: 2px;
+  border: 1px solid #000;
+  margin-bottom: 20px; }
+
+.follower {
+  text-align: center; }
+
+.follower__user-info {
+  margin-top: 10px; }
+
+.follower__image {
+  border-radius: 50%;
+  width: 100px;
+  max-width: 100%; }
+
 /* Tweets */
-.tweet, .user-information, .useful-links,
+.follower, .tweet, .user-information, .useful-links,
 .recent-visits, .profile, .analytics {
   background-color: #1b2836;
   padding: 15px;
@@ -290,7 +309,7 @@ a {
   margin-top: 10px; }
 
 /* Main Dashboard */
-.tweet, .user-information, .useful-links,
+.follower, .tweet, .user-information, .useful-links,
 .recent-visits, .profile, .analytics {
   background-color: #1b2836;
   padding: 15px;
@@ -368,7 +387,7 @@ a {
     display: block; } }
 
 /* Profile Page */
-.tweet, .user-information, .useful-links,
+.follower, .tweet, .user-information, .useful-links,
 .recent-visits, .profile, .analytics {
   background-color: #1b2836;
   padding: 15px;
@@ -399,7 +418,7 @@ a {
   display: block; }
 
 /* Analytics Page */
-.tweet, .user-information, .useful-links,
+.follower, .tweet, .user-information, .useful-links,
 .recent-visits, .profile, .analytics {
   background-color: #1b2836;
   padding: 15px;

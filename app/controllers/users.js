@@ -152,40 +152,39 @@ exports.user = (req, res, next, id) => {
 };
 
 exports.showFollowers = (req, res) => {
+  showFollowers(req, res, "followers");
+};
+
+exports.showFollowing = (req, res) => {
+  showFollowers(req, res, "following");
+};
+
+function showFollowers(req, res, type) {
   let user = req.profile;
-  let followers = user.followers;
+  let followers = user[type];
+  let tweetCount;
+  let followingCount = user.following.length;
+  let followerCount = user.followers.length;
   let userFollowers = User.find({ _id: { $in: followers } }).populate(
     "user",
     "_id name username github"
   );
 
-  userFollowers.exec((err, users) => {
-    if (err) {
-      return res.render("pages/500");
-    }
-    const name = user.name ? user.name : user.username;
-    res.render("pages/user-followers", {
-      title: "Followers of " + name,
-      followers: users
-    });
-  });
-};
 
-exports.showFollowing = (req, res) => {
-  let user = req.profile;
-  let following = user.following;
-  let userFollowing = User.find({ _id: { $in: following } }).populate(
-    "user",
-    "_id name username github"
-  );
-  userFollowing.exec((err, users) => {
-    if (err) {
-      res.render("pages/500");
-    }
-    const name = user.name ? user.name : user.username;
-    res.render("pages/user-following", {
-      title: "Followed by " + name,
-      following: users
-    });
-  });
-};
+  Tweet.countUserTweets(user._id)
+    .then( result => {
+      tweetCount = result;
+      userFollowers.exec((err, users) => {
+        if (err) {
+          return res.render("pages/500");
+        }
+        res.render("pages/followers", {
+          user: user,
+          followers: users,
+          tweetCount: tweetCount,
+          followerCount: followerCount,
+          followingCount: followingCount
+        });
+      });
+    })
+}
