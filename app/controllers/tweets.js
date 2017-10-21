@@ -73,6 +73,7 @@ exports.update = (req, res) => {
 exports.destroy = (req, res) => {
   logAnalytics(req);
   const tweet = req.tweet;
+
   tweet.remove(err => {
     if (err) {
       return res.render("pages/500");
