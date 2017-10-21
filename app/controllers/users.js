@@ -170,7 +170,7 @@ exports.showFollowers = (req, res) => {
         if (err) {
           return res.render("pages/500");
         }
-        res.render("pages/user-followers", {
+        res.render("pages/followers", {
           user: user,
           followers: users,
           tweetCount: tweetCount,
