@@ -152,8 +152,16 @@ exports.user = (req, res, next, id) => {
 };
 
 exports.showFollowers = (req, res) => {
+  showFollowers(req, res, "followers");
+};
+
+exports.showFollowing = (req, res) => {
+  showFollowers(req, res, "following");
+};
+
+function showFollowers(req, res, type) {
   let user = req.profile;
-  let followers = user.followers;
+  let followers = user[type];
   let tweetCount;
   let followingCount = user.following.length;
   let followerCount = user.followers.length;
@@ -179,36 +187,4 @@ exports.showFollowers = (req, res) => {
         });
       });
     })
-
-
-};
-
-exports.showFollowing = (req, res) => {
-  let user = req.profile;
-  let following = user.following;
-  let tweetCount;
-  let followingCount = user.following.length;
-  let followerCount = user.followers.length;
-  let userFollowing = User.find({ _id: { $in: following } }).populate(
-    "user",
-    "_id name username github"
-  );
-
-  Tweet.countUserTweets(user._id)
-    .then( result => {
-      tweetCount = result;
-      userFollowing.exec((err, users) => {
-        if (err) {
-          res.render("pages/500");
-        }
-        const name = user.name ? user.name : user.username;
-        res.render("pages/user-following", {
-          user: user,
-          following: users,
-          tweetCount: tweetCount,
-          followerCount: followerCount,
-          followingCount: followingCount
-        });
-      });
-    });
-};
+}
