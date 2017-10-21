@@ -47,13 +47,14 @@ module.exports = (app, config, passport) => {
   app.set("views", config.root + "/app/views");
   app.set("view engine", "pug");
 
+
   app.use(helpers(config.app.name));
   app.use(cookieParser());
   app.use(bodyParser.urlencoded({
     extended: true
   }));
   app.use(bodyParser.json());
-  app.use(methodOverride());
+  app.use(methodOverride('_method'));
   app.use(
     session({
       secret: "noobjs",
