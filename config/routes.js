@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const log = require('./middlewares/logger');
 
 const users = require("../app/controllers/users");
 const apiv1 = require("../app/controllers/apiv1");
@@ -46,6 +47,12 @@ module.exports = (app, passport, auth) => {
    * to access
    */
   router.use(auth.requiresLogin)
+  /**
+   * Analytics logging middleware
+   * Anytime an authorized user makes a get request, it will be logged into
+   * analytics
+   */
+  router.get("/*", log.analytics)
 
   /**
    * Home route
