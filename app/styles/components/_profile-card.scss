@@ -22,6 +22,8 @@
 }
 
 .profile__messaging-options {
-  display: flex;
-  justify-content: space-around;
+  .btn {
+    margin: 10px;
+  }
+}
 }
