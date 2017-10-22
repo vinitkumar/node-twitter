@@ -1,6 +1,7 @@
 /* Profile Card */
 
 @import '../abstracts/placeholders';
+@import '../abstracts/variables';
 
 .profile {
   @extend %block-content;
@@ -26,4 +27,15 @@
     margin: 10px;
   }
 }
+
+.profile__follow {
+  margin: 10px 0;
+}
+
+.profile__follow-button.following {
+  background-color: $go-red;
+
+  &:hover {
+    background-color: lighten($go-red, 5%);
+  }
 }
