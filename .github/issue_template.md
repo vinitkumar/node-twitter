@@ -1,40 +1,34 @@
 ## Feature
 
 ### User story
-What problem is the feauture trying to solve for the user
+__What problem is the feature trying to solve?__
 
-### Conditions of satisfaction
-Define what must be true for the feature to be considered done
+### Conditions to be met
+__Define what must be true for the feature to be considered complete__
 
 ### Additonal specifications
-Give some extra specifications if needed like screenshots and designs
+__Give some extra specifications if needed like screenshots and designs__
+
+----
 
 ## Bug
 
 ### Signing status (User Account used):
 
 ### Steps to reproduce
-1.
-2.
-3.
+__List out how someone else would reproduce this issue__
 
 ### Expected behaviour
-Tell what should happen
+__Tell what should happen__
 
 ### Actual behaviour
-Tell what happens instead
+__Tell what happens instead__
 
 ### Screenshots
-
-### Client configuration
-
-**Browser:**
-**Operating system:**
+__Image of the bug__
 
 ### Logs
-#### Web server error log
 
 ```
-Insert your webserver log here
+Insert your error logs here
 ```
-
