@@ -1,23 +1,22 @@
+- var modalId = user._id + 'ChatModal';
+- var name = user.name ? user.name : user.username
+- var currentUserId = req.user._id.toString()
+- var userId = user._id.toString()
+
 .profile
   - if (user.github !== undefined)
     img(class="profile__image", src=user.github.avatar_url)
-  div.profile__user-info
+  .profile__user-info
     span.profile__handle
       - if (user.github !== undefined)
         a(href=user.github.html_url, target='_blank') @#{user.github.login}
-    - var id = user._id + 'ChatModal';
-    ul
-      - var name = user.name ? user.name : user.username
-      li.message-row
-        a(data-toggle='modal', href='#'+ id, class="btn btn-success btn-message")
-          span Message #{name}
-        - var currentUserId = req.user._id.toString()
-        - var userId = user._id.toString()
-        - if (currentUserId == userId)
-          a(target='_blank', href='/chat/get/' + user._id, class="btn btn-success")
-            span Check Inbox
+    .profile__messaging-options
+      - if (currentUserId == userId)
+        a.btn(data-toggle='modal', href='#'+ modalId) Message #{name}
+      - if (currentUserId == userId)
+        a.btn(target='_blank', href='/chat/get/' + user._id) Check Inbox
     if (req.isAuthenticated())
-      div(id=id, class='modal fade')
+      div.modal.fade(id=modalId)
         .modal-dialog(role='document')
           .modal-content
             .modal-header
