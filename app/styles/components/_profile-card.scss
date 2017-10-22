@@ -1,12 +1,6 @@
-/* Profile Page */
+/* Profile Card */
 
 @import '../abstracts/placeholders';
-
-.profile__image {
-  width: 150px;
-  border: 0;
-  float: none;
-}
 
 .profile {
   @extend %block-content;
@@ -21,11 +15,13 @@
 }
 
 .profile__image {
+  border: 0;
   border-radius: 50%;
   width: 150px;
   max-width: 100%;
 }
 
-.profile .user-information__stats {
-  display: block;
+.profile__messaging-options {
+  display: flex;
+  justify-content: space-around;
 }
