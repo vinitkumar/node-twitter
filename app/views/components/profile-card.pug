@@ -17,21 +17,7 @@
       - if (currentUserId == userId)
         a.btn(href='/chat/get/' + user._id) Check Inbox
     if (req.isAuthenticated())
-      div.modal.fade(id=modalId)
-        .modal-dialog(role='document')
-          .modal-content
-            .modal-header
-              button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-              h4.modal-title Send new message to #{name}
-            .modal-body
-              form(method='post', action='/chats')
-                .control-group
-                  label.control-label(for='chat')
-                  .controls
-                    textarea.flat.form-control(type='text', name='body', placeholder='Enter your Message here', maxlength='200')
-                    input(type="hidden", name='receiver', value=user._id)
-                .form-actions
-                        button.btn(type='submit') Send Message
+      include modals/new-message-modal                   
   .row
     .col-12.user-information__stats
       ul
