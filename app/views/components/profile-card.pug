@@ -11,8 +11,9 @@
       - if (user.github !== undefined)
         a(href=user.github.html_url, target='_blank') @#{user.github.login}
     .profile__messaging-options
-      - if (currentUserId == userId)
+      - if (currentUserId !== userId)
         a.btn(data-toggle='modal', href='#'+ modalId) Message #{name}
+        a.btn.profile__follow-button(href="javascript:void(0)", data-userid=user._id, data-logged=req.user.id,title="follow") Follow
       - if (currentUserId == userId)
         a.btn(target='_blank', href='/chat/get/' + user._id) Check Inbox
     if (req.isAuthenticated())
@@ -46,6 +47,4 @@
           span.user-information__stat-title Followers:
           span
             a(href="/users/" + user._id + "/followers")  #{followerCount}
-    .col-12.profile__follow
-      if (user._id !== req.user.id)
-        a.btn.profile__follow-button(href="javascript:void(0)", data-userid=user._id, data-logged=req.user.id,title="follow") Follow
+        
