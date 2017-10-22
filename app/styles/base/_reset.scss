@@ -49,7 +49,7 @@ hr {
   &:hover {
     background-color: lighten($dodger-blue, 5%);
     cursor: pointer;
-    color: inherit;
+    color: $white;
   }
 }
 
