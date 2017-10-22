@@ -46,5 +46,6 @@
           span.user-information__stat-title Followers:
           span
             a(href="/users/" + user._id + "/followers")  #{followerCount}
-    if (user._id != req.user.id)
-      a.btn(href="#", class="btn-success follow", data-userid=user._id, data-logged=req.user.id,title="follow") follow
+    .col-12.profile__follow
+      if (user._id !== req.user.id)
+        a.btn.profile__follow-button(href="javascript:void(0)", data-userid=user._id, data-logged=req.user.id,title="follow") Follow
