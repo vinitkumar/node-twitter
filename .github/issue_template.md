@@ -1,34 +1,31 @@
+<!-- Delete the section you aren't using (i.e. either the 'Feature' of 'Bug' section) -->
+
 ## Feature
 
 ### User story
-__What problem is the feature trying to solve?__
+<!-- What problem is the feature trying to solve? -->
 
 ### Conditions to be met
-__Define what must be true for the feature to be considered complete__
+<!-- Define what must be true for the feature to be considered complete -->
 
 ### Additonal specifications
-__Give some extra specifications if needed like screenshots and designs__
+<!-- Give some extra specifications if needed like screenshots and designs -->
 
 ----
 
 ## Bug
 
-### Signing status (User Account used):
-
-### Steps to reproduce
-__List out how someone else would reproduce this issue__
-
 ### Expected behaviour
-__Tell what should happen__
+<!-- Explain what should happen -->
 
 ### Actual behaviour
-__Tell what happens instead__
+<!-- Explain what happens instead -->
+
+### Steps to reproduce
+<!-- List out how someone else would reproduce this issue -->
 
 ### Screenshots
-__Image of the bug__
+<!-- Image of the bug -->
 
 ### Logs
-
-```
-Insert your error logs here
-```
+<!-- Insert your error logs formatted in a code block (i.e. use ```) -->
