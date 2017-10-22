@@ -37,7 +37,7 @@ hr {
   .btn:hover {
     background-color: #35abf3;
     cursor: pointer;
-    color: inherit; }
+    color: #ffffff; }
 
 textarea {
   color: #8899A6;
@@ -160,8 +160,8 @@ pre code {
     .navbar__new-tweet .navbar__new-tweet-button:hover {
       color: #ffffff; }
 
-.follower, .tweet, .user-information, .useful-links,
-.recent-visits, .profile, .analytics {
+.follower, .tweet, .profile, .user-information, .useful-links,
+.recent-visits, .analytics {
   background-color: #1B2836;
   padding: 15px;
   border-radius: 2px;
@@ -180,8 +180,8 @@ pre code {
   max-width: 100%; }
 
 /* Tweets */
-.follower, .tweet, .user-information, .useful-links,
-.recent-visits, .profile, .analytics {
+.follower, .tweet, .profile, .user-information, .useful-links,
+.recent-visits, .analytics {
   background-color: #1B2836;
   padding: 15px;
   border-radius: 2px;
@@ -296,7 +296,8 @@ pre code {
 .modal {
   padding: 0; }
 
-.new-tweet__button {
+.new-tweet__button,
+.new-message__button {
   font-size: 14px;
   padding: 4px 10px;
   background-color: #1da1f2;
@@ -304,6 +305,41 @@ pre code {
   margin: auto;
   margin-top: 10px;
   display: block; }
+
+/* Profile Card */
+.follower, .tweet, .profile, .user-information, .useful-links,
+.recent-visits, .analytics {
+  background-color: #1B2836;
+  padding: 15px;
+  border-radius: 2px;
+  border: 1px solid #000;
+  margin-bottom: 20px; }
+
+.profile {
+  text-align: center; }
+
+.profile__handle {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  display: inline-block; }
+
+.profile__image {
+  border: 0;
+  border-radius: 50%;
+  width: 150px;
+  max-width: 100%; }
+
+.profile__messaging-options .btn {
+  margin: 10px; }
+
+.profile__follow {
+  margin: 10px 0; }
+
+.profile__follow-button.following {
+  background-color: #E53939; }
+  .profile__follow-button.following:hover {
+    background-color: #e85050; }
 
 /* Login Page */
 .login {
@@ -317,8 +353,8 @@ pre code {
   margin-left: 20px; }
 
 /* Main Dashboard */
-.follower, .tweet, .user-information, .useful-links,
-.recent-visits, .profile, .analytics {
+.follower, .tweet, .profile, .user-information, .useful-links,
+.recent-visits, .analytics {
   background-color: #1B2836;
   padding: 15px;
   border-radius: 2px;
@@ -352,8 +388,13 @@ pre code {
   font-weight: bold;
   width: 100%; }
 @media (min-width: 992px) {
-  .user-information__stats {
+  .user-information__stats_small {
     display: none; } }
+.user-information__stats_large {
+  display: none; }
+  @media (min-width: 992px) {
+    .user-information__stats_large {
+      display: block; } }
 
 .user-information__stat-title {
   display: block; }
@@ -364,12 +405,6 @@ pre code {
 
 .useful-links a {
   font-weight: bold; }
-
-.user-information__stats_large {
-  display: none; }
-  @media (min-width: 992px) {
-    .user-information__stats_large {
-      display: block; } }
 
 .useful-links,
 .recent-visits {
@@ -394,40 +429,9 @@ pre code {
   .third-column .recent-visits {
     display: block; } }
 
-/* Profile Page */
-.follower, .tweet, .user-information, .useful-links,
-.recent-visits, .profile, .analytics {
-  background-color: #1B2836;
-  padding: 15px;
-  border-radius: 2px;
-  border: 1px solid #000;
-  margin-bottom: 20px; }
-
-.profile__image {
-  width: 150px;
-  border: 0;
-  float: none; }
-
-.profile {
-  text-align: center; }
-
-.profile__handle {
-  font-size: 18px;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  display: inline-block; }
-
-.profile__image {
-  border-radius: 50%;
-  width: 150px;
-  max-width: 100%; }
-
-.profile .user-information__stats {
-  display: block; }
-
 /* Analytics Page */
-.follower, .tweet, .user-information, .useful-links,
-.recent-visits, .profile, .analytics {
+.follower, .tweet, .profile, .user-information, .useful-links,
+.recent-visits, .analytics {
   background-color: #1B2836;
   padding: 15px;
   border-radius: 2px;
