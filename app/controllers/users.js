@@ -3,26 +3,6 @@ const Tweet = Mongoose.model("Tweet");
 const User = Mongoose.model("User");
 const Analytics = Mongoose.model("Analytics");
 
-/**
- * logAnalytics - Gets all the request and feeds to our analytics
- * system
- *
- * @param  {type} req Request
- */
-function logAnalytics(req) {
-  const url = req.protocol + "://" + req.get("host") + req.originalUrl;
-  const analytics = new Analytics({
-    ip: req.ip,
-    user: req.user,
-    url: url
-  });
-  analytics.save(err => {
-    if (err) {
-      console.log(err);
-    }
-  });
-}
-
 exports.signin = (req, res) => {};
 
 exports.authCallback = (req, res) => {
@@ -44,7 +24,6 @@ exports.signup = (req, res) => {
 };
 
 exports.logout = (req, res) => {
-  logAnalytics(req);
   req.logout();
   res.redirect("/login");
 };
@@ -54,7 +33,6 @@ exports.session = (req, res) => {
 };
 
 exports.create = (req, res, next) => {
-  logAnalytics(req);
   const user = new User(req.body);
   user.provider = "local";
   user.save()
@@ -73,7 +51,6 @@ exports.create = (req, res, next) => {
 }
 
 exports.list = (req, res) => {
-  logAnalytics(req);
   const page = (req.param("page") > 0 ? req.param("page") : 1) - 1;
   const perPage = 5;
   const options = {
@@ -102,7 +79,6 @@ exports.list = (req, res) => {
 }
 
 exports.show = (req, res) => {
-  logAnalytics(req);
   const user = req.profile;
   const reqUserId = user._id;
   const userId = reqUserId.toString();
@@ -138,7 +114,6 @@ exports.show = (req, res) => {
 }
 
 exports.user = (req, res, next, id) => {
-  logAnalytics(req);
   User.findOne({ _id: id }).exec((err, user) => {
     if (err) {
       return next(err);
@@ -169,7 +144,6 @@ function showFollowers(req, res, type) {
     "user",
     "_id name username github"
   );
-
 
   Tweet.countUserTweets(user._id)
     .then( result => {
