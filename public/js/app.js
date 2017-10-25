@@ -14,12 +14,16 @@ $(document).ready(function() {
     });
   });
 
-  $('.follow').on('click', function(e) {
+  $('.profile__follow-button').on('click', function(e) {
     const userID = $(e.currentTarget).data('userid');
     const url = '/users/' + userID + '/follow';
-    $(this).text(function(i, text) {
-      return text === 'follow' ? 'unfollow' : 'follow';
-    });
+    if ($(this).hasClass('following')) {
+      $(this).text('Follow');
+      $(this).removeClass('following');
+    } else {
+      $(this).text('Unfollow');
+      $(this).addClass('following');
+    }
     $.ajax({
       type: 'POST',
       url: url,

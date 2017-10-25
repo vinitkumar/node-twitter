@@ -1,0 +1,41 @@
+/* Profile Card */
+
+@import '../abstracts/placeholders';
+@import '../abstracts/variables';
+
+.profile {
+  @extend %block-content;
+  text-align: center;
+}
+
+.profile__handle {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.profile__image {
+  border: 0;
+  border-radius: 50%;
+  width: 150px;
+  max-width: 100%;
+}
+
+.profile__messaging-options {
+  .btn {
+    margin: 10px;
+  }
+}
+
+.profile__follow {
+  margin: 10px 0;
+}
+
+.profile__follow-button.following {
+  background-color: $go-red;
+
+  &:hover {
+    background-color: lighten($go-red, 5%);
+  }
+}

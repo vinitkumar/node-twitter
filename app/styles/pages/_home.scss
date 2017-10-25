@@ -42,8 +42,18 @@
     width: 100%;
   }
 
-  @media #{$large} {
+  &_small {
+    @media #{$large} {
+      display: none;
+    }
+  }
+
+  &_large {
     display: none;
+
+    @media #{$large} {
+      display: block;
+    }
   }
 }
 
@@ -58,14 +68,6 @@
 
 .useful-links a {
   font-weight: bold;
-}
-
-.user-information__stats_large {
-  display: none;
-
-  @media #{$large} {
-    display: block;
-  }
 }
 
 .useful-links,
