@@ -250,13 +250,13 @@ pre code {
 .pagination__list {
   display: flex; }
   .pagination__list li a {
-    color: #fff;
+    color: #ffffff;
     border-color: #000 !important; }
   .pagination__list .no a {
-    background-color: #1b2836;
-    color: #fff; }
+    background-color: #1B2836;
+    color: #ffffff; }
   .pagination__list .active a {
-    background-color: #1da1f2; }
+    background-color: #1DA1F2 !important; }
 
 .modal-dialog {
   margin-top: 60px; }

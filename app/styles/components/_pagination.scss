@@ -1,5 +1,7 @@
 // Pagination
 
+@import '../abstracts/variables';
+
 .pagination {
   text-align: center;
 
@@ -17,16 +19,16 @@
   display: flex;
 
   li a {
-    color: #fff;
-    border-color: #000 !important;
+    color: $white;
+    border-color: $black !important;
   }
 
   .no a {
-    background-color: #1b2836;
-    color: #fff;
+    background-color: $yankees-blue;
+    color: $white;
   }
 
   .active a {
-    background-color: #1da1f2;
+    background-color: $dodger-blue !important;
   }
 }

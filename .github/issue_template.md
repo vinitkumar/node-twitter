@@ -1,40 +1,31 @@
+<!-- Delete the section you aren't using (i.e. either the 'Feature' of 'Bug' section) -->
+
 ## Feature
 
 ### User story
-What problem is the feauture trying to solve for the user
+<!-- What problem is the feature trying to solve? -->
 
-### Conditions of satisfaction
-Define what must be true for the feature to be considered done
+### Conditions to be met
+<!-- Define what must be true for the feature to be considered complete -->
 
 ### Additonal specifications
-Give some extra specifications if needed like screenshots and designs
+<!-- Give some extra specifications if needed like screenshots and designs -->
+
+----
 
 ## Bug
 
-### Signing status (User Account used):
-
-### Steps to reproduce
-1.
-2.
-3.
-
 ### Expected behaviour
-Tell what should happen
+<!-- Explain what should happen -->
 
 ### Actual behaviour
-Tell what happens instead
+<!-- Explain what happens instead -->
+
+### Steps to reproduce
+<!-- List out how someone else would reproduce this issue -->
 
 ### Screenshots
-
-### Client configuration
-
-**Browser:**
-**Operating system:**
+<!-- Image of the bug -->
 
 ### Logs
-#### Web server error log
-
-```
-Insert your webserver log here
-```
-
+<!-- Insert your error logs formatted in a code block (i.e. use ```) -->
