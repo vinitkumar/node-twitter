@@ -50,6 +50,8 @@ module.exports = {
 
 ```sh
 # First install all the project dependencies.
+# run mongodb server
+~/ mongod
 ~/node-twitter/ npm install
 # Now run the app
 ~/node-twitter/ npm start
