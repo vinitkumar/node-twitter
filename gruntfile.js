@@ -19,6 +19,9 @@ module.exports = function (grunt) {
       }
     },
     sass: {
+      options: {
+        sourceMap: true
+      },
       dist: {
         files: {
         'public/css/style.css' : 'app/styles/main.scss'
@@ -37,7 +40,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Register custom tasks to run from the terminal
