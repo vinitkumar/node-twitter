@@ -47,6 +47,7 @@
     "grunt-contrib-jshint": "^1.1.0",
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
+    "grunt-sass": "^2.0.0",
     "mocha": "^2.5.3",
     "nodemon": "latest",
     "should": "latest",

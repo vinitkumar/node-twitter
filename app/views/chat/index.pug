@@ -8,9 +8,9 @@ block content
           .container
             h1 Chat
             p Click on the name/image to send a message.
-            ul
+            div.row.chatgroup
               each user in users
-                li.chatrow
+                div.col-md-3.chat-bubble
                   - var name = user.name ? user.name : user.username
                   - var id = user._id + 'ChatModal';
                   a(data-toggle='modal', href='#'+ id)

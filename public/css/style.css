@@ -212,6 +212,7 @@ pre code {
   background-color: #2AAF81; }
   .tweet__form .tweet__edit:hover {
     background-color: #2fc490; }
+
 .tweet__form .tweet__delete {
   margin-left: 10px;
   background-color: #E53939; }
@@ -387,9 +388,11 @@ pre code {
   justify-content: space-around;
   font-weight: bold;
   width: 100%; }
+
 @media (min-width: 992px) {
   .user-information__stats_small {
     display: none; } }
+
 .user-information__stats_large {
   display: none; }
   @media (min-width: 992px) {
@@ -417,6 +420,7 @@ pre code {
     .first-column .recent-visits,
     .first-column .useful-links {
       display: block; } }
+
 @media (min-width: 1200px) {
   .first-column .recent-visits {
     display: none; } }
@@ -425,6 +429,7 @@ pre code {
   .third-column .recent-visits,
   .third-column .useful-links {
     display: none; } }
+
 @media (min-width: 1200px) {
   .third-column .recent-visits {
     display: block; } }
@@ -496,8 +501,6 @@ span.sender {
   margin-right: 5px; }
 
 span.message {
-  border: 1px solid gray;
-  border-radius: 4px;
   width: fit-content;
   padding: 6px; }
 
@@ -512,7 +515,6 @@ span.message {
   margin-right: 5px; }
 
 .chatrow {
-  border: 1px solid lightslategray;
   margin-bottom: 10px;
   padding: 4px;
   border-radius: 7px; }
@@ -531,6 +533,12 @@ a.logout {
 
 .btn-message {
   margin-right: 12px; }
+
+.chatgroup {
+  margin-bottom: 20px; }
+
+.chat-bubble {
+  margin-bottom: 10px; }
 
 /* Footer */
 footer {

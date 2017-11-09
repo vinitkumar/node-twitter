@@ -51,7 +51,7 @@ exports.create = (req, res, next) => {
 }
 
 exports.list = (req, res) => {
-  const page = (req.param("page") > 0 ? req.param("page") : 1) - 1;
+  const page = (req.params.page > 0 ? req.params.page : 1) - 1;
   const perPage = 5;
   const options = {
     perPage: perPage,
@@ -82,7 +82,7 @@ exports.show = (req, res) => {
   const user = req.profile;
   const reqUserId = user._id;
   const userId = reqUserId.toString();
-  const page = (req.param("page") > 0 ? req.param("page") : 1) - 1;
+  const page = (req.params.page > 0 ? req.params.page : 1) - 1;
   const options = {
     perPage: 100,
     page: page,
