@@ -26,7 +26,6 @@
     "method-override": "^2.3.10",
     "mongoose": "^4.13.3",
     "morgan": "^1.9.0",
-    "notifier": "latest",
     "passport": "^0.3.2",
     "passport-github": "latest",
     "passport-github2": "^0.1.9",
@@ -48,7 +47,7 @@
     "grunt-contrib-sass": "latest",
     "grunt-contrib-watch": "latest",
     "grunt-sass": "latest",
-    "mocha": "^2.5.3",
+    "mocha": "latest",
     "nodemon": "latest",
     "should": "latest",
     "supertest": "^3.0.0"
