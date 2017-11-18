@@ -9,11 +9,11 @@ const setTags = tags => tags.split(",");
 
 // Tweet Schema
 const TweetSchema = new Schema({
-  body: { type: String, default: "", trim: true, maxlength: 140},
+  body: { type: String, default: "", trim: true, maxlength: 280},
   user: { type: Schema.ObjectId, ref: "User" },
   comments: [
     {
-      body: { type: String, default: "", maxlength: 140},
+      body: { type: String, default: "", maxlength: 280},
       user: { type: Schema.ObjectId, ref: "User" },
       commenterName: { type: String, default: "" },
       commenterPicture: { type: String, default: ""},
