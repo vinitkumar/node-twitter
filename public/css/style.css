@@ -201,6 +201,9 @@ pre code {
   height: 40px;
   border: 1px solid #000; }
 
+.logout-image {
+  height: 20px; }
+
 .tweet__description {
   padding-left: 25px; }
 

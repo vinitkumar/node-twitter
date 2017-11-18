@@ -30,6 +30,7 @@ body
           .navbar__profile
             a(href="/logout", title="logout", class="navbar__profile-logout")
               i(class="fa fa-sign-out", aria-hidden="true")
+              img(class='tweet__image chat-image logout-image', src=req.user.github.avatar_url)
               span Logout
           .navbar__new-tweet
             a.navbar__new-tweet-button.btn(data-toggle='modal', href='.new-tweet')
