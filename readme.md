@@ -75,9 +75,6 @@ If you enjoy node-twitter, you can support the development here. https://gratipa
 ## License
 [GPL-3.0](https://github.com/vinitkumar/node-twitter/blob/master/License)
 
-## Sponsors
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/uyhQ2YHmpDTZbNRraFXJEvTa/vinitkumar/node-twitter'><img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/uyhQ2YHmpDTZbNRraFXJEvTa/vinitkumar/node-twitter.svg' /></a>
-
 ## Important
 
 Twitter is a registered trademark of Twitter Inc. This project is just for learning purposes and should be treated as such.
