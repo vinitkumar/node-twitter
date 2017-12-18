@@ -20,6 +20,7 @@
     "connect-mongo": "latest",
     "cookie-parser": "^1.4.3",
     "errorhandler": "^1.5.0",
+    "eslint": "^4.12.1",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "forever": "latest",
