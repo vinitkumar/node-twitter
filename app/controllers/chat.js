@@ -1,11 +1,10 @@
+const createPagination = require('./analytics').createPagination;
 const mongoose = require("mongoose");
 const Analytics = mongoose.model("Analytics");
 const Chat = mongoose.model("Chat");
 const User = mongoose.model("User");
 const qs = require('querystring');
-const url = require('url')
-
-
+const url = require('url');
 
 exports.chat = (req, res, next, id) => {
   // logAnalytics(req);
@@ -24,13 +23,13 @@ exports.chat = (req, res, next, id) => {
 exports.index = (req, res) => {
   // so basically this is going to be a list of all chats the user had till date.
   const page = (req.query.page > 0 ? req.query.page : 1) - 1;
-  const perPage = 100;
+  const perPage = 10;
   const options = {
     perPage: perPage,
     page: page,
     criteria: {github: { $exists: true}},
   };
-  let users, count, chats;
+  let users, count, pagination;
   User.list(options)
     .then( result => {
       users = result;
@@ -38,10 +37,12 @@ exports.index = (req, res) => {
     })
     .then( result => {
       count = result;
+      pagination = createPagination(req, Math.ceil(result / perPage), page+1);
       res.render("chat/index", {
         title: "Chat List",
         users: users,
         page: page + 1,
+        pagination: pagination,
         pages: Math.ceil(count / perPage)
       });
     })

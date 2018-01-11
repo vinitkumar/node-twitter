@@ -96,7 +96,7 @@ exports.index = (req, res) => {
     })
     .then(result => {
       pageViews = result;
-      pagination = createPagination(req, Math.ceil(pageViews / perPage), page+1)
+      pagination = createPagination(req, Math.ceil(pageViews / perPage), page+1);
       return Tweet.countTotalTweets()
     })
     .then(result => {
