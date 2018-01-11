@@ -80,7 +80,7 @@ exports.createPagination = (req, pages, page) => {
 
 exports.index = (req, res) => {
   let createPagination = exports.createPagination;
-  const page = (req.params.page > 0 ? req.params.page : 1) - 1;
+  const page = (req.query.page > 0 ? req.query.page : 1) - 1;
   const perPage = 10;
   const options = {
     perPage: perPage,

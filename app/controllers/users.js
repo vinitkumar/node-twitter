@@ -51,7 +51,7 @@ exports.create = (req, res, next) => {
 }
 
 exports.list = (req, res) => {
-  const page = (req.params.page > 0 ? req.params.page : 1) - 1;
+  const page = (req.query.page > 0 ? req.query.page : 1) - 1;
   const perPage = 5;
   const options = {
     perPage: perPage,
@@ -76,13 +76,13 @@ exports.list = (req, res) => {
     .catch( error => {
       return res.render("pages/500");
     });
-}
+};
 
 exports.show = (req, res) => {
   const user = req.profile;
   const reqUserId = user._id;
   const userId = reqUserId.toString();
-  const page = (req.params.page > 0 ? req.params.page : 1) - 1;
+  const page = (req.query.page > 0 ? req.query.page : 1) - 1;
   const options = {
     perPage: 100,
     page: page,
@@ -160,5 +160,6 @@ function showFollowers(req, res, type) {
           followingCount: followingCount
         });
       });
-    })
+    });
 }
+

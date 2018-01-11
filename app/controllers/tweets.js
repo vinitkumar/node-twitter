@@ -56,7 +56,7 @@ exports.destroy = (req, res) => {
 };
 
 exports.index = (req, res) => {
-  const page = (req.params.page > 0 ? req.params.page : 1) - 1;
+  const page = (req.query.page > 0 ? req.query.page : 1) - 1;
   const perPage = 10;
   const options = {
     perPage: perPage,
