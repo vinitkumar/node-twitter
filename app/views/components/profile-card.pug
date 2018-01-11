@@ -14,8 +14,6 @@
       - if (currentUserId !== userId)
         a.btn(data-toggle='modal', href='#'+ modalId) Message #{name}
         a.btn.profile__follow-button(href="javascript:void(0)", data-userid=user._id, data-logged=req.user.id,title="follow") Follow
-      - if (currentUserId == userId)
-        a.btn(href='/chat/get/' + user._id) Check Inbox
     if (req.isAuthenticated())
       include modals/new-message-modal                   
   .row
