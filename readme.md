@@ -6,6 +6,8 @@ Node twitter is an effort to rewrite some of Twitter's functionality using moder
 javascript based toolchain. It was mostly an effort to learn Node.js and trying to reverse
 engineer some of twitter's feature.
 
+You can support the development here by becoming a backer: https://opencollective.com/node-twitter
+
 <img src="https://cldup.com/smoNHY-9mI.png">
 <img src="https://cldup.com/oEa3EIGhyJ.png">
 
