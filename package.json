@@ -10,7 +10,7 @@
     "test": "make test"
   },
   "engines": {
-    "node": "9.2.0"
+    "node": "9.3.0"
   },
   "dependencies": {
     "async": "latest",
