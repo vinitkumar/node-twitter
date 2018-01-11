@@ -6,7 +6,8 @@ block content
       .logged-user
         .row
           .container
-            h1 Chat
+            h1
+              != title
             p Click on the name/image to send a message.
             div.row.chatgroup
               each user in users
@@ -18,9 +19,6 @@ block content
                     span #{name}
                   - var currentUserId = req.user._id.toString()
                   - var userId = user._id.toString()
-                  - if (currentUserId == userId)
-                    a(target='_blank', href='/chat/get/' + user._id) 
-                      span.inboxlink Check Inbox
 
                 if (req.isAuthenticated())
                   div(id=id, class='modal fade')

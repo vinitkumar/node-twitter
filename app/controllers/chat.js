@@ -39,7 +39,7 @@ exports.index = (req, res) => {
       count = result;
       pagination = createPagination(req, Math.ceil(result / perPage), page+1);
       res.render("chat/index", {
-        title: "Chat List",
+        title: "Chat User List",
         users: users,
         page: page + 1,
         pagination: pagination,

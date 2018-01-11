@@ -19,9 +19,13 @@ body
                 i(class="fa fa-line-chart", aria-hidden="true")
                 span Analytics
             li
+              a(href='/chat/get/' + req.user._id, title="Inbox")
+                i(class="fa fa-envelope", aria-hidden="true")
+                span Inbox
+            li
               a(href="/chat/", title="chat")
                 i(class="fa fa-comments", aria-hidden="true")
-                span Message
+                span Chat Users
       span.navbar__logo
         a(href='/')
           img(src='/img/bird.svg')
