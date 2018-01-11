@@ -103,6 +103,9 @@ UserSchema.statics = {
       .populate("user", "name username")
       .limit(options.perPage)
       .skip(options.perPage * options.page);
+  },
+  countTotalUsers: function() {
+    return this.find({}).count(); 
   }
 };
 

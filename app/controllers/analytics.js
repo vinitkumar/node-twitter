@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Analytics = mongoose.model("Analytics");
 const Tweet = mongoose.model("Tweet");
+const User = mongoose.model("User");
 const qs = require('querystring')
 const url = require('url')
 
@@ -97,14 +98,19 @@ exports.index = (req, res) => {
     .then(result => {
       pageViews = result;
       pagination = createPagination(req, Math.ceil(pageViews / perPage), page+1);
-      return Tweet.countTotalTweets()
+      return Tweet.countTotalTweets();
     })
     .then(result => {
       tweetCount = result;
+      return User.countTotalUsers();
+    })
+    .then(result => {
+      userCount = result;
       res.render("pages/analytics", {
         title: "List of users",
         analytics: analytics,
         pageViews: pageViews,
+        userCount: userCount,
         tweetCount: tweetCount,
         pagination: pagination,
         pages: Math.ceil(pageViews / perPage),
