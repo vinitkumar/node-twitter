@@ -16,7 +16,7 @@ const UserSchema = new Schema({
   followers: [{ type: Schema.ObjectId, ref: "User" }],
   following: [{ type: Schema.ObjectId, ref: "User" }],
   tweets: Number
-});
+}, {usePushEach: true});
 
 UserSchema.virtual("password")
   .set(function(password) {
@@ -105,7 +105,7 @@ UserSchema.statics = {
       .skip(options.perPage * options.page);
   },
   countTotalUsers: function() {
-    return this.find({}).count(); 
+    return this.find({}).count();
   }
 };
 

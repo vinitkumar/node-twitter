@@ -75,19 +75,21 @@ exports.create = (req, res) => {
     receiver: req.body.receiver,
     sender: req.user.id,
   });
-  const activity = new Activity({
-    activityStream: "sent a message",
-    receiver: req.body.receiver,
-    sender: req.user.id,
-  });
-  activity.save((err) => {
-    if (err) {
-      console.log(err);
-      res.render("pages/500");
-    }
-  });
   console.log('chat instance', chat);
   chat.save( (err) => {
+
+    const activity = new Activity({
+      activityStream: "sent a message",
+      activityKey: chat.id,
+      receiver: req.body.receiver,
+      sender: req.user.id,
+    });
+    activity.save((err) => {
+      if (err) {
+        console.log(err);
+        res.render("pages/500");
+      }
+    });
     console.log(err);
     if (!err) {
       res.redirect(req.header('Referrer'));

@@ -29,6 +29,7 @@ exports.create = (req, res) => {
     }
     const activity = new Activity({
       activityStream: "added a comment",
+      activityKey: tweet.id,
       sender: user,
       receiver: req.tweet.user,
     });

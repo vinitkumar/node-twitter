@@ -30,6 +30,7 @@ exports.follow = (req, res) => {
     user.save(err => {
       const activity = new Activity({
         activityStream: "followed by",
+        activityKey: user,
         sender: currentId,
         receiver: user
       });
