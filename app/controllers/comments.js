@@ -24,6 +24,7 @@ exports.create = (req, res) => {
   }
   tweet.addComment(user, req.body, err => {
     if (err) {
+      console.log(err);
       return res.render("pages/500");
     }
     const activity = new Activity({
@@ -32,11 +33,12 @@ exports.create = (req, res) => {
       receiver: req.tweet.user,
     });
     console.log(activity)
-    // activity.save((err) => {
-    //   if (err) {
-    //     console.log(err);
-    //   }
-    // });
+    activity.save((err) => {
+      if (err) {
+        console.log(err);
+        return res.render("pages/500");
+      }
+    });
     res.redirect("/");
   });
 };

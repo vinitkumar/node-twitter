@@ -26,7 +26,7 @@
     "forever": "latest",
     "method-override": "^2.3.10",
     "moment": "^2.20.1",
-    "mongoose": "^4.13.3",
+    "mongoose": "^4.13.9",
     "morgan": "^1.9.0",
     "passport": "^0.3.2",
     "passport-github": "latest",

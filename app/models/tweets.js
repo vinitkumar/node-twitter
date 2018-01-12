@@ -18,14 +18,14 @@ const TweetSchema = new Schema({
       commenterName: { type: String, default: "" },
       commenterPicture: { type: String, default: ""},
       createdAt: { type: Date, default: Date.now }
-    }
+    },
   ],
   tags: { type: [], get: getTags, set: setTags },
   favorites: [{ type: Schema.ObjectId, ref: "User" }],
   favoriters: [{ type: Schema.ObjectId, ref: "User" }], // same as favorites
   favoritesCount: Number,
   createdAt: { type: Date, default: Date.now }
-});
+}, {usePushEach: true});
 
 // Pre save hook
 TweetSchema.pre("save", function(next) {
