@@ -5,4 +5,4 @@ ul.recent-visits__list
       -var name = analytic.user.name ? analytic.user.name : analytic.user.username
       li
         a(href="/users/"+analytic.user._id)= name
-          span   (#{formatDate(analytic.createdAt, "%b %d, %Y at %I:%M %p")})
+          span   (#{moment(analytic.createdAt).format('lll')})

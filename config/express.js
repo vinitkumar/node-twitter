@@ -14,9 +14,11 @@ const methodOverride = require('method-override');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const Raven = require('raven');
+const moment = require('moment');
 
 module.exports = (app, config, passport) => {
   app.set("showStackError", true);
+  app.locals.moment = moment;
   // setup Sentry to get any crashes
   if (process.env.SENTRY_DSN !== null) {
     Raven.config(process.env.SENTRY_DSN).install();
