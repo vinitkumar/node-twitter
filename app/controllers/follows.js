@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
+const Activity = mongoose.model("Activity");
 
 exports.follow = (req, res) => {
   const user = req.user;
@@ -27,10 +28,22 @@ exports.follow = (req, res) => {
       user.following.push(id);
     }
     user.save(err => {
+      const activity = new Activity({
+        activityStream: "followed by",
+        sender: currentId,
+        receiver: user
+      });
+
+      activity.save((err) => {
+        if (err) {
+          console.log(err);
+          res.render("pages/500");
+        }
+      });
       if (err) {
-        res.send(400);
+        res.status(400);
       }
-      res.send(201, {});
+      res.status(201).send({});
     });
   });
 };
