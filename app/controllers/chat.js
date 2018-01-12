@@ -1,6 +1,7 @@
 const createPagination = require('./analytics').createPagination;
 const mongoose = require("mongoose");
 const Analytics = mongoose.model("Analytics");
+const Activity = mongoose.model("Activity");
 const Chat = mongoose.model("Chat");
 const User = mongoose.model("User");
 const qs = require('querystring');
@@ -73,6 +74,17 @@ exports.create = (req, res) => {
     message: req.body.body,
     receiver: req.body.receiver,
     sender: req.user.id,
+  });
+  const activity = new Activity({
+    activityStream: "sent a message",
+    receiver: req.body.receiver,
+    sender: req.user.id,
+  });
+  activity.save((err) => {
+    if (err) {
+      console.log(err);
+      res.render("pages/500");
+    }
   });
   console.log('chat instance', chat);
   chat.save( (err) => {
