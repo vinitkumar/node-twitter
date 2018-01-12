@@ -1,4 +1,7 @@
+//@ts-check
 const utils = require("../../lib/utils");
+const mongoose = require("mongoose");
+const Activity = mongoose.model("Activity");
 
 exports.load = (req, res, next, id) => {
   const tweet = req.tweet;
@@ -23,6 +26,17 @@ exports.create = (req, res) => {
     if (err) {
       return res.render("pages/500");
     }
+    const activity = new Activity({
+      activityStream: "added a comment",
+      sender: user,
+      receiver: req.tweet.user,
+    });
+    console.log(activity)
+    // activity.save((err) => {
+    //   if (err) {
+    //     console.log(err);
+    //   }
+    // });
     res.redirect("/");
   });
 };
