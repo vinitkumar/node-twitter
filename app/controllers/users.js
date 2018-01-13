@@ -10,10 +10,34 @@ exports.authCallback = (req, res) => {
 };
 
 exports.login = (req, res) => {
-  res.render("pages/login", {
-    title: "Login",
-    message: req.flash("error")
-  });
+  let tweetCount, userCount, analyticsCount;
+  let options = {};
+  Analytics.list(options)
+    .then(result => {
+      analytics = result;
+      return Analytics.count();
+    })
+    .then(result => {
+      analyticsCount = result;
+      return Tweet.countTotalTweets();
+    })
+    .then(result => {
+      tweetCount = result;
+      return User.countTotalUsers();
+    })
+    .then(result => {
+      userCount = result;
+      console.log(tweetCount);
+      console.log(userCount);
+      console.log(tweetCount);
+      res.render("pages/login", {
+        title: "Login",
+        message: req.flash("error"),
+        userCount: userCount,
+        tweetCount: tweetCount,
+        analyticsCount: analyticsCount,
+      });
+    });
 };
 
 exports.signup = (req, res) => {
