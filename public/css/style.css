@@ -557,3 +557,10 @@ footer {
   margin-top: 20px; }
 
 /*# sourceMappingURL=style.css.map */
+.stats-container {
+  text-align: center;
+}
+
+.stats-parent-container {
+  margin-top: 40px;
+}
