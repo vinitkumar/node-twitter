@@ -8,18 +8,18 @@ block content
           a(href="/auth/github")
             i(class="fa fa-github-alt fa-5x")
   
-  .row.stats-parent-container
-    .col-md-4.stats-container
+  .row.justify-content-center.text-center.stats-parent-container
+    .col-md-3
+      span.status-count #{tweetCount}
       h5 Tweets Created
-      span #{tweetCount}
 
-    .col-md-4.stats-container
+    .col-md-3
+      span.status-count #{userCount}
       h5 Unique Users 
-      span #{userCount}
       
-    .col-md-4.stats-container
+    .col-md-3
+      span.status-count #{analyticsCount}
       h5 Total Visits
-      span #{analyticsCount}
 
       if (typeof errors !== 'undefined')
         .fade.in.alert.alert-block.alert-error
