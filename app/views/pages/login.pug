@@ -7,6 +7,20 @@ block content
         h3
           a(href="/auth/github")
             i(class="fa fa-github-alt fa-5x")
+  
+  .row.justify-content-center.text-center.stats-parent-container
+    .col-md-3
+      span.status-count #{tweetCount}
+      h5 Tweets Created
+
+    .col-md-3
+      span.status-count #{userCount}
+      h5 Unique Users 
+      
+    .col-md-3
+      span.status-count #{analyticsCount}
+      h5 Total Visits
+
       if (typeof errors !== 'undefined')
         .fade.in.alert.alert-block.alert-error
           a.close(data-dismiss="alert", href="javascript:void(0)") x

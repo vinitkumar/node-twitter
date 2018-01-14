@@ -557,3 +557,9 @@ footer {
   margin-top: 20px; }
 
 /*# sourceMappingURL=style.css.map */
+.stats-parent-container {
+  margin-top: 40px;
+}
+.stats-parent-container span {
+  font-size: 40px;
+}
