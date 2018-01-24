@@ -79,7 +79,7 @@ exports.create = (req, res) => {
   chat.save( (err) => {
 
     const activity = new Activity({
-      activityStream: "sent a message",
+      activityStream: "sent a message to",
       activityKey: chat.id,
       receiver: req.body.receiver,
       sender: req.user.id,

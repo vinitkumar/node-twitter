@@ -1,0 +1,12 @@
+extends ../layouts/default
+
+block content
+  .analytics
+    h1 Activity
+    each activity in activities
+      - var senderName = activity.sender.name ? activity.sender.name : activity.sender.username
+      - var receiverName = activity.receiver.name ? activity.receiver.name : activity.receiver.username
+      - var notificationText = senderName + ' ' + activity.activityStream + ' ' + receiverName
+      p 
+        i(class="fa fa-bell notification-icon")
+        span #{notificationText}
