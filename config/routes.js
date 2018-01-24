@@ -43,10 +43,6 @@ module.exports = (app, passport, auth) => {
   router.get("/apiv1/users", apiv1.usersList);
 
   /**
-   * Acivity routes
-   */
-  router.get("/activities", activity.index);
-  /**
    * Authentication middleware
    * All routes specified after this middleware require authentication in order
    * to access
@@ -59,6 +55,10 @@ module.exports = (app, passport, auth) => {
    */
   router.get("/*", log.analytics)
 
+  /**
+   * Acivity routes
+   */
+  router.get("/activities", activity.index);
   /**
    * Home route
    */
