@@ -9,6 +9,6 @@ exports.index = (req, res) => {
       activities = result;
       return res.render("pages/activity", {
         activities: activities
-      })
-    })
+      });
+    });
 };
