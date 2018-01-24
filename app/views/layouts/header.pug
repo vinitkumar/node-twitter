@@ -32,6 +32,8 @@ body
       if (req.isAuthenticated())
         .navbar__group.navbar__group_right
           .navbar__profile
+            a(href="/activities", title="activity", class="navbar__notifications")
+              i(class="fa fa-bell", aria-hidden="true")
             a(href="/logout", title="logout", class="navbar__profile-logout")
               i(class="fa fa-sign-out", aria-hidden="true")
               img(class='tweet__image chat-image logout-image', src=req.user.github.avatar_url)

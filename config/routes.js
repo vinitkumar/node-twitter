@@ -10,6 +10,7 @@ const tweets = require("../app/controllers/tweets");
 const comments = require("../app/controllers/comments");
 const favorites = require("../app/controllers/favorites");
 const follows = require("../app/controllers/follows");
+const activity = require('../app/controllers/activity');
 
 module.exports = (app, passport, auth) => {
 
@@ -41,6 +42,10 @@ module.exports = (app, passport, auth) => {
   router.get("/apiv1/tweets", apiv1.tweetList);
   router.get("/apiv1/users", apiv1.usersList);
 
+  /**
+   * Acivity routes
+   */
+  router.get("/activities", activity.index);
   /**
    * Authentication middleware
    * All routes specified after this middleware require authentication in order

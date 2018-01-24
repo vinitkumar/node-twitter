@@ -160,6 +160,9 @@ pre code {
     .navbar__new-tweet .navbar__new-tweet-button:hover {
       color: #ffffff; }
 
+.navbar__notifications {
+  color: red !important; }
+
 .follower, .tweet, .profile, .user-information, .useful-links,
 .recent-visits, .analytics {
   background-color: #1B2836;
@@ -253,6 +256,9 @@ pre code {
   height: 20px;
   border: 1px solid #000;
   margin-right: 6px; }
+
+.notification-icon {
+  margin-right: 10px; }
 
 .pagination {
   text-align: center; }
@@ -557,9 +563,3 @@ footer {
   margin-top: 20px; }
 
 /*# sourceMappingURL=style.css.map */
-.stats-parent-container {
-  margin-top: 40px;
-}
-.stats-parent-container span {
-  font-size: 40px;
-}
