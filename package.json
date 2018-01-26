@@ -7,7 +7,8 @@
   "author": "Vinit Kumar <vinit1414.08@bitmesra.ac.in> (http://vinitkumar.me)",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "make test"
+    "test": "make test",
+    "postinstall": "opencollective postinstall"
   },
   "engines": {
     "node": "9.4.0"
@@ -28,6 +29,7 @@
     "moment": "^2.20.1",
     "mongoose": "^4.13.9",
     "morgan": "^1.9.0",
+    "opencollective": "^1.0.3",
     "passport": "^0.3.2",
     "passport-github": "latest",
     "passport-github2": "^0.1.9",
@@ -53,5 +55,10 @@
     "nodemon": "latest",
     "should": "latest",
     "supertest": "^3.0.0"
+  },
+  "collective": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/node-twitter",
+    "logo": "https://opencollective.com/node-twitter/logo.txt"
   }
 }
