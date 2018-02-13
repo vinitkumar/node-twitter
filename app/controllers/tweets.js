@@ -5,6 +5,7 @@ const Tweet = mongoose.model("Tweet");
 const User = mongoose.model("User");
 const Analytics = mongoose.model("Analytics");
 const _ = require("underscore");
+const logger = require('../middlewares/logger');
 
 exports.tweet = (req, res, next, id) => {
   Tweet.load(id, (err, tweet) => {
@@ -93,7 +94,7 @@ exports.index = (req, res) => {
       });
     })
     .catch(error => {
-      console.log(error);
+      logger.error(error);
       res.render("pages/500");
     });
 }

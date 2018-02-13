@@ -40,7 +40,8 @@
     "raven": "^2.1.2",
     "serve-favicon": "^2.4.5",
     "underscore": "latest",
-    "view-helpers": "latest"
+    "view-helpers": "latest",
+    "winston": "^2.4.0"
   },
   "devDependencies": {
     "ava": "latest",

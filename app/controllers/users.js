@@ -2,6 +2,7 @@ const Mongoose = require("mongoose");
 const Tweet = Mongoose.model("Tweet");
 const User = Mongoose.model("User");
 const Analytics = Mongoose.model("Analytics");
+const logger = require('../middlewares/logger');
 
 exports.signin = (req, res) => {};
 
@@ -27,9 +28,9 @@ exports.login = (req, res) => {
     })
     .then(result => {
       userCount = result;
-      console.log(tweetCount);
-      console.log(userCount);
-      console.log(tweetCount);
+      logger.info(tweetCount);
+      logger.info(userCount);
+      logger.info(tweetCount);
       res.render("pages/login", {
         title: "Login",
         message: req.flash("error"),
