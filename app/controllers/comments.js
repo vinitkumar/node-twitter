@@ -1,7 +1,7 @@
 //@ts-check
-const utils = require("../../lib/utils");
-const mongoose = require("mongoose");
-const Activity = mongoose.model("Activity");
+const utils = require('../../lib/utils');
+const mongoose = require('mongoose');
+const Activity = mongoose.model('Activity');
 
 exports.load = (req, res, next, id) => {
   const tweet = req.tweet;
@@ -20,27 +20,27 @@ exports.create = (req, res) => {
   const user = req.user;
 
   if (!req.body.body) {
-    return res.redirect("/");
+    return res.redirect('/');
   }
   tweet.addComment(user, req.body, err => {
     if (err) {
       console.log(err);
-      return res.render("pages/500");
+      return res.render('pages/500');
     }
     const activity = new Activity({
-      activityStream: "added a comment",
+      activityStream: 'added a comment',
       activityKey: tweet.id,
       sender: user,
       receiver: req.tweet.user,
     });
-    console.log(activity)
+    console.log(activity);
     activity.save((err) => {
       if (err) {
         console.log(err);
-        return res.render("pages/500");
+        return res.render('pages/500');
       }
     });
-    res.redirect("/");
+    res.redirect('/');
   });
 };
 

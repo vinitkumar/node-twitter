@@ -1,7 +1,7 @@
 // ## Tweet Controller
-const mongoose = require("mongoose");
-const Tweet = mongoose.model("Tweet");
-const User = mongoose.model("User");
+const mongoose = require('mongoose');
+const Tweet = mongoose.model('Tweet');
+const User = mongoose.model('User');
 
 exports.tweetList = (req, res) => {
   const page = (req.query.page > 0 ? req.query.page : 1) - 1;
@@ -21,9 +21,9 @@ exports.tweetList = (req, res) => {
       return res.send(tweets);
     })
     .catch( error => {
-      return res.render("pages/500");
+      return res.render('pages/500');
     });
-}
+};
 
 exports.usersList = (req, res) => {
   const page = (req.query.page > 0 ? req.query.page : 1) - 1;
@@ -43,6 +43,6 @@ exports.usersList = (req, res) => {
       return res.send(users);
     })
     .catch( error => {
-      return res.render("pages/500");
+      return res.render('pages/500');
     });
-}
+};

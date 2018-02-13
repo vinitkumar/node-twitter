@@ -7,7 +7,7 @@ exports.index = (req, res) => {
   Activity.list(options)
     .then( result => {
       activities = result;
-      return res.render("pages/activity", {
+      return res.render('pages/activity', {
         activities: activities
       });
     });

@@ -1,9 +1,9 @@
-const mongoose = require("mongoose");
-const Analytics = mongoose.model("Analytics");
-const Tweet = mongoose.model("Tweet");
-const User = mongoose.model("User");
-const qs = require('querystring')
-const url = require('url')
+const mongoose = require('mongoose');
+const Analytics = mongoose.model('Analytics');
+const Tweet = mongoose.model('Tweet');
+const User = mongoose.model('User');
+const qs = require('querystring');
+const url = require('url');
 
 
 exports.createPagination = (req, pages, page) => {
@@ -20,7 +20,7 @@ exports.createPagination = (req, pages, page) => {
   if (pages < 6) {
     for (let p = 1; p <= pages; p++) {
       params.page = p;
-      pageNumberClass = page == p ? "active" : "no";
+      pageNumberClass = page == p ? 'active' : 'no';
       let href = '?' + qs.stringify(params);
       str += '<li class="'+pageNumberClass+'"><a class="page-link" href="'+ href +'">'+ p +'</a></li>';
     }
@@ -54,10 +54,10 @@ exports.createPagination = (req, pages, page) => {
         p += 1;
       }
       if (p > pages) {
-        continue
+        continue;
       }
       params.page = p;
-      pageNumberClass = page == p ? "active" : "no";
+      pageNumberClass = page == p ? 'active' : 'no';
       let href = '?' + qs.stringify(params);
       str += '<li class="page-item '+pageNumberClass+'"><a class="page-link" href="'+ href +'">'+ p +'</a></li>';
     }
@@ -76,7 +76,7 @@ exports.createPagination = (req, pages, page) => {
   }
   // Return the pagination string to be outputted in the pug templates
   return str;
-}
+};
 
 
 exports.index = (req, res) => {
@@ -106,8 +106,8 @@ exports.index = (req, res) => {
     })
     .then(result => {
       userCount = result;
-      res.render("pages/analytics", {
-        title: "List of users",
+      res.render('pages/analytics', {
+        title: 'List of users',
         analytics: analytics,
         pageViews: pageViews,
         userCount: userCount,
@@ -118,6 +118,6 @@ exports.index = (req, res) => {
     })
     .catch(error => {
       console.log(error);
-      return res.render("pages/500");
+      return res.render('pages/500');
     });
 };

@@ -1,9 +1,9 @@
 const createPagination = require('./analytics').createPagination;
-const mongoose = require("mongoose");
-const Analytics = mongoose.model("Analytics");
-const Activity = mongoose.model("Activity");
-const Chat = mongoose.model("Chat");
-const User = mongoose.model("User");
+const mongoose = require('mongoose');
+const Analytics = mongoose.model('Analytics');
+const Activity = mongoose.model('Activity');
+const Chat = mongoose.model('Chat');
+const User = mongoose.model('User');
 const qs = require('querystring');
 const url = require('url');
 
@@ -14,7 +14,7 @@ exports.chat = (req, res, next, id) => {
       return next(err);
     }
     if (!chat) {
-      return next(new Error("Failed to load tweet" + id));
+      return next(new Error('Failed to load tweet' + id));
     }
     req.chat = chat;
     next();
@@ -39,8 +39,8 @@ exports.index = (req, res) => {
     .then( result => {
       count = result;
       pagination = createPagination(req, Math.ceil(result / perPage), page+1);
-      res.render("chat/index", {
-        title: "Chat User List",
+      res.render('chat/index', {
+        title: 'Chat User List',
         users: users,
         page: page + 1,
         pagination: pagination,
@@ -48,7 +48,7 @@ exports.index = (req, res) => {
       });
     })
     .catch( error => {
-      return res.render("pages/500");
+      return res.render('pages/500');
     });
 };
 
@@ -79,7 +79,7 @@ exports.create = (req, res) => {
   chat.save( (err) => {
 
     const activity = new Activity({
-      activityStream: "sent a message to",
+      activityStream: 'sent a message to',
       activityKey: chat.id,
       receiver: req.body.receiver,
       sender: req.user.id,
@@ -87,7 +87,7 @@ exports.create = (req, res) => {
     activity.save((err) => {
       if (err) {
         console.log(err);
-        res.render("pages/500");
+        res.render('pages/500');
       }
     });
     console.log(err);
