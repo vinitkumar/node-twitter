@@ -4,6 +4,7 @@ const Tweet = mongoose.model('Tweet');
 const User = mongoose.model('User');
 const qs = require('querystring');
 const url = require('url');
+const logger = require('../middlewares/logger');
 
 
 exports.createPagination = (req, pages, page) => {
@@ -88,7 +89,7 @@ exports.index = (req, res) => {
     page: page
   };
 
-  let analytics, pageViews, tweetCount, pagination;
+  let analytics, pageViews, tweetCount, pagination, userCount;
 
   Analytics.list(options)
     .then(result => {
@@ -117,7 +118,7 @@ exports.index = (req, res) => {
       });
     })
     .catch(error => {
-      console.log(error);
+      logger.error(error);
       return res.render('pages/500');
     });
 };

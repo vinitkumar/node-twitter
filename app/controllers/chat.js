@@ -1,14 +1,11 @@
 const createPagination = require('./analytics').createPagination;
 const mongoose = require('mongoose');
-const Analytics = mongoose.model('Analytics');
 const Activity = mongoose.model('Activity');
 const Chat = mongoose.model('Chat');
 const User = mongoose.model('User');
-const qs = require('querystring');
-const url = require('url');
+const logger = require('../middlewares/logger');
 
 exports.chat = (req, res, next, id) => {
-  // logAnalytics(req);
   Chat.load(id, (err, chat) => {
     if (err) {
       return next(err);
@@ -47,8 +44,8 @@ exports.index = (req, res) => {
         pages: Math.ceil(count / perPage)
       });
     })
-    .catch( error => {
-      return res.render('pages/500');
+    .catch(error => {
+      return res.render('pages/500', { errors: error.errors });
     });
 };
 
@@ -75,7 +72,7 @@ exports.create = (req, res) => {
     receiver: req.body.receiver,
     sender: req.user.id,
   });
-  console.log('chat instance', chat);
+  logger.info('chat instance', chat);
   chat.save( (err) => {
 
     const activity = new Activity({
@@ -86,11 +83,11 @@ exports.create = (req, res) => {
     });
     activity.save((err) => {
       if (err) {
-        console.log(err);
+        logger.error(err);
         res.render('pages/500');
       }
     });
-    console.log(err);
+    logger.error(err);
     if (!err) {
       res.redirect(req.header('Referrer'));
     }
