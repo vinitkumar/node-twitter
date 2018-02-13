@@ -1,20 +1,17 @@
 const createPagination = require('./analytics').createPagination;
-const mongoose = require("mongoose");
-const Analytics = mongoose.model("Analytics");
-const Activity = mongoose.model("Activity");
-const Chat = mongoose.model("Chat");
-const User = mongoose.model("User");
-const qs = require('querystring');
-const url = require('url');
+const mongoose = require('mongoose');
+const Activity = mongoose.model('Activity');
+const Chat = mongoose.model('Chat');
+const User = mongoose.model('User');
+const logger = require('../middlewares/logger');
 
 exports.chat = (req, res, next, id) => {
-  // logAnalytics(req);
   Chat.load(id, (err, chat) => {
     if (err) {
       return next(err);
     }
     if (!chat) {
-      return next(new Error("Failed to load tweet" + id));
+      return next(new Error('Failed to load tweet' + id));
     }
     req.chat = chat;
     next();
@@ -39,16 +36,16 @@ exports.index = (req, res) => {
     .then( result => {
       count = result;
       pagination = createPagination(req, Math.ceil(result / perPage), page+1);
-      res.render("chat/index", {
-        title: "Chat User List",
+      res.render('chat/index', {
+        title: 'Chat User List',
         users: users,
         page: page + 1,
         pagination: pagination,
         pages: Math.ceil(count / perPage)
       });
     })
-    .catch( error => {
-      return res.render("pages/500");
+    .catch(error => {
+      return res.render('pages/500', { errors: error.errors });
     });
 };
 
@@ -75,22 +72,22 @@ exports.create = (req, res) => {
     receiver: req.body.receiver,
     sender: req.user.id,
   });
-  console.log('chat instance', chat);
+  logger.info('chat instance', chat);
   chat.save( (err) => {
 
     const activity = new Activity({
-      activityStream: "sent a message to",
+      activityStream: 'sent a message to',
       activityKey: chat.id,
       receiver: req.body.receiver,
       sender: req.user.id,
     });
     activity.save((err) => {
       if (err) {
-        console.log(err);
-        res.render("pages/500");
+        logger.error(err);
+        res.render('pages/500');
       }
     });
-    console.log(err);
+    logger.error(err);
     if (!err) {
       res.redirect(req.header('Referrer'));
     }

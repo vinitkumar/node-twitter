@@ -1,10 +1,11 @@
-const mongoose = require("mongoose");
-const User = mongoose.model("User");
-const Activity = mongoose.model("Activity");
+const mongoose = require('mongoose');
+const User = mongoose.model('User');
+const Activity = mongoose.model('Activity');
+const logger = require('../middlewares/logger');
 
 exports.follow = (req, res) => {
   const user = req.user;
-  const id = req.url.split("/")[2];
+  const id = req.url.split('/')[2];
   // push the current user in the follower list of the target user
 
   const currentId = user.id;
@@ -15,7 +16,7 @@ exports.follow = (req, res) => {
     }
     user.save(err => {
       if (err) {
-        console.log(err);
+        logger.error(err);
       }
     });
   });
@@ -29,7 +30,7 @@ exports.follow = (req, res) => {
     }
     user.save(err => {
       const activity = new Activity({
-        activityStream: "followed by",
+        activityStream: 'followed by',
         activityKey: user,
         sender: currentId,
         receiver: user
@@ -37,8 +38,8 @@ exports.follow = (req, res) => {
 
       activity.save((err) => {
         if (err) {
-          console.log(err);
-          res.render("pages/500");
+          logger.error(err);
+          res.render('pages/500');
         }
       });
       if (err) {

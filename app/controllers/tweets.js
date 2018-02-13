@@ -1,10 +1,11 @@
 // ## Tweet Controller
 const createPagination = require('./analytics').createPagination;
-const mongoose = require("mongoose");
-const Tweet = mongoose.model("Tweet");
-const User = mongoose.model("User");
-const Analytics = mongoose.model("Analytics");
-const _ = require("underscore");
+const mongoose = require('mongoose');
+const Tweet = mongoose.model('Tweet');
+const User = mongoose.model('User');
+const Analytics = mongoose.model('Analytics');
+const _ = require('underscore');
+const logger = require('../middlewares/logger');
 
 exports.tweet = (req, res, next, id) => {
   Tweet.load(id, (err, tweet) => {
@@ -12,7 +13,7 @@ exports.tweet = (req, res, next, id) => {
       return next(err);
     }
     if (!tweet) {
-      return next(new Error("Failed to load tweet" + id));
+      return next(new Error('Failed to load tweet' + id));
     }
     req.tweet = tweet;
     next();
@@ -25,9 +26,9 @@ exports.create = (req, res) => {
   tweet.user = req.user;
   tweet.uploadAndSave({}, err => {
     if (err) {
-      res.render("pages/500", {error: err});
+      res.render('pages/500', {error: err});
     } else {
-      res.redirect("/");
+      res.redirect('/');
     }
   });
 };
@@ -35,12 +36,12 @@ exports.create = (req, res) => {
 // ### Update a tweet
 exports.update = (req, res) => {
   let tweet = req.tweet;
-  tweet = _.extend(tweet, {"body": req.body.tweet});
+  tweet = _.extend(tweet, {'body': req.body.tweet});
   tweet.uploadAndSave({}, (err) => {
     if (err) {
-      return res.render("pages/500", {error: err});
+      return res.render('pages/500', {error: err});
     }
-    res.redirect("/");
+    res.redirect('/');
   });
 };
 
@@ -49,9 +50,9 @@ exports.destroy = (req, res) => {
   const tweet = req.tweet;
   tweet.remove(err => {
     if (err) {
-      return res.render("pages/500");
+      return res.render('pages/500');
     }
-    res.redirect("/");
+    res.redirect('/');
   });
 };
 
@@ -80,8 +81,8 @@ exports.index = (req, res) => {
     })
     .then(result => {
       analytics = result;
-      res.render("pages/index", {
-        title: "List of Tweets",
+      res.render('pages/index', {
+        title: 'List of Tweets',
         tweets: tweets,
         analytics: analytics,
         page: page + 1,
@@ -93,7 +94,7 @@ exports.index = (req, res) => {
       });
     })
     .catch(error => {
-      console.log(error);
-      res.render("pages/500");
+      logger.error(error);
+      res.render('pages/500');
     });
-}
+};

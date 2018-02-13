@@ -11,14 +11,29 @@ const flash = require("connect-flash");
 const helpers = require("view-helpers");
 const bodyParser  = require('body-parser');
 const methodOverride = require('method-override');
-const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const Raven = require('raven');
 const moment = require('moment');
+const morgan = require('morgan');
 
 module.exports = (app, config, passport) => {
   app.set("showStackError", true);
   app.locals.moment = moment;
+
+  // use morgan for logging
+  app.use(morgan('dev', {
+    skip: function (req, res) {
+      return res.statusCode < 400;
+    }, stream: process.stderr
+  }));
+
+
+  // use morgan for logging
+  app.use(morgan('dev', {
+    skip: function (req, res) {
+      return res.statusCode >= 400
+    }, stream: process.stdout
+  }));
   // setup Sentry to get any crashes
   if (process.env.SENTRY_DSN !== null) {
     Raven.config(process.env.SENTRY_DSN).install();
@@ -35,11 +50,6 @@ module.exports = (app, config, passport) => {
   );
   // app.use(favicon());
   app.use(express.static(config.root + "/public"));
-
-  if (process.env.NODE_ENV !== "test") {
-    // Use morgan logger if not in a development environment
-    app.use(morgan("dev"));
-  }
 
   if (process.env.NODE_ENV === "development") {
     app.use(errorHandler());
