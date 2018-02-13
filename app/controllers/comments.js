@@ -2,6 +2,7 @@
 const utils = require('../../lib/utils');
 const mongoose = require('mongoose');
 const Activity = mongoose.model('Activity');
+const logger = require('../middlewares/logger');
 
 exports.load = (req, res, next, id) => {
   const tweet = req.tweet;
@@ -24,7 +25,7 @@ exports.create = (req, res) => {
   }
   tweet.addComment(user, req.body, err => {
     if (err) {
-      console.log(err);
+      logger.error(err);
       return res.render('pages/500');
     }
     const activity = new Activity({
@@ -33,10 +34,10 @@ exports.create = (req, res) => {
       sender: user,
       receiver: req.tweet.user,
     });
-    console.log(activity);
+    logger.info(activity);
     activity.save((err) => {
       if (err) {
-        console.log(err);
+        logger.error(err);
         return res.render('pages/500');
       }
     });

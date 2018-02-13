@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const Activity = mongoose.model('Activity');
+const logger = require('../middlewares/logger');
 
 exports.follow = (req, res) => {
   const user = req.user;
@@ -15,7 +16,7 @@ exports.follow = (req, res) => {
     }
     user.save(err => {
       if (err) {
-        console.log(err);
+        logger.error(err);
       }
     });
   });
@@ -37,7 +38,7 @@ exports.follow = (req, res) => {
 
       activity.save((err) => {
         if (err) {
-          console.log(err);
+          logger.error(err);
           res.render('pages/500');
         }
       });
