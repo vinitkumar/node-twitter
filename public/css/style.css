@@ -123,6 +123,8 @@ pre code {
       border-bottom: 2px solid #1DA1F2; }
       .navbar__main-navigation a:hover > * {
         margin-bottom: -2px; }
+    .navbar__main-navigation a i {
+      margin-right: 4px; }
   .navbar__main-navigation .fa {
     font-size: 22px;
     display: inline-block;
