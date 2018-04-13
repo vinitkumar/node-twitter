@@ -6,40 +6,40 @@ body
           ul.navbar__main-navigation
             li
               a(href="/" title="Home")
-                i(class="fa fa-home", aria-hidden="true")
+                i(class="fas fa-home", aria-hidden="true")
                 span Home
-            |  
+            |
             li
               a(href="/users/"+req.user.id, title="Profile")
-                i(class="fa fa-user", aria-hidden="true")
+                i(class="fas fa-user", aria-hidden="true")
                 span Profile
-            |  
+            |
             li
               a(href="/analytics/", title="analytics")
-                i(class="fa fa-line-chart", aria-hidden="true")
+                i(class="fas fa-chart-line", aria-hidden="true")
                 span Analytics
             li
               a(href='/chat/get/' + req.user._id, title="Inbox")
-                i(class="fa fa-envelope", aria-hidden="true")
+                i(class="far fa-envelope", aria-hidden="true")
                 span Inbox
             li
               a(href="/chat/", title="chat")
-                i(class="fa fa-comments", aria-hidden="true")
+                i(class="far fa-comments", aria-hidden="true")
                 span Chat Users
+            li
+              a(href="/activities", title="activity")
+                i(class="far fa-bell", aria-hidden="true")
       span.navbar__logo
         a(href='/')
           img(src='/img/bird.svg')
       if (req.isAuthenticated())
         .navbar__group.navbar__group_right
           .navbar__profile
-            a(href="/activities", title="activity", class="navbar__notifications")
-              i(class="fa fa-bell", aria-hidden="true")
             a(href="/logout", title="logout", class="navbar__profile-logout")
-              i(class="fa fa-sign-out", aria-hidden="true")
               img(class='tweet__image chat-image logout-image', src=req.user.github.avatar_url)
               span Logout
           .navbar__new-tweet
             a.navbar__new-tweet-button.btn(data-toggle='modal', href='.new-tweet')
               span Tweet
   if (req.isAuthenticated())
-    include ../components/modals/new-tweet-modal 
+    include ../components/modals/new-tweet-modal

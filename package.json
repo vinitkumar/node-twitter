@@ -46,9 +46,6 @@
   "devDependencies": {
     "ava": "latest",
     "grunt": "latest",
-    "grunt-contrib": "latest",
-    "grunt-contrib-concat": "latest",
-    "grunt-contrib-jshint": "latest",
     "grunt-contrib-sass": "latest",
     "grunt-contrib-watch": "latest",
     "grunt-sass": "latest",
