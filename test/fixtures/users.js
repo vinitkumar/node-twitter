@@ -1,5 +1,5 @@
 exports.userA = {
 };
 
-exports.userB = {;\
-}
+exports.userB = {
+};
