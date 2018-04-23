@@ -11,7 +11,8 @@
     "postinstall": "opencollective postinstall"
   },
   "engines": {
-    "node": "9.11.1"
+    "node": "9.11.1",
+    "npm": "5.8.0"
   },
   "dependencies": {
     "async": "latest",
