@@ -34,12 +34,12 @@ body
           img(src='/img/bird.svg')
       if (req.isAuthenticated())
         .navbar__group.navbar__group_right
+          .navbar__new-tweet
+            a.navbar__new-tweet-button.btn(data-toggle='modal', href='.new-tweet')
+              span Tweet
           .navbar__profile
             a(href="/logout", title="logout", class="navbar__profile-logout")
               img(class='tweet__image chat-image logout-image', src=req.user.github.avatar_url)
               span Logout
-          .navbar__new-tweet
-            a.navbar__new-tweet-button.btn(data-toggle='modal', href='.new-tweet')
-              span Tweet
   if (req.isAuthenticated())
     include ../components/modals/new-tweet-modal

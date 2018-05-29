@@ -370,6 +370,9 @@ pre code {
 .stats-parent-container {
   margin-top: 60px; }
 
+.login-using-github {
+  font-size: 20px; }
+
 /* Main Dashboard */
 .follower, .tweet, .profile, .user-information, .useful-links,
 .recent-visits, .analytics {
