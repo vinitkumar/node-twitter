@@ -9,7 +9,7 @@
   .profile__user-info
     span.profile__handle
       - if (user.github !== undefined)
-        a(href=user.github.html_url, target='_blank') @#{user.github.login}
+        | #{user.github.login}
     .profile__messaging-options
       - if (currentUserId !== userId)
         a.btn(data-toggle='modal', href='#'+ modalId) Message #{name}
