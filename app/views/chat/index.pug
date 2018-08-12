@@ -34,6 +34,7 @@ block content
                               .controls
                                 textarea.flat.form-control(type='text', name='body', placeholder='Enter your Message here', maxlength='200')
                                 input(type="hidden", name='receiver', value=user._id)
+                              br
                             .form-actions
                               button.btn(type='submit') Send Message
   include ../components/pagination 
