@@ -107,7 +107,15 @@ You can also reach us at hello@node-twitter.opencollective.com.
 ### Contributors
 
 Thank you to all the people who have already contributed to node-twitter!
-<a href="graphs/contributors"><img src="https://opencollective.com/node-twitter/contributors.svg?width=890" /></a>
+
+[![0](https://sourcerer.io/fame/vinitkumar/vinitkumar/node-twitter/images/0)](https://sourcerer.io/fame/vinitkumar/vinitkumar/node-twitter/links/0)
+[![1](https://sourcerer.io/fame/vinitkumar/vinitkumar/node-twitter/images/1)](https://sourcerer.io/fame/vinitkumar/vinitkumar/node-twitter/links/1)
+[![2](https://sourcerer.io/fame/vinitkumar/vinitkumar/node-twitter/images/2)](https://sourcerer.io/fame/vinitkumar/vinitkumar/node-twitter/links/2)
+[![3](https://sourcerer.io/fame/vinitkumar/vinitkumar/node-twitter/images/3)](https://sourcerer.io/fame/vinitkumar/vinitkumar/node-twitter/links/3)
+[![4](https://sourcerer.io/fame/vinitkumar/vinitkumar/node-twitter/images/4)](https://sourcerer.io/fame/vinitkumar/vinitkumar/node-twitter/links/4)
+[![5](https://sourcerer.io/fame/vinitkumar/vinitkumar/node-twitter/images/5)](https://sourcerer.io/fame/vinitkumar/vinitkumar/node-twitter/links/5)
+[![6](https://sourcerer.io/fame/vinitkumar/vinitkumar/node-twitter/images/6)](https://sourcerer.io/fame/vinitkumar/vinitkumar/node-twitter/links/6)
+[![7](https://sourcerer.io/fame/vinitkumar/vinitkumar/node-twitter/images/7)](https://sourcerer.io/fame/vinitkumar/vinitkumar/node-twitter/links/7)
 
 
 ### Backers
