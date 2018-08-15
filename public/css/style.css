@@ -10,7 +10,7 @@ body > div.container {
   min-height: calc(100vh - 50px - 150px);
   padding-top: 30px;
   padding-bottom: 30px; }
-
+  
 h4 {
   font-size: 1.2rem; }
 
@@ -38,6 +38,9 @@ hr {
     background-color: #35abf3;
     cursor: pointer;
     color: #ffffff; }
+
+.login-btn {
+  margin-top: 40px; }
 
 textarea {
   color: #8899A6;
