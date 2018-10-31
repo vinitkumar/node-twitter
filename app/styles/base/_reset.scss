@@ -53,6 +53,16 @@ hr {
   }
 }
 
+.btn__delete{
+  background-color: firebrick;
+
+  &:hover {
+    background-color: #ff0000;
+    cursor: pointer;
+    color: $white;
+  }
+}
+
 textarea {
   color: $grey-blue;
   padding: 5px 10px;

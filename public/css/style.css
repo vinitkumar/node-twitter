@@ -328,11 +328,16 @@ pre code {
     color: #fff;
     margin: auto;
     margin-top: 10px;
-    display: block;
-  }
+    display: block; }
   .delete-confirmation__button:hover {
-    background-color: #ff0000;
-  }
+    background-color: #ff0000; }
+
+  .btn__delete{
+    background-color: firebrick; }
+
+  .btn__delete:hover{
+    background-color: #ff0000;}
+
   
 
 /* Profile Card */
