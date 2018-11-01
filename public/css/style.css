@@ -321,6 +321,25 @@ pre code {
   margin-top: 10px;
   display: block; }
 
+  .delete-confirmation__button{
+    font-size: 14px;
+    padding: 4px 10px;
+    background-color: firebrick;
+    color: #fff;
+    margin: auto;
+    margin-top: 10px;
+    display: block; }
+  .delete-confirmation__button:hover {
+    background-color: #ff0000; }
+
+  .btn__delete{
+    background-color: firebrick; }
+
+  .btn__delete:hover{
+    background-color: #ff0000;}
+
+  
+
 /* Profile Card */
 .follower, .tweet, .profile, .user-information, .useful-links,
 .recent-visits, .analytics {

@@ -80,6 +80,7 @@ module.exports = (app, passport, auth) => {
     users.session
   );
   router.post("/users/:userId/follow", follows.follow);
+  router.post("/users/:userId/delete", users.delete);
   router.param("userId", users.user);
 
   /**
