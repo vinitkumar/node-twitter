@@ -13,7 +13,7 @@
                 a(href="/users/" + comment.user)= comment.commenterName 
             else if (comment.user)
                 a(href="/users/" + comment.user)= comment.user 
-          span.tweet__date  • #{formatDate(tweet.createdAt, "%b %d, %Y at %I:%M %p")}
+          span.tweet__date  • #{formatDate(comment.createdAt, "%b %d, %Y at %I:%M %p")}
         p.tweet__content= comment.body
   hr
   form(class="tweet__comment-form" method="post", action="/tweets/"+ tweet._id + "/comments")
