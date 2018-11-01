@@ -47,9 +47,9 @@
   },
   "devDependencies": {
     "ava": "latest",
-    "grunt": "latest",
+    "grunt": "^1.0.3",
     "grunt-contrib-sass": "latest",
-    "grunt-contrib-watch": "latest",
+    "grunt-contrib-watch": "^1.1.0",
     "grunt-sass": "latest",
     "mocha": "latest",
     "nodemon": "latest",
