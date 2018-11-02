@@ -13,8 +13,8 @@ module.exports = {
       name: "Node Twitter"
     },
     github: {
-      clientID: "f7425bddcf5abe08cab0",
-      clientSecret: "50b844077112fc8b8fb446e6f3ab455553106b12",
+      clientID: "e3930cf94c772ba10ef1",
+      clientSecret: "fb1284b1874444a9c0c55c963092f836596ecc56",
       callbackURL: "http://localhost:3000/auth/github/callback"
     }
   },

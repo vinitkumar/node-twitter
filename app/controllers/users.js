@@ -158,14 +158,14 @@ exports.showFollowing = (req, res) => {
   showFollowers(req, res, 'following');
 };
 
-exports.delete = (req, res)=> {
-  Tweet.remove({ user: req.user._id}).then(()=>{
-    User.findByIdAndRemove(req.user._id).then(()=>{
+exports.delete = (req, res) => {
+  Tweet.remove({ user: req.user._id}).then(() => {
+    User.findByIdAndRemove(req.user._id).then(() => {
       return res.redirect('/login');
-    }).catch(()=>{
+    }).catch(() => {
       res.render('pages/500');
     });
-  }).catch(()=>{
+  }).catch(() => {
     res.render('pages/500');
   });
 };
