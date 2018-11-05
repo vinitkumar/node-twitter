@@ -1,0 +1,9 @@
+.delete-confirmation.modal.fade
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+        h4.modal-title Are You Sure ?
+      .modal-body
+        form(method='post', action=`/users/${user._id}/delete`)
+          button.btn.delete-confirmation__button(type='submit') Delete My Account
