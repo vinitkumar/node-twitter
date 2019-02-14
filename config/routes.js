@@ -1,19 +1,18 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const log = require('./middlewares/logger');
+const log = require("./middlewares/logger");
 
 const users = require("../app/controllers/users");
 const apiv1 = require("../app/controllers/apiv1");
-const chat = require('../app/controllers/chat');
+const chat = require("../app/controllers/chat");
 const analytics = require("../app/controllers/analytics");
 const tweets = require("../app/controllers/tweets");
 const comments = require("../app/controllers/comments");
 const favorites = require("../app/controllers/favorites");
 const follows = require("../app/controllers/follows");
-const activity = require('../app/controllers/activity');
+const activity = require("../app/controllers/activity");
 
 module.exports = (app, passport, auth) => {
-
   app.use("/", router);
   /**
    * Main unauthenticated routes
@@ -47,13 +46,13 @@ module.exports = (app, passport, auth) => {
    * All routes specified after this middleware require authentication in order
    * to access
    */
-  router.use(auth.requiresLogin)
+  router.use(auth.requiresLogin);
   /**
    * Analytics logging middleware
    * Anytime an authorized user makes a get request, it will be logged into
    * analytics
    */
-  router.get("/*", log.analytics)
+  router.get("/*", log.analytics);
 
   /**
    * Acivity routes
@@ -72,8 +71,7 @@ module.exports = (app, passport, auth) => {
   router.post("/users", users.create);
   router.post(
     "/users/sessions",
-    passport.authenticate("local",
-    {
+    passport.authenticate("local", {
       failureRedirect: "/login",
       failureFlash: "Invalid email or password"
     }),
@@ -86,42 +84,46 @@ module.exports = (app, passport, auth) => {
   /**
    * Chat routes
    */
-  router.get('/chat', chat.index);
-  router.get('/chat/:id', chat.show);
-  router.get('/chat/get/:userid', chat.getChat);
-  router.post('/chats', chat.create);
+  router.get("/chat", chat.index);
+  router.get("/chat/:id", chat.show);
+  router.get("/chat/get/:userid", chat.getChat);
+  router.post("/chats", chat.create);
   /**
-  * Analytics routes
-  */
+   * Analytics routes
+   */
   router.get("/analytics", analytics.index);
 
   /**
    * Tweet routes
    */
-  router.route("/tweets")
+  router
+    .route("/tweets")
     .get(tweets.index)
-    .post(tweets.create)
+    .post(tweets.create);
 
-  router.route("/tweets/:id")
+  router
+    .route("/tweets/:id")
     .post(auth.tweet.hasAuthorization, tweets.update)
-    .delete(auth.tweet.hasAuthorization, tweets.destroy)
+    .delete(auth.tweet.hasAuthorization, tweets.destroy);
 
   router.param("id", tweets.tweet);
 
   /**
    * Comment routes
    */
-  router.route("/tweets/:id/comments")
+  router
+    .route("/tweets/:id/comments")
     .get(comments.create)
     .post(comments.create)
-    .delete(comments.destroy)
+    .delete(comments.destroy);
 
   /**
    * Favorite routes
    */
-  router.route("/tweets/:id/favorites")
+  router
+    .route("/tweets/:id/favorites")
     .post(favorites.create)
-    .delete(favorites.destroy)
+    .delete(favorites.destroy);
 
   /**
    * Page not found route (must be at the end of all routes)

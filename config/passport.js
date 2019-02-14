@@ -67,7 +67,7 @@ module.exports = (passport, config) => {
               return done(err, user);
             });
           } else {
-            User.findOne({username: profile.username}, function (err, user) {
+            User.findOne({ username: profile.username }, function(err, user) {
               user.github = profile._json;
               user.save();
               return done(err, user);
