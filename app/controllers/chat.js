@@ -1,9 +1,9 @@
-const createPagination = require('./analytics').createPagination;
-const mongoose = require('mongoose');
-const Activity = mongoose.model('Activity');
-const Chat = mongoose.model('Chat');
-const User = mongoose.model('User');
-const logger = require('../middlewares/logger');
+const createPagination = require("./analytics").createPagination;
+const mongoose = require("mongoose");
+const Activity = mongoose.model("Activity");
+const Chat = mongoose.model("Chat");
+const User = mongoose.model("User");
+const logger = require("../middlewares/logger");
 
 exports.chat = (req, res, next, id) => {
   Chat.load(id, (err, chat) => {
@@ -11,7 +11,7 @@ exports.chat = (req, res, next, id) => {
       return next(err);
     }
     if (!chat) {
-      return next(new Error('Failed to load tweet' + id));
+      return next(new Error("Failed to load tweet" + id));
     }
     req.chat = chat;
     next();
@@ -25,19 +25,19 @@ exports.index = (req, res) => {
   const options = {
     perPage: perPage,
     page: page,
-    criteria: {github: { $exists: true}},
+    criteria: { github: { $exists: true } }
   };
   let users, count, pagination;
   User.list(options)
-    .then( result => {
+    .then(result => {
       users = result;
       return User.count();
     })
-    .then( result => {
+    .then(result => {
       count = result;
-      pagination = createPagination(req, Math.ceil(result / perPage), page+1);
-      res.render('chat/index', {
-        title: 'Chat User List',
+      pagination = createPagination(req, Math.ceil(result / perPage), page + 1);
+      res.render("chat/index", {
+        title: "Chat User List",
         users: users,
         page: page + 1,
         pagination: pagination,
@@ -45,10 +45,9 @@ exports.index = (req, res) => {
       });
     })
     .catch(error => {
-      return res.render('pages/500', { errors: error.errors });
+      return res.render("pages/500", { errors: error.errors });
     });
 };
-
 
 exports.show = (req, res) => {
   res.send(req.chat);
@@ -56,40 +55,38 @@ exports.show = (req, res) => {
 
 exports.getChat = (req, res) => {
   const options = {
-    criteria: {'receiver': req.params.userid}
+    criteria: { receiver: req.params.userid }
   };
   let chats;
-  Chat.list(options)
-    .then(result => {
-      chats = result;
-      res.render('chat/chat', {chats: chats});
-    });
+  Chat.list(options).then(result => {
+    chats = result;
+    res.render("chat/chat", { chats: chats });
+  });
 };
 
 exports.create = (req, res) => {
   const chat = new Chat({
     message: req.body.body,
     receiver: req.body.receiver,
-    sender: req.user.id,
+    sender: req.user.id
   });
-  logger.info('chat instance', chat);
-  chat.save( (err) => {
-
+  logger.info("chat instance", chat);
+  chat.save(err => {
     const activity = new Activity({
-      activityStream: 'sent a message to',
+      activityStream: "sent a message to",
       activityKey: chat.id,
       receiver: req.body.receiver,
-      sender: req.user.id,
+      sender: req.user.id
     });
-    activity.save((err) => {
+    activity.save(err => {
       if (err) {
         logger.error(err);
-        res.render('pages/500');
+        res.render("pages/500");
       }
     });
     logger.error(err);
     if (!err) {
-      res.redirect(req.header('Referrer'));
+      res.redirect(req.header("Referrer"));
     }
   });
 };

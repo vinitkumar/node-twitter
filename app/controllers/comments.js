@@ -1,8 +1,8 @@
 //@ts-check
-const utils = require('../../lib/utils');
-const mongoose = require('mongoose');
-const Activity = mongoose.model('Activity');
-const logger = require('../middlewares/logger');
+const utils = require("../../lib/utils");
+const mongoose = require("mongoose");
+const Activity = mongoose.model("Activity");
+const logger = require("../middlewares/logger");
 
 exports.load = (req, res, next, id) => {
   const tweet = req.tweet;
@@ -21,27 +21,27 @@ exports.create = (req, res) => {
   const user = req.user;
 
   if (!req.body.body) {
-    return res.redirect('/');
+    return res.redirect("/");
   }
   tweet.addComment(user, req.body, err => {
     if (err) {
       logger.error(err);
-      return res.render('pages/500');
+      return res.render("pages/500");
     }
     const activity = new Activity({
-      activityStream: 'added a comment',
+      activityStream: "added a comment",
       activityKey: tweet.id,
       sender: user,
-      receiver: req.tweet.user,
+      receiver: req.tweet.user
     });
     logger.info(activity);
-    activity.save((err) => {
+    activity.save(err => {
       if (err) {
         logger.error(err);
-        return res.render('pages/500');
+        return res.render("pages/500");
       }
     });
-    res.redirect('/');
+    res.redirect("/");
   });
 };
 
