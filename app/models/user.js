@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 const Tweet = mongoose.model("Tweet");
 const Schema = mongoose.Schema;
-const crypto = require("crypto");
-const authTypes = ["github"];
+const bcrypt = require('bcrypt');
+const crypto = require('crypto');
+const authTypes = ['github'];
 
 // ## Define UserSchema
 const UserSchema = new Schema(
@@ -78,18 +79,16 @@ UserSchema.methods = {
   },
 
   makeSalt: function() {
-    return String(Math.round(new Date().valueOf() * Math.random()));
+    return Math.round(new Date().valueOf() * Math.random());
   },
 
   encryptPassword: function(password) {
     if (!password) {
       return "";
     }
-    return crypto
-      .createHmac("sha256", this.salt)
-      .update(password)
-      .digest("hex");
-  }
+    let salt = this.makeSalt();
+    return bcrypt.hashSync(password, salt)
+  },
 };
 
 UserSchema.statics = {
