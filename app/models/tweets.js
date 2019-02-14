@@ -8,24 +8,27 @@ const getTags = tags => tags.join(",");
 const setTags = tags => tags.split(",");
 
 // Tweet Schema
-const TweetSchema = new Schema({
-  body: { type: String, default: "", trim: true, maxlength: 280},
-  user: { type: Schema.ObjectId, ref: "User" },
-  comments: [
-    {
-      body: { type: String, default: "", maxlength: 280},
-      user: { type: Schema.ObjectId, ref: "User" },
-      commenterName: { type: String, default: "" },
-      commenterPicture: { type: String, default: ""},
-      createdAt: { type: Date, default: Date.now }
-    },
-  ],
-  tags: { type: [], get: getTags, set: setTags },
-  favorites: [{ type: Schema.ObjectId, ref: "User" }],
-  favoriters: [{ type: Schema.ObjectId, ref: "User" }], // same as favorites
-  favoritesCount: Number,
-  createdAt: { type: Date, default: Date.now }
-}, {usePushEach: true});
+const TweetSchema = new Schema(
+  {
+    body: { type: String, default: "", trim: true, maxlength: 280 },
+    user: { type: Schema.ObjectId, ref: "User" },
+    comments: [
+      {
+        body: { type: String, default: "", maxlength: 280 },
+        user: { type: Schema.ObjectId, ref: "User" },
+        commenterName: { type: String, default: "" },
+        commenterPicture: { type: String, default: "" },
+        createdAt: { type: Date, default: Date.now }
+      }
+    ],
+    tags: { type: [], get: getTags, set: setTags },
+    favorites: [{ type: Schema.ObjectId, ref: "User" }],
+    favoriters: [{ type: Schema.ObjectId, ref: "User" }], // same as favorites
+    favoritesCount: Number,
+    createdAt: { type: Date, default: Date.now }
+  },
+  { usePushEach: true }
+);
 
 // Pre save hook
 TweetSchema.pre("save", function(next) {
@@ -79,7 +82,7 @@ TweetSchema.methods = {
         body: comment.body,
         user: user._id,
         commenterName: user.name,
-        commenterPicture: user.github.avatar_url,
+        commenterPicture: user.github.avatar_url
       });
       this.save(cb);
     } else {
@@ -87,10 +90,9 @@ TweetSchema.methods = {
         body: comment.body,
         user: user._id,
         commenterName: user.username,
-        commenterPicture: user.github.avatar_url,
+        commenterPicture: user.github.avatar_url
       });
 
-      
       this.save(cb);
     }
   },
@@ -135,20 +137,21 @@ TweetSchema.statics = {
   },
   // Tweets of User
   userTweets: function(id, callback) {
-    this.find({ user: ObjectId(id) }).toArray().exec(callback);
+    this.find({ user: ObjectId(id) })
+      .toArray()
+      .exec(callback);
   },
 
   // Count the number of tweets for a specific user
   countUserTweets: function(id, callback) {
     return this.find({ user: id })
-              .count()
-              .exec(callback);
+      .count()
+      .exec(callback);
   },
 
   // Count the total app tweets
   countTotalTweets: function() {
-    return this.find({})
-               .count();
+    return this.find({}).count();
   }
 };
 
