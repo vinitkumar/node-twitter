@@ -75,7 +75,7 @@ module.exports = (app, config, passport) => {
   app.use(methodOverride('_method'));
   app.use(
     session({
-      secret: 'noobjs',
+      secret: process.env.SECRET,
       resave: false,
       saveUninitialized: false,
       store: new mongoStore({

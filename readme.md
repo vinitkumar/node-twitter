@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/vinitkumar/node-twitter.svg?branch=master)](https://travis-ci.org/vinitkumar/node-twitter)
 
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/vinitkumar/node-twitter.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/vinitkumar/node-twitter/alerts/)
+
 Node twitter is an effort to rewrite some of Twitter's functionality using modern
 javascript based toolchain. It was mostly an effort to learn Node.js and trying to reverse
 engineer some of twitter's feature.
@@ -72,7 +74,7 @@ Express app started on port 3000
 
 First, thank you for considering contributing to node-twitter! It's people like you that make the open source community such a great community! 😊
 
-We welcome any type of contribution, not only code. You can help with 
+We welcome any type of contribution, not only code. You can help with
 - **QA**: file bug reports, the more details you can give the better (e.g. screenshots with the console open)
 - **Marketing**: writing blog posts, howto's, printing stickers, ...
 - **Community**: presenting the project at meetups, organizing a dedicated meetup for the local community, ...
