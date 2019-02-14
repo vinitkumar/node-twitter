@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const Tweet = mongoose.model("Tweet");
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
-const crypto = require('crypto');
 const authTypes = ['github'];
 
 // ## Define UserSchema
