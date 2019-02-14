@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
-const Tweet = mongoose.model('Tweet');
+const mongoose = require("mongoose");
+const Tweet = mongoose.model("Tweet");
 const Schema = mongoose.Schema;
-const crypto = require('crypto');
-const authTypes = ['github'];
+const crypto = require("crypto");
+const authTypes = ["github"];
 
 // ## Define UserSchema
 const UserSchema = new Schema(
@@ -14,14 +14,14 @@ const UserSchema = new Schema(
     hashedPassword: String,
     salt: String,
     github: {},
-    followers: [{type: Schema.ObjectId, ref: 'User'}],
-    following: [{type: Schema.ObjectId, ref: 'User'}],
-    tweets: Number,
+    followers: [{ type: Schema.ObjectId, ref: "User" }],
+    following: [{ type: Schema.ObjectId, ref: "User" }],
+    tweets: Number
   },
-  {usePushEach: true},
+  { usePushEach: true }
 );
 
-UserSchema.virtual('password')
+UserSchema.virtual("password")
   .set(function(password) {
     this._password = password;
     this.salt = this.makeSalt();
@@ -33,40 +33,40 @@ UserSchema.virtual('password')
 
 const validatePresenceOf = value => value && value.length;
 
-UserSchema.path('name').validate(function(name) {
+UserSchema.path("name").validate(function(name) {
   if (authTypes.indexOf(this.provider) !== -1) {
     return true;
   }
   return name.length;
-}, 'Name cannot be blank');
+}, "Name cannot be blank");
 
-UserSchema.path('email').validate(function(email) {
+UserSchema.path("email").validate(function(email) {
   if (authTypes.indexOf(this.provider) !== -1) {
     return true;
   }
   return email.length;
-}, 'Email cannot be blank');
+}, "Email cannot be blank");
 
-UserSchema.path('username').validate(function(username) {
+UserSchema.path("username").validate(function(username) {
   if (authTypes.indexOf(this.provider) !== -1) {
     return true;
   }
   return username.length;
-}, 'username cannot be blank');
+}, "username cannot be blank");
 
-UserSchema.path('hashedPassword').validate(function(hashedPassword) {
+UserSchema.path("hashedPassword").validate(function(hashedPassword) {
   if (authTypes.indexOf(this.provider) !== -1) {
     return true;
   }
   return hashedPassword.length;
-}, 'Password cannot be blank');
+}, "Password cannot be blank");
 
-UserSchema.pre('save', function(next) {
+UserSchema.pre("save", function(next) {
   if (
     !validatePresenceOf(this.password) &&
     authTypes.indexOf(this.provider) === -1
   ) {
-    next(new Error('Invalid password'));
+    next(new Error("Invalid password"));
   } else {
     next();
   }
@@ -83,28 +83,28 @@ UserSchema.methods = {
 
   encryptPassword: function(password) {
     if (!password) {
-      return '';
+      return "";
     }
     return crypto
-      .createHmac('sha256', this.salt)
+      .createHmac("sha256", this.salt)
       .update(password)
-      .digest('hex');
-  },
+      .digest("hex");
+  }
 };
 
 UserSchema.statics = {
   addfollow: function(id, cb) {
-    this.findOne({_id: id})
-      .populate('followers')
+    this.findOne({ _id: id })
+      .populate("followers")
       .exec(cb);
   },
   countUserTweets: function(id, cb) {
-    return Tweet.find({user: id})
+    return Tweet.find({ user: id })
       .count()
       .exec(cb);
   },
   load: function(options, cb) {
-    options.select = options.select || 'name username github';
+    options.select = options.select || "name username github";
     return this.findOne(options.criteria)
       .select(options.select)
       .exec(cb);
@@ -112,13 +112,13 @@ UserSchema.statics = {
   list: function(options) {
     const criteria = options.criteria || {};
     return this.find(criteria)
-      .populate('user', 'name username')
+      .populate("user", "name username")
       .limit(options.perPage)
       .skip(options.perPage * options.page);
   },
   countTotalUsers: function() {
     return this.find({}).count();
-  },
+  }
 };
 
-mongoose.model('User', UserSchema);
+mongoose.model("User", UserSchema);
