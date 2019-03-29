@@ -51,6 +51,22 @@ module.exports = {
   }
 };
 ```
+## Usage via Docker
+
+
+The fastest way to get this running is with docker. Docker bootstrap all dependencies and
+you can just run these couple of commands to get it up and running.
+
+```
+# first build the container
+docker-compose --log-level DEBUG build web
+
+# then run the server like this:
+
+docker-compose run --service-ports web
+```
+Now, open the website on http://localhost:3000 and it should just work.
+
 
 ## Usage
 
