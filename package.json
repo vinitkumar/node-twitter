@@ -52,7 +52,7 @@
     "grunt-contrib-sass": "latest",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-sass": "latest",
-    "mocha": "latest",
+    "mocha": "5.2.0",
     "nodemon": "latest",
     "should": "latest",
     "supertest": "^3.0.0"
