@@ -144,7 +144,7 @@ Thank you to all our sponsors! (please ask your company to also support this ope
 
 <!-- This `CONTRIBUTING.md` is based on @nayafia's template https://github.com/nayafia/contributing-template -->
 ## License
-[GPL-3.0](https://github.com/vinitkumar/node-twitter/blob/master/License)
+[Apache License 2.0](https://github.com/vinitkumar/node-twitter/blob/master/License)
 
 ## Important
 
