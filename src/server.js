@@ -15,7 +15,7 @@ mongoose.connect(config.db, {
   useMongoClient: true
 });
 
-const models_path = __dirname+'/app/models';
+const models_path = __dirname+'/models';
 fs.readdirSync(models_path).forEach(file => {
   require(models_path+'/'+file);
 });
