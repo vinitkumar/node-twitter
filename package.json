@@ -6,7 +6,7 @@
   "private": false,
   "author": "Vinit Kumar <vinit1414.08@bitmesra.ac.in> (http://vinitkumar.me)",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node src/server.js",
     "test": "make test",
     "postinstall": "opencollective postinstall"
   },
