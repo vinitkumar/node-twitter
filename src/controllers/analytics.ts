@@ -7,7 +7,7 @@ import  url from "url";
 import logger from "../middlewares/logger";
 import { Response, Request, NextFunction } from "express";
 
-exports.createPagination = (req, pages, page) => {
+export let createPagination = (req, pages, page) => {
   let params = qs.parse(url.parse(req.url).query);
   let str = "";
   let pageNumberClass;
@@ -105,8 +105,8 @@ exports.createPagination = (req, pages, page) => {
   return str;
 };
 
-exports.index = (req, res) => {
-  let createPagination = exports.createPagination;
+export let ndex = (req, res) => {
+  let createPagination = createPagination;
   const page = (req.query.page > 0 ? req.query.page : 1) - 1;
   const perPage = 10;
   const options = {

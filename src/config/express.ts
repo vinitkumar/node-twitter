@@ -15,6 +15,8 @@ import cookieParser from "cookie-parser";
 import Raven from "raven";
 import moment from "moment";
 import morgan from "morgan";
+import { Response, Request, NextFunction, ErrorRequestHandler } from "express";
+import { HttpException } from "./HttpException";
 
 module.exports = (app, config, passport) => {
   app.set("showStackError", true);
@@ -23,7 +25,7 @@ module.exports = (app, config, passport) => {
   // use morgan for logging
   app.use(
     morgan("dev", {
-      skip: function(req, res) {
+      skip: function(req: Request, res: Response) {
         return res.statusCode < 400;
       },
       stream: process.stderr
@@ -33,7 +35,7 @@ module.exports = (app, config, passport) => {
   // use morgan for logging
   app.use(
     morgan("dev", {
-      skip: function(req, res) {
+      skip: function(req: Request, res: Response) {
         return res.statusCode >= 400;
       },
       stream: process.stdout
@@ -47,7 +49,7 @@ module.exports = (app, config, passport) => {
   }
   app.use(
     compression({
-      filter: function(req, res) {
+      filter: function(req: Request, res: Response) {
         return /json|text|javascript|css/.test(res.getHeader("Content-Type"));
       },
       level: 9
@@ -89,7 +91,7 @@ module.exports = (app, config, passport) => {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  app.use((err, req, res, next) => {
+  app.use((err: HttpException, req: Request, res: Response, next: NextFunction) => {
     if (err.message.indexOf("not found") !== -1) {
       return next();
     }

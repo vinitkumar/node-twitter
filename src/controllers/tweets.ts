@@ -8,7 +8,7 @@ const _ = require("underscore");
 import logger from  "../middlewares/logger";
 import { Response, Request, NextFunction } from "express";
 
-exports.tweet = (req: Request, res: Response, next: NextFunction, id: BigInteger) => {
+export let tweet = (req: Request, res: Response, next: NextFunction, id: BigInteger) => {
   Tweet.load(id, (err, tweet) => {
     if (err) {
       return next(err);
@@ -22,7 +22,7 @@ exports.tweet = (req: Request, res: Response, next: NextFunction, id: BigInteger
 };
 
 // ### Create a Tweet
-exports.create = (req: Request, res: Response) => {
+export let create = (req: Request, res: Response) => {
   const tweet = new Tweet(req.body);
   tweet.user = req.user;
   tweet.uploadAndSave({}, err => {
@@ -35,7 +35,7 @@ exports.create = (req: Request, res: Response) => {
 };
 
 // ### Update a tweet
-exports.update = (req: Request, res: Response) => {
+export let update = (req: Request, res: Response) => {
   let tweet = req.tweet;
   tweet = _.extend(tweet, { body: req.body.tweet });
   tweet.uploadAndSave({}, err => {
@@ -47,7 +47,7 @@ exports.update = (req: Request, res: Response) => {
 };
 
 // ### Delete a tweet
-exports.destroy = (req: Request, res: Response) => {
+export let destroy = (req: Request, res: Response) => {
   const tweet = req.tweet;
   tweet.remove(err => {
     if (err) {
@@ -57,7 +57,7 @@ exports.destroy = (req: Request, res: Response) => {
   });
 };
 
-exports.index = (req: Request, res: Response) => {
+export let index = (req: Request, res: Response) => {
   const page = (req.query.page > 0 ? req.query.page : 1) - 1;
   const perPage = 10;
   const options = {

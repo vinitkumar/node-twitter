@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
-const utils = require("../../lib/utils");
+import utils from "../../lib/utils";
+import { HttpException } from "src/config/HttpException";
+import { HttpException } from "src/config/HttpException";
 
 //  Getters and Setters
 const getTags = tags => tags.join(",");
@@ -64,7 +66,7 @@ TweetSchema.methods = {
     }
     imager.upload(
       images,
-      (err, cdnUri, files) => {
+      (err: HttpException, cdnUri, files) => {
         if (err) {
           return callback(err);
         }

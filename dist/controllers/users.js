@@ -150,7 +150,7 @@ exports.showFollowers = (req, res) => {
 exports.showFollowing = (req, res) => {
     showFollowers(req, res, "following");
 };
-exports.delete = (req, res) => {
+exports.deleteTweet = (req, res) => {
     Tweet.remove({ user: req.user._id })
         .then(() => {
         User.findByIdAndRemove(req.user._id)

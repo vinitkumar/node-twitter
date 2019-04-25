@@ -1,6 +1,6 @@
 import { Response, Request, NextFunction } from "express";
 // ### Create Favorite
-exports.create = (req: Request, res: Response) => {
+export let create = (req: Request, res: Response) => {
   const tweet = req.tweet;
   tweet._favorites = req.user;
   tweet.save(err => {
@@ -12,7 +12,7 @@ exports.create = (req: Request, res: Response) => {
 };
 
 // ### Delete Favorite
-exports.destroy = (req: Request, res: Response) => {
+export let destroy = (req: Request, res: Response) => {
   const tweet = req.tweet;
 
   tweet._favorites = req.user;

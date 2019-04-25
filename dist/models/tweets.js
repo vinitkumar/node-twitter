@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const Schema = mongoose_1.default.Schema;
-const utils = require("../../lib/utils");
+const utils_1 = __importDefault(require("../../lib/utils"));
 //  Getters and Setters
 const getTags = tags => tags.join(",");
 const setTags = tags => tags.split(",");
@@ -86,7 +86,7 @@ TweetSchema.methods = {
         }
     },
     removeComment: function (commentId, cb) {
-        let index = utils.indexof(this.comments, { id: commentId });
+        let index = utils_1.default.indexof(this.comments, { id: commentId });
         if (~index) {
             this.comments.splice(index, 1);
         }

@@ -109,8 +109,8 @@ exports.createPagination = (req, pages, page) => {
     // Return the pagination string to be outputted in the pug templates
     return str;
 };
-exports.index = (req, res) => {
-    let createPagination = exports.createPagination;
+exports.ndex = (req, res) => {
+    let createPagination = createPagination;
     const page = (req.query.page > 0 ? req.query.page : 1) - 1;
     const perPage = 10;
     const options = {

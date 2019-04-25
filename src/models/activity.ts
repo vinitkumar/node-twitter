@@ -11,7 +11,7 @@ const ActivitySchema = new Schema({
 });
 
 ActivitySchema.statics = {
-  list: function(options) {
+  list: function(options: Object) {
     const criteria = options.criteria || {};
     return this.find(criteria)
       .populate("sender", "name username provider")

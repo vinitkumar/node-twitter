@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const module_1 = __importDefault(require());
+const analytics_1 = __importDefault(require("./analytics"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const Activity = mongoose_1.default.model("Activity");
 const Chat = mongoose_1.default.model("Chat");
@@ -38,7 +38,7 @@ exports.index = (req, res) => {
     })
         .then(result => {
         count = result;
-        pagination = module_1.default(req, Math.ceil(result / perPage), page + 1);
+        pagination = analytics_1.default(req, Math.ceil(result / perPage), page + 1);
         res.render("chat/index", {
             title: "Chat User List",
             users: users,

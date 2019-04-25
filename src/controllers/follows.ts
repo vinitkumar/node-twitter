@@ -4,7 +4,7 @@ const Activity = mongoose.model("Activity");
 import  logger  from "../middlewares/logger";
 import { Response, Request, NextFunction } from "express";
 
-exports.follow = (req: Request, res: Response) => {
+export let follow = (req: Request, res: Response) => {
   const user = req.user;
   const id = req.url.split("/")[2];
   // push the current user in the follower list of the target user

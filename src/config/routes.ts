@@ -2,15 +2,15 @@ import express from "express";
 const router = express.Router();
 import log from "./middlewares/logger";
 
-import users from "../controllers/users";
-import apiv1 from "../controllers/apiv1";
-import chat from "../controllers/chat";
-import analytics from "../controllers/analytics";
-import tweets from "../controllers/tweets";
-import comments from "../controllers/comments";
-import favorites from "../controllers/favorites";
-import follows from "../controllers/follows";
-import activity from "../controllers/activity";
+import * as users from "../controllers/users";
+import * as apiv1 from "../controllers/apiv1";
+import * as chat from "../controllers/chat";
+import * as analytics from "../controllers/analytics";
+import * as tweets from "../controllers/tweets";
+import * as comments from "../controllers/comments";
+import * as favorites from "../controllers/favorites";
+import * as follows from "../controllers/follows";
+import * as activity from "../controllers/activity";
 
 module.exports = (app, passport, auth) => {
   app.use("/", router);
