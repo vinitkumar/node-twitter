@@ -1,11 +1,31 @@
 import mongoose, {Document, Model, Schema} from "mongoose";
 
+
 const AnalyticsSchema = new Schema({
   ip: String,
   user: { type: Schema.Types.ObjectId, ref: "User" },
   url: String,
   createdAt: { type: Date, default: Date.now }
 });
+
+interface iGithub extends Document {
+  avatar_url: string,
+}
+
+interface iuser extends Document {
+  username: string,
+  _id: string,
+  name: string,
+  github: iGithub,
+}
+
+
+interface iAnalytics extends Document {
+  ip: string,
+  user: iUser,
+  url: string,
+  createdAt: string
+}
 
 type schemaOptions = {
   criteria: Object,

@@ -22,7 +22,7 @@ interface iUser extends Document {
   username: string,
   _id: string,
   name: string,
-  github: iGithub
+  github: iGithub,
 }
 
 interface iComment extends Document {
@@ -55,7 +55,8 @@ const TweetSchema = new Schema(
 // Pre save hook
 TweetSchema.pre("save", function(next) {
   if (this.favorites) {
-    this.favoritesCount = this.favorites.length;
+    this.favoritesCount = this.favorites.length
+    ;
   }
   if (this.favorites) {
     this.favoriters = this.favorites;

@@ -104,7 +104,7 @@ export let list = (req: Request, res: Response) => {
     });
 };
 
-export let show = (req: Request, res: Response) => {
+export let show = (req: TweetRequest, res: Response) => {
   const user = req.profile;
   const reqUserId = user._id;
   const userId = reqUserId.toString();
@@ -139,7 +139,7 @@ export let show = (req: Request, res: Response) => {
     });
 };
 
-export let user = (req: Request, res: Response, next: NextFunction, id: BigInteger) => {
+export let user = (req: TweetRequest, res: Response, next: NextFunction, id: BigInteger) => {
   User.findOne({ _id: id }).exec((err, user) => {
     if (err) {
       return next(err);
@@ -152,12 +152,12 @@ export let user = (req: Request, res: Response, next: NextFunction, id: BigInteg
   });
 };
 
-export let showFollowers = (req: Request, res: Response) => {
-  showFollowers(req, res, "followers");
+export let showFollowers = (req: TweetRequest, res: Response) => {
+  getshowFollowers(req, res, "followers");
 };
 
-export let showFollowing = (req: Request, res: Response) => {
-  showFollowers(req, res, "following");
+export let showFollowing = (req: TweetRequest, res: Response) => {
+  getshowFollowers(req, res, "following");
 };
 
 export let deleteTweet = (req: Request, res: Response) => {
@@ -176,10 +176,15 @@ export let deleteTweet = (req: Request, res: Response) => {
     });
 };
 
-function showFollowers(req: Request, res: Response, type: string) {
+
+interface TweetRequest extends Request {
+  profile: Object,
+}
+
+function getshowFollowers(req: TweetRequest, res: Response, type: string) {
   let user = req.profile;
   let followers = user[type];
-  let tweetCount;
+  let tweetCount: BigInteger;
   let followingCount = user.following.length;
   let followerCount = user.followers.length;
   let userFollowers = User.find({ _id: { $in: followers } }).populate(

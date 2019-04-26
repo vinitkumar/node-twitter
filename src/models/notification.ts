@@ -1,9 +1,8 @@
-import mongoose from "mongoose";
-const Schema = mongoose.Schema;
+import mongoose, {Document, Model, Schema} from "mongoose";
 
 const Notification = new Schema({
   type: { type: Number },
-  activity: { type: Schema.ObjectId, ref: "Activity" }
+  activity: { type: Schema.Types.ObjectId, ref: "Activity" }
 });
 
 mongoose.model("Notification", Notification);
