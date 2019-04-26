@@ -1,30 +1,36 @@
 "use strict";
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const mongoose_1 = __importDefault(require("mongoose"));
-const Schema = mongoose_1.default.Schema;
+const mongoose_1 = __importStar(require("mongoose"));
 const utils_1 = __importDefault(require("../../lib/utils"));
 //  Getters and Setters
 const getTags = tags => tags.join(",");
 const setTags = tags => tags.split(",");
 // Tweet Schema
-const TweetSchema = new Schema({
+const TweetSchema = new mongoose_1.Schema({
     body: { type: String, default: "", trim: true, maxlength: 280 },
-    user: { type: Schema.ObjectId, ref: "User" },
+    user: { type: mongoose_1.Schema.Types.ObjectId, ref: "User" },
     comments: [
         {
             body: { type: String, default: "", maxlength: 280 },
-            user: { type: Schema.ObjectId, ref: "User" },
+            user: { type: mongoose_1.Schema.Types.ObjectId, ref: "User" },
             commenterName: { type: String, default: "" },
             commenterPicture: { type: String, default: "" },
             createdAt: { type: Date, default: Date.now }
         }
     ],
     tags: { type: [], get: getTags, set: setTags },
-    favorites: [{ type: Schema.ObjectId, ref: "User" }],
-    favoriters: [{ type: Schema.ObjectId, ref: "User" }],
+    favorites: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "User" }],
+    favoriters: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "User" }],
     favoritesCount: Number,
     createdAt: { type: Date, default: Date.now }
 }, { usePushEach: true });

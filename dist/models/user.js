@@ -1,15 +1,21 @@
 "use strict";
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const mongoose_1 = __importDefault(require("mongoose"));
+const mongoose_1 = __importStar(require("mongoose"));
 const Tweet = mongoose_1.default.model("Tweet");
-const Schema = mongoose_1.default.Schema;
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const authTypes = ['github'];
 // ## Define UserSchema
-const UserSchema = new Schema({
+const UserSchema = new mongoose_1.Schema({
     name: String,
     email: String,
     username: String,
@@ -17,8 +23,8 @@ const UserSchema = new Schema({
     hashedPassword: String,
     salt: String,
     github: {},
-    followers: [{ type: Schema.ObjectId, ref: "User" }],
-    following: [{ type: Schema.ObjectId, ref: "User" }],
+    followers: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "User" }],
+    following: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "User" }],
     tweets: Number
 }, { usePushEach: true });
 UserSchema.virtual("password")
@@ -30,7 +36,7 @@ UserSchema.virtual("password")
     .get(function () {
     return this._password;
 });
-const validatePresenceOf = value => value && value.length;
+const validatePresenceOf = function (value) { return value && value.length; };
 UserSchema.path("name").validate(function (name) {
     if (authTypes.indexOf(this.provider) !== -1) {
         return true;
