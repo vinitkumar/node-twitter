@@ -6,9 +6,6 @@ exports.requiresLogin = (req, res, next) => {
     }
     next();
 };
-/**
- * User authorization routing middleware
- */
 exports.user = {
     hasAuthorization: (req, res, next) => {
         if (req.profile.id != req.user.id) {
@@ -32,12 +29,11 @@ exports.comment = {
     hasAuthorization: (req, res, next) => {
         // if the current user is comment owner or article owner
         // give them authority to delete
-        if (req.user.id === req.comment.user.id || req.user.id === req.article.user.id) {
+        if (req.user.id === req.comment.user.id) {
             next();
         }
         else {
             req.flash('info', 'You are not authorized');
-            res.redirect('/articles/' + req.article.id);
         }
     }
 };

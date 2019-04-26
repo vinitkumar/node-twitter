@@ -12,7 +12,7 @@ interface iGithub extends Document {
   avatar_url: string,
 }
 
-interface iuser extends Document {
+interface iUser extends Document {
   username: string,
   _id: string,
   name: string,

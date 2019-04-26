@@ -1,7 +1,20 @@
-import mongoose, {Model, Schema} from "mongoose";
+import mongoose, {Model, Schema, Document} from "mongoose";
 const Tweet = mongoose.model("Tweet");
 import bcrypt from 'bcrypt';
 const authTypes = ['github'];
+
+export type UserModel = Document & {
+    name: string,
+    email: string,
+    username: string,
+    provider: string,
+    hashedPassword: string,
+    salt: string,
+    github: {},
+    followers: UserModel[],
+    following: UserModel[],
+    tweets: number
+};
 
 // ## Define UserSchema
 const UserSchema = new Schema(

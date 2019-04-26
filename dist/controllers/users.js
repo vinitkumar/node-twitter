@@ -145,10 +145,10 @@ exports.user = (req, res, next, id) => {
     });
 };
 exports.showFollowers = (req, res) => {
-    showFollowers(req, res, "followers");
+    getshowFollowers(req, res, "followers");
 };
 exports.showFollowing = (req, res) => {
-    showFollowers(req, res, "following");
+    getshowFollowers(req, res, "following");
 };
 exports.deleteTweet = (req, res) => {
     Tweet.remove({ user: req.user._id })
@@ -165,7 +165,7 @@ exports.deleteTweet = (req, res) => {
         res.render("pages/500");
     });
 };
-function showFollowers(req, res, type) {
+function getshowFollowers(req, res, type) {
     let user = req.profile;
     let followers = user[type];
     let tweetCount;

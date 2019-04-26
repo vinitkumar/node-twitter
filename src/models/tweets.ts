@@ -29,6 +29,10 @@ interface iComment extends Document {
   body: string,
 }
 
+export type TweetModel = Document & {
+};
+
+
 // Tweet Schema
 const TweetSchema = new Schema(
   {
