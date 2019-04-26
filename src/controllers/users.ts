@@ -12,7 +12,7 @@ export let authCallback = (req: Request, res: Response) => {
 };
 
 export let login = (req: Request, res: Response) => {
-  let tweetCount, userCount, analyticsCount;
+  let tweetCount: BigInteger, userCount: BigInteger, analyticsCount: BigInteger;
   let options = {};
   Analytics.list(options)
     .then(() => {

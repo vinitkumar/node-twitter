@@ -1,11 +1,11 @@
-import mongoose, {Model, Schema} from "mongoose";
-import utils from "../../lib/utils";
-import { HttpException } from "src/config/HttpException";
+import mongoose, {Document, Model, Schema} from "mongoose";
+import utils from "../lib/utils";
+import { HttpException } from "../config/HttpException";
 
 //  Getters and Setters
-const getTags = tags => tags.join(",");
+const getTags = function (tags: Array<string>) { return tags.join(",")};
 
-const setTags = tags => tags.split(",");
+const setTags = function (tags: string) { return tags.split(","); }
 
 type schemaOptions = {
   criteria: Object,
@@ -14,6 +14,20 @@ type schemaOptions = {
   select: string,
 }
 
+interface iGithub extends Document {
+  avatar_url: string,
+}
+
+interface iUser extends Document {
+  username: string,
+  _id: string,
+  name: string,
+  github: iGithub
+}
+
+interface iComment extends Document {
+  body: string,
+}
 
 // Tweet Schema
 const TweetSchema = new Schema(
@@ -51,11 +65,11 @@ TweetSchema.pre("save", function(next) {
 
 // Validations in the schema
 TweetSchema.path("body").validate(
-  body => body.length > 0,
+ function (body: string) { return body.length > 0},
   "Tweet body cannot be blank"
 );
 
-TweetSchema.virtual("_favorites").set(function(user) {
+TweetSchema.virtual("_favorites").set(function(user: iUser) {
   if (this.favorites.indexOf(user._id) === -1) {
     this.favorites.push(user._id);
   } else {
@@ -66,25 +80,9 @@ TweetSchema.virtual("_favorites").set(function(user) {
 TweetSchema.methods = {
   uploadAndSave: function(images: Array<string>, callback: Function) {
     // const imager = new Imager(imagerConfig, "S3");
-    const self = this;
-    if (!images || !images.length) {
-      return this.save(callback);
-    }
-    imager.upload(
-      images,
-      (err: HttpException, cdnUri, files) => {
-        if (err) {
-          return callback(err);
-        }
-        if (files.length) {
-          self.image = { cdnUri: cdnUri, files: files };
-        }
-        self.save(callback);
-      },
-      "article"
-    );
+    this.save();
   },
-  addComment: function(user: User, comment: Comment, cb: Function) {
+  addComment: function(user: iUser, comment: iComment, cb: Function) {
     if (user.name) {
       this.comments.push({
         body: comment.body,
@@ -105,7 +103,7 @@ TweetSchema.methods = {
     }
   },
 
-  removeComment: function(commentId, cb) {
+  removeComment: function(commentId: string, cb: Function) {
     let index = utils.indexof(this.comments, { id: commentId });
     if (~index) {
       this.comments.splice(index, 1);
@@ -145,7 +143,7 @@ TweetSchema.statics = {
   },
   // Tweets of User
   userTweets: function(id: bigint, callback: Function) {
-    this.find({ user: ObjectId(id) })
+    this.find({ user: id })
       .toArray()
       .exec(callback);
   },
