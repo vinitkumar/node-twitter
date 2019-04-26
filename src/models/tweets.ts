@@ -1,7 +1,5 @@
-import mongoose from "mongoose";
-const Schema = mongoose.Schema;
+import mongoose, {Model, Schema} from "mongoose";
 import utils from "../../lib/utils";
-import { HttpException } from "src/config/HttpException";
 import { HttpException } from "src/config/HttpException";
 
 //  Getters and Setters
@@ -9,23 +7,31 @@ const getTags = tags => tags.join(",");
 
 const setTags = tags => tags.split(",");
 
+type schemaOptions = {
+  criteria: Object,
+  perPage: bigint,
+  page: bigint,
+  select: string,
+}
+
+
 // Tweet Schema
 const TweetSchema = new Schema(
   {
     body: { type: String, default: "", trim: true, maxlength: 280 },
-    user: { type: Schema.ObjectId, ref: "User" },
+    user: { type: Schema.Types.ObjectId, ref: "User" },
     comments: [
       {
         body: { type: String, default: "", maxlength: 280 },
-        user: { type: Schema.ObjectId, ref: "User" },
+        user: { type: Schema.Types.ObjectId, ref: "User" },
         commenterName: { type: String, default: "" },
         commenterPicture: { type: String, default: "" },
         createdAt: { type: Date, default: Date.now }
       }
     ],
     tags: { type: [], get: getTags, set: setTags },
-    favorites: [{ type: Schema.ObjectId, ref: "User" }],
-    favoriters: [{ type: Schema.ObjectId, ref: "User" }], // same as favorites
+    favorites: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    favoriters: [{ type: Schema.Types.ObjectId, ref: "User" }], // same as favorites
     favoritesCount: Number,
     createdAt: { type: Date, default: Date.now }
   },
@@ -58,7 +64,7 @@ TweetSchema.virtual("_favorites").set(function(user) {
 });
 
 TweetSchema.methods = {
-  uploadAndSave: function(images, callback) {
+  uploadAndSave: function(images: Array<string>, callback: Function) {
     // const imager = new Imager(imagerConfig, "S3");
     const self = this;
     if (!images || !images.length) {
@@ -78,7 +84,7 @@ TweetSchema.methods = {
       "article"
     );
   },
-  addComment: function(user, comment, cb) {
+  addComment: function(user: User, comment: Comment, cb: Function) {
     if (user.name) {
       this.comments.push({
         body: comment.body,
@@ -113,14 +119,14 @@ TweetSchema.methods = {
 // ## Static Methods in the TweetSchema
 TweetSchema.statics = {
   // Load tweets
-  load: function(id, callback) {
+  load: function(id: bigint, callback: Function) {
     this.findOne({ _id: id })
       .populate("user", "name username provider github")
       .populate("comments.user")
       .exec(callback);
   },
   // List tweets
-  list: function(options) {
+  list: function(options: schemaOptions) {
     const criteria = options.criteria || {};
     return this.find(criteria)
       .populate("user", "name username provider github")
@@ -129,7 +135,7 @@ TweetSchema.statics = {
       .skip(options.perPage * options.page);
   },
   // List tweets
-  limitedList: function(options) {
+  limitedList: function(options: schemaOptions) {
     const criteria = options.criteria || {};
     return this.find(criteria)
       .populate("user", "name username")
@@ -138,14 +144,14 @@ TweetSchema.statics = {
       .skip(options.perPage * options.page);
   },
   // Tweets of User
-  userTweets: function(id, callback) {
+  userTweets: function(id: bigint, callback: Function) {
     this.find({ user: ObjectId(id) })
       .toArray()
       .exec(callback);
   },
 
   // Count the number of tweets for a specific user
-  countUserTweets: function(id, callback) {
+  countUserTweets: function(id: bigint, callback: Function) {
     return this.find({ user: id })
       .count()
       .exec(callback);

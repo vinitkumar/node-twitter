@@ -40,6 +40,7 @@
     "moment": "^2.20.1",
     "mongoose": "^4.13.9",
     "morgan": "^1.9.0",
+    "node-sass": "^4.7.2",
     "opencollective": "^1.0.3",
     "passport": "^0.3.2",
     "passport-github": "latest",
@@ -52,8 +53,7 @@
     "serve-favicon": "^2.4.5",
     "underscore": "latest",
     "view-helpers": "latest",
-    "winston": "^2.4.0",
-    "node-sass": "^4.7.2"
+    "winston": "^2.4.0"
   },
   "devDependencies": {
     "@types/async": "^2.0.45",
