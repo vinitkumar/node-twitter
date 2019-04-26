@@ -11,10 +11,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-const utils_1 = __importDefault(require("../../lib/utils"));
+const utils_1 = __importDefault(require("../lib/utils"));
 //  Getters and Setters
-const getTags = tags => tags.join(",");
-const setTags = tags => tags.split(",");
+const getTags = function (tags) { return tags.join(","); };
+const setTags = function (tags) { return tags.split(","); };
 // Tweet Schema
 const TweetSchema = new mongoose_1.Schema({
     body: { type: String, default: "", trim: true, maxlength: 280 },
@@ -45,7 +45,7 @@ TweetSchema.pre("save", function (next) {
     next();
 });
 // Validations in the schema
-TweetSchema.path("body").validate(body => body.length > 0, "Tweet body cannot be blank");
+TweetSchema.path("body").validate(function (body) { return body.length > 0; }, "Tweet body cannot be blank");
 TweetSchema.virtual("_favorites").set(function (user) {
     if (this.favorites.indexOf(user._id) === -1) {
         this.favorites.push(user._id);
@@ -57,19 +57,7 @@ TweetSchema.virtual("_favorites").set(function (user) {
 TweetSchema.methods = {
     uploadAndSave: function (images, callback) {
         // const imager = new Imager(imagerConfig, "S3");
-        const self = this;
-        if (!images || !images.length) {
-            return this.save(callback);
-        }
-        imager.upload(images, (err, cdnUri, files) => {
-            if (err) {
-                return callback(err);
-            }
-            if (files.length) {
-                self.image = { cdnUri: cdnUri, files: files };
-            }
-            self.save(callback);
-        }, "article");
+        this.save();
     },
     addComment: function (user, comment, cb) {
         if (user.name) {
@@ -131,7 +119,7 @@ TweetSchema.statics = {
     },
     // Tweets of User
     userTweets: function (id, callback) {
-        this.find({ user: ObjectId(id) })
+        this.find({ user: id })
             .toArray()
             .exec(callback);
     },
