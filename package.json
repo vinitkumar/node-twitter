@@ -29,7 +29,7 @@
     "forever": "latest",
     "method-override": "^2.3.10",
     "moment": "^2.20.1",
-    "mongoose": "^4.13.9",
+    "mongoose": "^5.2.1",
     "morgan": "^1.9.0",
     "opencollective": "^1.0.3",
     "passport": "^0.3.2",

@@ -10,9 +10,11 @@ const port = process.env.PORT || 3000;
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.db, {
+  //useUnifiedTopology: true,
+  useNewUrlParser: true,  
   keepAlive: true,
-  reconnectTries: Number.MAX_VALUE,
-  useMongoClient: true
+  reconnectTries: Number.MAX_VALUE
+  //useMongoClient: true
 });
 
 const models_path = __dirname+'/app/models';
