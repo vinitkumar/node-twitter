@@ -6,16 +6,17 @@ const config = require('./config/config')[env];
 const auth = require('./config/middlewares/authorization');
 const mongoose = require('mongoose');
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
-mongoose.Promise = global.Promise;
 mongoose.connect(config.db, {
-  //useUnifiedTopology: true,
-  useNewUrlParser: true,  
+  useUnifiedTopology: true,
+  //useNewUrlParser: true,  
   keepAlive: true,
   reconnectTries: Number.MAX_VALUE
   //useMongoClient: true
-});
+})
+.then(() => console.log("Connected"))
+.catch(err => console.log(err));
 
 const models_path = __dirname+'/app/models';
 fs.readdirSync(models_path).forEach(file => {
