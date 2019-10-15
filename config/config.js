@@ -6,7 +6,7 @@ const clientSecret = process.env.GITHUB_CLIENT_SECRET;
 
 module.exports = {
   development: {
-    db: "mongodb://localhost/ntwitter",
+    db: "mongodb://mongodb:27017/ntwitter",
     root: rootPath,
     app: {
       name: "Node Twitter"
