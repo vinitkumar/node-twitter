@@ -10,4 +10,6 @@ ENV SECRET='abadjadjadja1223232412424'
 COPY . .
 #Expose port and start application
 EXPOSE 8080
-CMD [ "npm", "start" ]
+
+# Wait 10 seconds before mongodb is ready
+CMD sleep 10 && npm start
