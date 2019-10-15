@@ -3,10 +3,12 @@ services:
   web:
     build: .
     ports:
-    - "3000:3000"
+    - "8080:8080"
     depends_on:
-    - mongo
-  mongo:
+    - mongodb
+    restart: always
+  mongodb:
+    container_name: mongodb
     image: mongo
     volumes:
       - ./data:/data/db
