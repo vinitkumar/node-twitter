@@ -1,16 +1,21 @@
-version: "3"
+version: "3.4"
 services:
   web:
     build: .
     ports:
-    - "8080:8080"
+      - "8080:8080"
     depends_on:
-    - mongodb
+      - mongodb
     restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "mongo:27017"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
   mongodb:
     container_name: mongodb
     image: mongo
     volumes:
       - ./data:/data/db
     ports:
-    - "27017:27017"
+      - "27017:27017"
