@@ -10,7 +10,7 @@ const port = process.env.PORT || 8080;
 
 mongoose.connect(config.db, {
   useUnifiedTopology: true,
-  //useNewUrlParser: true,  
+  useNewUrlParser: true,  
   keepAlive: true,
   reconnectTries: Number.MAX_VALUE
   //useMongoClient: true
