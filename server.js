@@ -8,15 +8,30 @@ const mongoose = require('mongoose');
 const app = express();
 const port = process.env.PORT || 8080;
 
-mongoose.connect(config.db, {
+const promiseRetry = require('promise-retry');
+
+const options = {
+  useNewUrlParser: true,
   useUnifiedTopology: true,
-  useNewUrlParser: true,  
-  keepAlive: true,
-  reconnectTries: Number.MAX_VALUE
-  //useMongoClient: true
-})
-.then(() => console.log("Connected"))
-.catch(err => console.log(err));
+  reconnectTries: 60,
+  reconnectInterval: 1000,
+  poolSize: 10,
+  bufferMaxEntries: 0 // If not connected, return errors immediately rather than waiting for reconnect
+};
+
+const promiseRetryOptions = {
+  retries: options.reconnectTries,
+  factor: 2,
+  minTimeout: options.reconnectInterval,
+  maxTimeout: 5000
+};
+
+const connect = () => {
+  return promiseRetry((retry, number) => {
+    logger.info(`MongoClient connecting to ${url} - retry number: ${number}`)
+    return mongoose.connect(config.db, options).catch(retry)
+  }, promiseRetryOptions)
+}
 
 const models_path = __dirname+'/app/models';
 fs.readdirSync(models_path).forEach(file => {
@@ -30,3 +45,5 @@ require('./config/routes')(app, passport, auth);
 app.listen(port);
 console.log('Express app started on port ' + port);
 module.exports = app;
+
+//module.exports = { connect }
