@@ -8,7 +8,7 @@ ENV SECRET='abadjadjadja1223232412424'
 # Copy app source code
 COPY . .
 #Expose port and start application
-EXPOSE 8080
+EXPOSE 3000
 
 # Wait 10 seconds before mongodb is ready
 #CMD sleep 10 && npm start
