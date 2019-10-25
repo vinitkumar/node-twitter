@@ -6,7 +6,7 @@ const config = require('./config/config')[env];
 const auth = require('./config/middlewares/authorization');
 const mongoose = require('mongoose');
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 
 const promiseRetry = require('promise-retry');
 
@@ -31,7 +31,7 @@ const connect = () => {
     logger.info(`MongoClient connecting to ${url} - retry number: ${number}`)
     return mongoose.connect(config.db, options).catch(retry)
   }, promiseRetryOptions)
-}
+};
 
 const models_path = __dirname+'/app/models';
 fs.readdirSync(models_path).forEach(file => {
