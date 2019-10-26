@@ -3,15 +3,10 @@ services:
   web:
     build: .
     ports:
-      - "3000:3000"
+      - "8080:3000"
     depends_on:
       - mongodb
     restart: always
-    # healthcheck:
-    #   test: ["CMD", "curl", "-f", "mongo:27017"]
-    #   interval: 30s
-    #   timeout: 10s
-    #   retries: 5
   mongodb:
     container_name: mongodb
     image: mongo
