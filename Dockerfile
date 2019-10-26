@@ -5,6 +5,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
 ENV SECRET='abadjadjadja1223232412424'
+ENV developmentDB = 'mongodb://mongodb:27017/ntwitter'
 # Copy app source code
 COPY . .
 #Expose port and start application
