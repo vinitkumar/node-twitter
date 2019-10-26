@@ -1,4 +1,6 @@
 const express = require('express');
+var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
 const fs = require('fs');
 const passport = require('passport');
 const env = process.env.NODE_ENV || 'development';
@@ -9,6 +11,12 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const promiseRetry = require('promise-retry');
+
+app.use(cookieParser("super55"));
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}));
 
 const options = {
   useNewUrlParser: true,
@@ -28,7 +36,7 @@ const promiseRetryOptions = {
 
 const connect = () => {
   return promiseRetry((retry, number) => {
-    logger.info(`MongoClient connecting to ${url} - retry number: ${number}`)
+    console.log(`MongoClient connecting to ${config.db} - retry number: ${number}`)
     return mongoose.connect(config.db, options).catch(retry)
   }, promiseRetryOptions)
 };
@@ -44,6 +52,6 @@ require('./config/routes')(app, passport, auth);
 
 app.listen(port);
 console.log('Express app started on port ' + port);
-module.exports = app;
 
-//module.exports = { connect }
+module.exports.connect = connect();
+module.exports.app = app;
