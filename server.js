@@ -53,5 +53,5 @@ require('./config/routes')(app, passport, auth);
 app.listen(port);
 console.log('Express app started on port ' + port);
 
-module.exports.connect = connect();
-module.exports.app = app;
+connect();
+module.exports = app;
