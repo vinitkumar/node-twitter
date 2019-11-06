@@ -3,13 +3,13 @@ const rootPath = path.normalize(__dirname + "/..");
 const DB = process.env.DB;
 const clientID = process.env.GITHUB_CLIENT_ID;
 const clientSecret = process.env.GITHUB_CLIENT_SECRET;
-const developmentDB = process.env.developmentDB || 'mongodb://localhost:27017/ntwitter';
+const DEVELOPMEN_DB = process.env.DEVELOPMEN_DB || 'mongodb://localhost:27017/ntwitter';
 
 
 module.exports = {
   development: {
     // Use different urls for running service with Docker and without Docker
-    db: developmentDB,
+    db: DEVELOPMEN_DB,
     //db: "mongodb://mongodb:27017/ntwitter",
     //db: "mongodb://localhost:27017/ntwitter",
     root: rootPath,
