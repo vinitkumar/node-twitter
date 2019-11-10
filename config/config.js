@@ -24,8 +24,9 @@ module.exports = {
     }
   },
   test: {
-    db: process.env.DB,
-    //db: "mongodb://root:volvo76@ds039078.mongolab.com:39078/ntwitter",
+    //db: process.env.DB,
+    // Hack to allow tests run
+    db: "mongodb://root:volvo76@ds039078.mongolab.com:39078/ntwitter",
     root: rootPath,
     app: {
       name: "Nodejs Express Mongoose Demo"
