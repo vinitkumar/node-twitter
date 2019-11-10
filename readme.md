@@ -30,8 +30,8 @@ sudo npm install -g sass
 
 ```
 
-The configuration is in `config/config.js`. Please create your own
-github application [Github Developer Settings](https://github.com/settings/applications) and replace the token and keys.
+The configuration is in `config/config.js`. Please create your own `.env` file. You can find an example of `.env` file in `.env.example`.
+github application [Github Developer Settings](https://github.com/settings/applications) and replace the token and keys. 
 
 ```js
 var path = require('path'),
