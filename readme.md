@@ -59,13 +59,13 @@ you can just run these couple of commands to get it up and running.
 
 ```
 # first build the container
-docker-compose --log-level DEBUG build web
+docker-compose --log-level DEBUG build
 
-# then run the server like this:
+# then run the server and mongodb like this:
 
-docker-compose run --service-ports web
+docker-compose up
 ```
-Now, open the website on http://localhost:3000 and it should just work.
+Now, open the website on http://localhost:8080 and it should just work.
 
 
 ## Usage

@@ -1,7 +1,7 @@
 const path = require("path");
 const rootPath = path.normalize(__dirname + "/..");
-const envPath = process.env.ENVPATH || ".env";
 
+const envPath = process.env.ENVPATH || ".env";
 const dotenv = require("dotenv");
 // Path to the file where environment variables
 dotenv.config({path: envPath });

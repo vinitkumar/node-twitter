@@ -1,5 +1,4 @@
-
-FROM node:11.12.0
+FROM node:12
 
 WORKDIR /usr/src/app
 # Install app dependencies
@@ -8,5 +7,6 @@ RUN npm install
 # Copy app source code
 COPY . .
 #Expose port and start application
-EXPOSE 8080
-CMD [ "npm", "start" ]
+EXPOSE 3000
+
+CMD [ "node", "server.js" ]

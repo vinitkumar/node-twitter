@@ -5,7 +5,7 @@ const utils = require("../../lib/utils");
 //  Getters and Setters
 const getTags = tags => tags.join(",");
 
-const setTags = tags => tags.split(",");
+const setTags = tags => tags.toString().split(",");
 
 // Tweet Schema
 const TweetSchema = new Schema(

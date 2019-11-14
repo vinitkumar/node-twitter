@@ -12,7 +12,11 @@ const helpers = require("view-helpers");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const cookieParser = require("cookie-parser");
+
 const Raven = require("raven");
+// Disable Raven console alerts
+Raven.disableConsoleAlerts();
+
 const moment = require("moment");
 const morgan = require("morgan");
 
