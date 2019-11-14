@@ -9,14 +9,19 @@ const auth = require('./config/middlewares/authorization');
 const mongoose = require('mongoose');
 const app = express();
 const port = process.env.PORT || 3000;
+const cookieParserKey = process.env.COOKIE_KEY || "super55";
+const sessionKey1 = process.env.SESSIONKEYONE || "key1";
+const sessionKey2 = process.env.SESSIONKEYTWO || "key2";
+const csurf = require('csurf');
 
 const promiseRetry = require('promise-retry');
 
-app.use(cookieParser("super55"));
+app.use(cookieParser(cookieParserKey));
 app.use(cookieSession({
   name: 'session',
-  keys: ['key1', 'key2']
+  keys: [sessionKey1, sessionKey2]
 }));
+app.use(csurf({cookie: true}));
 
 const options = {
   useNewUrlParser: true,
