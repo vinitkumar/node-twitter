@@ -92,7 +92,7 @@ module.exports = (app, config, passport) => {
   app.use(flash());
   app.use(passport.initialize());
   app.use(passport.session());
-
+  app.disable('view cache');
   app.use((err, req, res, next) => {
     if (err.message.indexOf("not found") !== -1) {
       return next();

@@ -23,7 +23,7 @@ exports.createPagination = (req, pages, page) => {
   if (pages < 6) {
     for (let p = 1; p <= pages; p++) {
       params.page = p;
-      pageNumberClass = page == p ? "active" : "no";
+      pageNumberClass = page === p ? "active" : "no";
       let href = "?" + qs.stringify(params);
       str +=
         '<li class="' +
@@ -68,7 +68,7 @@ exports.createPagination = (req, pages, page) => {
         continue;
       }
       params.page = p;
-      pageNumberClass = page == p ? "active" : "no";
+      pageNumberClass = page === p ? "active" : "no";
       let href = "?" + qs.stringify(params);
       str +=
         '<li class="page-item ' +
@@ -118,7 +118,7 @@ exports.index = (req, res) => {
   Analytics.list(options)
     .then(result => {
       analytics = result;
-      return Analytics.count();
+      return Analytics.countDocuments();
     })
     .then(result => {
       pageViews = result;

@@ -31,7 +31,7 @@ exports.index = (req, res) => {
   User.list(options)
     .then(result => {
       users = result;
-      return User.count();
+      return User.countDocuments()
     })
     .then(result => {
       count = result;
