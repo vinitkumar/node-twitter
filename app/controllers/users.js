@@ -15,7 +15,7 @@ exports.login = (req, res) => {
   let options = {};
   Analytics.list(options)
     .then(() => {
-      return Analytics.count();
+      return Analytics.countDocuments();
     })
     .then(result => {
       analyticsCount = result;
@@ -87,7 +87,7 @@ exports.list = (req, res) => {
   User.list(options)
     .then(result => {
       users = result;
-      return User.count();
+      return User.countDocuments();
     })
     .then(result => {
       count = result;

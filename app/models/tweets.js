@@ -5,7 +5,7 @@ const utils = require("../../lib/utils");
 //  Getters and Setters
 const getTags = tags => tags.join(",");
 
-const setTags = tags => tags.split(",");
+const setTags = tags => tags.toString().split(",");
 
 // Tweet Schema
 const TweetSchema = new Schema(
@@ -145,13 +145,13 @@ TweetSchema.statics = {
   // Count the number of tweets for a specific user
   countUserTweets: function(id, callback) {
     return this.find({ user: id })
-      .count()
+      .countDocuments()
       .exec(callback);
   },
 
   // Count the total app tweets
   countTotalTweets: function() {
-    return this.find({}).count();
+    return this.find({}).countDocuments();
   }
 };
 
