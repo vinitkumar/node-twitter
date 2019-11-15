@@ -1,6 +1,6 @@
 const express = require('express');
-var cookieParser = require('cookie-parser');
-var cookieSession = require('cookie-session');
+const cookieParser = require('cookie-parser');
+const cookieSession = require('cookie-session');
 const fs = require('fs');
 const passport = require('passport');
 const env = process.env.NODE_ENV || 'development';
@@ -12,8 +12,6 @@ const port = process.env.PORT || 3000;
 const cookieParserKey = process.env.COOKIE_KEY || "super55";
 const sessionKey1 = process.env.SESSIONKEYONE || "key1";
 const sessionKey2 = process.env.SESSIONKEYTWO || "key2";
-const csurf = require('csurf');
-
 const promiseRetry = require('promise-retry');
 
 app.use(cookieParser(cookieParserKey));
@@ -21,7 +19,6 @@ app.use(cookieSession({
   name: 'session',
   keys: [sessionKey1, sessionKey2]
 }));
-app.use(csurf({cookie: true}));
 
 const options = {
   useNewUrlParser: true,
@@ -41,7 +38,7 @@ const promiseRetryOptions = {
 
 const connect = () => {
   return promiseRetry((retry, number) => {
-    console.log(`MongoClient connecting to ${config.db} - retry number: ${number}`)
+    console.log(`MongoClient connecting to ${config.db} - retry number: ${number}`);
     return mongoose.connect(config.db, options).catch(retry)
   }, promiseRetryOptions)
 };

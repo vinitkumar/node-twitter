@@ -98,7 +98,7 @@ UserSchema.statics = {
   },
   countUserTweets: function(id, cb) {
     return Tweet.find({ user: id })
-      .count()
+      .countDocuments()
       .exec(cb);
   },
   load: function(options, cb) {
@@ -115,7 +115,7 @@ UserSchema.statics = {
       .skip(options.perPage * options.page);
   },
   countTotalUsers: function() {
-    return this.find({}).count();
+    return this.find({}).countDocuments();
   }
 };
 

@@ -14,7 +14,7 @@ exports.tweetList = (req, res) => {
   Tweet.limitedList(options)
     .then(result => {
       tweets = result;
-      return Tweet.count();
+      return Tweet.countDocuments();
     })
     .then(result => {
       count = result;
@@ -36,7 +36,7 @@ exports.usersList = (req, res) => {
   User.list(options)
     .then(result => {
       users = result;
-      return User.count();
+      return User.countDocuments();
     })
     .then(result => {
       count = result;
