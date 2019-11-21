@@ -65,7 +65,7 @@ docker-compose --log-level DEBUG build
 
 docker-compose up
 ```
-Now, open the website on http://localhost:8080 and it should just work.
+Now, open the website on http://localhost:3000 and it should just work.
 
 
 ## Usage
