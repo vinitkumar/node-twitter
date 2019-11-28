@@ -16,7 +16,7 @@ module.exports = {
     },
     github: {
       // GITHUB_CLIENT_SECRET and GITHUB_CLIENT_ID should be defined in .env file
-      // which is stored locally on your computer or those variables values 
+      // which is stored locally on your computer or those variables values
       // can be passed from Docker container
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
       clientID: process.env.GITHUB_CLIENT_ID,
@@ -44,8 +44,8 @@ module.exports = {
       name: "Nodejs Express Mongoose Demo"
     },
     github: {
-      clientID: process.env.GITHUB_CLIENT_SECRET,
-      clientSecret: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      clientID: process.env.GITHUB_CLIENT_ID,
       callbackURL: "http://nitter.herokuapp.com/auth/github/callback"
     }
   }
