@@ -30,26 +30,13 @@ sudo npm install -g sass
 
 ```
 
-The configuration is in `config/config.js`. Please create your own `.env` file. You can find an example of `.env` file in `.env.example`.
-github application [Github Developer Settings](https://github.com/settings/applications) and replace the token and keys. 
+The configuration is in `config/config.js`. Please create your own `.env` file. You can find an example of `.env` file in `.env.example`.
 
-```js
-var path = require('path'),
-    rootPath = path.normalize(__dirname + '/..');
-module.exports = {
-  production: {
-    db: '',
-    root: rootPath,
-    app: {
-      name: 'Node Twitter'
-    },
-    github: {
-      clientID: '',
-      clientSecret: '',
-      callbackURL: ''
-    }
-  }
-};
+Create a [github application](https://github.com/settings/apps) and copy cliend id and secret to .env file:  
+
+```
+GITHUB_CLIENT_SECRET="your_github_client_secret"
+GITHUB_CLIENT_ID="your_github_client_id"
 ```
 ## Usage via Docker
 
@@ -66,6 +53,8 @@ docker-compose --log-level DEBUG build
 docker-compose up
 ```
 Now, open the website on http://localhost:3000 and it should just work.
+
+Before building Docker container change DB link to: `mongodb://mongodb/ntwitter` in `.env` file.
 
 
 ## Usage
