@@ -1,48 +1,51 @@
 const path = require("path");
 const rootPath = path.normalize(__dirname + "/..");
-const DB = process.env.DB;
-const clientID = process.env.GITHUB_CLIENT_ID;
-const clientSecret = process.env.GITHUB_CLIENT_SECRET;
-const DEVELOPMEN_DB = process.env.DEVELOPMEN_DB || 'mongodb://localhost:27017/ntwitter';
 
+const envPath = process.env.ENVPATH || ".env";
+const dotenv = require("dotenv");
+// Path to the file where environment variables
+dotenv.config({path: envPath });
 
 module.exports = {
   development: {
-    // Use different urls for running service with Docker and without Docker
-    db: DEVELOPMEN_DB,
-    //db: "mongodb://mongodb:27017/ntwitter",
-    //db: "mongodb://localhost:27017/ntwitter",
+    db: process.env.DB,
+    port: process.env.PORT,
     root: rootPath,
     app: {
       name: "Node Twitter"
     },
     github: {
-      clientID: "e3930cf94c772ba10ef1",
-      clientSecret: "fb1284b1874444a9c0c55c963092f836596ecc56",
+      // GITHUB_CLIENT_SECRET and GITHUB_CLIENT_ID should be defined in .env file
+      // which is stored locally on your computer or those variables values
+      // can be passed from Docker container
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      clientID: process.env.GITHUB_CLIENT_ID,
       callbackURL: "http://localhost:3000/auth/github/callback"
     }
   },
   test: {
+    //db: process.env.DB,
+    // Hack to allow tests run
     db: "mongodb://root:volvo76@ds039078.mongolab.com:39078/ntwitter",
     root: rootPath,
     app: {
       name: "Nodejs Express Mongoose Demo"
     },
     github: {
-      clientID: "c2e0f478634366e1289d",
-      clientSecret: "0bfde82383deeb99b28d0f6a9eac001a0deb798a",
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      clientID: process.env.GITHUB_CLIENT_ID,
       callbackURL: "http://localhost:3000/auth/github/callback"
     }
   },
   production: {
-    db: DB,
+    db: process.env.DB,
     root: rootPath,
     app: {
       name: "Nodejs Express Mongoose Demo"
     },
     github: {
-      clientID: clientID,
-      clientSecret: clientSecret,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      clientID: process.env.GITHUB_CLIENT_ID,
       callbackURL: "http://nitter.herokuapp.com/auth/github/callback"
     }
   }
