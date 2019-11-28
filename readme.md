@@ -54,7 +54,7 @@ docker-compose up
 ```
 Now, open the website on http://localhost:3000 and it should just work.
 
-Before building Docker container change DB link to: `mongodb://mongodb/ntwitter` in `.env` file.
+Before building Docker container change DB link to: `mongodb://mongodb/ntwitter` in `.env` file.
 
 
 ## Usage
