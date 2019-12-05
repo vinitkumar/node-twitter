@@ -10,3 +10,5 @@ block content
       p 
         i(class="far fa-bell notification-icon")
         span #{notificationText}
+      tr  
+        td.activities__date #{formatDate(activity.createdAt, "%b %d, %Y at %I:%M %p")}
