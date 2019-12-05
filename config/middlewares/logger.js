@@ -30,6 +30,20 @@ exports.analytics = (req, res, next) => {
       } else {
         logger.log('Not creating a new analytics entry on the same day');
       }
+    } else {
+      // it means this user is a new user and do not have a analytics object yet
+      if (req.get('host').split(':')[0] !== 'localhost') {
+        const analytics = new Analytics({
+          ip: cleanIp,
+          user: req.user,
+          url: url
+        });
+        analytics.save(err => {
+          if (err) {
+            logger.log(err);
+          }
+        });
+      }
     }
   });
   next();
