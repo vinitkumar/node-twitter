@@ -17,5 +17,5 @@ block content
                     a(class='sender', href="/users/" + chat.sender._id)
                       span.sender #{chat.sender.username}:
                     span.message #{chat.message}
-                    p.msgtime #{formatDate(chat.createdAt, "%b %d, %Y at %I:%M %p")}
+                    p.msgtime #{moment(chat.createdAt).format("MMM D, YYYY [at] h:mm a")}
 

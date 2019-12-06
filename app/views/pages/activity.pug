@@ -9,5 +9,5 @@ block content
       - var notificationText = senderName + ' ' + activity.activityStream + ' ' + receiverName
       p 
         i(class="far fa-bell notification-icon")
-        span #{moment(activity.createdAt).format("D MMM YYYY, h:mm:ss a")+':' + ''} 
+        span #{moment(activity.createdAt).format("MMM D, YYYY [at] h:mm a, ")}
         span #{notificationText}
