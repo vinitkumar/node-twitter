@@ -28,7 +28,7 @@ block content
               - var name = analytic.user.name ? analytic.user.name : analytic.user.username
               td.analytics__user #{name}
               td.analytics__url #{analytic.url}
-              td.analytics__date #{moment(analytic.createdAt).format("D MMM YYYY, h:mm:ss a")}
+              td.analytics__date #{moment(analytic.createdAt).format("MMM D, YYYY [at] h:mm a")}
   include ../components/pagination
 
 
