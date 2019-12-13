@@ -25,7 +25,7 @@ exports.create = (req, res) => {
 
   const tweet = new Tweet(req.body);
   tweet.user = req.user;
-  tweet.tags = parseHashtag(req.body);
+  tweet.tags = parseHashtag(req.body.body);
 
   tweet.uploadAndSave({}, err => {
     if (err) {

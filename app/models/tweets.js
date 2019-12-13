@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 const utils = require("../../lib/utils");
 
 //  Getters and Setters
-const getTags = tags => tags.join(",");
+//const getTags = tags => tags.join(",");
 
-const setTags = tags => tags.toString().split(",");
+//const setTags = tags => tags;
 
 // Tweet Schema
 const TweetSchema = new Schema(
@@ -21,7 +21,7 @@ const TweetSchema = new Schema(
         createdAt: { type: Date, default: Date.now }
       }
     ],
-    tags: { type: [], get: getTags, set: setTags },
+    tags: { type: [] },
     favorites: [{ type: Schema.ObjectId, ref: "User" }],
     favoriters: [{ type: Schema.ObjectId, ref: "User" }], // same as favorites
     favoritesCount: Number,
