@@ -22,8 +22,11 @@ exports.tweet = (req, res, next, id) => {
 
 // ### Create a Tweet
 exports.create = (req, res) => {
+
   const tweet = new Tweet(req.body);
   tweet.user = req.user;
+  tweet.tags = parseHashtag(req.body);
+
   tweet.uploadAndSave({}, err => {
     if (err) {
       res.render("pages/500", { error: err });
@@ -104,7 +107,8 @@ exports.index = (req, res) => {
 };
 
 // Parse Hashtag
-exports.parseHashtag = (inputText) => {
+
+function parseHashtag(inputText) {
   var regex = /(?:^|\s)(?:#)([a-zA-Z\d]+)/g;
   var matches = [];
   var match;
@@ -112,6 +116,7 @@ exports.parseHashtag = (inputText) => {
     matches.push(match[1]);  
   }
   return matches;
-};
+}
 
+exports.parseHashtag = parseHashtag;
 
