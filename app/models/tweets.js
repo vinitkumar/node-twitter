@@ -5,7 +5,7 @@ const utils = require("../../lib/utils");
 //  Getters and Setters
 //const getTags = tags => tags.join(",");
 
-//const setTags = tags => tags;
+const setTags = tags => tags.map(t => t.toLowerCase());
 
 // Tweet Schema
 const TweetSchema = new Schema(
@@ -21,7 +21,7 @@ const TweetSchema = new Schema(
         createdAt: { type: Date, default: Date.now }
       }
     ],
-    tags: { type: [] },
+    tags: { type: [], set: setTags },
     favorites: [{ type: Schema.ObjectId, ref: "User" }],
     favoriters: [{ type: Schema.ObjectId, ref: "User" }], // same as favorites
     favoritesCount: Number,
