@@ -20,7 +20,7 @@ const TweetSchema = new Schema(
         createdAt: { type: Date, default: Date.now }
       }
     ],
-    tags: { type: [], set: setTags },
+    tags: { type: [String], set: setTags },
     favorites: [{ type: Schema.ObjectId, ref: "User" }],
     favoriters: [{ type: Schema.ObjectId, ref: "User" }], // same as favorites
     favoritesCount: Number,
