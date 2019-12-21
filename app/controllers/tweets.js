@@ -106,7 +106,7 @@ exports.index = (req, res) => {
     });
 };
 
-// Parse Hashtag
+// ### Parse Hashtag
 
 function parseHashtag(inputText) {
   var regex = /(?:^|\s)(?:#)([a-zA-Z\d]+)/g;
@@ -119,4 +119,11 @@ function parseHashtag(inputText) {
 }
 
 exports.parseHashtag = parseHashtag;
+
+// ### Find tags
+
+exports.findTag = (req, res) => {
+  let tag = req.params.tag;
+ 
+};
 

@@ -126,6 +126,13 @@ module.exports = (app, passport, auth) => {
     .delete(favorites.destroy);
 
   /**
+   * Find tags
+   */
+  router
+    .route("/tweets/hashtag/:tag")
+    .get(tweets.findTag);
+
+  /**
    * Page not found route (must be at the end of all routes)
    */
   router.use((req, res) => {
