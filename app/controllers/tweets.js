@@ -59,12 +59,31 @@ exports.destroy = (req, res) => {
   });
 };
 
-exports.index = (req, res) => {
+// ### Parse Hashtag
+
+function parseHashtag(inputText) {
+  var regex = /(?:^|\s)(?:#)([a-zA-Z\d]+)/g;
+  var matches = [];
+  var match;
+  while ((match = regex.exec(inputText)) !== null) {
+    matches.push(match[1]);  
+  }
+  return matches;
+}
+
+exports.parseHashtag = parseHashtag;
+
+// ### Find tags
+
+let showTweets = (req, res, criteria) => {
+  const findCriteria = criteria || {};
+
   const page = (req.query.page > 0 ? req.query.page : 1) - 1;
   const perPage = 10;
   const options = {
     perPage: perPage,
-    page: page
+    page: page,
+    criteria: findCriteria
   };
   let followingCount = req.user.following.length;
   let followerCount = req.user.followers.length;
@@ -106,30 +125,41 @@ exports.index = (req, res) => {
     });
 };
 
-// ### Parse Hashtag
-
-function parseHashtag(inputText) {
-  var regex = /(?:^|\s)(?:#)([a-zA-Z\d]+)/g;
-  var matches = [];
-  var match;
-  while ((match = regex.exec(inputText)) !== null) {
-    matches.push(match[1]);  
-  }
-  return matches;
-}
-
-exports.parseHashtag = parseHashtag;
-
-// ### Find tags
-
 exports.findTag = (req, res) => {
   let tag = req.params.tag;
-  // Tweet.find({ tags: [tag] }, (err, tag) => {
-  Tweet.find({ tags: tag }, (err, tag) => {
-    if (err) {
-      res.send(400);
-    }
-    res.send(tag);
-  }); 
+
+  showTweets(req, res, { tags: tag });
 };
+
+
+exports.index = (req, res) => {
+  showTweets(req, res);
+};
+
+// // ### Parse Hashtag
+
+// function parseHashtag(inputText) {
+//   var regex = /(?:^|\s)(?:#)([a-zA-Z\d]+)/g;
+//   var matches = [];
+//   var match;
+//   while ((match = regex.exec(inputText)) !== null) {
+//     matches.push(match[1]);  
+//   }
+//   return matches;
+// }
+
+// exports.parseHashtag = parseHashtag;
+
+// // ### Find tags
+
+// exports.findTag = (req, res) => {
+//   let tag = req.params.tag;
+//   // Tweet.find({ tags: [tag] }, (err, tag) => {
+//   Tweet.find({ tags: tag }, (err, tag) => {
+//     if (err) {
+//       res.send(400);
+//     }
+//     res.send(tag);
+//   }); 
+// };
 
