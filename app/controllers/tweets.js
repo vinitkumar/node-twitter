@@ -124,6 +124,12 @@ exports.parseHashtag = parseHashtag;
 
 exports.findTag = (req, res) => {
   let tag = req.params.tag;
- 
+  // Tweet.find({ tags: [tag] }, (err, tag) => {
+  Tweet.find({ tags: tag }, (err, tag) => {
+    if (err) {
+      res.send(400);
+    }
+    res.send(tag);
+  }); 
 };
 
