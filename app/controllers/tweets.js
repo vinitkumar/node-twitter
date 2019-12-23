@@ -100,7 +100,7 @@ let showTweets = (req, res, criteria) => {
       pagination = createPagination(
         req,
         Math.ceil(pageViews / perPage),
-        page + 1,
+        page + 1
       );
       return Analytics.list({ perPage: 15 });
     })
@@ -132,31 +132,3 @@ exports.findTag = (req, res) => {
 exports.index = (req, res) => {
   showTweets(req, res);
 };
-
-// // ### Parse Hashtag
-
-// function parseHashtag(inputText) {
-//   var regex = /(?:^|\s)(?:#)([a-zA-Z\d]+)/g;
-//   var matches = [];
-//   var match;
-//   while ((match = regex.exec(inputText)) !== null) {
-//     matches.push(match[1]);  
-//   }
-//   return matches;
-// }
-
-// exports.parseHashtag = parseHashtag;
-
-// // ### Find tags
-
-// exports.findTag = (req, res) => {
-//   let tag = req.params.tag;
-//   // Tweet.find({ tags: [tag] }, (err, tag) => {
-//   Tweet.find({ tags: tag }, (err, tag) => {
-//     if (err) {
-//       res.send(400);
-//     }
-//     res.send(tag);
-//   }); 
-// };
-
