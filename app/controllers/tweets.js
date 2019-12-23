@@ -22,7 +22,6 @@ exports.tweet = (req, res, next, id) => {
 
 // ### Create a Tweet
 exports.create = (req, res) => {
-
   const tweet = new Tweet(req.body);
   tweet.user = req.user;
   tweet.tags = parseHashtag(req.body.body);
@@ -94,14 +93,14 @@ let showTweets = (req, res, criteria) => {
   Tweet.list(options)
     .then(result => {
       tweets = result;
-      return Tweet.countTotalTweets();
+      return Tweet.countTweets(findCriteria);
     })
     .then(result => {
       pageViews = result;
       pagination = createPagination(
         req,
         Math.ceil(pageViews / perPage),
-        page + 1
+        page + 1,
       );
       return Analytics.list({ perPage: 15 });
     })
@@ -127,10 +126,8 @@ let showTweets = (req, res, criteria) => {
 
 exports.findTag = (req, res) => {
   let tag = req.params.tag;
-
   showTweets(req, res, { tags: tag });
 };
-
 
 exports.index = (req, res) => {
   showTweets(req, res);
