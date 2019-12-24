@@ -58,7 +58,7 @@ exports.destroy = (req, res) => {
   });
 };
 
-// ### Parse Hashtag
+// ### Parse a hashtag
 
 function parseHashtag(inputText) {
   var regex = /(?:^|\s)(?:#)([a-zA-Z\d]+)/g;
@@ -72,11 +72,8 @@ function parseHashtag(inputText) {
 
 exports.parseHashtag = parseHashtag;
 
-// ### Find tags
-
 let showTweets = (req, res, criteria) => {
   const findCriteria = criteria || {};
-
   const page = (req.query.page > 0 ? req.query.page : 1) - 1;
   const perPage = 10;
   const options = {
@@ -124,6 +121,7 @@ let showTweets = (req, res, criteria) => {
     });
 };
 
+// ### Find a tag
 exports.findTag = (req, res) => {
   let tag = req.params.tag;
   showTweets(req, res, { tags: tag });
