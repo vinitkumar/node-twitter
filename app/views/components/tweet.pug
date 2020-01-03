@@ -9,9 +9,11 @@
           a(href="/users/"+tweet.user._id) #{name}
         span.tweet__date
           a(data-toggle='modal', href="#tweet-modal-"+tweet._id)  • #{moment(tweet.createdAt).format("MMM D, YYYY [at] h:mm a")}
-      
-        p.tweet__content= tweet.body
-          a.btn.tag(href="/tweets/hashtag/"+tweet.tags)
+          
+          p.tweet__content= tweet.body
+        
+        //p.tweet__content= tweet.body
+          a.tag(href="/tweets/hashtag/"+tweet.tags) #{tweet.tags}//
       if (tweet.user._id == req.user.id)
         form.tweet__form(action="/tweets/"+tweet.id+"?_method=DELETE", method="post")
           a.btn.tweet__edit(href="/tweets/"+tweet._id) Edit

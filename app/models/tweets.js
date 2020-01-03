@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 const utils = require("../../lib/utils");
 
 //  Getters and Setters
-
 const setTags = tags => tags.map(t => t.toLowerCase());
 
 // Tweet Schema
