@@ -11,10 +11,8 @@
           a(data-toggle='modal', href="#tweet-modal-"+tweet._id)  • #{moment(tweet.createdAt).format("MMM D, YYYY [at] h:mm a")}
         -
           var tweet_m = tweet.body        
-          tweet_m = tweet_m.replace(/#(\S+)/g, '<a href="/tweets/hashtag/$1">$1</a>');
+          tweet_m = tweet_m.replace(/#(\w+)/g, '<a href="/tweets/hashtag/$1">$1</a>');
         p.tweet__content!= tweet_m  
-                  
-          //a.btn.tag(href="/tweets/hashtag/"+tweet.tags)
       if (tweet.user._id == req.user.id)
         form.tweet__form(action="/tweets/"+tweet.id+"?_method=DELETE", method="post")
           a.btn.tweet__edit(href="/tweets/"+tweet._id) Edit
