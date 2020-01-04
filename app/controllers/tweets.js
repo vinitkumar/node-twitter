@@ -124,7 +124,7 @@ let showTweets = (req, res, criteria) => {
 // ### Find a tag
 exports.findTag = (req, res) => {
   let tag = req.params.tag;
-  showTweets(req, res, { tags: tag });
+  showTweets(req, res, { tags: tag.toLowerCase() });
 };
 
 exports.index = (req, res) => {
