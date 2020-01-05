@@ -40,7 +40,7 @@ const connect = () => {
   return promiseRetry((retry, number) => {
     console.log(`MongoClient connecting to ${config.db} - retry number: ${number}`);
     return mongoose.connect(config.db, options).catch(retry)
-  }, promiseRetryOptions)
+  }, promiseRetryOptions);
 };
 
 const models_path = __dirname+'/app/models';

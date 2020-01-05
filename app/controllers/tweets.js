@@ -24,6 +24,8 @@ exports.tweet = (req, res, next, id) => {
 exports.create = (req, res) => {
   const tweet = new Tweet(req.body);
   tweet.user = req.user;
+  tweet.tags = parseHashtag(req.body.body);
+
   tweet.uploadAndSave({}, err => {
     if (err) {
       res.render("pages/500", { error: err });
@@ -56,12 +58,28 @@ exports.destroy = (req, res) => {
   });
 };
 
-exports.index = (req, res) => {
+// ### Parse a hashtag
+
+function parseHashtag(inputText) {
+  var regex = /(?:^|\s)(?:#)([a-zA-Z\d]+)/g;
+  var matches = [];
+  var match;
+  while ((match = regex.exec(inputText)) !== null) {
+    matches.push(match[1]);  
+  }
+  return matches;
+}
+
+exports.parseHashtag = parseHashtag;
+
+let showTweets = (req, res, criteria) => {
+  const findCriteria = criteria || {};
   const page = (req.query.page > 0 ? req.query.page : 1) - 1;
   const perPage = 10;
   const options = {
     perPage: perPage,
-    page: page
+    page: page,
+    criteria: findCriteria
   };
   let followingCount = req.user.following.length;
   let followerCount = req.user.followers.length;
@@ -72,7 +90,7 @@ exports.index = (req, res) => {
   Tweet.list(options)
     .then(result => {
       tweets = result;
-      return Tweet.countTotalTweets();
+      return Tweet.countTweets(findCriteria);
     })
     .then(result => {
       pageViews = result;
@@ -101,4 +119,14 @@ exports.index = (req, res) => {
       logger.error(error);
       res.render("pages/500");
     });
+};
+
+// ### Find a tag
+exports.findTag = (req, res) => {
+  let tag = req.params.tag;
+  showTweets(req, res, { tags: tag.toLowerCase() });
+};
+
+exports.index = (req, res) => {
+  showTweets(req, res);
 };

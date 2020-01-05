@@ -19,7 +19,7 @@ exports.login = (req, res) => {
     })
     .then(result => {
       analyticsCount = result;
-      return Tweet.countTotalTweets();
+      return Tweet.countTweets();
     })
     .then(result => {
       tweetCount = result;
