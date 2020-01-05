@@ -127,7 +127,7 @@ exports.index = (req, res) => {
         Math.ceil(pageViews / perPage),
         page + 1
       );
-      return Tweet.countTotalTweets();
+      return Tweet.countTweets();
     })
     .then(result => {
       tweetCount = result;
