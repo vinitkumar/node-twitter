@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 const utils = require("../../lib/utils");
 
 //  Getters and Setters
-
 const setTags = tags => tags.map(t => t.toLowerCase());
 
 // Tweet Schema
@@ -148,9 +147,9 @@ TweetSchema.statics = {
       .exec(callback);
   },
 
-  // Count the total app tweets
-  countTotalTweets: function() {
-    return this.find({}).countDocuments();
+  // Count the app tweets by criteria
+  countTweets: function(criteria) {
+    return this.find(criteria).countDocuments();
   }
 };
 
