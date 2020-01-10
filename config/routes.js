@@ -11,6 +11,7 @@ const comments = require("../app/controllers/comments");
 const favorites = require("../app/controllers/favorites");
 const follows = require("../app/controllers/follows");
 const activity = require("../app/controllers/activity");
+const announcement = require("../app/controllers/announcement");:w
 
 module.exports = (app, passport, auth) => {
   app.use("/", router);
