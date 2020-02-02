@@ -16,7 +16,7 @@
 
 .tweet__image {
   border-radius: 50%;
-  height: 40px;
+  height: 41px;
   border: 1px solid $black;
 }
 
@@ -38,7 +38,7 @@
     background-color: $jungle-green;
 
     &:hover {
-      background-color: lighten($jungle-green, 5%);
+      background-color: lighten($jungle-green, 4%);
     }
   }
   .tweet__delete {

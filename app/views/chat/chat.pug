@@ -6,7 +6,7 @@ block content
       .logged-user
         .row.chatbox
           - if (chats.length == 0)
-            h2 No chats sorry!
+            h2 Sorry, no new messages!!
           ul.chatlist
             - if (chats)
               each chat in chats
@@ -17,5 +17,5 @@ block content
                     a(class='sender', href="/users/" + chat.sender._id)
                       span.sender #{chat.sender.username}:
                     span.message #{chat.message}
-                    p.msgtime #{moment(chat.createdAt).format("MMM D, YYYY [at] h:mm a")}
+                    p.msgtime #{moment(chat.createdAt).format("D MMM, YYYY [at] h:mm a")}
 
