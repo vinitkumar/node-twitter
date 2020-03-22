@@ -14,7 +14,11 @@
           tweet_m = tweet_m.replace(/#(\w+)/g, '<a href="/tweets/hashtag/$1">$1</a>');
         p.tweet__content!= tweet_m  
       if (tweet.user._id == req.user.id)
-        form.tweet__form(action="/tweets/"+tweet.id+"?_method=DELETE", method="post")
-          a.btn.tweet__edit(href="/tweets/"+tweet._id) Edit
+        
+        form.tweet__form(action="/tweets/"+tweet.id+"?_method=POST", method="post")
+          button.btn.tweet__edit(action="/tweets/"+tweet._id, type="submit") Edit
           button.btn.tweet__delete(type="submit") Delete
+        //form.tweet__form(action="/tweets/"+tweet.id+"?_method=DELETE", method="post")       
+          button.btn.tweet__delete(type="submit") Delete
+
     include comments
