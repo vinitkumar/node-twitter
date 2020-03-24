@@ -14,16 +14,12 @@
           var tweet_m = tweet.body        
           tweet_m = tweet_m.replace(/#(\w+)/g, '<a href="/tweets/hashtag/$1">$1</a>');
         
-      textarea.tweet__content!= tweet_m  
-      if (tweet.user._id == req.user.id)
+      p.tweet__content!= tweet_m  
+      if (tweet.user._id == req.user.id)       
+        form(action="/tweets/"+tweet.id+"?_method=POST", method="post")          
+          button.btn.tweet__edit(href="/tweets/"+tweet._id, type="submit") Edit         
         
-        form.tweet__form(action="/tweets/"+tweet__content+"?_method=POST", method="post")
-          //textarea(type='text', name="body", placeholder='Edit tweet')
-          butt.btn.tweet__edit(type="submit") Edit
-          //a.btn.tweet__edit(href="/tweets/"+tweet._id) Edit
-        
-        form.tweet__form(action="/tweets/"+tweet.id+"?_method=DELETE", method="post")
-          //a.btn.tweet__edit(href="/tweets/"+tweet._id) Edit
-          button.btn.tweet__delete(type="submit") Delete
+          form.tweet__form(action="/tweets/"+tweet.id+"?_method=DELETE", method="post")
+            button.btn.tweet__delete(type="submit") Delete
 
     include comments
