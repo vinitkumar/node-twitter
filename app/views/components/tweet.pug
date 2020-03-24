@@ -19,7 +19,7 @@
         form(action="/tweets/"+tweet.id+"?_method=POST", method="post")          
           button.btn.tweet__edit(href="/tweets/"+tweet._id, type="submit") Edit         
         
-          form.tweet__form(action="/tweets/"+tweet.id+"?_method=DELETE", method="post")
-            button.btn.tweet__delete(type="submit") Delete
+        form.tweet__form(action="/tweets/"+tweet.id+"?_method=DELETE", method="post")
+          button.btn.tweet__delete(type="submit") Delete
 
     include comments
