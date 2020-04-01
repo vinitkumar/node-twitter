@@ -77,6 +77,9 @@ $(document).ready(function() {
           error: function(data) {},
         });
       }
+      
+      // The same replace method in tweeet.pug file
+      // TODO: find solution to reuse the same code
       modifiedText = modifiedText.replace(/#(\w+)/g, '<a href="/tweets/hashtag/$1">#$1</a>');
       let $tweetElement = $('<p>')
         .addClass('tweet__content');
