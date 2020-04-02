@@ -224,8 +224,9 @@ pre code {
   .tweet__form .tweet__edit:hover {
     background-color: #2fc490; }
 
-.tweet__form .tweet__delete {
-  margin-left: 10px;
+.tweet__form .tweet__delete {  
+  margin-top: -10%; 
+  margin-left: 10%;
   background-color: #E53939; }
   .tweet__form .tweet__delete:hover {
     background-color: #e85050; }
