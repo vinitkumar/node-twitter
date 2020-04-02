@@ -46,7 +46,7 @@ $(document).ready(function() {
         .removeClass('tweet__edit')
         .addClass('tweet__save');
       // Get the tweet content text
-      let $originalTweet = $(e.target)
+      let $originalTweet = $editButton
         .parent()
         .siblings('.tweet__content');
       let tweetText = $originalTweet.text();
@@ -77,10 +77,16 @@ $(document).ready(function() {
           error: function(data) {},
         });
       }
+      
+      // The same replace method in tweeet.pug file
+      // TODO: find solution to reuse the same code
+      modifiedText = modifiedText.replace(/#(\w+)/g, '<a href="/tweets/hashtag/$1">#$1</a>');
       let $tweetElement = $('<p>')
-        .addClass('tweet__content')
-        .text(modifiedText);
+        .addClass('tweet__content');
+        //.text(modifiedText);
+      $tweetElement.append(modifiedText);
       $modifiedTweet.after($tweetElement).remove();
     }
   });
+
 });
