@@ -1,3 +1,3 @@
 test:
-	./node_modules/.bin/mocha -u tdd --reporter spec --exit
+	./node_modules/.bin/mocha --reporter spec --exit
 .PHONY: test
