@@ -1,7 +1,8 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import {Request, Response} from "express";
 const Activity = mongoose.model("Activity");
 
-exports.index = (req, res) => {
+exports.index = (req: Request, res: Response) => {
   let activities;
   let options = {};
   Activity.list(options).then(result => {

@@ -1,16 +1,17 @@
-const Mongoose = require("mongoose");
+import mongoose from "mongoose";
+import {Request, Response} from "express";
 const Tweet = Mongoose.model("Tweet");
 const User = Mongoose.model("User");
 const Analytics = Mongoose.model("Analytics");
 const logger = require("../middlewares/logger");
 
-exports.signin = (req, res) => {};
+exports.signin = (req: Request, res: Response) => {};
 
-exports.authCallback = (req, res) => {
+exports.authCallback = (req: Request, res: Response) => {
   res.redirect("/");
 };
 
-exports.login = (req, res) => {
+exports.login = (req: Request, res: Response) => {
   let tweetCount, userCount, analyticsCount;
   let options = {};
   Analytics.list(options)
@@ -40,23 +41,23 @@ exports.login = (req, res) => {
     });
 };
 
-exports.signup = (req, res) => {
+exports.signup = (req: Request, res: Response) => {
   res.render("pages/login", {
     title: "Sign up",
     user: new User()
   });
 };
 
-exports.logout = (req, res) => {
+exports.logout = (req: Request, res: Response) => {
   req.logout();
   res.redirect("/login");
 };
 
-exports.session = (req, res) => {
+exports.session = (req: Request, res: Response) => {
   res.redirect("/");
 };
 
-exports.create = (req, res, next) => {
+exports.create = (req: Request, res: Response, next) => {
   const user = new User(req.body);
   user.provider = "local";
   user
@@ -75,7 +76,7 @@ exports.create = (req, res, next) => {
     });
 };
 
-exports.list = (req, res) => {
+exports.list = (req: Request, res: Response) => {
   const page = (req.query.page > 0 ? req.query.page : 1) - 1;
   const perPage = 5;
   const options = {
@@ -103,7 +104,7 @@ exports.list = (req, res) => {
     });
 };
 
-exports.show = (req, res) => {
+exports.show = (req: Request, res: Response) => {
   const user = req.profile;
   const reqUserId = user._id;
   const userId = reqUserId.toString();
@@ -138,7 +139,7 @@ exports.show = (req, res) => {
     });
 };
 
-exports.user = (req, res, next, id) => {
+exports.user = (req: Request, res: Response, next, id) => {
   User.findOne({ _id: id }).exec((err, user) => {
     if (err) {
       return next(err);
@@ -151,15 +152,15 @@ exports.user = (req, res, next, id) => {
   });
 };
 
-exports.showFollowers = (req, res) => {
+exports.showFollowers = (req: Request, res: Response) => {
   showFollowers(req, res, "followers");
 };
 
-exports.showFollowing = (req, res) => {
+exports.showFollowing = (req: Request, res: Response) => {
   showFollowers(req, res, "following");
 };
 
-exports.delete = (req, res) => {
+exports.delete = (req: Request, res: Response) => {
   Tweet.remove({ user: req.user._id })
     .then(() => {
       User.findByIdAndRemove(req.user._id)
@@ -175,7 +176,7 @@ exports.delete = (req, res) => {
     });
 };
 
-function showFollowers(req, res, type) {
+function showFollowers(req: Request, res: Response, type) {
   let user = req.profile;
   let followers = user[type];
   let tweetCount;

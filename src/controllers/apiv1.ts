@@ -1,9 +1,11 @@
 // ## Tweet Controller
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const Tweet = mongoose.model("Tweet");
 const User = mongoose.model("User");
 
-exports.tweetList = (req, res) => {
+import {Request, Response} from "express";
+
+exports.tweetList = (req: Request, res: Response) => {
   const page = (req.query.page > 0 ? req.query.page : 1) - 1;
   const perPage = 15;
   const options = {
@@ -25,7 +27,7 @@ exports.tweetList = (req, res) => {
     });
 };
 
-exports.usersList = (req, res) => {
+exports.usersList = (req: Request, res: Response) => {
   const page = (req.query.page > 0 ? req.query.page : 1) - 1;
   const perPage = 15;
   const options = {

@@ -1,11 +1,12 @@
 const createPagination = require("./analytics").createPagination;
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const Activity = mongoose.model("Activity");
 const Chat = mongoose.model("Chat");
 const User = mongoose.model("User");
 const logger = require("../middlewares/logger");
+import {Request, Response} from "express";
 
-exports.chat = (req, res, next, id) => {
+exports.chat = (req: Request, res: Response, next, id) => {
   Chat.load(id, (err, chat) => {
     if (err) {
       return next(err);
@@ -18,7 +19,7 @@ exports.chat = (req, res, next, id) => {
   });
 };
 
-exports.index = (req, res) => {
+exports.index = (req: Request, res: Response) => {
   // so basically this is going to be a list of all chats the user had till date.
   const page = (req.query.page > 0 ? req.query.page : 1) - 1;
   const perPage = 10;
@@ -49,11 +50,11 @@ exports.index = (req, res) => {
     });
 };
 
-exports.show = (req, res) => {
+exports.show = (req: Request, res: Response) => {
   res.send(req.chat);
 };
 
-exports.getChat = (req, res) => {
+exports.getChat = (req: Request, res: Response) => {
   const options = {
     criteria: { receiver: req.params.userid }
   };
@@ -64,7 +65,7 @@ exports.getChat = (req, res) => {
   });
 };
 
-exports.create = (req, res) => {
+exports.create = (req: Request, res: Response) => {
   const chat = new Chat({
     message: req.body.body,
     receiver: req.body.receiver,

@@ -1,9 +1,10 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const User = mongoose.model("User");
 const Activity = mongoose.model("Activity");
 const logger = require("../middlewares/logger");
+import {Request, Response} from "express";
 
-exports.follow = (req, res) => {
+exports.follow = (req: Request, res: Response) => {
   const user = req.user;
   const id = req.url.split("/")[2];
   // push the current user in the follower list of the target user

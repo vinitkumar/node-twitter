@@ -1,10 +1,11 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const Analytics = mongoose.model("Analytics");
 const Tweet = mongoose.model("Tweet");
 const User = mongoose.model("User");
 const qs = require("querystring");
 const url = require("url");
 const logger = require("../middlewares/logger");
+import {Request, Response} from "express";
 
 exports.createPagination = (req, pages, page) => {
   let params = qs.parse(url.parse(req.url).query);
@@ -104,7 +105,7 @@ exports.createPagination = (req, pages, page) => {
   return str;
 };
 
-exports.index = (req, res) => {
+exports.index = (req: Request, res: Response) => {
   let createPagination = exports.createPagination;
   const page = (req.query.page > 0 ? req.query.page : 1) - 1;
   const perPage = 10;

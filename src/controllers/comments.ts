@@ -1,10 +1,12 @@
 //@ts-check
 const utils = require("../../lib/utils");
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const Activity = mongoose.model("Activity");
 const logger = require("../middlewares/logger");
 
-exports.load = (req, res, next, id) => {
+import {Request, Response} from "express";
+
+exports.load = (req: Request, res: Response, next, id) => {
   const tweet = req.tweet;
   utils.findByParam(tweet.comments, { id: id }, (err, comment) => {
     if (err) {
@@ -16,7 +18,7 @@ exports.load = (req, res, next, id) => {
 };
 
 // ### Create Comment
-exports.create = (req, res) => {
+exports.create = (req: Request, res: Response) => {
   const tweet = req.tweet;
   const user = req.user;
 
@@ -46,7 +48,7 @@ exports.create = (req, res) => {
 };
 
 // ### Delete Comment
-exports.destroy = (req, res) => {
+exports.destroy = (req: Request, res: Response) => {
   // delete a comment here.
   const comment = req.comment;
   comment.remove(err => {
