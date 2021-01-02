@@ -1,8 +1,13 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 const createPagination = require("./analytics").createPagination;
-const mongoose = require("mongoose");
-const Activity = mongoose.model("Activity");
-const Chat = mongoose.model("Chat");
-const User = mongoose.model("User");
+const mongoose_1 = __importDefault(require("mongoose"));
+const Activity = mongoose_1.default.model("Activity");
+const Chat = mongoose_1.default.model("Chat");
+const User = mongoose_1.default.model("User");
 const logger = require("../middlewares/logger");
 exports.chat = (req, res, next, id) => {
     Chat.load(id, (err, chat) => {

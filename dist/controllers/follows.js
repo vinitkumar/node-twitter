@@ -1,6 +1,11 @@
-const mongoose = require("mongoose");
-const User = mongoose.model("User");
-const Activity = mongoose.model("Activity");
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const mongoose_1 = __importDefault(require("mongoose"));
+const User = mongoose_1.default.model("User");
+const Activity = mongoose_1.default.model("Activity");
 const logger = require("../middlewares/logger");
 exports.follow = (req, res) => {
     const user = req.user;

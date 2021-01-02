@@ -1,7 +1,12 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 //@ts-check
 const utils = require("../../lib/utils");
-const mongoose = require("mongoose");
-const Activity = mongoose.model("Activity");
+const mongoose_1 = __importDefault(require("mongoose"));
+const Activity = mongoose_1.default.model("Activity");
 const logger = require("../middlewares/logger");
 exports.load = (req, res, next, id) => {
     const tweet = req.tweet;

@@ -116,9 +116,9 @@ let showTweets = (req, res, criteria) => {
 // ### Find a tag
 exports.findTag = (req, res) => {
     let tag = req.params.tag;
-    showTweets(req, Request, res, Response, { tags: tag.toLowerCase() });
+    showTweets(req, res, { tags: tag.toLowerCase() });
 };
 exports.index = (req, res) => {
-    showTweets(req, Request, res, Response);
+    showTweets(req, res);
 };
 //# sourceMappingURL=tweets.js.map

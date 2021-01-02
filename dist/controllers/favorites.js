@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 // ### Create Favorite
 exports.create = (req, res) => {
     const tweet = req.tweet;

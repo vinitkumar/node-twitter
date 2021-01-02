@@ -1,7 +1,12 @@
-const mongoose = require("mongoose");
-const Analytics = mongoose.model("Analytics");
-const Tweet = mongoose.model("Tweet");
-const User = mongoose.model("User");
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const mongoose_1 = __importDefault(require("mongoose"));
+const Analytics = mongoose_1.default.model("Analytics");
+const Tweet = mongoose_1.default.model("Tweet");
+const User = mongoose_1.default.model("User");
 const qs = require("querystring");
 const url = require("url");
 const logger = require("../middlewares/logger");

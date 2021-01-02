@@ -1,7 +1,12 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 // ## Tweet Controller
-const mongoose = require("mongoose");
-const Tweet = mongoose.model("Tweet");
-const User = mongoose.model("User");
+const mongoose_1 = __importDefault(require("mongoose"));
+const Tweet = mongoose_1.default.model("Tweet");
+const User = mongoose_1.default.model("User");
 exports.tweetList = (req, res) => {
     const page = (req.query.page > 0 ? req.query.page : 1) - 1;
     const perPage = 15;

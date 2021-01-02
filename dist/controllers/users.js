@@ -1,4 +1,5 @@
-const Mongoose = require("mongoose");
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const Tweet = Mongoose.model("Tweet");
 const User = Mongoose.model("User");
 const Analytics = Mongoose.model("Analytics");
