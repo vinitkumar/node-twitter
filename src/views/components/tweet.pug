@@ -1,0 +1,25 @@
+.tweet(data-tweetId = tweet._id)
+.tweet(data-tweetId = tweet._id)
+  .row
+    .col-1
+      img(class='tweet__image', src=tweet.user.github.avatar_url)
+    .col-11.tweet__description
+      span.tweet__username-date
+        span.tweet__username
+          -var name = tweet.user.name ? tweet.user.name : tweet.user.username
+          a(href="/users/"+tweet.user._id) #{name}
+        span.tweet__date
+          a(data-toggle='modal', href="#tweet-modal-"+tweet._id)  • #{moment(tweet.createdAt).format("MMM D, YYYY [at] h:mm a")}
+        // The same replace method in app.js file
+        // TODO: find solution to reuse the same code
+        -
+          var tweet_m = tweet.body        
+          tweet_m = tweet_m.replace(/#(\w+)/g, '<a href="/tweets/hashtag/$1">#$1</a>');      
+      p.tweet__content!= tweet_m   
+      if (tweet.user._id == req.user.id)
+        form.tweet__form(action="/tweets/"+tweet.id+"?_method=POST", method="post")        
+          a.btn.tweet__edit(href="/tweets/"+tweet._id, type="submit") Edit          
+        form.tweet__form(action="/tweets/"+tweet.id+"?_method=DELETE", method="post")
+          button.btn.tweet__delete(type="submit") Delete
+
+    include comments

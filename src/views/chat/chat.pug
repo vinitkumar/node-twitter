@@ -1,0 +1,21 @@
+extends ../layouts/default
+
+block content
+  .row.twitter-container
+    .col-xl-12.col-lg-12.first-column
+      .logged-user
+        .row.chatbox
+          - if (chats.length == 0)
+            h2 No chats sorry!
+          ul.chatlist
+            - if (chats)
+              each chat in chats
+                li
+                  - if (chat.sender !=  null)
+                    img(class='tweet__image', src=chat.sender.github.avatar_url)
+                    p.chatMessage
+                    a(class='sender', href="/users/" + chat.sender._id)
+                      span.sender #{chat.sender.username}:
+                    span.message #{chat.message}
+                    p.msgtime #{moment(chat.createdAt).format("MMM D, YYYY [at] h:mm a")}
+

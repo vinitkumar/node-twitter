@@ -1,0 +1,32 @@
+extends ../layouts/default
+
+block content
+  .row
+    .col-md-4.login-container
+      h1 Node Twitter
+
+        h3
+          a(href="/auth/github", class="btn btn-primary btn-lg btn-block login-btn")
+            span.login-using-github Login using github
+            span(class="icon-container")
+              i(class="fab fa-github fa-2x")
+
+  .row.justify-content-center.text-center.stats-parent-container
+    .col-md-3
+      span.status-count #{tweetCount}
+      h5 Tweets Created
+
+    .col-md-3
+      span.status-count #{userCount}
+      h5 Unique Users
+
+    .col-md-3
+      span.status-count #{analyticsCount}
+      h5 Visitors
+
+      if (typeof errors !== 'undefined')
+        .fade.in.alert.alert-block.alert-error
+          a.close(data-dismiss="alert", href="javascript:void(0)") x
+          ul
+            each error in errors
+              li = error.type

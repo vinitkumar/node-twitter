@@ -1,0 +1,38 @@
+- var modalId = user._id + 'ChatModal';
+- var name = user.name ? user.name : user.username
+- var currentUserId = req.user._id.toString()
+- var userId = user._id.toString()
+- var profileURL = "https://github.com/" + user.github.login;
+
+.profile
+  - if (user.github !== undefined)
+    img(class="profile__image", src=user.github.avatar_url)
+  .profile__user-info
+    span.profile__handle
+      - if (user.github !== undefined)
+        a(href=profileURL)
+          span
+            i(class="fab fa-github") #{user.github.login}
+    .profile__messaging-options
+      - if (currentUserId !== userId)
+        a.btn(data-toggle='modal', href='#'+ modalId) Message #{name}
+        a.btn.profile__follow-button(href="javascript:void(0)", data-userid=user._id, data-logged=req.user.id,title="follow") Follow
+    if (req.isAuthenticated())
+      include modals/new-message-modal
+  .row
+    .col-12.user-information__stats
+      ul
+        li
+          span.user-information__stat-title Tweets:
+          span
+            a(href="/users/" + user._id) #{tweetCount}
+        li
+          span.user-information__stat-title Following:
+          span
+            a(href="/users/" + user._id + "/following")  #{followingCount}
+        li
+          span.user-information__stat-title Followers:
+          span
+            a(href="/users/" + user._id + "/followers")  #{followerCount}
+
+

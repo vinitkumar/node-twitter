@@ -1,0 +1,9 @@
+@import 'variables';
+
+%block-content {
+  background-color: $yankees-blue;
+  padding: 15px;
+  border-radius: 2px;
+  border: 1px solid $black;
+  margin-bottom: 20px;
+}

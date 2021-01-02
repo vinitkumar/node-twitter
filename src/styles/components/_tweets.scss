@@ -1,0 +1,94 @@
+/* Tweets */
+
+@import '../abstracts/placeholders';
+@import '../abstracts/variables';
+
+.tweet {
+  @extend %block-content;
+  color: $white;
+}
+
+.tweet::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.tweet__image {
+  border-radius: 50%;
+  height: 40px;
+  border: 1px solid $black;
+}
+
+.logout-image {
+  height: 20px;
+}
+
+.tweet__description {
+  padding-left: 25px;
+}
+
+.tweet__content {
+  margin: 5px 0 10px;
+  word-wrap: break-word;
+}
+
+.tweet__form {
+  .tweet__edit {
+    background-color: $jungle-green;
+
+    &:hover {
+      background-color: lighten($jungle-green, 5%);
+    }
+  }
+  .tweet__delete {
+    margin-left: 10px;
+    background-color: $go-red;
+
+    &:hover {
+      background-color: lighten($go-red, 5%);
+    }
+  }
+}
+
+.tweet__username a {
+  color: $white;
+  font-weight: bold;
+}
+
+.tweet__date,
+.tweet__date a {
+  color: $grey-blue;
+}
+
+.tweet textarea.edit-tweet {
+  margin: 10px 0 15px;
+}
+
+.tweet textarea {
+  font-size: 13px;
+  background-color: $dark-jungle-green;
+  border-color: $black;
+  display: block;
+  padding: 6px 12px;
+  color: $white;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.tweet__comments .btn {
+  margin: auto;
+  display: block;
+  margin-top: 10px;
+}
+
+.tweets__comment-image {
+  border-radius: 50%;
+  height: 20px;
+  border: 1px solid $black;
+  margin-right: 6px;
+}
+
+.notification-icon {
+  margin-right: 10px;
+}

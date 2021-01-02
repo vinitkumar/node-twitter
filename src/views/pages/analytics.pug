@@ -1,0 +1,34 @@
+extends ../layouts/default
+
+block content
+  .analytics
+    h1 Analytics Dashboard
+    .analytics__stats
+      ul
+        li
+          span.analytics__stats-title Visits:
+          span.analytics__stats-value #{pageViews}
+        li
+          span.analytics__stats-title Users:
+          span.analytics__stats-value #{userCount}
+        li
+          span.analytics__stats-title Tweets:
+          span.analytics__stats-value #{tweetCount}
+    table.analytics__table
+      thead
+        tr
+          th.analytics__user-column User
+          th.analytics__url-column URL
+          th.analytics__date-column Time
+
+      tbody
+        each analytic in analytics
+          tr
+            - if (analytic.user != null && analytic.url != null)
+              - var name = analytic.user.name ? analytic.user.name : analytic.user.username
+              td.analytics__user #{name}
+              td.analytics__url #{analytic.url}
+              td.analytics__date #{moment(analytic.createdAt).format("MMM D, YYYY [at] h:mm a")}
+  include ../components/pagination
+
+

@@ -1,0 +1,45 @@
+body
+  header.navbar(role='banner')
+    .container
+      if (req.isAuthenticated())
+        .navbar__group.navbar__group_left
+          ul.navbar__main-navigation
+            li
+              a(href="/" title="Home")
+                i(class="fas fa-home", aria-hidden="true")
+                span Home
+            |
+            li
+              a(href="/users/"+req.user.id, title="Profile")
+                i(class="fas fa-user", aria-hidden="true")
+                span Profile
+            |
+            li
+              a(href="/analytics/", title="analytics")
+                i(class="fas fa-chart-line", aria-hidden="true")
+                span Analytics
+            li
+              a(href='/chat/get/' + req.user._id, title="Inbox")
+                i(class="far fa-envelope", aria-hidden="true")
+                span Inbox
+            li
+              a(href="/chat/", title="chat")
+                i(class="far fa-comments", aria-hidden="true")
+                span Chat Users
+            li
+              a(href="/activities", title="activity")
+                i(class="far fa-bell", aria-hidden="true")
+      span.navbar__logo
+        a(href='/')
+          img(src='/img/bird.svg')
+      if (req.isAuthenticated())
+        .navbar__group.navbar__group_right
+          .navbar__new-tweet
+            a.navbar__new-tweet-button.btn(data-toggle='modal', href='.new-tweet')
+              span Tweet
+          .navbar__profile
+            a(href="/logout", title="logout", class="navbar__profile-logout")
+              img(class='tweet__image chat-image logout-image', src=req.user.github.avatar_url)
+              span Logout
+  if (req.isAuthenticated())
+    include ../components/modals/new-tweet-modal

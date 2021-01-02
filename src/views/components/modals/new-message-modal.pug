@@ -1,0 +1,11 @@
+.new-message.modal.fade(id=modalId)
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+        h4.modal-title Send new message to #{name}
+      .modal-body
+        form(method='post', action='/chats')
+          textarea(type='text', name='body', placeholder='Enter your message here', maxlength='200')
+          input(type="hidden", name='receiver', value=user._id)
+          button.new-message__button.btn(type='submit') Send Message  

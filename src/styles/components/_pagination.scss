@@ -1,0 +1,34 @@
+// Pagination
+
+@import '../abstracts/variables';
+
+.pagination {
+  text-align: center;
+
+  a,
+  li.out-of-range {
+    padding: 6px 12px;
+  }
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.pagination__list {
+  display: flex;
+
+  li a {
+    color: $white;
+    border-color: $black !important;
+  }
+
+  .no a {
+    background-color: $yankees-blue;
+    color: $white;
+  }
+
+  .active a {
+    background-color: $dodger-blue !important;
+  }
+}
