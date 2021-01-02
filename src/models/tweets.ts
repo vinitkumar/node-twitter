@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
+const User = mongoose.Model("User");
 const utils = require("../../lib/utils");
 
 //  Getters and Setters
@@ -54,7 +55,7 @@ TweetSchema.virtual("_favorites").set(function(user) {
 });
 
 TweetSchema.methods = {
-  uploadAndSave: function(images, callback) {
+  uploadAndSave: function(images: Array<string>, callback: any) {
     // const imager = new Imager(imagerConfig, "S3");
     const self = this;
     if (!images || !images.length) {
@@ -62,7 +63,7 @@ TweetSchema.methods = {
     }
     imager.upload(
       images,
-      (err, cdnUri, files) => {
+      (err: mongoose.Error , cdnUri: [string], files: [string]) => {
         if (err) {
           return callback(err);
         }
@@ -74,7 +75,7 @@ TweetSchema.methods = {
       "article"
     );
   },
-  addComment: function(user, comment, cb) {
+  addComment: function(user: any, comment: Comment, cb: any) {
     if (user.name) {
       this.comments.push({
         body: comment.body,
@@ -109,7 +110,7 @@ TweetSchema.methods = {
 // ## Static Methods in the TweetSchema
 TweetSchema.statics = {
   // Load tweets
-  load: function(id, callback) {
+  load: function(id: string, callback: any) {
     this.findOne({ _id: id })
       .populate("user", "name username provider github")
       .populate("comments.user")
@@ -134,21 +135,21 @@ TweetSchema.statics = {
       .skip(options.perPage * options.page);
   },
   // Tweets of User
-  userTweets: function(id, callback) {
+  userTweets: function(id: string, callback: any) {
     this.find({ user: ObjectId(id) })
       .toArray()
       .exec(callback);
   },
 
   // Count the number of tweets for a specific user
-  countUserTweets: function(id, callback) {
+  countUserTweets: function(id: string, callback: any) {
     return this.find({ user: id })
       .countDocuments()
       .exec(callback);
   },
 
   // Count the app tweets by criteria
-  countTweets: function(criteria) {
+  countTweets: function(criteria: string) {
     return this.find(criteria).countDocuments();
   }
 };
