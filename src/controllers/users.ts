@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import {Request, Response} from "express";
+import {Request, Response, NextFunction} from "express";
 const Tweet = Mongoose.model("Tweet");
 const User = Mongoose.model("User");
 const Analytics = Mongoose.model("Analytics");
@@ -57,7 +57,7 @@ exports.session = (req: Request, res: Response) => {
   res.redirect("/");
 };
 
-exports.create = (req: Request, res: Response, next) => {
+exports.create = (req: Request, res: Response, next: NextFunction) => {
   const user = new User(req.body);
   user.provider = "local";
   user
@@ -139,7 +139,7 @@ exports.show = (req: Request, res: Response) => {
     });
 };
 
-exports.user = (req: Request, res: Response, next, id) => {
+exports.user = (req: Request, res: Response, next: NextFunction, id) => {
   User.findOne({ _id: id }).exec((err, user) => {
     if (err) {
       return next(err);

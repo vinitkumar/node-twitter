@@ -4,9 +4,9 @@ const Activity = mongoose.model("Activity");
 const Chat = mongoose.model("Chat");
 const User = mongoose.model("User");
 const logger = require("../middlewares/logger");
-import {Request, Response} from "express";
+import {Request, Response, NextFunction} from "express";
 
-exports.chat = (req: Request, res: Response, next, id) => {
+exports.chat = (req: Request, res: Response, next: NextFunction, id) => {
   Chat.load(id, (err, chat) => {
     if (err) {
       return next(err);
