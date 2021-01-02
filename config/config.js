@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 // Path to the file where environment variables
 dotenv.config({path: envPath });
 
+console.log("do I get used");
 module.exports = {
   development: {
     db: process.env.DB,
