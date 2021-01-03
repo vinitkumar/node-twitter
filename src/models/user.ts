@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import bcrypt from "bcrypt";
+import bcrypt from "bcrypt-nodejs";
 const Tweet = mongoose.model("Tweet");
 const Schema = mongoose.Schema;
 const authTypes = ['github'];
