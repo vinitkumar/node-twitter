@@ -26,7 +26,7 @@ exports.create = (req: Request, res: Response) => {
   if (!req.body.body) {
     return res.redirect("/");
   }
-  tweet.addComment(user, req.body, err => {
+  tweet.addComment(user, req.body, (err: any) => {
     if (err) {
       logger.error(err);
       return res.render("pages/500");

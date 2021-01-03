@@ -125,7 +125,7 @@ TweetSchema.statics = {
     },
     // Tweets of User
     userTweets: function (id, callback) {
-        this.find({ user: ObjectId(id) })
+        this.find({ user: mongoose_1.default.Types.ObjectId(id) })
             .toArray()
             .exec(callback);
     },

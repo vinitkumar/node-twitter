@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
+import {Request, Response, NextFunction} from "express";
 const User = mongoose.Model("User");
 const utils = require("../../lib/utils");
 
@@ -30,7 +31,7 @@ const TweetSchema = new Schema(
 );
 
 // Pre save hook
-TweetSchema.pre("save", function(next) {
+TweetSchema.pre("save", function(next: NextFunction) {
   if (this.favorites) {
     this.favoritesCount = this.favorites.length;
   }
@@ -96,7 +97,7 @@ TweetSchema.methods = {
     }
   },
 
-  removeComment: function(commentId, cb) {
+  removeComment: function(commentId: any, cb: any) {
     let index = utils.indexof(this.comments, { id: commentId });
     if (~index) {
       this.comments.splice(index, 1);
@@ -117,7 +118,7 @@ TweetSchema.statics = {
       .exec(callback);
   },
   // List tweets
-  list: function(options) {
+  list: function(options: any) {
     const criteria = options.criteria || {};
     return this.find(criteria)
       .populate("user", "name username provider github")
@@ -126,7 +127,7 @@ TweetSchema.statics = {
       .skip(options.perPage * options.page);
   },
   // List tweets
-  limitedList: function(options) {
+  limitedList: function(options: any) {
     const criteria = options.criteria || {};
     return this.find(criteria)
       .populate("user", "name username")
@@ -136,7 +137,7 @@ TweetSchema.statics = {
   },
   // Tweets of User
   userTweets: function(id: string, callback: any) {
-    this.find({ user: ObjectId(id) })
+    this.find({ user: mongoose.Types.ObjectId(id) })
       .toArray()
       .exec(callback);
   },
