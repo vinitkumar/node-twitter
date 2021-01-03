@@ -32,11 +32,11 @@ exports.index = (req, res) => {
     };
     let users, count, pagination;
     User.list(options)
-        .then(result => {
+        .then(function (result) {
         users = result;
         return User.countDocuments();
     })
-        .then(result => {
+        .then(function (result) {
         count = result;
         pagination = createPagination(req, Math.ceil(result / perPage), page + 1);
         res.render("chat/index", {
@@ -47,7 +47,7 @@ exports.index = (req, res) => {
             pages: Math.ceil(count / perPage)
         });
     })
-        .catch(error => {
+        .catch(function (error) {
         return res.render("pages/500", { errors: error.errors });
     });
 };
@@ -59,7 +59,7 @@ exports.getChat = (req, res) => {
         criteria: { receiver: req.params.userid }
     };
     let chats;
-    Chat.list(options).then(result => {
+    Chat.list(options).then(function (result) {
         chats = result;
         res.render("chat/chat", { chats: chats });
     });
@@ -71,14 +71,14 @@ exports.create = (req, res) => {
         sender: req.user.id
     });
     logger.info("chat instance", chat);
-    chat.save(err => {
+    chat.save(function (err) {
         const activity = new Activity({
             activityStream: "sent a message to",
             activityKey: chat.id,
             receiver: req.body.receiver,
             sender: req.user.id
         });
-        activity.save(err => {
+        activity.save(function (err) {
             if (err) {
                 logger.error(err);
                 res.render("pages/500");

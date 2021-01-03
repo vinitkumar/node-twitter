@@ -7,6 +7,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const utils = require("../../lib/utils");
 const mongoose_1 = __importDefault(require("mongoose"));
 const Activity = mongoose_1.default.model("Activity");
+const Comment = mongoose_1.default.model("Comment");
 const logger = require("../middlewares/logger");
 exports.load = (req, res, next, id) => {
     const tweet = req.tweet;
@@ -50,7 +51,7 @@ exports.create = (req, res) => {
 exports.destroy = (req, res) => {
     // delete a comment here.
     const comment = req.comment;
-    comment.remove(err => {
+    comment.remove(function (err) {
         if (err) {
             res.send(400);
         }

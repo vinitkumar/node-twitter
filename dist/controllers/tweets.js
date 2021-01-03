@@ -41,7 +41,7 @@ exports.create = (req, res) => {
 exports.update = (req, res) => {
     let tweet = req.tweet;
     tweet = _.extend(tweet, { body: req.body.tweet });
-    tweet.uploadAndSave({}, err => {
+    tweet.uploadAndSave({}, function (err) {
         if (err) {
             return res.render("pages/500", { error: err });
         }
@@ -51,7 +51,7 @@ exports.update = (req, res) => {
 // ### Delete a tweet
 exports.destroy = (req, res) => {
     const tweet = req.tweet;
-    tweet.remove(err => {
+    tweet.remove(function (err) {
         if (err) {
             return res.render("pages/500");
         }
@@ -81,20 +81,20 @@ let showTweets = (req, res, criteria) => {
     let followingCount = req.user.following.length;
     let followerCount = req.user.followers.length;
     let tweets, tweetCount, pageViews, analytics, pagination;
-    User.countUserTweets(req.user._id).then(result => {
+    User.countUserTweets(req.user._id).then(function (result) {
         tweetCount = result;
     });
     Tweet.list(options)
-        .then(result => {
+        .then(function (result) {
         tweets = result;
         return Tweet.countTweets(findCriteria);
     })
-        .then(result => {
+        .then(function (result) {
         pageViews = result;
         pagination = createPagination(req, Math.ceil(pageViews / perPage), page + 1);
         return Analytics.list({ perPage: 15 });
     })
-        .then(result => {
+        .then(function (result) {
         analytics = result;
         res.render("pages/index", {
             title: "List of Tweets",
@@ -108,7 +108,7 @@ let showTweets = (req, res, criteria) => {
             pages: Math.ceil(pageViews / perPage)
         });
     })
-        .catch(error => {
+        .catch(function (error) {
         logger.error(error);
         res.render("pages/500");
     });
@@ -119,6 +119,6 @@ exports.findTag = (req, res) => {
     showTweets(req, res, { tags: tag.toLowerCase() });
 };
 exports.index = (req, res) => {
-    showTweets(req, res);
+    showTweets(req, res, {});
 };
 //# sourceMappingURL=tweets.js.map

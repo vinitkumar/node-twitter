@@ -16,7 +16,7 @@ exports.follow = (req, res) => {
         if (user.followers.indexOf(currentId) === -1) {
             user.followers.push(currentId);
         }
-        user.save(err => {
+        user.save(function (err) {
             if (err) {
                 logger.error(err);
             }
@@ -29,14 +29,14 @@ exports.follow = (req, res) => {
         if (user.following.indexOf(id) === -1) {
             user.following.push(id);
         }
-        user.save(err => {
+        user.save(function (err) {
             const activity = new Activity({
                 activityStream: "followed by",
                 activityKey: user,
                 sender: currentId,
                 receiver: user
             });
-            activity.save(err => {
+            activity.save(function (err) {
                 if (err) {
                     logger.error(err);
                     res.render("pages/500");

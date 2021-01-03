@@ -1,8 +1,12 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const Tweet = Mongoose.model("Tweet");
-const User = Mongoose.model("User");
-const Analytics = Mongoose.model("Analytics");
+const mongoose_1 = __importDefault(require("mongoose"));
+const Tweet = mongoose_1.default.model("Tweet");
+const User = mongoose_1.default.model("User");
+const Analytics = mongoose_1.default.model("Analytics");
 const logger = require("../middlewares/logger");
 exports.signin = (req, res) => { };
 exports.authCallback = (req, res) => {
@@ -15,15 +19,15 @@ exports.login = (req, res) => {
         .then(() => {
         return Analytics.countDocuments();
     })
-        .then(result => {
+        .then(function (result) {
         analyticsCount = result;
         return Tweet.countTweets();
     })
-        .then(result => {
+        .then(function (result) {
         tweetCount = result;
         return User.countTotalUsers();
     })
-        .then(result => {
+        .then(function (result) {
         userCount = result;
         logger.info(tweetCount);
         logger.info(userCount);
@@ -55,7 +59,7 @@ exports.create = (req, res, next) => {
     user.provider = "local";
     user
         .save()
-        .catch(error => {
+        .catch(function (error) {
         return res.render("pages/login", { errors: error.errors, user: user });
     })
         .then(() => {
@@ -64,7 +68,7 @@ exports.create = (req, res, next) => {
         .then(() => {
         return res.redirect("/");
     })
-        .catch(error => {
+        .catch(function (error) {
         return next(error);
     });
 };
@@ -78,11 +82,11 @@ exports.list = (req, res) => {
     };
     let users, count;
     User.list(options)
-        .then(result => {
+        .then(function (result) {
         users = result;
         return User.countDocuments();
     })
-        .then(result => {
+        .then(function (result) {
         count = result;
         res.render("pages/user-list", {
             title: "List of Users",
@@ -91,7 +95,7 @@ exports.list = (req, res) => {
             pages: Math.ceil(count / perPage)
         });
     })
-        .catch(error => {
+        .catch(function (error) {
         return res.render("pages/500", { errors: error.errors });
     });
 };
@@ -109,11 +113,11 @@ exports.show = (req, res) => {
     let followingCount = user.following.length;
     let followerCount = user.followers.length;
     Tweet.list(options)
-        .then(result => {
+        .then(function (result) {
         tweets = result;
         return Tweet.countUserTweets(reqUserId);
     })
-        .then(result => {
+        .then(function (result) {
         tweetCount = result;
         res.render("pages/profile", {
             title: "Tweets from " + user.name,
@@ -124,7 +128,7 @@ exports.show = (req, res) => {
             followingCount: followingCount
         });
     })
-        .catch(error => {
+        .catch(function (error) {
         return res.render("pages/500", { errors: error.errors });
     });
 };
@@ -164,12 +168,11 @@ exports.delete = (req, res) => {
 function showFollowers(req, res, type) {
     let user = req.profile;
     let followers = user[type];
-    let tweetCount;
     let followingCount = user.following.length;
     let followerCount = user.followers.length;
     let userFollowers = User.find({ _id: { $in: followers } }).populate("user", "_id name username github");
     Tweet.countUserTweets(user._id).then(result => {
-        tweetCount = result;
+        let tweetCount = result;
         userFollowers.exec((err, users) => {
             if (err) {
                 return res.render("pages/500");

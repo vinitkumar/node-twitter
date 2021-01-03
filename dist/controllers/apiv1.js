@@ -16,15 +16,15 @@ exports.tweetList = (req, res) => {
     };
     let tweets, count;
     Tweet.limitedList(options)
-        .then(result => {
+        .then(function (result) {
         tweets = result;
         return Tweet.countDocuments();
     })
-        .then(result => {
+        .then(function (result) {
         count = result;
         return res.send(tweets);
     })
-        .catch(error => {
+        .catch(function (error) {
         return res.render("pages/500", { errors: error.errors });
     });
 };
@@ -37,15 +37,15 @@ exports.usersList = (req, res) => {
     };
     let users, count;
     User.list(options)
-        .then(result => {
+        .then(function (result) {
         users = result;
         return User.countDocuments();
     })
-        .then(result => {
+        .then(function (result) {
         count = result;
         return res.send(users);
     })
-        .catch(error => {
+        .catch(function (error) {
         return res.render("pages/500", { errors: error.errors });
     });
 };
