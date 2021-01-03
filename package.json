@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "async": "latest",
-    "bcrypt": "^5.0.0",
+    "bcrypt-nodejs": "^0.0.30",
     "body-parser": "^1.18.1",
     "compression": "^1.7.1",
     "connect-flash": "latest",
