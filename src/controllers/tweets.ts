@@ -7,10 +7,10 @@ const Analytics = mongoose.model("Analytics");
 const _ = require("underscore");
 const logger = require("../middlewares/logger");
 
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 
-exports.tweet = (req:Request, res:Response, next, id) => {
-  Tweet.load(id, (err, tweet) => {
+exports.tweet = (req:Request, res:Response, next: NextFunction, id: string) => {
+  Tweet.load(id, (err: mongoose.Error, tweet: typeof Tweet) => {
     if (err) {
       return next(err);
     }
@@ -41,7 +41,7 @@ exports.create = (req:Request, res:Response) => {
 exports.update = (req:Request, res:Response) => {
   let tweet = req.tweet;
   tweet = _.extend(tweet, { body: req.body.tweet });
-  tweet.uploadAndSave({}, err => {
+  tweet.uploadAndSave({}, function (err: mongoose.Error) {
     if (err) {
       return res.render("pages/500", { error: err });
     }
@@ -52,7 +52,7 @@ exports.update = (req:Request, res:Response) => {
 // ### Delete a tweet
 exports.destroy = (req:Request, res:Response) => {
   const tweet = req.tweet;
-  tweet.remove(err => {
+  tweet.remove(function (err: mongoose.Error) {
     if (err) {
       return res.render("pages/500");
     }
@@ -62,7 +62,7 @@ exports.destroy = (req:Request, res:Response) => {
 
 // ### Parse a hashtag
 
-function parseHashtag(inputText) {
+function parseHashtag(inputText: string) {
   var regex = /(?:^|\s)(?:#)([a-zA-Z\d]+)/g;
   var matches = [];
   var match;
@@ -74,9 +74,9 @@ function parseHashtag(inputText) {
 
 exports.parseHashtag = parseHashtag;
 
-let showTweets = (req:Request, res:Response, criteria) => {
+let showTweets = (req:Request, res:Response, criteria: any) => {
   const findCriteria = criteria || {};
-  const page = (req.query.page > 0 ? req.query.page : 1) - 1;
+  const page: number = (req.query.page > 0 ? req.query.page : 1) - 1;
   const perPage = 10;
   const options = {
     perPage: perPage,
@@ -85,16 +85,16 @@ let showTweets = (req:Request, res:Response, criteria) => {
   };
   let followingCount = req.user.following.length;
   let followerCount = req.user.followers.length;
-  let tweets, tweetCount, pageViews, analytics, pagination;
-  User.countUserTweets(req.user._id).then(result => {
+  let tweets: Array<typeof Tweet>, tweetCount: number, pageViews: number, analytics: Array<typeof Analytics>, pagination: number;
+  User.countUserTweets(req.user._id).then(function (result: any) {
     tweetCount = result;
   });
   Tweet.list(options)
-    .then(result => {
+    .then(function (result: any) {
       tweets = result;
       return Tweet.countTweets(findCriteria);
     })
-    .then(result => {
+    .then(function (result: any) {
       pageViews = result;
       pagination = createPagination(
         req,
@@ -103,7 +103,7 @@ let showTweets = (req:Request, res:Response, criteria) => {
       );
       return Analytics.list({ perPage: 15 });
     })
-    .then(result => {
+    .then(function (result: any) {
       analytics = result;
       res.render("pages/index", {
         title: "List of Tweets",
@@ -117,7 +117,7 @@ let showTweets = (req:Request, res:Response, criteria) => {
         pages: Math.ceil(pageViews / perPage)
       });
     })
-    .catch(error => {
+    .catch(function (error: any) {
       logger.error(error);
       res.render("pages/500");
     });
@@ -130,5 +130,5 @@ exports.findTag = (req:Request, res:Response) => {
 };
 
 exports.index = (req:Request, res:Response) => {
-  showTweets(req, res);
+  showTweets(req, res, {});
 };

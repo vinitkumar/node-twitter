@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 import {Request, Response, NextFunction} from "express";
-const Tweet = Mongoose.model("Tweet");
-const User = Mongoose.model("User");
-const Analytics = Mongoose.model("Analytics");
+const Tweet = mongoose.model("Tweet");
+const User = mongoose.model("User");
+const Analytics = mongoose.model("Analytics");
 const logger = require("../middlewares/logger");
 
 exports.signin = (req: Request, res: Response) => {};
@@ -12,21 +12,21 @@ exports.authCallback = (req: Request, res: Response) => {
 };
 
 exports.login = (req: Request, res: Response) => {
-  let tweetCount, userCount, analyticsCount;
+  let tweetCount: number, userCount: number, analyticsCount: number;
   let options = {};
   Analytics.list(options)
     .then(() => {
       return Analytics.countDocuments();
     })
-    .then(result => {
+    .then(function (result: any) {
       analyticsCount = result;
       return Tweet.countTweets();
     })
-    .then(result => {
+    .then(function (result: any) {
       tweetCount = result;
       return User.countTotalUsers();
     })
-    .then(result => {
+    .then(function (result: any) {
       userCount = result;
       logger.info(tweetCount);
       logger.info(userCount);
@@ -62,7 +62,7 @@ exports.create = (req: Request, res: Response, next: NextFunction) => {
   user.provider = "local";
   user
     .save()
-    .catch(error => {
+    .catch(function (error: any) {
       return res.render("pages/login", { errors: error.errors, user: user });
     })
     .then(() => {
@@ -71,26 +71,26 @@ exports.create = (req: Request, res: Response, next: NextFunction) => {
     .then(() => {
       return res.redirect("/");
     })
-    .catch(error => {
+    .catch(function (error: mongoose.Error) {
       return next(error);
     });
 };
 
 exports.list = (req: Request, res: Response) => {
-  const page = (req.query.page > 0 ? req.query.page : 1) - 1;
+  const page: number = (req.query.page > 0 ? req.query.page : 1) - 1;
   const perPage = 5;
   const options = {
     perPage: perPage,
     page: page,
     criteria: { github: { $exists: true } }
   };
-  let users, count;
+  let users: Array<typeof User>, count;
   User.list(options)
-    .then(result => {
+    .then(function (result: any) {
       users = result;
       return User.countDocuments();
     })
-    .then(result => {
+    .then(function (result: any){
       count = result;
       res.render("pages/user-list", {
         title: "List of Users",
@@ -99,7 +99,7 @@ exports.list = (req: Request, res: Response) => {
         pages: Math.ceil(count / perPage)
       });
     })
-    .catch(error => {
+    .catch(function (error: mongoose.Error)   {
       return res.render("pages/500", { errors: error.errors });
     });
 };
@@ -108,22 +108,22 @@ exports.show = (req: Request, res: Response) => {
   const user = req.profile;
   const reqUserId = user._id;
   const userId = reqUserId.toString();
-  const page = (req.query.page > 0 ? req.query.page : 1) - 1;
+  const page: number = (req.query.page > 0 ? req.query.page : 1) - 1;
   const options = {
     perPage: 100,
     page: page,
     criteria: { user: userId }
   };
-  let tweets, tweetCount;
+  let tweets: any, tweetCount;
   let followingCount = user.following.length;
   let followerCount = user.followers.length;
 
   Tweet.list(options)
-    .then(result => {
+    .then(function (result: any) {
       tweets = result;
       return Tweet.countUserTweets(reqUserId);
     })
-    .then(result => {
+    .then(function (result: any) {
       tweetCount = result;
       res.render("pages/profile", {
         title: "Tweets from " + user.name,
@@ -134,13 +134,13 @@ exports.show = (req: Request, res: Response) => {
         followingCount: followingCount
       });
     })
-    .catch(error => {
+    .catch(function (error: mongoose.Error) {
       return res.render("pages/500", { errors: error.errors });
     });
 };
 
 exports.user = (req: Request, res: Response, next: NextFunction, id) => {
-  User.findOne({ _id: id }).exec((err, user) => {
+  User.findOne({ _id: id }).exec((err: mongoose.Error, user: typeof User) => {
     if (err) {
       return next(err);
     }
@@ -176,10 +176,9 @@ exports.delete = (req: Request, res: Response) => {
     });
 };
 
-function showFollowers(req: Request, res: Response, type) {
+function showFollowers(req: Request, res: Response, type: string) {
   let user = req.profile;
   let followers = user[type];
-  let tweetCount;
   let followingCount = user.following.length;
   let followerCount = user.followers.length;
   let userFollowers = User.find({ _id: { $in: followers } }).populate(
@@ -188,8 +187,8 @@ function showFollowers(req: Request, res: Response, type) {
   );
 
   Tweet.countUserTweets(user._id).then(result => {
-    tweetCount = result;
-    userFollowers.exec((err, users) => {
+    let tweetCount: number = result;
+    userFollowers.exec((err: mongoose.Error, users: Array<typeof User>) => {
       if (err) {
         return res.render("pages/500");
       }

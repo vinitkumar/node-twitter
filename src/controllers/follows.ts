@@ -11,11 +11,11 @@ exports.follow = (req: Request, res: Response) => {
 
   const currentId = user.id;
 
-  User.findOne({ _id: id }, function(err, user) {
+  User.findOne({ _id: id }, function(err: mongoose.Error, user: typeof User) {
     if (user.followers.indexOf(currentId) === -1) {
       user.followers.push(currentId);
     }
-    user.save(err => {
+    user.save(function (err) {
       if (err) {
         logger.error(err);
       }
@@ -25,11 +25,11 @@ exports.follow = (req: Request, res: Response) => {
   // Over here, we find the id of the user we want to follow
   // and add the user to the following list of the current
   // logged in user
-  User.findOne({ _id: currentId }, function(err, user) {
+  User.findOne({ _id: currentId }, function(err: mongoose.Error, user: typeof User) {
     if (user.following.indexOf(id) === -1) {
       user.following.push(id);
     }
-    user.save(err => {
+    user.save(function (err: mongoose.Error) {
       const activity = new Activity({
         activityStream: "followed by",
         activityKey: user,
@@ -37,7 +37,7 @@ exports.follow = (req: Request, res: Response) => {
         receiver: user
       });
 
-      activity.save(err => {
+      activity.save(function (err: mongoose.Error) {
         if (err) {
           logger.error(err);
           res.render("pages/500");

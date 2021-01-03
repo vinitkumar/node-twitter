@@ -2,13 +2,14 @@
 const utils = require("../../lib/utils");
 import mongoose from "mongoose";
 const Activity = mongoose.model("Activity");
+const Comment = mongoose.model("Comment");
 const logger = require("../middlewares/logger");
 
-import {Request, Response} from "express";
+import {Request, Response, NextFunction} from "express";
 
-exports.load = (req: Request, res: Response, next, id) => {
+exports.load = (req: Request, res: Response, next: NextFunction, id: string) => {
   const tweet = req.tweet;
-  utils.findByParam(tweet.comments, { id: id }, (err, comment) => {
+  utils.findByParam(tweet.comments, { id: id }, (err: mongoose.Error, comment: typeof Comment) => {
     if (err) {
       return next(err);
     }
@@ -51,7 +52,7 @@ exports.create = (req: Request, res: Response) => {
 exports.destroy = (req: Request, res: Response) => {
   // delete a comment here.
   const comment = req.comment;
-  comment.remove(err => {
+  comment.remove(function (err: mongoose.Error) {
     if (err) {
       res.send(400);
     }
