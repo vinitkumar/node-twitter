@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.create = (req, res) => {
     const tweet = req.tweet;
     tweet._favorites = req.user;
-    tweet.save(err => {
+    tweet.save(function (err) {
         if (err) {
             return res.send(400);
         }
@@ -15,7 +15,7 @@ exports.create = (req, res) => {
 exports.destroy = (req, res) => {
     const tweet = req.tweet;
     tweet._favorites = req.user;
-    tweet.save(err => {
+    tweet.save(function (err) {
         if (err) {
             return res.send(400);
         }

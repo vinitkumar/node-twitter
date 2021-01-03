@@ -7,7 +7,7 @@ const url = require("url");
 const logger = require("../middlewares/logger");
 import {Request, Response} from "express";
 
-exports.createPagination = (req, pages, page) => {
+exports.createPagination = (req: Request, pages, page) => {
   let params = qs.parse(url.parse(req.url).query);
   let str = "";
   let pageNumberClass;
@@ -117,11 +117,11 @@ exports.index = (req: Request, res: Response) => {
   let analytics, pageViews, tweetCount, pagination, userCount;
 
   Analytics.list(options)
-    .then(result => {
+    .then(function (result: any){
       analytics = result;
       return Analytics.countDocuments();
     })
-    .then(result => {
+    .then(function (result: any){
       pageViews = result;
       pagination = createPagination(
         req,
@@ -130,11 +130,11 @@ exports.index = (req: Request, res: Response) => {
       );
       return Tweet.countTweets();
     })
-    .then(result => {
+    .then(function (result: any){
       tweetCount = result;
       return User.countTotalUsers();
     })
-    .then(result => {
+    .then(function (result: any){
       userCount = result;
       res.render("pages/analytics", {
         title: "List of users",
@@ -146,7 +146,7 @@ exports.index = (req: Request, res: Response) => {
         pages: Math.ceil(pageViews / perPage)
       });
     })
-    .catch(error => {
+    .catch(function (error: any){
       logger.error(error);
       return res.render("pages/500");
     });

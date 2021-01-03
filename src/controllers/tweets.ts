@@ -28,9 +28,9 @@ exports.create = (req:Request, res:Response) => {
   tweet.user = req.user;
   tweet.tags = parseHashtag(req.body.body);
 
-  tweet.uploadAndSave({}, err => {
+  tweet.uploadAndSave({}, function (err: mongoose.Error) {
     if (err) {
-      res.render("pages/500", { error: err });
+      res.render("pages/500", {error: err});
     } else {
       res.redirect("/");
     }

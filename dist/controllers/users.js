@@ -171,7 +171,7 @@ function showFollowers(req, res, type) {
     let followingCount = user.following.length;
     let followerCount = user.followers.length;
     let userFollowers = User.find({ _id: { $in: followers } }).populate("user", "_id name username github");
-    Tweet.countUserTweets(user._id).then(result => {
+    Tweet.countUserTweets(user._id).then(function (result) {
         let tweetCount = result;
         userFollowers.exec((err, users) => {
             if (err) {

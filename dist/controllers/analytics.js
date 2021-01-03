@@ -119,20 +119,20 @@ exports.index = (req, res) => {
     };
     let analytics, pageViews, tweetCount, pagination, userCount;
     Analytics.list(options)
-        .then(result => {
+        .then(function (result) {
         analytics = result;
         return Analytics.countDocuments();
     })
-        .then(result => {
+        .then(function (result) {
         pageViews = result;
         pagination = createPagination(req, Math.ceil(pageViews / perPage), page + 1);
         return Tweet.countTweets();
     })
-        .then(result => {
+        .then(function (result) {
         tweetCount = result;
         return User.countTotalUsers();
     })
-        .then(result => {
+        .then(function (result) {
         userCount = result;
         res.render("pages/analytics", {
             title: "List of users",
@@ -144,7 +144,7 @@ exports.index = (req, res) => {
             pages: Math.ceil(pageViews / perPage)
         });
     })
-        .catch(error => {
+        .catch(function (error) {
         logger.error(error);
         return res.render("pages/500");
     });

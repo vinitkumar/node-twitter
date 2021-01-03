@@ -29,7 +29,7 @@ exports.tweetList = (req: Request, res: Response) => {
 
 exports.usersList = (req: Request, res: Response) => {
   const page = (req.query.page > 0 ? req.query.page : 1) - 1;
-  const perPage = 15;
+  const perPage: number = 15;
   const options = {
     perPage: perPage,
     page: page

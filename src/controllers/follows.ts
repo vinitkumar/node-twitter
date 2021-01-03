@@ -15,7 +15,7 @@ exports.follow = (req: Request, res: Response) => {
     if (user.followers.indexOf(currentId) === -1) {
       user.followers.push(currentId);
     }
-    user.save(function (err) {
+    user.save(function (err: mongoose.Error) {
       if (err) {
         logger.error(err);
       }

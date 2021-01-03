@@ -134,7 +134,7 @@ exports.show = (req: Request, res: Response) => {
         followingCount: followingCount
       });
     })
-    .catch(function (error: mongoose.Error) {
+    .catch(function (error: Error) {
       return res.render("pages/500", { errors: error.errors });
     });
 };
@@ -186,7 +186,7 @@ function showFollowers(req: Request, res: Response, type: string) {
     "_id name username github"
   );
 
-  Tweet.countUserTweets(user._id).then(result => {
+  Tweet.countUserTweets(user._id).then(function (result: any) {
     let tweetCount: number = result;
     userFollowers.exec((err: mongoose.Error, users: Array<typeof User>) => {
       if (err) {

@@ -28,7 +28,7 @@ exports.create = (req, res) => {
     const tweet = new Tweet(req.body);
     tweet.user = req.user;
     tweet.tags = parseHashtag(req.body.body);
-    tweet.uploadAndSave({}, err => {
+    tweet.uploadAndSave({}, function (err) {
         if (err) {
             res.render("pages/500", { error: err });
         }

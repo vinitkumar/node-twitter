@@ -1,10 +1,11 @@
+import mongoose from "mongoose";
 import {Request, Response} from "express";
 
 // ### Create Favorite
 exports.create = (req: Request, res: Response) => {
   const tweet = req.tweet;
   tweet._favorites = req.user;
-  tweet.save(err => {
+  tweet.save(function (err: mongoose.Error) {
     if (err) {
       return res.send(400);
     }
@@ -17,7 +18,7 @@ exports.destroy = (req: Request, res: Response) => {
   const tweet = req.tweet;
 
   tweet._favorites = req.user;
-  tweet.save(err => {
+  tweet.save(function (err: mongoose.Error) {
     if (err) {
       return res.send(400);
     }
