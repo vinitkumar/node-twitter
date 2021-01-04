@@ -9,13 +9,13 @@ const ChatSchema = new Schema({
 });
 
 ChatSchema.statics = {
-  load: function(options, cb) {
+  load: function(options: any, cb: any) {
     options.select = options.select || "message sender receiver createdAt";
     return this.findOne(options.criteria)
       .select(options.select)
       .exec(cb);
   },
-  list: function(options) {
+  list: function(options: any) {
     const criteria = options.criteria || {};
     return this.find(criteria)
       .populate("sender", "name username github")
