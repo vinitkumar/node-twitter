@@ -1,9 +1,10 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 const Analytics = mongoose.model('Analytics');
 const logger = require('../../app/middlewares/logger');
+import {Request, Response, NextFunction} from "express";
 
 
-exports.analytics = (req, res, next) => {
+exports.analytics = (req: Request, res: Response, next: NextFunction) => {
   // A lot of analytics is missed because users might have
   // malinformed IPs. Let's just get rid of the IP data altogether and log user irrepsective
   // of that. For backward compatiblity, we will just store a dummy IP for all future users.
@@ -38,7 +39,7 @@ exports.analytics = (req, res, next) => {
           user: req.user,
           url: url
         });
-        analytics.save(err => {
+        analytics.save(function(err: mongoose.Error) {
           if (err) {
             logger.log(err);
           }

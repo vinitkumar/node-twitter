@@ -102,3 +102,8 @@ module.exports = (app, config, passport) => {
     res.status(500).render("pages/500", { error: err.stack });
   });
 };
+
+
+// TODO: @vinitkumar
+// https://stackoverflow.com/questions/58957228/property-does-not-exist-on-type-requestparamsdictionary
+// Fix the errors with types on Request

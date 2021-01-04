@@ -1,5 +1,10 @@
-const mongoose = require('mongoose');
-const Analytics = mongoose.model('Analytics');
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const mongoose_1 = __importDefault(require("mongoose"));
+const Analytics = mongoose_1.default.model('Analytics');
 const logger = require('../../app/middlewares/logger');
 exports.analytics = (req, res, next) => {
     // A lot of analytics is missed because users might have
@@ -38,7 +43,7 @@ exports.analytics = (req, res, next) => {
                     user: req.user,
                     url: url
                 });
-                analytics.save(err => {
+                analytics.save(function (err) {
                     if (err) {
                         logger.log(err);
                     }
