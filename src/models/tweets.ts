@@ -1,11 +1,35 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 import {Request, Response, NextFunction} from "express";
-const User = mongoose.Model("User");
+const User = mongoose.model("User");
 const utils = require("../../lib/utils");
+import {UserDocument} from "./user";
 
 //  Getters and Setters
 const setTags = function (tags: Array<String>) { return tags.map(function (t: string) { return t.toLowerCase()})};
+
+export type CommentDocument = mongoose.Document & {
+  _id: string,
+  body: string,
+  user: UserDocument,
+  commenterName: string,
+  commenterPicture: string ,
+  createdAt: Date
+}
+
+export type TweetDocument = mongoose.Document & {
+  _id: string,
+  body: string,
+  user: UserDocument,
+  comments: [
+    CommentDocument
+  ],
+  tags: Array<string>,
+  favorites: Array<UserDocument>,
+  favoriters: Array<UserDocument>, // same as favorites
+  favoritesCount: number,
+  createdAt: Date
+};
 
 // Tweet Schema
 const TweetSchema = new Schema(
@@ -32,11 +56,12 @@ const TweetSchema = new Schema(
 
 // Pre save hook
 TweetSchema.pre("save", function(next: NextFunction) {
-  if (this.favorites) {
-    this.favoritesCount = this.favorites.length;
+  const tweet = this as TweetDocument;
+  if (tweet.favorites) {
+    tweet.favoritesCount = tweet.favorites.length;
   }
-  if (this.favorites) {
-    this.favoriters = this.favorites;
+  if (tweet.favorites) {
+    tweet.favoriters = tweet.favorites;
   }
   next();
 });
@@ -47,7 +72,7 @@ TweetSchema.path("body").validate(
   "Tweet body cannot be blank"
 );
 
-TweetSchema.virtual("_favorites").set(function(user: typeof User) {
+TweetSchema.virtual("_favorites").set(function(user: UserDocument) {
   if (this.favorites.indexOf(user._id) === -1) {
     this.favorites.push(user._id);
   } else {
@@ -58,25 +83,9 @@ TweetSchema.virtual("_favorites").set(function(user: typeof User) {
 TweetSchema.methods = {
   uploadAndSave: function(images: Array<string>, callback: any) {
     // const imager = new Imager(imagerConfig, "S3");
-    const self = this;
-    if (!images || !images.length) {
-      return this.save(callback);
-    }
-    imager.upload(
-      images,
-      (err: mongoose.Error , cdnUri: [string], files: [string]) => {
-        if (err) {
-          return callback(err);
-        }
-        if (files.length) {
-          self.image = { cdnUri: cdnUri, files: files };
-        }
-        self.save(callback);
-      },
-      "article"
-    );
+    return this.save(callback);
   },
-  addComment: function(user: any, comment: Comment, cb: any) {
+  addComment: function(user: any, comment: CommentDocument, cb: any) {
     if (user.name) {
       this.comments.push({
         body: comment.body,

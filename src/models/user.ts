@@ -4,6 +4,21 @@ const Tweet = mongoose.model("Tweet");
 const Schema = mongoose.Schema;
 const authTypes = ['github'];
 
+export type UserDocument = mongoose.Document & {
+  _id: string,
+  name: string,
+  email: string,
+  username: string,
+  provider: string,
+  hashedPassword: string,
+  salt: string,
+  github: {},
+  followers: [{ }],
+  following: [{ }],
+  tweets: number
+};
+
+
 // ## Define UserSchema
 const UserSchema = new Schema(
   {
@@ -62,9 +77,10 @@ UserSchema.path("hashedPassword").validate(function(hashedPassword: string) {
 }, "Password cannot be blank");
 
 UserSchema.pre("save", function(next) {
+  const user = this as UserDocument;
   if (
-    !validatePresenceOf(this.password) &&
-    authTypes.indexOf(this.provider) === -1
+    !validatePresenceOf(user.hashedPassword) &&
+    authTypes.indexOf(user.provider) === -1
   ) {
     next(new Error("Invalid password"));
   } else {

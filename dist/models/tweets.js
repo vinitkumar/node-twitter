@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const Schema = mongoose_1.default.Schema;
-const User = mongoose_1.default.Model("User");
+const User = mongoose_1.default.model("User");
 const utils = require("../../lib/utils");
 //  Getters and Setters
 const setTags = function (tags) { return tags.map(function (t) { return t.toLowerCase(); }); };
@@ -30,11 +30,12 @@ const TweetSchema = new Schema({
 }, { usePushEach: true });
 // Pre save hook
 TweetSchema.pre("save", function (next) {
-    if (this.favorites) {
-        this.favoritesCount = this.favorites.length;
+    const tweet = this;
+    if (tweet.favorites) {
+        tweet.favoritesCount = tweet.favorites.length;
     }
-    if (this.favorites) {
-        this.favoriters = this.favorites;
+    if (tweet.favorites) {
+        tweet.favoriters = tweet.favorites;
     }
     next();
 });
@@ -51,19 +52,7 @@ TweetSchema.virtual("_favorites").set(function (user) {
 TweetSchema.methods = {
     uploadAndSave: function (images, callback) {
         // const imager = new Imager(imagerConfig, "S3");
-        const self = this;
-        if (!images || !images.length) {
-            return this.save(callback);
-        }
-        imager.upload(images, (err, cdnUri, files) => {
-            if (err) {
-                return callback(err);
-            }
-            if (files.length) {
-                self.image = { cdnUri: cdnUri, files: files };
-            }
-            self.save(callback);
-        }, "article");
+        return this.save(callback);
     },
     addComment: function (user, comment, cb) {
         if (user.name) {

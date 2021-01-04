@@ -6,7 +6,7 @@ const User = mongoose.model("User");
 const logger = require("../middlewares/logger");
 import {Request, Response, NextFunction} from "express";
 
-exports.chat = (req: Request, res: Response, next: NextFunction, id) => {
+exports.chat = (req: Request, res: Response, next: NextFunction, id: string) => {
   Chat.load(id, (err: mongoose.Error, chat: typeof Chat) => {
     if (err) {
       return next(err);

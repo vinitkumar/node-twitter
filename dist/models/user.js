@@ -56,8 +56,9 @@ UserSchema.path("hashedPassword").validate(function (hashedPassword) {
     return hashedPassword.length;
 }, "Password cannot be blank");
 UserSchema.pre("save", function (next) {
-    if (!validatePresenceOf(this.password) &&
-        authTypes.indexOf(this.provider) === -1) {
+    const user = this;
+    if (!validatePresenceOf(user.hashedPassword) &&
+        authTypes.indexOf(user.provider) === -1) {
         next(new Error("Invalid password"));
     }
     else {
