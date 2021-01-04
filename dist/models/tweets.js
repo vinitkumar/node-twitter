@@ -8,7 +8,7 @@ const Schema = mongoose_1.default.Schema;
 const User = mongoose_1.default.Model("User");
 const utils = require("../../lib/utils");
 //  Getters and Setters
-const setTags = tags => tags.map(t => t.toLowerCase());
+const setTags = function (tags) { return tags.map(function (t) { return t.toLowerCase(); }); };
 // Tweet Schema
 const TweetSchema = new Schema({
     body: { type: String, default: "", trim: true, maxlength: 280 },
@@ -39,7 +39,7 @@ TweetSchema.pre("save", function (next) {
     next();
 });
 // Validations in the schema
-TweetSchema.path("body").validate(body => body.length > 0, "Tweet body cannot be blank");
+TweetSchema.path("body").validate(function (body) { return body.length > 0; }, "Tweet body cannot be blank");
 TweetSchema.virtual("_favorites").set(function (user) {
     if (this.favorites.indexOf(user._id) === -1) {
         this.favorites.push(user._id);

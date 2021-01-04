@@ -30,7 +30,7 @@ UserSchema.virtual("password")
     .get(function () {
     return this._password;
 });
-const validatePresenceOf = value => value && value.length;
+const validatePresenceOf = function (value) { return value && value.length; };
 UserSchema.path("name").validate(function (name) {
     if (authTypes.indexOf(this.provider) !== -1) {
         return true;

@@ -5,7 +5,7 @@ const User = mongoose.Model("User");
 const utils = require("../../lib/utils");
 
 //  Getters and Setters
-const setTags = tags => tags.map(t => t.toLowerCase());
+const setTags = function (tags: Array<String>) { return tags.map(function (t: string) { return t.toLowerCase()})};
 
 // Tweet Schema
 const TweetSchema = new Schema(
@@ -43,11 +43,11 @@ TweetSchema.pre("save", function(next: NextFunction) {
 
 // Validations in the schema
 TweetSchema.path("body").validate(
-  body => body.length > 0,
+  function (body: string) { return body.length > 0},
   "Tweet body cannot be blank"
 );
 
-TweetSchema.virtual("_favorites").set(function(user) {
+TweetSchema.virtual("_favorites").set(function(user: typeof User) {
   if (this.favorites.indexOf(user._id) === -1) {
     this.favorites.push(user._id);
   } else {

@@ -9,7 +9,7 @@ const AnalyticsSchema = new Schema({
 });
 
 AnalyticsSchema.statics = {
-  list: function(options) {
+  list: function(options: any) {
     const criteria = options.criteria || {};
     return this.find(criteria)
       .populate("user", "name username provider")
