@@ -1,4 +1,6 @@
 // ## Tweet Controller
+import {UserDocument} from "../models/user";
+
 const createPagination = require("./analytics").createPagination;
 import mongoose from "mongoose";
 const Tweet = mongoose.model("Tweet");
@@ -8,6 +10,7 @@ const _ = require("underscore");
 const logger = require("../middlewares/logger");
 
 import { Request, Response, NextFunction } from "express";
+import {TweetDocument} from "../models/tweets";
 
 exports.tweet = (req:Request, res:Response, next: NextFunction, id: string) => {
   Tweet.load(id, (err: mongoose.Error, tweet: typeof Tweet) => {
@@ -24,8 +27,8 @@ exports.tweet = (req:Request, res:Response, next: NextFunction, id: string) => {
 
 // ### Create a Tweet
 exports.create = (req:Request, res:Response) => {
-  const tweet = new Tweet(req.body);
-  tweet.user = req.user;
+  const tweet = new Tweet(req.body) as TweetDocument;
+  tweet.user = req.user as UserDocument;
   tweet.tags = parseHashtag(req.body.body);
 
   tweet.uploadAndSave({}, function (err: mongoose.Error) {
@@ -39,7 +42,7 @@ exports.create = (req:Request, res:Response) => {
 
 // ### Update a tweet
 exports.update = (req:Request, res:Response) => {
-  let tweet = req.tweet;
+  let tweet = req.tweet as TweetDocument;
   tweet = _.extend(tweet, { body: req.body.tweet });
   tweet.uploadAndSave({}, function (err: mongoose.Error) {
     if (err) {
@@ -51,7 +54,7 @@ exports.update = (req:Request, res:Response) => {
 
 // ### Delete a tweet
 exports.destroy = (req:Request, res:Response) => {
-  const tweet = req.tweet;
+  const tweet = req.tweet as TweetDocument;
   tweet.remove(function (err: mongoose.Error) {
     if (err) {
       return res.render("pages/500");
@@ -63,9 +66,9 @@ exports.destroy = (req:Request, res:Response) => {
 // ### Parse a hashtag
 
 function parseHashtag(inputText: string) {
-  var regex = /(?:^|\s)(?:#)([a-zA-Z\d]+)/g;
-  var matches = [];
-  var match;
+  const regex = /(?:^|\s)(?:#)([a-zA-Z\d]+)/g;
+  const matches = [];
+  let match;
   while ((match = regex.exec(inputText)) !== null) {
     matches.push(match[1]);
   }
@@ -75,6 +78,7 @@ function parseHashtag(inputText: string) {
 exports.parseHashtag = parseHashtag;
 
 let showTweets = (req:Request, res:Response, criteria: any) => {
+  const user = req.user as UserDocument;
   const findCriteria = criteria || {};
   const page: number = (req.query.page > 0 ? req.query.page : 1) - 1;
   const perPage = 10;
@@ -83,10 +87,10 @@ let showTweets = (req:Request, res:Response, criteria: any) => {
     page: page,
     criteria: findCriteria
   };
-  let followingCount = req.user.following.length;
-  let followerCount = req.user.followers.length;
+  let followingCount = user.following.length;
+  let followerCount = user.followers.length;
   let tweets: Array<typeof Tweet>, tweetCount: number, pageViews: number, analytics: Array<typeof Analytics>, pagination: number;
-  User.countUserTweets(req.user._id).then(function (result: any) {
+  User.countUserTweets(user._id).then(function (result: any) {
     tweetCount = result;
   });
   Tweet.list(options)

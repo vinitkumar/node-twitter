@@ -2,6 +2,8 @@
  * Generic require login routing middlewares
  */
 import {Request, Response, NextFunction} from "express";
+import {UserDocument} from "../../models/user";
+import {CommentDocument, TweetDocument} from "../../models/tweets";
 
 exports.requiresLogin = (req: Request, res: Response, next: NextFunction) => {
   console.log('authenticated', req.isAuthenticated());
@@ -17,8 +19,10 @@ exports.requiresLogin = (req: Request, res: Response, next: NextFunction) => {
 
 exports.user = {
   hasAuthorization: (req: Request, res: Response, next: NextFunction) => {
-    if (req.profile.id !== req.user.id) {
-      return res.redirect('/users'+req.profile.id);
+    const user = req.user as UserDocument;
+    const profile = req.profile as UserDocument;
+    if (profile.id !== user.id) {
+      return res.redirect('/users'+ profile.id);
     }
     next();
   }
@@ -26,8 +30,10 @@ exports.user = {
 
 exports.tweet = {
   hasAuthorization: (req: Request, res: Response, next: NextFunction) => {
-    if (req.tweet.user.id !== req.user.id) {
-      return res.redirect('/tweets'+req.tweet.id);
+    const tweet = req.tweet as TweetDocument;
+    const user = req.user as UserDocument;
+    if (tweet.user.id !== user.id) {
+      return res.redirect('/tweets'+tweet.id);
     }
     next();
   }
@@ -42,11 +48,14 @@ exports.comment = {
   hasAuthorization: (req: Request, res: Response, next: NextFunction)  => {
     // if the current user is comment owner or article owner
     // give them authority to delete
-    if (req.user.id === req.comment.user.id || req.user.id === req.article.user.id) {
+    const user = req.user as UserDocument;
+    const comment = req.comment as CommentDocument;
+    const article = req.article as TweetDocument;
+    if (user.id === comment.user.id || user.id === article.user.id) {
       next();
     } else {
       req.flash('info', 'You are not authorized');
-      res.redirect('/articles/' + req.article.id);
+      res.redirect('/articles/' + article.id);
     }
   }
 };

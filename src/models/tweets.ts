@@ -28,7 +28,8 @@ export type TweetDocument = mongoose.Document & {
   favorites: Array<UserDocument>,
   favoriters: Array<UserDocument>, // same as favorites
   favoritesCount: number,
-  createdAt: Date
+  createdAt: Date,
+  uploadAndSave: (x: any, y: any) => void
 };
 
 // Tweet Schema

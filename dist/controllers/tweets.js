@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// ## Tweet Controller
 const createPagination = require("./analytics").createPagination;
 const mongoose_1 = __importDefault(require("mongoose"));
 const Tweet = mongoose_1.default.model("Tweet");
@@ -60,9 +59,9 @@ exports.destroy = (req, res) => {
 };
 // ### Parse a hashtag
 function parseHashtag(inputText) {
-    var regex = /(?:^|\s)(?:#)([a-zA-Z\d]+)/g;
-    var matches = [];
-    var match;
+    const regex = /(?:^|\s)(?:#)([a-zA-Z\d]+)/g;
+    const matches = [];
+    let match;
     while ((match = regex.exec(inputText)) !== null) {
         matches.push(match[1]);
     }
@@ -70,6 +69,7 @@ function parseHashtag(inputText) {
 }
 exports.parseHashtag = parseHashtag;
 let showTweets = (req, res, criteria) => {
+    const user = req.user;
     const findCriteria = criteria || {};
     const page = (req.query.page > 0 ? req.query.page : 1) - 1;
     const perPage = 10;
@@ -78,10 +78,10 @@ let showTweets = (req, res, criteria) => {
         page: page,
         criteria: findCriteria
     };
-    let followingCount = req.user.following.length;
-    let followerCount = req.user.followers.length;
+    let followingCount = user.following.length;
+    let followerCount = user.followers.length;
     let tweets, tweetCount, pageViews, analytics, pagination;
-    User.countUserTweets(req.user._id).then(function (result) {
+    User.countUserTweets(user._id).then(function (result) {
         tweetCount = result;
     });
     Tweet.list(options)

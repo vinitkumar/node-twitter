@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import {Request, Response, NextFunction} from "express";
+import {UserDocument} from "../models/user";
 const Tweet = mongoose.model("Tweet");
 const User = mongoose.model("User");
 const Analytics = mongoose.model("Analytics");
@@ -58,7 +59,7 @@ exports.session = (req: Request, res: Response) => {
 };
 
 exports.create = (req: Request, res: Response, next: NextFunction) => {
-  const user = new User(req.body);
+  const user = new User(req.body) as UserDocument;
   user.provider = "local";
   user
     .save()
@@ -99,7 +100,7 @@ exports.list = (req: Request, res: Response) => {
         pages: Math.ceil(count / perPage)
       });
     })
-    .catch(function (error: mongoose.Error)   {
+    .catch(function (error: any)   {
       return res.render("pages/500", { errors: error.errors });
     });
 };
@@ -134,12 +135,12 @@ exports.show = (req: Request, res: Response) => {
         followingCount: followingCount
       });
     })
-    .catch(function (error: Error) {
+    .catch(function (error: any) {
       return res.render("pages/500", { errors: error.errors });
     });
 };
 
-exports.user = (req: Request, res: Response, next: NextFunction, id) => {
+exports.user = (req: Request, res: Response, next: NextFunction, id: string) => {
   User.findOne({ _id: id }).exec((err: mongoose.Error, user: typeof User) => {
     if (err) {
       return next(err);
@@ -161,9 +162,10 @@ exports.showFollowing = (req: Request, res: Response) => {
 };
 
 exports.delete = (req: Request, res: Response) => {
-  Tweet.remove({ user: req.user._id })
+  const user = req.user as UserDocument;
+  Tweet.remove({ user: user._id })
     .then(() => {
-      User.findByIdAndRemove(req.user._id)
+      User.findByIdAndRemove(user._id)
         .then(() => {
           return res.redirect("/login");
         })

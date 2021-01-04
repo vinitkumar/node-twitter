@@ -151,9 +151,10 @@ exports.showFollowing = (req, res) => {
     showFollowers(req, res, "following");
 };
 exports.delete = (req, res) => {
-    Tweet.remove({ user: req.user._id })
+    const user = req.user;
+    Tweet.remove({ user: user._id })
         .then(() => {
-        User.findByIdAndRemove(req.user._id)
+        User.findByIdAndRemove(user._id)
             .then(() => {
             return res.redirect("/login");
         })
