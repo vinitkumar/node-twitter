@@ -5,7 +5,10 @@ import {Request, Response, NextFunction} from "express";
 import {UserDocument} from "../../models/user";
 import {CommentDocument, TweetDocument} from "../../models/tweets";
 
-exports.requiresLogin = (req: Request, res: Response, next: NextFunction) => {
+import {CustomRequest} from "../middlewares/logger";
+
+
+exports.requiresLogin = (req: CustomRequest, res: Response, next: NextFunction) => {
   console.log('authenticated', req.isAuthenticated());
   if (!req.isAuthenticated()) {
     return res.redirect('/login');
@@ -18,7 +21,7 @@ exports.requiresLogin = (req: Request, res: Response, next: NextFunction) => {
  */
 
 exports.user = {
-  hasAuthorization: (req: Request, res: Response, next: NextFunction) => {
+  hasAuthorization: (req: CustomRequest, res: Response, next: NextFunction) => {
     const user = req.user as UserDocument;
     const profile = req.profile as UserDocument;
     if (profile.id !== user.id) {
@@ -29,7 +32,7 @@ exports.user = {
 };
 
 exports.tweet = {
-  hasAuthorization: (req: Request, res: Response, next: NextFunction) => {
+  hasAuthorization: (req: CustomRequest, res: Response, next: NextFunction) => {
     const tweet = req.tweet as TweetDocument;
     const user = req.user as UserDocument;
     if (tweet.user.id !== user.id) {
@@ -45,7 +48,7 @@ exports.tweet = {
  */
 
 exports.comment = {
-  hasAuthorization: (req: Request, res: Response, next: NextFunction)  => {
+  hasAuthorization: (req: CustomRequest, res: Response, next: NextFunction)  => {
     // if the current user is comment owner or article owner
     // give them authority to delete
     const user = req.user as UserDocument;

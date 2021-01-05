@@ -6,8 +6,10 @@ const qs = require("querystring");
 const url = require("url");
 const logger = require("../middlewares/logger");
 import {Request, Response} from "express";
+import {AnalyticsDocument} from "../models/analytics";
+import {CustomRequest} from "../config/middlewares/logger";
 
-exports.createPagination = (req: Request, pages, page) => {
+exports.createPagination = (req: CustomRequest, pages, page) => {
   let params = qs.parse(url.parse(req.url).query);
   let str = "";
   let pageNumberClass;
@@ -105,7 +107,7 @@ exports.createPagination = (req: Request, pages, page) => {
   return str;
 };
 
-exports.index = (req: Request, res: Response) => {
+exports.index = (req: CustomRequest, res: Response) => {
   let createPagination = exports.createPagination;
   const page = (req.query.page > 0 ? req.query.page : 1) - 1;
   const perPage = 10;
@@ -114,7 +116,7 @@ exports.index = (req: Request, res: Response) => {
     page: page
   };
 
-  let analytics, pageViews, tweetCount, pagination, userCount;
+  let analytics: AnalyticsDocument, pageViews: any, tweetCount: number, pagination: any, userCount: number;
 
   Analytics.list(options)
     .then(function (result: any){

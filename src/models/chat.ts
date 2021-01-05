@@ -1,5 +1,14 @@
 import mongoose from "mongoose";
+import {UserDocument} from "./user";
 const Schema = mongoose.Schema;
+
+export type ChatDocument = mongoose.Document & {
+  message: string,
+  sender: UserDocument,
+  receiver: UserDocument,
+  createdAt: Date
+};
+
 
 const ChatSchema = new Schema({
   message: { type: String, default: "", trim: true, maxlength: 200 },

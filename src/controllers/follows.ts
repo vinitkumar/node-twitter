@@ -3,15 +3,16 @@ const User = mongoose.model("User");
 const Activity = mongoose.model("Activity");
 const logger = require("../middlewares/logger");
 import {Request, Response} from "express";
+import {UserDocument} from "../models/user";
 
 exports.follow = (req: Request, res: Response) => {
-  const user = req.user;
+  const user = req.user as UserDocument;
   const id = req.url.split("/")[2];
   // push the current user in the follower list of the target user
 
   const currentId = user.id;
 
-  User.findOne({ _id: id }, function(err: mongoose.Error, user: typeof User) {
+  User.findOne({ _id: id }, function(err: mongoose.Error, user: UserDocument) {
     if (user.followers.indexOf(currentId) === -1) {
       user.followers.push(currentId);
     }
@@ -25,7 +26,7 @@ exports.follow = (req: Request, res: Response) => {
   // Over here, we find the id of the user we want to follow
   // and add the user to the following list of the current
   // logged in user
-  User.findOne({ _id: currentId }, function(err: mongoose.Error, user: typeof User) {
+  User.findOne({ _id: currentId }, function(err: mongoose.Error, user: UserDocument) {
     if (user.following.indexOf(id) === -1) {
       user.following.push(id);
     }

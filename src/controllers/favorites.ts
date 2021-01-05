@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
 import {Request, Response} from "express";
+import {CustomRequest} from "../config/middlewares/logger";
+import {TweetDocument} from "../models/tweets";
 
 // ### Create Favorite
-exports.create = (req: Request, res: Response) => {
+exports.create = (req: CustomRequest, res: Response) => {
   const tweet = req.tweet;
   tweet._favorites = req.user;
   tweet.save(function (err: mongoose.Error) {
@@ -14,8 +16,8 @@ exports.create = (req: Request, res: Response) => {
 };
 
 // ### Delete Favorite
-exports.destroy = (req: Request, res: Response) => {
-  const tweet = req.tweet;
+exports.destroy = (req: CustomRequest, res: Response) => {
+  const tweet = req.tweet as TweetDocument;
 
   tweet._favorites = req.user;
   tweet.save(function (err: mongoose.Error) {

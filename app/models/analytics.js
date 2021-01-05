@@ -1,5 +1,12 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
+
+export type AnalyticsDocument = mongoose.Document & {
+  ip: string,
+  user: UserDocument,
+  url: string,
+  createdAt: Date
+};
 
 const AnalyticsSchema = new Schema({
   ip: String,

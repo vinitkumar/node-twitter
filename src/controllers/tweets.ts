@@ -11,6 +11,7 @@ const logger = require("../middlewares/logger");
 
 import { Request, Response, NextFunction } from "express";
 import {TweetDocument} from "../models/tweets";
+import {CustomRequest} from "../config/middlewares/logger";
 
 exports.tweet = (req:Request, res:Response, next: NextFunction, id: string) => {
   Tweet.load(id, (err: mongoose.Error, tweet: typeof Tweet) => {
@@ -26,7 +27,7 @@ exports.tweet = (req:Request, res:Response, next: NextFunction, id: string) => {
 };
 
 // ### Create a Tweet
-exports.create = (req:Request, res:Response) => {
+exports.create = (req: CustomRequest, res:Response) => {
   const tweet = new Tweet(req.body) as TweetDocument;
   tweet.user = req.user as UserDocument;
   tweet.tags = parseHashtag(req.body.body);
@@ -41,7 +42,7 @@ exports.create = (req:Request, res:Response) => {
 };
 
 // ### Update a tweet
-exports.update = (req:Request, res:Response) => {
+exports.update = (req: CustomRequest, res:Response) => {
   let tweet = req.tweet as TweetDocument;
   tweet = _.extend(tweet, { body: req.body.tweet });
   tweet.uploadAndSave({}, function (err: mongoose.Error) {
@@ -53,7 +54,7 @@ exports.update = (req:Request, res:Response) => {
 };
 
 // ### Delete a tweet
-exports.destroy = (req:Request, res:Response) => {
+exports.destroy = (req: CustomRequest, res:Response) => {
   const tweet = req.tweet as TweetDocument;
   tweet.remove(function (err: mongoose.Error) {
     if (err) {
@@ -77,7 +78,7 @@ function parseHashtag(inputText: string) {
 
 exports.parseHashtag = parseHashtag;
 
-let showTweets = (req:Request, res:Response, criteria: any) => {
+let showTweets = (req: CustomRequest, res:Response, criteria: any) => {
   const user = req.user as UserDocument;
   const findCriteria = criteria || {};
   const page: number = (req.query.page > 0 ? req.query.page : 1) - 1;
@@ -128,11 +129,11 @@ let showTweets = (req:Request, res:Response, criteria: any) => {
 };
 
 // ### Find a tag
-exports.findTag = (req:Request, res:Response) => {
+exports.findTag = (req: CustomRequest, res:Response) => {
   let tag = req.params.tag;
   showTweets(req, res, { tags: tag.toLowerCase() });
 };
 
-exports.index = (req:Request, res:Response) => {
+exports.index = (req: CustomRequest, res:Response) => {
   showTweets(req, res, {});
 };

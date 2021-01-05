@@ -25,6 +25,7 @@ export type TweetDocument = mongoose.Document & {
     CommentDocument
   ],
   tags: Array<string>,
+  _favorites: UserDocument,
   favorites: Array<UserDocument>,
   favoriters: Array<UserDocument>, // same as favorites
   favoritesCount: number,

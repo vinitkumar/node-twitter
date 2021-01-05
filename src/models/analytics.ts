@@ -1,5 +1,13 @@
 import mongoose from "mongoose";
+import {UserDocument} from "./user";
 const Schema = mongoose.Schema;
+
+export type AnalyticsDocument = mongoose.Document & {
+  ip: string,
+  user: UserDocument,
+  url: string,
+  createdAt: Date
+};
 
 const AnalyticsSchema = new Schema({
   ip: String,

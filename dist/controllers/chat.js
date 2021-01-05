@@ -65,10 +65,11 @@ exports.getChat = (req, res) => {
     });
 };
 exports.create = (req, res) => {
+    let user = req.user;
     const chat = new Chat({
         message: req.body.body,
         receiver: req.body.receiver,
-        sender: req.user.id
+        sender: user.id
     });
     logger.info("chat instance", chat);
     chat.save(function (err) {
@@ -76,7 +77,7 @@ exports.create = (req, res) => {
             activityStream: "sent a message to",
             activityKey: chat.id,
             receiver: req.body.receiver,
-            sender: req.user.id
+            sender: user.id
         });
         activity.save(function (err) {
             if (err) {

@@ -1,4 +1,6 @@
 //@ts-check
+import {CustomRequest} from "../config/middlewares/logger";
+
 const utils = require("../../lib/utils");
 import mongoose from "mongoose";
 const Activity = mongoose.model("Activity");
@@ -6,10 +8,11 @@ const Comment = mongoose.model("Comment");
 const logger = require("../middlewares/logger");
 
 import {Request, Response, NextFunction} from "express";
+import {CommentDocument} from "../models/tweets";
 
-exports.load = (req: Request, res: Response, next: NextFunction, id: string) => {
+exports.load = (req: CustomRequest, res: Response, next: NextFunction, id: string) => {
   const tweet = req.tweet;
-  utils.findByParam(tweet.comments, { id: id }, (err: mongoose.Error, comment: typeof Comment) => {
+  utils.findByParam(tweet.comments, { id: id }, (err: mongoose.Error, comment: CommentDocument) => {
     if (err) {
       return next(err);
     }
@@ -19,7 +22,7 @@ exports.load = (req: Request, res: Response, next: NextFunction, id: string) => 
 };
 
 // ### Create Comment
-exports.create = (req: Request, res: Response) => {
+exports.create = (req: CustomRequest, res: Response) => {
   const tweet = req.tweet;
   const user = req.user;
 
@@ -49,7 +52,7 @@ exports.create = (req: Request, res: Response) => {
 };
 
 // ### Delete Comment
-exports.destroy = (req: Request, res: Response) => {
+exports.destroy = (req: CustomRequest, res: Response) => {
   // delete a comment here.
   const comment = req.comment;
   comment.remove(function (err: mongoose.Error) {
