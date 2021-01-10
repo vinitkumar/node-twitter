@@ -9,6 +9,7 @@
         "sourceMap": true,
         "outDir": "dist",
         "skipLibCheck": true,
+        "strictNullChecks": true,
         "baseUrl": ".",
         "paths": {
             "*": [

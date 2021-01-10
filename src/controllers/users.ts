@@ -16,7 +16,7 @@ exports.authCallback = (req: CustomRequest, res: Response) => {
 exports.login = (req: CustomRequest, res: Response) => {
   let tweetCount: number, userCount: number, analyticsCount: number;
   let options = {};
-  Analytics.list(options)
+  Analytics.statics.list(options)
     .then(() => {
       return Analytics.countDocuments();
     })
@@ -120,7 +120,7 @@ exports.show = (req: CustomRequest, res: Response) => {
   let followingCount = user.following.length;
   let followerCount = user.followers.length;
 
-  Tweet.list(options)
+  Tweet.statics.list(options)
     .then(function (result: any) {
       tweets = result;
       return Tweet.countUserTweets(reqUserId);
@@ -180,7 +180,7 @@ exports.delete = (req: CustomRequest, res: Response) => {
 };
 
 function showFollowers(req: CustomRequest, res: Response, type: string) {
-  let user = req.profile;
+  let user = req.profile as UserDocument;
   let followers = user[type];
   let followingCount = user.following.length;
   let followerCount = user.followers.length;

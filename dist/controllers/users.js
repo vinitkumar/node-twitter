@@ -15,7 +15,7 @@ exports.authCallback = (req, res) => {
 exports.login = (req, res) => {
     let tweetCount, userCount, analyticsCount;
     let options = {};
-    Analytics.list(options)
+    Analytics.statics.list(options)
         .then(() => {
         return Analytics.countDocuments();
     })
@@ -112,7 +112,7 @@ exports.show = (req, res) => {
     let tweets, tweetCount;
     let followingCount = user.following.length;
     let followerCount = user.followers.length;
-    Tweet.list(options)
+    Tweet.statics.list(options)
         .then(function (result) {
         tweets = result;
         return Tweet.countUserTweets(reqUserId);
