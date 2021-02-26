@@ -107,6 +107,7 @@ UserSchema.methods = {
 };
 
 UserSchema.statics = {
+  //  we neeed to remove this method
   addfollow: function(id: string, cb: any) {
     this.findOne({ _id: id })
       .populate("followers")
