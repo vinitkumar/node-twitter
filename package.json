@@ -30,7 +30,7 @@
     "errorhandler": "^1.5.0",
     "eslint": "^7.12.1",
     "express": "^4.17.1",
-    "express-session": "^1.17.0",
+    "express-session": "^1.17.2",
     "forever": "latest",
     "method-override": "^3.0.0",
     "moment": "^2.29.1",
