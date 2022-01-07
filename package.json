@@ -29,7 +29,7 @@
     "dotenv": "^8.6.0",
     "errorhandler": "^1.5.0",
     "eslint": "^7.12.1",
-    "express": "^4.17.1",
+    "express": "^4.17.2",
     "express-session": "^1.17.0",
     "forever": "latest",
     "method-override": "^3.0.0",
