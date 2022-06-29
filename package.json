@@ -37,7 +37,7 @@
     "mongoose": "^5.10.11",
     "morgan": "^1.9.0",
     "opencollective": "^1.0.3",
-    "passport": "^0.3.2",
+    "passport": "^0.6.0",
     "passport-github": "latest",
     "passport-github2": "^0.1.9",
     "passport-google-oauth": "latest",
