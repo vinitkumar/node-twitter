@@ -60,7 +60,7 @@
     "grunt-contrib-watch": "^1.1.0",
     "grunt-sass": "latest",
     "js-yaml": "^3.14.0",
-    "mocha": "^8.2.0",
+    "mocha": "^10.2.0",
     "nodemon": "latest",
     "npm-check": "^5.9.2",
     "should": "latest",
