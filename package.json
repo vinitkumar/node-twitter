@@ -47,7 +47,7 @@
     "pug": "^3.0.0",
     "raven": "^2.1.2",
     "serve-favicon": "^2.4.5",
-    "underscore": "latest",
+    "underscore": "1.13.6",
     "view-helpers": "latest",
     "winston": "^3.3.3"
   },
