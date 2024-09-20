@@ -16,8 +16,8 @@
     "npm": "7.10.0"
   },
   "dependencies": {
-    "async": "3.2.2",
-    "bcrypt": "^5.0.0",
+    "async": "3.2.6",
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
     "compression": "^1.7.1",
     "connect-flash": "latest",
@@ -28,16 +28,16 @@
     "dateformat": "^3.0.3",
     "dotenv": "^8.6.0",
     "errorhandler": "^1.5.0",
-    "eslint": "^9.0.0",
+    "eslint": "^9.9.1",
     "express": "^4.21.0",
-    "express-session": "^1.17.0",
+    "express-session": "^1.18.0",
     "forever": "latest",
     "method-override": "^3.0.0",
-    "moment": "^2.29.1",
-    "mongoose": "^5.13.20",
+    "moment": "^2.30.1",
+    "mongoose": "^5.13.22",
     "morgan": "^1.9.0",
     "opencollective": "^1.0.3",
-    "passport": "^0.3.2",
+    "passport": "^0.7.0",
     "passport-github": "latest",
     "passport-github2": "^0.1.9",
     "passport-google-oauth": "latest",
@@ -49,7 +49,7 @@
     "serve-favicon": "^2.4.5",
     "underscore": "latest",
     "view-helpers": "latest",
-    "winston": "^3.3.3"
+    "winston": "^3.14.2"
   },
   "devDependencies": {
     "ava": "latest",
