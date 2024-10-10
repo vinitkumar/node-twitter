@@ -62,7 +62,7 @@
     "js-yaml": "^3.14.0",
     "mocha": "^10.2.0",
     "nodemon": "latest",
-    "npm-check": "^5.9.2",
+    "npm-check": "^6.0.1",
     "should": "latest",
     "supertest": "^6.0.0"
   }
