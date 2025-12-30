@@ -8,7 +8,6 @@ const helpers = require('view-helpers');
 import bodyParser from 'body-parser';
 import methodOverride from 'method-override';
 import cookieParser from 'cookie-parser';
-const Raven = require('raven');
 import moment from 'moment';
 import morgan from 'morgan';
 import { PassportStatic } from 'passport';
@@ -21,11 +20,6 @@ interface EnvConfig {
   db: string | undefined;
   root: string;
   app: AppConfig;
-}
-
-// Disable Raven console alerts
-if (Raven && Raven.disableConsoleAlerts) {
-  Raven.disableConsoleAlerts();
 }
 
 export default (
@@ -55,13 +49,6 @@ export default (
       stream: process.stdout
     })
   );
-
-  // setup Sentry to get any crashes
-  if (process.env.SENTRY_DSN !== null) {
-    Raven.config(process.env.SENTRY_DSN).install();
-    app.use(Raven.requestHandler());
-    app.use(Raven.errorHandler());
-  }
 
   app.use(
     compression({

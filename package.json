@@ -44,7 +44,6 @@
     "passport-twitter": "^0.1.5",
     "promise-retry": "^2.0.1",
     "pug": "^3.0.3",
-    "raven": "^0.6.0",
     "serve-favicon": "^2.4.5",
     "underscore": "latest",
     "view-helpers": "latest",
