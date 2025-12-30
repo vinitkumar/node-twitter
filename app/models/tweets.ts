@@ -50,7 +50,7 @@ const TweetSchema = new Schema<ITweet>(
 );
 
 // Pre save hook
-TweetSchema.pre('save', function (this: any, next) {
+TweetSchema.pre('save', function (this: any, next: any) {
   if (this.favorites) {
     this.favoritesCount = this.favorites.length;
   }
@@ -66,11 +66,12 @@ TweetSchema.path('body').validate(
   'Tweet body cannot be blank'
 );
 
-TweetSchema.virtual('_favorites').set(function (this: any, user: any) {
-  if (this.favorites.indexOf(user._id) === -1) {
+TweetSchema.virtual('_favorites').set(function (this: ITweet, user: any) {
+  const index = this.favorites.indexOf(user._id);
+  if (index === -1) {
     this.favorites.push(user._id);
   } else {
-    this.favorites.splice(this.favorites.indexOf(user._id), 1);
+    this.favorites.splice(index, 1);
   }
 });
 
@@ -122,7 +123,7 @@ TweetSchema.methods = {
 TweetSchema.statics = {
   // Load tweets
   load: function (id: string, callback: any) {
-    return this.findOne({ _id: id })
+    return this.findOne({ _id: id } as any)
       .populate('user', 'name username provider github')
       .populate('comments.user')
       .exec(callback);
@@ -130,7 +131,7 @@ TweetSchema.statics = {
   // List tweets
   list: function (options: any) {
     const criteria = options.criteria || {};
-    return this.find(criteria)
+    return this.find(criteria as any)
       .populate('user', 'name username provider github')
       .sort({ createdAt: -1 })
       .limit(options.perPage)
@@ -139,7 +140,7 @@ TweetSchema.statics = {
   // List tweets
   limitedList: function (options: any) {
     const criteria = options.criteria || {};
-    return this.find(criteria)
+    return this.find(criteria as any)
       .populate('user', 'name username')
       .sort({ createdAt: -1 })
       .limit(options.perPage)
@@ -147,20 +148,20 @@ TweetSchema.statics = {
   },
   // Tweets of User
   userTweets: function (id: string, callback: any) {
-    return this.find({ user: id })
+    return this.find({ user: id } as any)
       .exec(callback);
   },
 
   // Count the number of tweets for a specific user
   countUserTweets: function (id: string, callback: any) {
-    return this.find({ user: id })
+    return this.find({ user: id } as any)
       .countDocuments()
       .exec(callback);
   },
 
   // Count the app tweets by criteria
   countTweets: function (criteria: any) {
-    return this.find(criteria).countDocuments();
+    return this.find(criteria as any).countDocuments();
   }
 };
 

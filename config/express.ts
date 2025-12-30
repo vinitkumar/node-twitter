@@ -1,14 +1,14 @@
-import { Express, Request, Response, NextFunction } from 'express';
+import express, { Express, Request, Response, NextFunction } from 'express';
 import session from 'express-session';
 import compression from 'compression';
 import errorHandler from 'errorhandler';
 import MongoStore from 'connect-mongo';
 import flash from 'connect-flash';
-import helpers from 'view-helpers';
+const helpers = require('view-helpers');
 import bodyParser from 'body-parser';
 import methodOverride from 'method-override';
 import cookieParser from 'cookie-parser';
-import Raven from 'raven';
+const Raven = require('raven');
 import moment from 'moment';
 import morgan from 'morgan';
 import { PassportStatic } from 'passport';
@@ -24,7 +24,9 @@ interface EnvConfig {
 }
 
 // Disable Raven console alerts
-Raven.disableConsoleAlerts();
+if (Raven && Raven.disableConsoleAlerts) {
+  Raven.disableConsoleAlerts();
+}
 
 export default (
   app: Express,
@@ -98,9 +100,8 @@ export default (
       resave: false,
       saveUninitialized: false,
       store: new MongoStore({
-        mongoUrl: config.db,
-        collection: 'sessions'
-      })
+        mongoUrl: config.db
+      }) as any
     })
   );
 

@@ -7,6 +7,9 @@ import mongoose from 'mongoose';
 import promiseRetry from 'promise-retry';
 import config from './config/config';
 import * as auth from './config/middlewares/authorization';
+import passportConfig from './config/passport';
+import expressConfig from './config/express';
+import routesConfig from './config/routes';
 
 const env = process.env.NODE_ENV || 'development';
 const cfg = config[env as keyof typeof config];
@@ -57,7 +60,7 @@ const promiseRetryOptions: PromiseRetryOptions = {
 };
 
 const connect = async (): Promise<typeof mongoose> => {
-  return promiseRetry((retry, number) => {
+  return promiseRetry((retry: any, number: any) => {
     console.log(
       `MongoClient connecting to ${cfg.db} - retry number: ${number}`
     );
@@ -72,9 +75,9 @@ fs.readdirSync(modelsPath).forEach((file) => {
   require(modelsPath + '/' + file);
 });
 
-require('./config/passport')(passport, cfg);
-require('./config/express')(app, cfg, passport);
-require('./config/routes')(app, passport, auth);
+passportConfig(passport, cfg);
+expressConfig(app, cfg, passport);
+routesConfig(app, passport, auth);
 
 app.listen(port);
 console.log('Express app started on port ' + port);

@@ -87,7 +87,7 @@ export default (
     users.session
   );
   router.post('/users/:userId/follow', follows.follow);
-  router.post('/users/:userId/delete', users.delete);
+  router.post('/users/:userId/delete', users.deleteUser);
   router.param('userId', users.user);
 
   /**

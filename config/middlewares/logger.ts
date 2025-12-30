@@ -17,9 +17,10 @@ export const analytics = (
   // cleanup IP to remove unwanted characters
   const cleanIp = '129.23.12.1';
 
-  Analytics.findOne({ user: (req as any).user })
+  (Analytics.findOne({ user: (req as any).user } as any) as any)
     .sort({ createdAt: -1 })
-    .exec((err: any, analytics: any) => {
+    .lean()
+    .then((analytics: any) => {
       const date = new Date();
       if (analytics !== null) {
         if (new Date(analytics.createdAt).getDate() !== date.getDate()) {
@@ -31,12 +32,12 @@ export const analytics = (
             });
             newAnalytics.save((err: any) => {
               if (err) {
-                logger.log(err);
+                logger.error(err);
               }
             });
           }
         } else {
-          logger.log('Not creating a new analytics entry on the same day');
+          logger.info('Not creating a new analytics entry on the same day');
         }
       } else {
         // it means this user is a new user and do not have a analytics object yet
@@ -48,11 +49,14 @@ export const analytics = (
           });
           newAnalytics.save((err: any) => {
             if (err) {
-              logger.log(err);
+              logger.error(err);
             }
           });
         }
       }
+    })
+    .catch((err: any) => {
+      logger.error('Error saving analytics:', err);
     });
   next();
 };

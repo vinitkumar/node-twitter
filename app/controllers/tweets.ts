@@ -4,10 +4,10 @@ import mongoose from 'mongoose';
 /**
  * Load tweet
  */
-export const tweet = (req: Request, res: Response, next: any, id: string) => {
+export const tweet = (req: Request, res: Response, next: any, id: string): void => {
   const Tweet = mongoose.model('Tweet');
 
-  Tweet.load(id, (err: any, tweet: any) => {
+  (Tweet as any).load(id, (err: any, tweet: any) => {
     if (err) return next(err);
     if (!tweet) return next(new Error('Failed to load Tweet ' + id));
     (req as any).tweet = tweet;
@@ -18,14 +18,15 @@ export const tweet = (req: Request, res: Response, next: any, id: string) => {
 /**
  * Create tweet
  */
-export const create = (req: Request, res: Response) => {
+export const create = (req: Request, res: Response): void => {
   const Tweet = mongoose.model('Tweet');
   const tweet = new Tweet((req as any).body);
   tweet.user = (req as any).user;
 
   tweet.save((err: any) => {
     if (err) {
-      return res.status(400).json({ error: err.message });
+      res.status(400).json({ error: err.message });
+      return;
     }
     res.redirect('/tweets/' + tweet._id);
   });
@@ -34,13 +35,14 @@ export const create = (req: Request, res: Response) => {
 /**
  * Update tweet
  */
-export const update = (req: Request, res: Response) => {
+export const update = (req: Request, res: Response): void => {
   const tweet = (req as any).tweet;
   Object.assign(tweet, (req as any).body);
 
   tweet.save((err: any) => {
     if (err) {
-      return res.status(400).json({ error: err.message });
+      res.status(400).json({ error: err.message });
+      return;
     }
     res.redirect('/tweets/' + tweet._id);
   });
@@ -49,12 +51,13 @@ export const update = (req: Request, res: Response) => {
 /**
  * Destroy tweet
  */
-export const destroy = (req: Request, res: Response) => {
+export const destroy = (req: Request, res: Response): void => {
   const tweet = (req as any).tweet;
 
   tweet.deleteOne((err: any) => {
     if (err) {
-      return res.status(400).json({ error: err.message });
+      res.status(400).json({ error: err.message });
+      return;
     }
     res.redirect('/');
   });
@@ -63,7 +66,7 @@ export const destroy = (req: Request, res: Response) => {
 /**
  * Show tweet
  */
-export const show = (req: Request, res: Response) => {
+export const show = (req: Request, res: Response): void => {
   res.render('tweets/show', {
     title: 'Tweet',
     tweet: (req as any).tweet
@@ -73,19 +76,21 @@ export const show = (req: Request, res: Response) => {
 /**
  * List tweets
  */
-export const index = (req: Request, res: Response) => {
+export const index = (req: Request, res: Response): void => {
   const Tweet = mongoose.model('Tweet');
   const page = parseInt((req as any).query.page) || 0;
   const perPage = 10;
 
-  Tweet.list({
-    criteria: {},
-    perPage: perPage,
-    page: page
-  })
+  (Tweet as any)
+    .list({
+      criteria: {},
+      perPage: perPage,
+      page: page
+    })
     .exec((err: any, tweets: any) => {
       if (err) {
-        return res.status(400).json({ error: err.message });
+        res.status(400).json({ error: err.message });
+        return;
       }
       res.render('tweets/index', {
         title: 'Tweets',
@@ -97,18 +102,20 @@ export const index = (req: Request, res: Response) => {
 /**
  * Find tweets by tag
  */
-export const findTag = (req: Request, res: Response) => {
+export const findTag = (req: Request, res: Response): void => {
   const Tweet = mongoose.model('Tweet');
   const tag = (req as any).params.tag;
 
-  Tweet.list({
-    criteria: { tags: tag },
-    perPage: 10,
-    page: 0
-  })
+  (Tweet as any)
+    .list({
+      criteria: { tags: tag },
+      perPage: 10,
+      page: 0
+    })
     .exec((err: any, tweets: any) => {
       if (err) {
-        return res.status(400).json({ error: err.message });
+        res.status(400).json({ error: err.message });
+        return;
       }
       res.render('tweets/index', {
         title: 'Tweets tagged with ' + tag,

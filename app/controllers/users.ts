@@ -7,7 +7,7 @@ import mongoose from 'mongoose';
 export const user = (req: Request, res: Response, next: any, id: string) => {
   const User = mongoose.model('User');
 
-  User.load({ criteria: { _id: id } }, (err: any, user: any) => {
+  (User as any).load({ criteria: { _id: id } }, (err: any, user: any) => {
     if (err) return next(err);
     if (!user) return next(new Error('Failed to load User ' + id));
     (req as any).profile = user;
@@ -47,7 +47,7 @@ export const show = (req: Request, res: Response) => {
 
   const user = (req as any).profile;
 
-  Tweet.count({ user: (req as any).profile._id }, (err: any, count: any) => {
+  (Tweet as any).countDocuments({ user: (req as any).profile._id }, (err: any, count: any) => {
     res.render('users/profile', {
       title: user.name,
       user: user,
@@ -90,14 +90,11 @@ export const update = (req: Request, res: Response) => {
 /**
  * Delete user
  */
-export const delete_ = (req: Request, res: Response) => {
+export const deleteUser = (req: Request, res: Response) => {
   const user = (req as any).profile;
   // Implement delete logic
   res.redirect('/');
 };
-
-// Alias for delete
-export const delete = delete_;
 
 /**
  * Session

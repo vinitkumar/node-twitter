@@ -48,7 +48,7 @@ UserSchema.virtual('password')
     return this._password;
   });
 
-const validatePresenceOf = (value: string): boolean => value && value.length > 0;
+const validatePresenceOf = (value: string): boolean => !!(value && value.length > 0);
 
 UserSchema.path('name').validate(
   function (this: any, name: string) {
@@ -90,7 +90,7 @@ UserSchema.path('hashedPassword').validate(
   'Password cannot be blank'
 );
 
-UserSchema.pre('save', function (this: any, next) {
+UserSchema.pre('save', function (this: any, next: any) {
   if (
     !validatePresenceOf(this.password) &&
     authTypes.indexOf(this.provider) === -1
@@ -126,9 +126,7 @@ UserSchema.statics = {
       .exec(cb);
   },
   countUserTweets: function (id: string, cb: any) {
-    return Tweet.find({ user: id })
-      .countDocuments()
-      .exec(cb);
+    Tweet.countDocuments({ user: id } as any, cb);
   },
   load: function (options: any, cb: any) {
     options.select = options.select || 'name username github';

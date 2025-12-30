@@ -63,7 +63,7 @@ export default (passport: PassportStatic, config: Config): void => {
         const options = {
           criteria: { 'github.id': parseInt(profile.id) }
         };
-        User.load(options, (err: any, user: any) => {
+        (User as any).load(options, (err: any, user: any) => {
           if (!user) {
             user = new User({
               name: profile.displayName,
