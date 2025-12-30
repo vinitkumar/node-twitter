@@ -1,5 +1,0 @@
-exports.userA = {
-};
-
-exports.userB = {
-};
