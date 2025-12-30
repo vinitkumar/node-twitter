@@ -90,14 +90,12 @@ UserSchema.path('hashedPassword').validate(
   'Password cannot be blank'
 );
 
-UserSchema.pre('save', function (this: any, next: any) {
+UserSchema.pre('save', function (this: any) {
   if (
     !validatePresenceOf(this.password) &&
     authTypes.indexOf(this.provider) === -1
   ) {
-    next(new Error('Invalid password'));
-  } else {
-    next();
+    throw new Error('Invalid password');
   }
 });
 
@@ -120,19 +118,19 @@ UserSchema.methods = {
 };
 
 UserSchema.statics = {
-  addfollow: function (id: string, cb: any) {
+  addfollow: async function (id: string) {
     return this.findOne({ _id: id })
       .populate('followers')
-      .exec(cb);
+      .exec();
   },
-  countUserTweets: function (id: string, cb: any) {
-    Tweet.countDocuments({ user: id } as any, cb);
+  countUserTweets: async function (id: string) {
+    return Tweet.countDocuments({ user: id } as any);
   },
-  load: function (options: any, cb: any) {
+  load: async function (options: any) {
     options.select = options.select || 'name username github';
     return this.findOne(options.criteria)
       .select(options.select)
-      .exec(cb);
+      .exec();
   },
   list: function (options: any) {
     const criteria = options.criteria || {};

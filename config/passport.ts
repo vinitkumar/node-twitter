@@ -21,10 +21,13 @@ export default (passport: PassportStatic, config: Config): void => {
     done(null, user.id);
   });
 
-  passport.deserializeUser((id: string, done: any) => {
-    User.findOne({ _id: id }, (err: any, user: any) => {
-      done(err, user);
-    });
+  passport.deserializeUser(async (id: string, done: any) => {
+    try {
+      const user = await User.findOne({ _id: id });
+      done(null, user);
+    } catch (err) {
+      done(err, null);
+    }
   });
 
   // use local strategy
@@ -34,11 +37,9 @@ export default (passport: PassportStatic, config: Config): void => {
         usernameField: 'email',
         passwordField: 'password'
       },
-      (email: string, password: string, done: any) => {
-        User.findOne({ email: email }, (err: any, user: any) => {
-          if (err) {
-            return done(err);
-          }
+      async (email: string, password: string, done: any) => {
+        try {
+          const user: any = await User.findOne({ email: email });
           if (!user) {
             return done(null, false, { message: 'Unknown user' });
           }
@@ -46,7 +47,9 @@ export default (passport: PassportStatic, config: Config): void => {
             return done(null, false, { message: 'Invalid password' });
           }
           return done(null, user);
-        });
+        } catch (err) {
+          return done(err);
+        }
       }
     )
   );
@@ -59,11 +62,12 @@ export default (passport: PassportStatic, config: Config): void => {
         clientSecret: config.github.clientSecret || '',
         callbackURL: config.github.callbackURL
       },
-      (accessToken: string, refreshToken: string, profile: any, done: any) => {
-        const options = {
-          criteria: { 'github.id': parseInt(profile.id) }
-        };
-        (User as any).load(options, (err: any, user: any) => {
+      async (accessToken: string, refreshToken: string, profile: any, done: any) => {
+        try {
+          const options = {
+            criteria: { 'github.id': parseInt(profile.id) }
+          };
+          let user: any = await (User as any).load(options);
           if (!user) {
             user = new User({
               name: profile.displayName,
@@ -72,21 +76,21 @@ export default (passport: PassportStatic, config: Config): void => {
               provider: 'github',
               github: profile._json
             });
-            user.save((err: any) => {
-              if (err) console.log(err);
-              return done(err, user);
-            });
+            await user.save();
+            return done(null, user);
           } else {
-            User.findOne(
-              { username: profile.username },
-              (err: any, user: any) => {
-                user.github = profile._json;
-                user.save();
-                return done(err, user);
-              }
-            );
+            const existingUser: any = await User.findOne({ username: profile.username });
+            if (existingUser) {
+              existingUser.github = profile._json;
+              await existingUser.save();
+              return done(null, existingUser);
+            }
+            return done(null, user);
           }
-        });
+        } catch (err) {
+          console.log(err);
+          return done(err, null);
+        }
       }
     )
   );

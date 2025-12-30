@@ -4,56 +4,64 @@ import mongoose from 'mongoose';
 /**
  * Load user and append to req
  */
-export const user = (req: Request, res: Response, next: any, id: string) => {
+export const user = async (req: Request, res: Response, next: any, id: string) => {
   const User = mongoose.model('User');
 
-  (User as any).load({ criteria: { _id: id } }, (err: any, user: any) => {
-    if (err) return next(err);
+  try {
+    const user = await (User as any).load({ criteria: { _id: id } });
     if (!user) return next(new Error('Failed to load User ' + id));
     (req as any).profile = user;
     next();
-  });
+  } catch (err) {
+    return next(err);
+  }
 };
 
 /**
  * Create user
  */
-export const create = (req: Request, res: Response) => {
+export const create = async (req: Request, res: Response) => {
   const User = mongoose.model('User');
   const user = new User((req as any).body);
 
-  user.save((err: any) => {
-    if (err) {
-      return res.render('users/signup', {
-        errors: (err as any).errors,
-        user: user
-      });
-    }
+  try {
+    await user.save();
     req.logIn(user, (err: any) => {
       if (err) {
         return res.redirect('/users/' + user._id);
       }
       return res.redirect('/users/' + user._id);
     });
-  });
+  } catch (err: any) {
+    return res.render('pages/login', {
+      errors: err.errors,
+      user: user
+    });
+  }
 };
 
 /**
  * Show profile
  */
-export const show = (req: Request, res: Response) => {
-  const User = mongoose.model('User');
+export const show = async (req: Request, res: Response) => {
   const Tweet = mongoose.model('Tweet');
 
   const user = (req as any).profile;
 
-  (Tweet as any).countDocuments({ user: (req as any).profile._id }, (err: any, count: any) => {
-    res.render('users/profile', {
+  try {
+    const count = await Tweet.countDocuments({ user: (req as any).profile._id });
+    res.render('pages/profile', {
       title: user.name,
       user: user,
       tweets: count
     });
-  });
+  } catch (err) {
+    res.render('pages/profile', {
+      title: user.name,
+      user: user,
+      tweets: 0
+    });
+  }
 };
 
 /**
@@ -61,7 +69,7 @@ export const show = (req: Request, res: Response) => {
  */
 export const showFollowers = (req: Request, res: Response) => {
   const user = (req as any).profile;
-  res.render('users/followers', {
+  res.render('pages/followers', {
     title: user.name + ' followers',
     user: user
   });
@@ -72,7 +80,7 @@ export const showFollowers = (req: Request, res: Response) => {
  */
 export const showFollowing = (req: Request, res: Response) => {
   const user = (req as any).profile;
-  res.render('users/following', {
+  res.render('pages/followers', {
     title: user.name + ' following',
     user: user
   });
@@ -107,7 +115,7 @@ export const session = (req: Request, res: Response) => {
  * Login page
  */
 export const login = (req: Request, res: Response) => {
-  res.render('users/login', {
+  res.render('pages/login', {
     title: 'Login'
   });
 };
@@ -116,9 +124,8 @@ export const login = (req: Request, res: Response) => {
  * Signup page
  */
 export const signup = (req: Request, res: Response) => {
-  res.render('users/signup', {
-    title: 'Sign up'
-  });
+  // Redirect to login since we use GitHub OAuth for authentication
+  res.redirect('/login');
 };
 
 /**

@@ -21,9 +21,9 @@ export interface ITweet extends Document {
   favoriters: Schema.Types.ObjectId[];
   favoritesCount: number;
   createdAt: Date;
-  uploadAndSave(images: any[], callback: any): void;
-  addComment(user: any, comment: any, cb: any): void;
-  removeComment(commentId: string, cb: any): void;
+  uploadAndSave(images: any[]): Promise<ITweet>;
+  addComment(user: any, comment: any): Promise<ITweet>;
+  removeComment(commentId: string): Promise<ITweet>;
 }
 
 // Tweet Schema
@@ -50,14 +50,13 @@ const TweetSchema = new Schema<ITweet>(
 );
 
 // Pre save hook
-TweetSchema.pre('save', function (this: any, next: any) {
+TweetSchema.pre('save', function (this: any) {
   if (this.favorites) {
     this.favoritesCount = this.favorites.length;
   }
   if (this.favorites) {
     this.favoriters = this.favorites;
   }
-  next();
 });
 
 // Validations in the schema
@@ -76,10 +75,10 @@ TweetSchema.virtual('_favorites').set(function (this: ITweet, user: any) {
 });
 
 TweetSchema.methods = {
-  uploadAndSave: function (this: any, images: any[], callback: any) {
+  uploadAndSave: async function (this: any, images: any[]) {
     // const imager = new Imager(imagerConfig, "S3");
     if (!images || !images.length) {
-      return this.save(callback);
+      return this.save();
     }
     // imager.upload(
     //   images,
@@ -95,7 +94,7 @@ TweetSchema.methods = {
     //   "article"
     // );
   },
-  addComment: function (this: any, user: any, comment: any, cb: any) {
+  addComment: async function (this: any, user: any, comment: any) {
     const commenterName = user.name || user.username;
     const commenterPicture = user.github?.avatar_url || '';
 
@@ -105,28 +104,28 @@ TweetSchema.methods = {
       commenterName: commenterName,
       commenterPicture: commenterPicture
     });
-    this.save(cb);
+    return this.save();
   },
 
-  removeComment: function (this: any, commentId: string, cb: any) {
+  removeComment: async function (this: any, commentId: string) {
     const index = this.comments.findIndex((c: any) => c.id === commentId);
     if (index !== -1) {
       this.comments.splice(index, 1);
     } else {
-      return cb('not found');
+      throw new Error('not found');
     }
-    this.save(cb);
+    return this.save();
   }
 };
 
 // ## Static Methods in the TweetSchema
 TweetSchema.statics = {
   // Load tweets
-  load: function (id: string, callback: any) {
+  load: async function (id: string) {
     return this.findOne({ _id: id } as any)
       .populate('user', 'name username provider github')
       .populate('comments.user')
-      .exec(callback);
+      .exec();
   },
   // List tweets
   list: function (options: any) {
@@ -147,16 +146,13 @@ TweetSchema.statics = {
       .skip(options.perPage * options.page);
   },
   // Tweets of User
-  userTweets: function (id: string, callback: any) {
-    return this.find({ user: id } as any)
-      .exec(callback);
+  userTweets: async function (id: string) {
+    return this.find({ user: id } as any).exec();
   },
 
   // Count the number of tweets for a specific user
-  countUserTweets: function (id: string, callback: any) {
-    return this.find({ user: id } as any)
-      .countDocuments()
-      .exec(callback);
+  countUserTweets: async function (id: string) {
+    return this.find({ user: id } as any).countDocuments().exec();
   },
 
   // Count the app tweets by criteria

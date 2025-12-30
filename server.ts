@@ -27,23 +27,21 @@ app.use(
   })
 );
 
-interface MongooseConnectOptions {
-  useNewUrlParser: boolean;
-  useUnifiedTopology: boolean;
-  reconnectTries: number;
-  reconnectInterval: number;
-  poolSize: number;
-  bufferMaxEntries: number;
-}
-
-const options: MongooseConnectOptions = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  reconnectTries: 60,
-  reconnectInterval: 1000,
-  poolSize: 10,
-  bufferMaxEntries: 0 // If not connected, return errors immediately rather than waiting for reconnect
-};
+// Fix for passport compatibility with cookie-session
+// cookie-session doesn't have regenerate/save methods that passport expects
+app.use((req: any, res, next) => {
+  if (req.session && !req.session.regenerate) {
+    req.session.regenerate = (cb: (err?: Error) => void) => {
+      cb();
+    };
+  }
+  if (req.session && !req.session.save) {
+    req.session.save = (cb: (err?: Error) => void) => {
+      cb();
+    };
+  }
+  next();
+});
 
 interface PromiseRetryOptions {
   retries: number;
@@ -53,9 +51,9 @@ interface PromiseRetryOptions {
 }
 
 const promiseRetryOptions: PromiseRetryOptions = {
-  retries: options.reconnectTries,
+  retries: 10,
   factor: 2,
-  minTimeout: options.reconnectInterval,
+  minTimeout: 1000,
   maxTimeout: 5000
 };
 
@@ -65,7 +63,7 @@ const connect = async (): Promise<typeof mongoose> => {
       `MongoClient connecting to ${cfg.db} - retry number: ${number}`
     );
     return mongoose
-      .connect(cfg.db as string, options as any)
+      .connect(cfg.db as string)
       .catch(retry);
   }, promiseRetryOptions);
 };

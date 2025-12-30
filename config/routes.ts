@@ -59,7 +59,7 @@ export default (
    * Anytime an authorized user makes a get request, it will be logged into
    * analytics
    */
-  router.get('/*', log.analytics);
+  router.get('/*path', log.analytics);
 
   /**
    * Activity routes

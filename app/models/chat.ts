@@ -18,11 +18,11 @@ const ChatSchema = new Schema<IChat>(
 );
 
 ChatSchema.statics = {
-  load: function (options: any, cb: any) {
+  load: async function (options: any) {
     options.select = options.select || 'message sender receiver createdAt';
     return this.findOne(options.criteria)
       .select(options.select)
-      .exec(cb);
+      .exec();
   },
   list: function (options: any) {
     const criteria = options.criteria || {};
