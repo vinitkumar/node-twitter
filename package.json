@@ -41,7 +41,7 @@
     "passport-github2": "^0.1.9",
     "passport-google-oauth": "latest",
     "passport-local": "latest",
-    "passport-twitter": "^1.0.0",
+    "passport-twitter": "^1.0.4",
     "promise-retry": "^2.0.1",
     "pug": "^3.0.3",
     "serve-favicon": "^2.4.5",
