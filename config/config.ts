@@ -71,7 +71,7 @@ const config: AllConfigs = {
     github: {
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
       clientID: process.env.GITHUB_CLIENT_ID,
-      callbackURL: 'http://nitter.herokuapp.com/auth/github/callback'
+      callbackURL: process.env.GITHUB_CALLBACK_URL || 'https://node-twitter-xi.vercel.app/auth/github/callback'
     }
   }
 };

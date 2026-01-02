@@ -17,6 +17,7 @@
     "upgrade-interactive": "npm-check --update"
   },
   "dependencies": {
+    "typescript": "^5.3.3",
     "async": "3.2.6",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
@@ -79,7 +80,6 @@
     "nyc": "^15.1.0",
     "should": "latest",
     "supertest": "^6.0.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
+    "ts-node": "^10.9.2"
   }
 }
