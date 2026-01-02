@@ -1,9 +1,10 @@
-.delete-confirmation.modal.fade
-  .modal-dialog(role='document')
+.delete-confirmation.modal.fixed.inset-0.z-50.hidden.items-center.justify-center
+  .modal-dialog.bg-yankees-blue.rounded-lg.border.border-black.w-full.max-w-md.mx-4.overflow-hidden.shadow-2xl(role='document')
     .modal-content
-      .modal-header
-        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-        h4.modal-title Are You Sure ?
-      .modal-body
+      .modal-header.bg-jungle-dark.px-6.py-4.flex.items-center.justify-between
+        h4.text-white.font-display.font-semibold Are You Sure?
+        button.text-grey-blue.text-2xl.transition-colors(type='button', data-dismiss='modal', aria-hidden='true', class="hover:text-white") ×
+      .modal-body.p-6
+        p.text-grey-blue.mb-6.text-center This action cannot be undone. Your account and all associated data will be permanently deleted.
         form(method='post', action=`/users/${user._id}/delete`)
-          button.btn.delete-confirmation__button(type='submit') Delete My Account
+          button.w-full.bg-go-red.text-white.font-semibold.py-3.px-6.rounded-lg.transition-colors(type='submit', class="hover:bg-red-600") Delete My Account

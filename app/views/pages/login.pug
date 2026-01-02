@@ -1,32 +1,28 @@
 extends ../layouts/default
 
 block content
-  .row
-    .col-md-4.login-container
-      h1 Node Twitter
+  .flex.flex-col.items-center.justify-center(class="min-h-[60vh]")
+    //- Login Container
+    .text-center.mb-16
+      h1.text-4xl.font-display.font-bold.text-white.mb-8 Node Twitter
+      a.inline-flex.items-center.gap-3.bg-twitter-blue.text-white.font-semibold.py-4.px-8.rounded-full.text-lg.transition-all.transform.shadow-lg(href="/auth/github", class="hover:bg-blue-400 hover:scale-105 hover:shadow-xl")
+        span Login with GitHub
+        i.fab.fa-github.text-2xl
+    
+    //- Stats
+    .grid.grid-cols-1.gap-8.text-center.mt-8(class="md:grid-cols-3")
+      .stat-card
+        span.block.text-4xl.font-display.font-bold.text-twitter-blue #{tweetCount}
+        h5.text-grey-blue.mt-2 Tweets Created
+      .stat-card
+        span.block.text-4xl.font-display.font-bold.text-twitter-blue #{userCount}
+        h5.text-grey-blue.mt-2 Unique Users
+      .stat-card
+        span.block.text-4xl.font-display.font-bold.text-twitter-blue #{analyticsCount}
+        h5.text-grey-blue.mt-2 Visitors
 
-        h3
-          a(href="/auth/github", class="btn btn-primary btn-lg btn-block login-btn")
-            span.login-using-github Login using github
-            span(class="icon-container")
-              i(class="fab fa-github fa-2x")
-
-  .row.justify-content-center.text-center.stats-parent-container
-    .col-md-3
-      span.status-count #{tweetCount}
-      h5 Tweets Created
-
-    .col-md-3
-      span.status-count #{userCount}
-      h5 Unique Users
-
-    .col-md-3
-      span.status-count #{analyticsCount}
-      h5 Visitors
-
-      if (typeof errors !== 'undefined')
-        .fade.in.alert.alert-block.alert-error
-          a.close(data-dismiss="alert", href="javascript:void(0)") x
-          ul
-            each error in errors
-              li = error.type
+    if (typeof errors !== 'undefined')
+      .mt-8.bg-red-500.bg-opacity-20.border.border-red-500.rounded-lg.p-4
+        ul.list-disc.list-inside.text-red-400
+          each error in errors
+            li= error.type

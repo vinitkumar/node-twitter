@@ -4,35 +4,36 @@
 - var userId = user._id.toString()
 - var profileURL = "https://github.com/" + user.github.login;
 
-.profile
+.bg-yankees-blue.p-6.rounded-lg.border.border-black
+  //- Profile Image
   - if (user.github !== undefined)
-    img(class="profile__image", src=user.github.avatar_url)
-  .profile__user-info
-    span.profile__handle
-      - if (user.github !== undefined)
-        a(href=profileURL)
-          span
-            i(class="fab fa-github") #{user.github.login}
-    .profile__messaging-options
-      - if (currentUserId !== userId)
-        a.btn(data-toggle='modal', href='#'+ modalId) Message #{name}
-        a.btn.profile__follow-button(href="javascript:void(0)", data-userid=user._id, data-logged=req.user.id,title="follow") Follow
-    if (req.isAuthenticated())
-      include modals/new-message-modal
-  .row
-    .col-12.user-information__stats
-      ul
-        li
-          span.user-information__stat-title Tweets:
-          span
-            a(href="/users/" + user._id) #{tweetCount}
-        li
-          span.user-information__stat-title Following:
-          span
-            a(href="/users/" + user._id + "/following")  #{followingCount}
-        li
-          span.user-information__stat-title Followers:
-          span
-            a(href="/users/" + user._id + "/followers")  #{followerCount}
-
-
+    .flex.justify-center.mb-4
+      img.w-24.h-24.rounded-full.border-2.border-twitter-blue(src=user.github.avatar_url)
+  
+  //- User Info
+  .text-center.mb-4
+    - if (user.github !== undefined)
+      a.text-twitter-blue.flex.items-center.justify-center.gap-2(href=profileURL, class="hover:underline")
+        i.fab.fa-github
+        span #{user.github.login}
+  
+  //- Action Buttons
+  .flex.flex-col.gap-2.mb-4
+    - if (currentUserId !== userId)
+      a.bg-twitter-blue.text-white.text-center.py-2.px-4.rounded-lg.transition-colors.font-medium(data-toggle='modal', href='#'+ modalId, class="hover:bg-blue-400") Message #{name}
+      a.profile__follow-button.bg-jungle-green.text-white.text-center.py-2.px-4.rounded-lg.transition-colors.font-medium(href="javascript:void(0)", data-userid=user._id, data-logged=req.user.id, title="follow", class="hover:bg-green-500") Follow
+  
+  if (req.isAuthenticated())
+    include modals/new-message-modal
+  
+  //- Stats
+  .flex.justify-around.text-center.pt-4.border-t.border-jungle-dark
+    .stat
+      span.block.text-xs.text-grey-blue.mb-1 Tweets
+      a.text-twitter-blue.text-lg.font-bold(href="/users/" + user._id) #{tweetCount}
+    .stat
+      span.block.text-xs.text-grey-blue.mb-1 Following
+      a.text-twitter-blue.text-lg.font-bold(href="/users/" + user._id + "/following") #{followingCount}
+    .stat
+      span.block.text-xs.text-grey-blue.mb-1 Followers
+      a.text-twitter-blue.text-lg.font-bold(href="/users/" + user._id + "/followers") #{followerCount}

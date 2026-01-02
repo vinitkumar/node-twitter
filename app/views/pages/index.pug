@@ -1,54 +1,44 @@
 extends ../layouts/default
 
 block content
-  .row
-    .col-xl-3.col-lg-4.first-column
-      .user-information
-        .row
-          .col-4.user-information__image
-            img(src=req.user.github.avatar_url)
-          .col-8.user-information__text
-            a(href="/users/" + req.user.id)
+  .grid.grid-cols-1.gap-6(class="lg:grid-cols-12")
+    //- Left Sidebar
+    .space-y-6(class="lg:col-span-3")
+      //- User Information Card
+      .bg-yankees-blue.p-4.rounded-lg.border.border-black
+        .flex.items-center.gap-4
+          img.w-16.h-16.rounded-full.border.border-black(src=req.user.github.avatar_url)
+          .text-center.flex-1
+            a.text-white.font-semibold(href="/users/" + req.user.id, class="hover:text-twitter-blue")
               h4 #{req.user.name}
-            .user-information__stats.user-information__stats_small
-              ul
-                li
-                  span.user-information__stat-title Tweets:
-                  span
-                    a(href="/users/" + req.user.id) #{tweetCount}
-                li
-                  span.user-information__stat-title Following:
-                  span 
-                    a(href="/users/" + req.user._id + "/following")  #{followingCount}
-                li
-                  span.user-information__stat-title Followers: 
-                  span
-                    a(href="/users/" + req.user._id + "/followers")  #{followerCount}
-          .col-md-12.user-information__stats.user-information__stats_large
-            ul
-              li
-                span.user-information__stat-title Tweets:
-                span
-                  a(href="/users/" + req.user.id) #{tweetCount}
-              li
-                span.user-information__stat-title Following:
-                span 
-                  a(href="/users/" + req.user._id + "/following")  #{followingCount}
-              li
-                span.user-information__stat-title Followers: 
-                span
-                  a(href="/users/" + req.user._id + "/followers")  #{followerCount}
-      .useful-links
+        .flex.justify-around.mt-4.text-center
+          .stat
+            span.block.text-xs.text-grey-blue Tweets
+            a.text-twitter-blue.text-lg.font-bold(href="/users/" + req.user.id) #{tweetCount}
+          .stat
+            span.block.text-xs.text-grey-blue Following
+            a.text-twitter-blue.text-lg.font-bold(href="/users/" + req.user._id + "/following") #{followingCount}
+          .stat
+            span.block.text-xs.text-grey-blue Followers
+            a.text-twitter-blue.text-lg.font-bold(href="/users/" + req.user._id + "/followers") #{followerCount}
+      
+      //- Useful Links - Desktop only
+      div(class="hidden lg:block")
         include ../components/useful-links
-      .recent-visits
+      
+      //- Recent Visits - Desktop only (xl hidden)
+      div(class="hidden lg:block xl:hidden")
         include ../components/recent-visits
-    .col-xl-6.col-lg-8.second-column
+    
+    //- Main Content - Tweets
+    div(class="lg:col-span-6")
       include ../components/tweets
-      include ../components/pagination 
-
-
-    .col-xl-3.col-lg-4.third-column
-      .recent-visits.col-xs-6.col-md-12
+      include ../components/pagination
+    
+    //- Right Sidebar
+    .space-y-6(class="hidden lg:block lg:col-span-3")
+      //- Recent Visits - XL only
+      div(class="hidden xl:block")
         include ../components/recent-visits
-      .useful-links.col-xs-6.col-md-12
-        include ../components/useful-links
+      //- Useful Links
+      include ../components/useful-links

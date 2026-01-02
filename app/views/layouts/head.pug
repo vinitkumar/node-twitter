@@ -6,13 +6,41 @@ head
 
   title Node Twitter
 
-  link(href='/css/bootstrap/bootstrap.min.css', rel='stylesheet')
+  //- Tailwind CSS via CDN
+  script(src='https://cdn.tailwindcss.com')
+  script.
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'jungle-dark': '#141D26',
+            'yankees-blue': '#1B2836',
+            'grey-blue': '#8899A6',
+            'twitter-blue': '#1DA1F2',
+            'jungle-green': '#2AAF81',
+            'go-red': '#E53939'
+          },
+          fontFamily: {
+            'display': ['Bricolage Grotesque', 'system-ui', 'sans-serif'],
+            'body': ['DM Sans', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  
+  //- Google Fonts
+  link(rel='preconnect', href='https://fonts.googleapis.com')
+  link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin)
+  link(href='https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap', rel='stylesheet')
+  
+  //- Font Awesome
   link(href='/css/fontawesome-all.min.css', rel="stylesheet")
+  
+  //- Custom Styles
   link(href='/css/style.css', rel='stylesheet')
-  // Favicon
+  
+  //- Favicon
   link(rel='shortcut icon', href='/img/bird.png')
-  script(type='text/javascript', src='/js/jquery.min.js')
-  // Bootstrap depedency
-  script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.min.js')
-  script(type='text/javascript', src='/js/bootstrap/bootstrap.min.js')
-  script(type='text/javascript', src='/js/app.js')
+  
+  //- App JavaScript
+  script(type='text/javascript', src='/js/app.js', defer)

@@ -1,21 +1,25 @@
 extends ../layouts/default
 
 block content
-  .row.twitter-container
-    .col-xl-12.col-lg-12.first-column
-      .logged-user
-        .row.chatbox
-          - if (chats.length == 0)
-            h2 No chats sorry!
-          ul.chatlist
-            - if (chats)
-              each chat in chats
-                li
-                  - if (chat.sender !=  null)
-                    img(class='tweet__image', src=chat.sender.github.avatar_url)
-                    p.chatMessage
-                    a(class='sender', href="/users/" + chat.sender._id)
-                      span.sender #{chat.sender.username}:
-                    span.message #{chat.message}
-                    p.msgtime #{moment(chat.createdAt).format("MMM D, YYYY [at] h:mm a")}
-
+  .max-w-4xl.mx-auto
+    .bg-yankees-blue.rounded-lg.border.border-black.overflow-hidden
+      .bg-jungle-dark.px-6.py-4.border-b.border-black
+        h2.text-xl.font-display.font-semibold.text-white Messages
+      
+      .p-6
+        - if (chats.length == 0)
+          .text-center.py-12
+            i.far.fa-comments.text-6xl.text-grey-blue.mb-4
+            h2.text-xl.text-white.font-medium No messages yet
+            p.text-grey-blue.mt-2 Start a conversation with someone!
+        else
+          .space-y-4
+            each chat in chats
+              if (chat.sender != null)
+                .flex.gap-4.p-4.bg-jungle-dark.rounded-lg.border.border-black
+                  img.w-10.h-10.rounded-full.border.border-black.flex-shrink-0(src=chat.sender.github.avatar_url)
+                  .flex-1.min-w-0
+                    .flex.items-center.gap-2.mb-1
+                      a.text-twitter-blue.font-semibold(href="/users/" + chat.sender._id, class="hover:underline") #{chat.sender.username}
+                      span.text-grey-blue.text-sm #{moment(chat.createdAt).format("MMM D, YYYY [at] h:mm a")}
+                    p.text-white.break-words #{chat.message}

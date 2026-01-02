@@ -1,41 +1,35 @@
 extends ../layouts/default
 
 block content
-  .row.twitter-container
-    .col-xl-12.col-lg-12.first-column
-      .logged-user
-        .row
-          .container
-            h1
-              != title
-            p Click on the name/image to send a message.
-            div.row.chatgroup
-              each user in users
-                div.col-md-3.chat-bubble
-                  - var name = user.name ? user.name : user.username
-                  - var id = user._id + 'ChatModal';
-                  a(data-toggle='modal', href='#'+ id)
-                    img(class='tweet__image chat-image', src=user.github.avatar_url) 
-                    span #{name}
-                  - var currentUserId = req.user._id.toString()
-                  - var userId = user._id.toString()
-
-                if (req.isAuthenticated())
-                  div(id=id, class='modal fade')
-                    .modal-dialog(role='document')
-                      .modal-content
-                        .modal-header
-                          button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-                          h4.modal-title Send new message to #{name}
-                        .modal-body
-                          form(method='post', action='/chats')
-                            .control-group
-                              label.control-label(for='chat')
-                              .controls
-                                textarea.flat.form-control(type='text', name='body', placeholder='Enter your Message here', maxlength='200')
-                                input(type="hidden", name='receiver', value=user._id)
-                              br
-                            .form-actions
-                              button.btn(type='submit') Send Message
-  include ../components/pagination 
-        
+  .max-w-6xl.mx-auto
+    .bg-yankees-blue.p-6.rounded-lg.border.border-black
+      h1.text-2xl.font-display.font-bold.text-white.mb-2!= title
+      p.text-grey-blue.mb-6 Click on a user to send a message
+      
+      .grid.grid-cols-1.gap-4(class="sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4")
+        each user in users
+          - var name = user.name ? user.name : user.username
+          - var id = user._id + 'ChatModal'
+          .bg-jungle-dark.p-4.rounded-lg.border.border-black.transition-colors.cursor-pointer(class="hover:border-twitter-blue")
+            a.flex.items-center.gap-3(data-toggle='modal', href='#'+ id)
+              img.w-12.h-12.rounded-full.border.border-black(src=user.github.avatar_url)
+              span.text-white.font-medium.transition-colors(class="hover:text-twitter-blue") #{name}
+          
+          - var currentUserId = req.user._id.toString()
+          - var userId = user._id.toString()
+          
+          if (req.isAuthenticated())
+            .modal.fixed.inset-0.z-50.hidden.items-center.justify-center(id=id)
+              .modal-dialog.bg-yankees-blue.rounded-lg.border.border-black.w-full.max-w-lg.mx-4.overflow-hidden.shadow-2xl(role='document')
+                .modal-content
+                  .modal-header.bg-jungle-dark.px-6.py-4.flex.items-center.justify-between
+                    h4.text-white.font-display.font-semibold Send message to #{name}
+                    button.text-grey-blue.text-2xl.transition-colors(type='button', data-dismiss='modal', aria-hidden='true', class="hover:text-white") ×
+                  .modal-body.p-6
+                    form(method='post', action='/chats')
+                      textarea.w-full.bg-jungle-dark.border.border-black.rounded-lg.p-4.text-white.placeholder-grey-blue.resize-none(type='text', name='body', placeholder='Enter your message here', maxlength='200', rows='4', class="focus:outline-none focus:ring-2 focus:ring-twitter-blue")
+                      input(type="hidden", name='receiver', value=user._id)
+                      button.w-full.mt-4.bg-twitter-blue.text-white.font-semibold.py-3.px-6.rounded-full.transition-colors(type='submit', class="hover:bg-blue-400") Send Message
+  
+  .mt-6
+    include ../components/pagination

@@ -1,8 +1,3 @@
-h4.recent-visits__title Recent Visits
-ul.recent-visits__list
-  each analytic in analytics
-    if analytic.user
-      -var name = analytic.user.name ? analytic.user.name : analytic.user.username
-      li
-        a(href="/users/"+analytic.user._id)= name
-          span   (#{moment(analytic.createdAt).format('lll')})
+.bg-yankees-blue.p-4.rounded-lg.border.border-black
+  h4.text-white.font-semibold.mb-3.text-center Recent Activity
+  p.text-grey-blue.text-sm.text-center Check your activity feed for updates

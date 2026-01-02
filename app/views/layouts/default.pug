@@ -2,9 +2,9 @@ doctype html
 html(lang='en')
   include head
   if (req.isAuthenticated())
-  body.login-screen
+  body.bg-jungle-dark.text-grey-blue.font-body.min-h-screen
     include header
-    .container
+    .container.mx-auto.px-4.py-8(style='min-height: calc(100vh - 50px - 150px)')
       block main
       block content
     include footer
