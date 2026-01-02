@@ -49,17 +49,38 @@ export const show = async (req: Request, res: Response) => {
   const user = (req as any).profile;
 
   try {
-    const count = await Tweet.countDocuments({ user: (req as any).profile._id });
+    // Get tweet count
+    const tweetCount = await Tweet.countDocuments({ user: user._id });
+    
+    // Get actual tweets for this user
+    const tweets = await (Tweet as any)
+      .list({
+        criteria: { user: user._id },
+        perPage: 20,
+        page: 0
+      })
+      .exec();
+    
+    // Get follower/following counts
+    const followerCount = user.followers ? user.followers.length : 0;
+    const followingCount = user.following ? user.following.length : 0;
+    
     res.render('pages/profile', {
       title: user.name,
       user: user,
-      tweets: count
+      tweets: tweets,
+      tweetCount: tweetCount,
+      followerCount: followerCount,
+      followingCount: followingCount
     });
   } catch (err) {
     res.render('pages/profile', {
       title: user.name,
       user: user,
-      tweets: 0
+      tweets: [],
+      tweetCount: 0,
+      followerCount: 0,
+      followingCount: 0
     });
   }
 };
