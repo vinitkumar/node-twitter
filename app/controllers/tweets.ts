@@ -27,7 +27,7 @@ export const create = async (req: Request, res: Response): Promise<void> => {
 
   try {
     await tweet.save();
-    res.redirect('/tweets/' + tweet._id);
+    res.redirect('/');
   } catch (err: any) {
     res.status(400).json({ error: err.message });
   }
@@ -42,7 +42,7 @@ export const update = async (req: Request, res: Response): Promise<void> => {
 
   try {
     await tweet.save();
-    res.redirect('/tweets/' + tweet._id);
+    res.redirect('/');
   } catch (err: any) {
     res.status(400).json({ error: err.message });
   }

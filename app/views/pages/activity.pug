@@ -1,13 +1,16 @@
 extends ../layouts/default
 
 block content
-  .analytics
-    h1 Activity
-    each activity in activities
-      - var senderName = activity.sender.name ? activity.sender.name : activity.sender.username
-      - var receiverName = activity.receiver.name ? activity.receiver.name : activity.receiver.username
-      - var notificationText = senderName + ' ' + activity.activityStream + ' ' + receiverName
-      p 
-        i(class="far fa-bell notification-icon")
-        span #{moment(activity.createdAt).format("MMM D, YYYY [at] h:mm a, ")}
-        span #{notificationText}
+  .max-w-4xl.mx-auto
+    h1.text-3xl.font-display.font-bold.text-white.mb-8 Activity
+    
+    .space-y-4
+      each activity in activities
+        - var senderName = activity.sender.name ? activity.sender.name : activity.sender.username
+        - var receiverName = activity.receiver.name ? activity.receiver.name : activity.receiver.username
+        - var notificationText = senderName + ' ' + activity.activityStream + ' ' + receiverName
+        .bg-yankees-blue.p-4.rounded-lg.border.border-black.flex.items-center.gap-4
+          i.far.fa-bell.text-twitter-blue.text-xl
+          .flex-1
+            span.text-grey-blue.text-sm #{moment(activity.createdAt).format("MMM D, YYYY [at] h:mm a")}
+            p.text-white.mt-1 #{notificationText}

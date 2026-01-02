@@ -3,12 +3,15 @@ extends ../layouts/default
 block content
   - var currentUserId = req.user._id.toString()
   - var userId = user._id.toString()
-  .row#profile-page
-    .col-lg-4
+  .grid.grid-cols-1.gap-6#profile-page(class="lg:grid-cols-12")
+    //- Left Column - Profile Card
+    .space-y-4(class="lg:col-span-4")
       include ../components/profile-card
       - if (currentUserId === userId)
-        a.btn.btn__delete(data-toggle='modal', href='.delete-confirmation')
-              span Delete
-    .col-lg-8
+        a.inline-flex.items-center.justify-center.w-full.bg-go-red.text-white.font-medium.py-2.px-4.rounded-lg.transition-colors(data-toggle='modal', href='.delete-confirmation', class="hover:bg-red-600")
+          span Delete Account
+    
+    //- Right Column - Tweets
+    div(class="lg:col-span-8")
       include ../components/tweets
       include ../components/modals/delete-confirmation-modal

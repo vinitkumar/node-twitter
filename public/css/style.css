@@ -1,599 +1,284 @@
-/* General */
-body {
-  font-size: 13px;
-  min-height: 100vh;
-  background-color: #141D26;
-  color: #8899A6; }
+/**
+ * Node Twitter - Custom Styles
+ * Works alongside Tailwind CSS
+ */
 
-body > div.container {
-  /* Calculate the minimum height by subtracting the header and footer height */
-  min-height: calc(100vh - 50px - 150px);
-  padding-top: 30px;
-  padding-bottom: 30px; }
-  
-h4 {
-  font-size: 1.2rem; }
+/* ================================
+   Base Styles
+   ================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 ul {
   list-style: none;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 a {
-  color: #1DA1F2; }
-  a:hover {
-    color: #0c85d0;
-    text-decoration: none; }
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
 
-hr {
-  border-color: #141D26; }
+a:hover {
+  text-decoration: none;
+}
 
-.btn {
-  border-radius: 5px;
-  font-size: 11px;
-  padding: 3px 8px;
-  color: #ffffff;
-  background-color: #1DA1F2; }
-  .btn:hover {
-    background-color: #35abf3;
-    cursor: pointer;
-    color: #ffffff; }
-
-.login-btn {
-  margin-top: 40px; }
-
-textarea {
-  color: #8899A6;
-  padding: 5px 10px;
-  width: 100%;
-  background-color: #141D26;
-  border: solid 1px #000;
-  border-radius: 8px; }
-  textarea::placeholder {
-    color: #8899A6; }
-  textarea:focus {
-    color: #ffffff; }
-
-pre {
-  white-space: pre-wrap;
-  /* css-3 */
-  white-space: -moz-pre-wrap;
-  /* Mozilla, since 1999 */
-  white-space: -pre-wrap;
-  /* Opera 4-6 */
-  white-space: -o-pre-wrap;
-  /* Opera 7 */
-  word-wrap: break-word;
-  /* Internet Explorer 5.5+ */ }
-
-pre code {
-  color: black; }
-
-/* Navbar */
-.navbar__main-navigation span,
-.navbar__logo {
-  display: none; }
-  @media (min-width: 992px) {
-    .navbar__main-navigation span,
-    .navbar__logo {
-      display: inline-block;
-      text-align: center; } }
-
-.navbar {
-  background-color: #1f2e3f;
-  height: 50px;
-  margin: 0;
-  padding: 0;
-  font-size: 14px;
-  border-bottom: 1px solid #000; }
-  .navbar .container {
-    display: flex;
-    align-items: center;
-    height: 100%; }
-    .navbar .container > * {
-      flex-grow: 1; }
-  .navbar a {
-    color: #8899A6; }
-
-.navbar__group {
-  height: 100%; }
-  .navbar__group_right {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center; }
-
-.navbar__main-navigation {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  margin-right: auto; }
-  .navbar__main-navigation li {
-    margin-right: 5px;
-    display: flex;
-    height: 100%;
-    align-items: center; }
-    .navbar__main-navigation li:hover {
-      color: #1DA1F2 !important; }
-  .navbar__main-navigation a {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    padding-left: 8px;
-    padding-right: 8px; }
-    .navbar__main-navigation a:hover {
-      color: #1DA1F2 !important;
-      border-bottom: 2px solid #1DA1F2; }
-      .navbar__main-navigation a:hover > * {
-        margin-bottom: -2px; }
-    .navbar__main-navigation a i {
-      margin-right: 4px; }
-  .navbar__main-navigation .fa {
-    font-size: 22px;
-    display: inline-block;
-    padding: 0;
-    padding-right: 10px;
-    padding-left: 10px; }
-    @media (min-width: 992px) {
-      .navbar__main-navigation .fa {
-        padding-left: 0; } }
-
-.navbar__logo {
-  position: absolute;
-  left: 50%;
-  margin-left: -13px; }
-  .navbar__logo img {
-    height: 26px; }
-
-.navbar__profile {
-  display: flex;
-  align-items: center;
-  margin-right: 20px; }
-  .navbar__profile .navbar__profile-logout {
-    display: flex; }
-  .navbar__profile .fa {
-    font-size: 20px;
-    padding-right: 10px; }
-
-.navbar__new-tweet {
-  text-align: right; }
-  .navbar__new-tweet .navbar__new-tweet-button {
-    color: #ffffff;
-    font-size: 14px;
-    padding: 7px 14px;
-    border-radius: 20px; }
-    .navbar__new-tweet .navbar__new-tweet-button:hover {
-      color: #ffffff; }
-
-.navbar__notifications {
-  color: red !important; }
-
-.follower, .tweet, .profile, .user-information, .useful-links,
-.recent-visits, .analytics {
-  background-color: #1B2836;
-  padding: 15px;
-  border-radius: 2px;
-  border: 1px solid #000;
-  margin-bottom: 20px; }
-
-.follower {
-  text-align: center; }
-
-.follower__user-info {
-  margin-top: 10px; }
-
-.follower__image {
-  border-radius: 50%;
-  width: 100px;
-  max-width: 100%; }
-
-/* Tweets */
-.follower, .tweet, .profile, .user-information, .useful-links,
-.recent-visits, .analytics {
-  background-color: #1B2836;
-  padding: 15px;
-  border-radius: 2px;
-  border: 1px solid #000;
-  margin-bottom: 20px; }
-
-.tweet {
-  color: #ffffff; }
-
-.tweet::after {
-  content: "";
-  clear: both;
-  display: block; }
-
-.tweet__image {
-  border-radius: 50%;
-  height: 40px;
-  border: 1px solid #000; }
-
-.logout-image {
-  height: 20px; }
-
-.tweet__description {
-  padding-left: 25px; }
-
-.tweet__content {
-  margin: 5px 0 10px;
-  word-wrap: break-word; }
-
-.tweet__form .tweet__edit {
-  background-color: #2AAF81; }
-  .tweet__form .tweet__edit:hover {
-    background-color: #2fc490; }
-
-.tweet__form .tweet__delete {  
-  margin-top: -10%; 
-  margin-left: 10%;
-  background-color: #E53939; }
-  .tweet__form .tweet__delete:hover {
-    background-color: #e85050; }
-
-.tweet__username a {
-  color: #ffffff;
-  font-weight: bold; }
-
-.tweet__date,
-.tweet__date a {
-  color: #8899A6; }
-
-.tweet textarea.edit-tweet {
-  margin: 10px 0 15px; }
-
-.tweet textarea {
-  font-size: 13px;
-  background-color: #141D26;
-  border-color: #000;
-  display: block;
-  padding: 6px 12px;
-  color: #ffffff;
-  border-radius: 4px;
-  width: 100%; }
-
-.tweet__comments .btn {
-  margin: auto;
-  display: block;
-  margin-top: 10px; }
-
-.tweets__comment-image {
-  border-radius: 50%;
-  height: 20px;
-  border: 1px solid #000;
-  margin-right: 6px; }
-
-.notification-icon {
-  margin-right: 10px; }
-
-.pagination {
-  text-align: center; }
-  .pagination a,
-  .pagination li.out-of-range {
-    padding: 6px 12px; }
-
-.pagination {
-  justify-content: center; }
-
-.pagination__list {
-  display: flex; }
-  .pagination__list li a {
-    color: #ffffff;
-    border-color: #000 !important; }
-  .pagination__list .no a {
-    background-color: #1B2836;
-    color: #ffffff; }
-  .pagination__list .active a {
-    background-color: #1DA1F2 !important; }
-
-.modal-dialog {
-  margin-top: 60px; }
-
-.modal-content {
-  background: none; }
-
-.modal-header {
-  background-color: #141D26;
-  justify-content: center;
-  border-bottom: 0; }
-  .modal-header button.close {
-    color: #8899A6;
-    opacity: 1;
-    text-shadow: none;
-    position: absolute;
-    right: 15px; }
-    .modal-header button.close:hover {
-      cursor: pointer; }
-
-.modal-body {
-  background-color: #1B2836;
-  padding: 20px 15px; }
+/* ================================
+   Custom Modal System
+   ================================ */
 
 .modal {
-  padding: 0; }
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  padding: 1rem;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+}
 
-.new-tweet__button,
-.new-message__button {
-  font-size: 14px;
-  padding: 4px 10px;
-  background-color: #1da1f2;
-  color: #fff;
-  margin: auto;
-  margin-top: 10px;
-  display: block; }
+.modal.show {
+  display: flex !important;
+}
 
-  .delete-confirmation__button{
-    font-size: 14px;
-    padding: 4px 10px;
-    background-color: firebrick;
-    color: #fff;
-    margin: auto;
-    margin-top: 10px;
-    display: block; }
-  .delete-confirmation__button:hover {
-    background-color: #ff0000; }
+.modal-dialog {
+  position: relative;
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto;
+  animation: modalSlideIn 0.3s ease;
+  z-index: 10000;
+  pointer-events: auto;
+}
 
-  .btn__delete{
-    background-color: firebrick; }
+.modal-dialog * {
+  pointer-events: auto;
+}
 
-  .btn__delete:hover{
-    background-color: #ff0000;}
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
 
-  
+/* Modal textarea should be fully interactive */
+.modal textarea,
+.modal input,
+.modal button {
+  position: relative;
+  z-index: 10001;
+}
 
-/* Profile Card */
-.follower, .tweet, .profile, .user-information, .useful-links,
-.recent-visits, .analytics {
-  background-color: #1B2836;
-  padding: 15px;
-  border-radius: 2px;
-  border: 1px solid #000;
-  margin-bottom: 20px; }
+/* ================================
+   Tweet Styles
+   ================================ */
 
-.profile {
-  text-align: center; }
+.tweet__content a {
+  color: #1DA1F2;
+}
 
-.profile__handle {
-  font-size: 18px;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  display: inline-block; }
+.tweet__content a:hover {
+  text-decoration: underline;
+}
 
-.profile__image {
-  border: 0;
-  border-radius: 50%;
-  width: 150px;
-  max-width: 100%; }
+textarea.edit-tweet {
+  margin: 0.75rem 0;
+  min-height: 100px;
+  resize: vertical;
+}
 
-.profile__messaging-options .btn {
-  margin: 10px; }
-
-.profile__follow {
-  margin: 10px 0; }
+/* ================================
+   Profile Button States
+   ================================ */
 
 .profile__follow-button.following {
-  background-color: #E53939; }
-  .profile__follow-button.following:hover {
-    background-color: #e85050; }
+  background-color: #E53939 !important;
+}
 
-/* Login Page */
-.login {
-  padding-top: 36px; }
+.profile__follow-button.following:hover {
+  background-color: #c62828 !important;
+}
 
-.login-container {
-  text-align: center;
-  margin: auto; }
+/* ================================
+   Pagination Styles
+   ================================ */
 
-.github-btn {
-  margin-left: 20px; }
-
-.icon-container {
-  margin-left: 6px; }
-
-.stats-parent-container {
-  margin-top: 60px; }
-
-.login-using-github {
-  font-size: 20px; }
-
-/* Main Dashboard */
-.follower, .tweet, .profile, .user-information, .useful-links,
-.recent-visits, .analytics {
+.pagination a,
+.pagination span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  margin: 0 0.125rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #fff;
   background-color: #1B2836;
-  padding: 15px;
-  border-radius: 2px;
   border: 1px solid #000;
-  margin-bottom: 20px; }
+  transition: all 0.2s ease;
+}
 
-.user-information > .row {
-  align-items: center; }
+.pagination a:hover {
+  background-color: #1DA1F2;
+  border-color: #1DA1F2;
+}
 
-.user-information__image {
-  padding-right: 0; }
-  .user-information__image img {
-    border-radius: 50%;
-    width: 100px;
-    max-width: 100%;
-    float: right; }
+.pagination .active a,
+.pagination a.active {
+  background-color: #1DA1F2;
+  border-color: #1DA1F2;
+}
 
-.user-information__text {
-  text-align: center; }
+.pagination .disabled a,
+.pagination a.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
 
-.user-information h4,
-.useful-links h4,
-.recent-visits h4 {
-  color: #fff; }
+/* ================================
+   Form Elements
+   ================================ */
 
-.user-information__stats ul {
-  margin-top: 10px;
-  text-align: center;
-  display: flex;
-  justify-content: space-around;
-  font-weight: bold;
-  width: 100%; }
+textarea:focus,
+input:focus,
+select:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: #1DA1F2;
+}
 
-@media (min-width: 992px) {
-  .user-information__stats_small {
-    display: none; } }
+button:focus {
+  outline: none;
+}
 
-.user-information__stats_large {
-  display: none; }
-  @media (min-width: 992px) {
-    .user-information__stats_large {
-      display: block; } }
+/* ================================
+   Utility Classes
+   ================================ */
 
-.user-information__stat-title {
-  display: block; }
+.text-shadow-sm {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
 
-.user-information__stats span:not(.user-information__stat-title) {
-  font-size: 18px;
-  color: #1da1f2; }
+.gradient-bg {
+  background: linear-gradient(135deg, #141D26 0%, #1B2836 50%, #243447 100%);
+}
 
-.useful-links a {
-  font-weight: bold; }
+/* ================================
+   Loading States
+   ================================ */
 
-.useful-links,
-.recent-visits {
-  text-align: center; }
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
 
-.first-column .recent-visits,
-.first-column .useful-links {
-  display: none; }
-  @media (min-width: 992px) {
-    .first-column .recent-visits,
-    .first-column .useful-links {
-      display: block; } }
+/* ================================
+   Scrollbar Styling
+   ================================ */
 
-@media (min-width: 1200px) {
-  .first-column .recent-visits {
-    display: none; } }
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
 
-@media (min-width: 992px) {
-  .third-column .recent-visits,
-  .third-column .useful-links {
-    display: none; } }
+::-webkit-scrollbar-track {
+  background: #141D26;
+}
 
-@media (min-width: 1200px) {
-  .third-column .recent-visits {
-    display: block; } }
+::-webkit-scrollbar-thumb {
+  background: #1B2836;
+  border-radius: 4px;
+}
 
-/* Analytics Page */
-.follower, .tweet, .profile, .user-information, .useful-links,
-.recent-visits, .analytics {
-  background-color: #1B2836;
-  padding: 15px;
-  border-radius: 2px;
-  border: 1px solid #000;
-  margin-bottom: 20px; }
+::-webkit-scrollbar-thumb:hover {
+  background: #243447;
+}
 
-.analytics {
-  padding-top: 30px;
-  padding-bottom: 30px; }
-  .analytics h1 {
-    color: #fff;
-    text-align: center; }
+/* ================================
+   Animations
+   ================================ */
 
-.analytics__table {
-  table-layout: fixed;
-  width: 100%; }
-  .analytics__table th,
-  .analytics__table td {
-    border: 1px solid #fff;
-    padding: .25rem .75rem; }
-  .analytics__table th {
-    font-weight: bold;
-    color: #fff;
-    text-align: center; }
-  .analytics__table td {
-    word-wrap: break-word;
-    vertical-align: middle; }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
-.analytics__user-column {
-  width: 25%; }
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-.analytics__stats {
-  margin: 20px 0; }
-  .analytics__stats ul {
-    display: flex;
-    justify-content: space-evenly;
-    font-weight: bold; }
-    .analytics__stats ul li {
-      text-align: center; }
+.animate-fade-in {
+  animation: fadeIn 0.3s ease;
+}
 
-.analytics__stats-title {
-  font-size: 16px; }
+.animate-slide-up {
+  animation: slideUp 0.4s ease;
+}
 
-.analytics__stats-value {
-  font-size: 18px;
-  color: #1da1f2;
-  display: block; }
+/* ================================
+   Hover Effects
+   ================================ */
 
-.analytics__user {
-  font-weight: bold;
-  text-align: center; }
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-.chatbox {
-  padding: 20px; }
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
 
-.chatMessage {
-  display: inline; }
+/* ================================
+   Error Pages
+   ================================ */
 
-span.sender {
-  color: red;
-  margin-left: 5px;
-  margin-right: 5px; }
-
-span.message {
-  width: fit-content;
-  padding: 6px; }
-
-.msgtime {
-  font-size: 10px; }
-
-.chatlist {
-  margin-left: 20px; }
-
-.chat-image {
-  margin-left: 5px;
-  margin-right: 5px; }
-
-.chatrow {
-  margin-bottom: 10px;
-  padding: 4px;
-  border-radius: 7px; }
-
-.inboxlink {
-  margin-left: 40px; }
-
-.message-row {
-  margin-top: 6px; }
-
-.following-image, .follower-image {
-  margin-right: 6px; }
-
-a.logout {
-  color: red !important; }
-
-.btn-message {
-  margin-right: 12px; }
-
-.chatgroup {
-  margin-bottom: 20px; }
-
-.chat-bubble {
-  margin-bottom: 10px; }
-
-/* Footer */
-footer {
-  text-align: center;
-  background-color: #243447;
-  padding-top: 30px;
-  height: 150px; }
-
-/* Media Queries */
 #error-stack-trace {
-  background: yellow;
-  padding: 20px;
-  margin-top: 20px; }
+  background: rgba(234, 179, 8, 0.1);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
+  border: 1px solid rgba(234, 179, 8, 0.3);
+}
 
-/*# sourceMappingURL=style.css.map */
+/* ================================
+   Print Styles
+   ================================ */
+
+@media print {
+  .modal,
+  .modal-backdrop,
+  button,
+  .btn {
+    display: none !important;
+  }
+}

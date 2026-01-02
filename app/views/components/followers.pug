@@ -1,8 +1,7 @@
-.col-lg-4
-  .follower
+.bg-yankees-blue.p-4.rounded-lg.border.border-black
+  .flex.items-center.gap-3
     - if (user.github !== undefined)
-      img(class="follower__image", src=user.github.avatar_url)
-    div.follower__user-info
-      span.follower__handle
-        - if (user.github !== undefined)
-          a(href="/users/" + user._id) @#{user.github.login}
+      img.w-12.h-12.rounded-full.border.border-black(src=user.github.avatar_url)
+    .flex-1
+      - if (user.github !== undefined)
+        a.text-twitter-blue.font-medium(href="/users/" + user._id, class="hover:underline") @#{user.github.login}

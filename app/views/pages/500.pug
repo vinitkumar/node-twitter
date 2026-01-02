@@ -1,12 +1,12 @@
 extends ../layouts/default
 
 block main
-  h1 Oops something went wrong
-  br
-  span 500
+  .text-center.py-16
+    h1.text-6xl.font-display.font-bold.text-white.mb-4 Oops!
+    span.text-9xl.font-display.font-bold.text-go-red 500
 
 block content
-  #error-message-box
-    #error-stack-trace
-      pre.pre-scrollable
-        code!=error
+  .max-w-2xl.mx-auto.mt-8
+    .bg-red-500.bg-opacity-20.border.border-red-500.rounded-lg.p-6.max-h-96.overflow-auto
+      pre.whitespace-pre-wrap.text-sm
+        code.text-red-400!=error

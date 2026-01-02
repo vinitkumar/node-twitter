@@ -1,10 +1,10 @@
-.new-tweet.modal.fade
-  .modal-dialog(role='document')
+.new-tweet.modal.fixed.inset-0.z-50.hidden.items-center.justify-center
+  .modal-dialog.bg-yankees-blue.rounded-lg.border.border-black.w-full.max-w-lg.mx-4.overflow-hidden.shadow-2xl(role='document')
     .modal-content
-      .modal-header
-        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-        h4.modal-title Compose new Tweet
-      .modal-body
+      .modal-header.bg-jungle-dark.px-6.py-4.flex.items-center.justify-between
+        h4.text-white.font-display.font-semibold Compose new Tweet
+        button.text-grey-blue.text-2xl.transition-colors(type='button', data-dismiss='modal', aria-hidden='true', class="hover:text-white") ×
+      .modal-body.p-6
         form(method='post', action='/tweets')
-          textarea(type='text', name='body', placeholder='Enter your tweet here', maxlength='280')
-          button.btn.new-tweet__button(type='submit') Tweet
+          textarea.w-full.bg-jungle-dark.border.border-black.rounded-lg.p-4.text-white.placeholder-grey-blue.resize-none(type='text', name='body', placeholder='Enter your tweet here', maxlength='280', rows='4', class="focus:outline-none focus:ring-2 focus:ring-twitter-blue")
+          button.w-full.mt-4.bg-twitter-blue.text-white.font-semibold.py-3.px-6.rounded-full.transition-colors(type='submit', class="hover:bg-blue-400") Tweet

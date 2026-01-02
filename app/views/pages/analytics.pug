@@ -1,34 +1,37 @@
 extends ../layouts/default
 
 block content
-  .analytics
-    h1 Analytics Dashboard
-    .analytics__stats
-      ul
-        li
-          span.analytics__stats-title Visits:
-          span.analytics__stats-value #{pageViews}
-        li
-          span.analytics__stats-title Users:
-          span.analytics__stats-value #{userCount}
-        li
-          span.analytics__stats-title Tweets:
-          span.analytics__stats-value #{tweetCount}
-    table.analytics__table
-      thead
-        tr
-          th.analytics__user-column User
-          th.analytics__url-column URL
-          th.analytics__date-column Time
-
-      tbody
-        each analytic in analytics
+  .max-w-6xl.mx-auto
+    h1.text-3xl.font-display.font-bold.text-white.mb-8 Analytics Dashboard
+    
+    //- Stats Cards
+    .grid.grid-cols-1.gap-6.mb-8(class="md:grid-cols-3")
+      .bg-yankees-blue.p-6.rounded-lg.border.border-black.text-center
+        span.block.text-3xl.font-bold.text-twitter-blue #{pageViews}
+        span.text-grey-blue.mt-2.block Visits
+      .bg-yankees-blue.p-6.rounded-lg.border.border-black.text-center
+        span.block.text-3xl.font-bold.text-twitter-blue #{userCount}
+        span.text-grey-blue.mt-2.block Users
+      .bg-yankees-blue.p-6.rounded-lg.border.border-black.text-center
+        span.block.text-3xl.font-bold.text-twitter-blue #{tweetCount}
+        span.text-grey-blue.mt-2.block Tweets
+    
+    //- Analytics Table
+    .bg-yankees-blue.rounded-lg.border.border-black.overflow-hidden
+      table.w-full
+        thead.bg-jungle-dark
           tr
-            - if (analytic.user != null && analytic.url != null)
+            th.text-left.px-6.py-4.text-grey-blue.font-medium User
+            th.text-left.px-6.py-4.text-grey-blue.font-medium(class="hidden md:table-cell") URL
+            th.text-left.px-6.py-4.text-grey-blue.font-medium Time
+        tbody.divide-y.divide-black
+          each analytic in analytics
+            if (analytic.user != null && analytic.url != null)
               - var name = analytic.user.name ? analytic.user.name : analytic.user.username
-              td.analytics__user #{name}
-              td.analytics__url #{analytic.url}
-              td.analytics__date #{moment(analytic.createdAt).format("MMM D, YYYY [at] h:mm a")}
-  include ../components/pagination
-
-
+              tr.transition-colors(class="hover:bg-jungle-dark")
+                td.px-6.py-4.text-white #{name}
+                td.px-6.py-4.text-grey-blue.truncate.max-w-xs(class="hidden md:table-cell") #{analytic.url}
+                td.px-6.py-4.text-grey-blue.text-sm #{moment(analytic.createdAt).format("MMM D, YYYY [at] h:mm a")}
+    
+    .mt-6
+      include ../components/pagination

@@ -1,13 +1,17 @@
 extends ../layouts/default
 
 block content
-  .row#followers-page
-    .col-lg-4
+  .grid.grid-cols-1.gap-6#followers-page(class="lg:grid-cols-12")
+    //- Left Column - Profile Card
+    div(class="lg:col-span-4")
       include ../components/profile-card
-    .col-lg-8
+    
+    //- Right Column - Followers Grid
+    div(class="lg:col-span-8")
       if (followers.length !== 0)
-        .row
+        .grid.grid-cols-1.gap-4(class="md:grid-cols-2 xl:grid-cols-3")
           each user in followers
-            include ../components/followers 
+            include ../components/followers
       else
-        h4 Sorry! It looks like no one is following you.
+        .bg-yankees-blue.p-8.rounded-lg.border.border-black.text-center
+          h4.text-white.font-medium Sorry! It looks like no one is following you.

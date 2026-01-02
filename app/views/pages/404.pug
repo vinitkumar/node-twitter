@@ -1,12 +1,12 @@
 extends ../layouts/default
 
 block main
-  h1 Oops something went wrong
-  br
-  span 404
+  .text-center.py-16
+    h1.text-6xl.font-display.font-bold.text-white.mb-4 Oops!
+    span.text-9xl.font-display.font-bold.text-twitter-blue 404
 
 block content
-  #error-message-box
-    #error-stack-trace
-      pre
-        code!= error
+  .max-w-2xl.mx-auto.mt-8
+    .bg-yellow-500.bg-opacity-20.border.border-yellow-500.rounded-lg.p-6
+      pre.whitespace-pre-wrap.text-sm
+        code.text-yellow-400!= error

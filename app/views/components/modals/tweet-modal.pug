@@ -1,3 +1,4 @@
-.modal.fade(id="tweet-modal-"+tweet._id)
-  .modal-dialog(role='document')
-    include ../tweet
+.modal.fixed.inset-0.z-50.hidden.items-center.justify-center(id="tweet-modal-"+tweet._id)
+  .modal-dialog.bg-yankees-blue.rounded-lg.border.border-black.w-full.max-w-2xl.mx-4.overflow-hidden.shadow-2xl(role='document')
+    .p-6
+      include ../tweet
