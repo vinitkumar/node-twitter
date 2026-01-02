@@ -197,30 +197,22 @@ function initModals() {
 
 function openModal(modal) {
   modal.classList.add('show');
-  modal.style.display = 'block';
+  modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
   
-  // Add backdrop
-  let backdrop = document.querySelector('.modal-backdrop');
-  if (!backdrop) {
-    backdrop = document.createElement('div');
-    backdrop.classList.add('modal-backdrop');
-    document.body.appendChild(backdrop);
-  }
-  backdrop.classList.add('show');
+  // Focus the first input/textarea in the modal
+  setTimeout(function() {
+    const firstInput = modal.querySelector('textarea, input:not([type="hidden"])');
+    if (firstInput) {
+      firstInput.focus();
+    }
+  }, 100);
 }
 
 function closeModal(modal) {
   modal.classList.remove('show');
   modal.style.display = 'none';
   document.body.style.overflow = '';
-  
-  // Remove backdrop
-  const backdrop = document.querySelector('.modal-backdrop');
-  if (backdrop) {
-    backdrop.classList.remove('show');
-    backdrop.remove();
-  }
 }
 
 // Export modal functions for external use

@@ -60,6 +60,12 @@ a:hover {
   max-width: 32rem;
   margin: 0 auto;
   animation: modalSlideIn 0.3s ease;
+  z-index: 10000;
+  pointer-events: auto;
+}
+
+.modal-dialog * {
+  pointer-events: auto;
 }
 
 @keyframes modalSlideIn {
@@ -73,17 +79,12 @@ a:hover {
   }
 }
 
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 9998;
-  background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.modal-backdrop.show {
-  opacity: 1;
+/* Modal textarea should be fully interactive */
+.modal textarea,
+.modal input,
+.modal button {
+  position: relative;
+  z-index: 10001;
 }
 
 /* ================================
