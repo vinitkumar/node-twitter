@@ -6,3 +6,6 @@ npm-debug.log
 .sass-cache
 .env 
 data/*
+.vercel
+.env*.local
+dist/
