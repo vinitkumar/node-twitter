@@ -6,8 +6,8 @@
   "private": false,
   "author": "Vinit Kumar <vinit1414.08@bitmesra.ac.in> (http://vinitkumar.me)",
   "scripts": {
-    "build": "tsc -p tsconfig.prod.json",
-    "build:dev": "tsc",
+    "build": "npx tsc -p tsconfig.prod.json",
+    "build:dev": "npx tsc",
     "start": "ts-node server.ts",
     "start:prod": "node dist/server.js",
     "dev": "nodemon --exec ts-node server.ts",
