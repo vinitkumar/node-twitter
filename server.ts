@@ -70,7 +70,13 @@ const connect = async (): Promise<typeof mongoose> => {
 
 const modelsPath = __dirname + '/app/models';
 fs.readdirSync(modelsPath).forEach((file) => {
-  require(modelsPath + '/' + file);
+  // Only load .js or .ts files, skip .map and other files
+  if (file.endsWith('.js') || file.endsWith('.ts')) {
+    // Skip .d.ts declaration files
+    if (!file.endsWith('.d.ts')) {
+      require(modelsPath + '/' + file);
+    }
+  }
 });
 
 passportConfig(passport, cfg);
